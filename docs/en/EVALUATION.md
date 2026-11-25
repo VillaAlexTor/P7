@@ -235,3 +235,25 @@ cd apps/api
 go run ./cmd/evaluate -data evaluation/real_round7a.tsv
 go run ./cmd/evaluate -data evaluation/real_round7b.tsv
 ```
+
+## November 25: eighth real-source round
+
+We tested the unchanged `b821d56` prompt with the local `qwen3:4b-instruct` model on another **40 short verbatim excerpts from 40 previously unused official-page URLs**: 20 English and 20 Spanish. The text, reference labels, and URLs were committed before the first inference. The source checker now covers 260 cases and 260 source links, and limits each source quotation to 25 words. Some URLs are language versions of the same underlying article, so this is not 40 independent privacy policies. No prompt or model-weight change was made after these results.
+
+| First run | Correct labels | False positives | Missed labels | Precision | Recall | Exact cases |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `real_round8a.tsv` | 16 | 0 | 4 | 100.0% | 80.0% | 16/20 |
+| `real_round8b.tsv` | 8 | 1 | 0 | 88.9% | 100.0% | 19/20 |
+| **Both new sets** | **24** | **1** | **4** | **96.0%** | **85.7%** | **35/40** |
+
+English had 12 correct labels, one false positive, and two misses: 92.3% precision, 85.7% recall, and 17/20 exact cases. Spanish had 12 correct labels, no false positives, and two misses: 100.0% precision, 85.7% recall, and 18/20 exact cases. The runs took 28 and 21 seconds on the local machine.
+
+The four missed labels were R8AE08 (ad personalization from account data), R8AE09 (location information with a fixed deletion deadline), R8AS05 (the external provider processing facial data), and R8AS08 (activity saved in an account without a deletion deadline). R8BE08 was the sole false positive: Windows Hello sign-in was treated as biometric collection by the provider. R8AE09 is a context-sensitive reference label because the short excerpt describes deletion of location information rather than its initial collection; independent review should adjudicate it. No affirmative AI-training clause appears in this round, although negative training controls do.
+
+The previous 40-case round measured 73.7% precision and 70.0% recall. This higher result is **sample variation under the same classifier**, not evidence that training improved it. Recall remains below 90% in the new round. The labels were assigned by one reviewer, and selected snippets do not establish reliability on complete policies. Keep human review for product findings. The committed machine reports are `real_round8a_result.json` and `real_round8b_result.json` beside the case and source TSVs. Reproduce with Ollama running:
+
+```powershell
+cd apps/api
+go run ./cmd/evaluate -data evaluation/real_round8a.tsv
+go run ./cmd/evaluate -data evaluation/real_round8b.tsv
+```
