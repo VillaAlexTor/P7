@@ -1,0 +1,21 @@
+id	locale	text	expected
+RF01	en	We only retain your personal data for as long as necessary to fulfill the purposes outlined in this Privacy Notice.	retention
+RF02	en	Airbnb allows third parties to collect data on our behalf	third-parties
+RF03	en	To show ads you’re more likely to be interested in, we use data like your location, Bing searches	advertising,location
+RF04	en	Apple does not create or store faceprints of our customers	-
+RF05	en	We’ll retain your Personal Data as long as your account is active and as needed to fulfill contractual obligations	retention
+RF06	en	We also collect your IP address and limited device information to help us determine the region you’re in	location
+RF07	en	Conversations with OpenAI Support may be used to improve OpenAI services, including our models	ai-training
+RF08	en	Using your device to confirm your card will not result in Airbnb or any partners collecting your biometric information	-
+RF09	en	To improve our personalized recommendations and to improve the Spotify experience for all users, based on precise location data	location
+RF10	en	If you turned on Find My, location information is collected from your device	location
+RF11	es	Conservaremos sus Datos personales siempre que su cuenta esté activa y según sea necesario para cumplir las obligaciones contractuales	retention
+RF12	es	Solo conservamos sus datos personales durante el tiempo necesario para cumplir los fines descritos en este Aviso de privacidad.	retention
+RF13	es	Para mostrar anuncios en los que podría estar más interesado, usamos datos como su ubicación, las búsquedas de Bing	advertising,location
+RF14	es	Los datos de ubicación pueden determinarse mediante tu dirección IP o el GPS de tu dispositivo móvil	location
+RF15	es	podemos usar el Contenido que nos proporcionas para mejorar nuestros Servicios, por ejemplo, para entrenar los modelos	ai-training
+RF16	es	Discord sincroniza periódicamente los números de teléfono desde tu teléfono a los servidores de Discord.	contacts
+RF17	es	utilizaremos tecnología automatizada para crear un identificador facial único a partir de las fotos que nos hayas facilitado	biometric
+RF18	es	Permiten mostrarte anuncios personalizados en función de tu perfil de usuario u otros datos históricos de usuario.	advertising
+RF19	es	Compartimos información personal con proveedores o colaboradores afiliados y no afiliados	third-parties
+RF20	es	ni Airbnb ni ninguna otra entidad colaboradora recopilarán tus datos biométricos	-
