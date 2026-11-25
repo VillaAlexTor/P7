@@ -1,0 +1,198 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 2,
+  "DurationSeconds": 174,
+  "Overall": {
+    "tp": 8,
+    "fp": 2,
+    "fn": 0
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "location": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "third-parties": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "ikea_en",
+      "URL": "https://www.ikea.com/es/en/customer-service/privacy-policy/",
+      "Locale": "en",
+      "SourceSHA256": "e73576cac0fc1e505195b0a190728193eea4aa5d3410b2ee43aca70a54ff8a39",
+      "Characters": 43120,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-151",
+          "quoteSha256": "64daa20d6aa9fd513657d2e2c3a7107c5939fb73ce7b39e69d82fac6416bd473",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-064",
+          "quoteSha256": "8ee3880643fa777e744787ab4fa10be23a7cd598187075a38edccfc75f8573f9",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-199",
+          "quoteSha256": "d784602233d038ccafd379c6d7a8c3e95eabb8f49bdff38f00dfb286a04a5e12",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-069",
+          "quoteSha256": "98e641f190c5e98f8e20749d5d60a963011bbb2c35a4ae5b1094d92425e431a3",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-038",
+          "quoteSha256": "5d86235ccfb779a64a353c17fec283d3804f4552b911e036174317a86f7b419c",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "IKEA Spain Privacy Policy",
+        "profile": "general",
+        "documentHash": "d6223438e8b99a9934a6be90335d9eca11c21734471ac976e3b67e8a0dc5c5e4",
+        "clauseCount": 224,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 35
+      },
+      "Score": 90,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 30
+      },
+      "DurationSeconds": 81
+    },
+    {
+      "ID": "ikea_es",
+      "URL": "https://www.ikea.com/es/es/customer-service/privacy-policy/",
+      "Locale": "es",
+      "SourceSHA256": "60c1052254e15ff9d37b053d8e71a47f66cd96d9a3704a3f849cff7c8166b728",
+      "Characters": 47845,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-158",
+          "quoteSha256": "54d5976b376815885ef857f64852eb90c491ff74c858c50d7fdb2bb3ef6f1d29",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-067",
+          "quoteSha256": "7bc538aee3f131ce5696bc52df57017e8ceed9ae98b9521144eab9ecb71b0eda",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-112",
+          "quoteSha256": "8c075b86e5b31a7fea15c6ff9c61c249b6b26ffa7cce538fe75e2ac8fe24dd4f",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-096",
+          "quoteSha256": "453c304ee1b4b779dda0dd78d6e0cdb2861b9c8275d32843b0b78df069af5f53",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-041",
+          "quoteSha256": "df6b8beebb39822ed43fba416c10c548357490f7bc970b55e3bca32d4fd5722c",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de IKEA España",
+        "profile": "general",
+        "documentHash": "d4c81556dcf8d95ec9ed70116e7a7f4638fea35130244126ea7da8248680f2ce",
+        "clauseCount": 239,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 20
+      },
+      "Score": 94,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 15
+      },
+      "DurationSeconds": 93
+    }
+  ]
+}
