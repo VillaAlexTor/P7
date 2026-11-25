@@ -12,7 +12,7 @@ function rows(file, header) {
 }
 
 const urlsBySet = [];
-for (const name of ["real_dev", "real_holdout"]) {
+for (const name of ["real_dev", "real_holdout", "real_holdout_90", "real_holdout_90_final"]) {
   const cases = rows(`${name}.tsv`, "id\tlocale\ttext\texpected");
   const sources = rows(`${name}_sources.tsv`, "id\turl");
   if (cases.length !== 20 || sources.length !== 20) throw new Error(`${name}: expected 20 cases and sources`);
@@ -39,7 +39,11 @@ for (const name of ["real_dev", "real_holdout"]) {
   urlsBySet.push(new Set(sourceMap.values()));
 }
 
-for (const url of urlsBySet[0]) {
-  if (urlsBySet[1].has(url)) throw new Error(`Development source appears in holdout: ${url}`);
+for (let i = 0; i < urlsBySet.length; i++) {
+  for (let j = i + 1; j < urlsBySet.length; j++) {
+    for (const url of urlsBySet[i]) {
+      if (urlsBySet[j].has(url)) throw new Error(`Source repeated across sets: ${url}`);
+    }
+  }
 }
-console.log("Real-source evaluation metadata passed: 40 cases, 40 source links, 20 per set, 10 per language in each set.");
+console.log("Real-source evaluation metadata passed: 80 cases, 80 source links, 20 per set, 10 per language in each set.");
