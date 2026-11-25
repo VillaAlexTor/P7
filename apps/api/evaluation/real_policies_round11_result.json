@@ -1,0 +1,357 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 291,
+  "Overall": {
+    "tp": 19,
+    "fp": 2,
+    "fn": 1
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "location": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "third-parties": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "apple_en",
+      "URL": "https://www.apple.com/legal/privacy/en-ww/",
+      "Locale": "en",
+      "SourceSHA256": "ec9c6e178521b9081642a5ac9b9eac211b158ce29bcc0580e4a7088019f9b1c0",
+      "Characters": 28051,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-040",
+          "quoteSha256": "7743ee89632f72618292f6759e9999de1ed3d1ee68d68e7d9164f7f95c8a311b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-032",
+          "quoteSha256": "69189a213c5beca4bc6cbf2472443769f84eba5a0af03d04da29bbb5c9140ad3",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-027",
+          "quoteSha256": "18975665336a4b091b58b553ed16fd927529bbe7d14bb6b941baa54c2c10fec8",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-086",
+          "quoteSha256": "2f72367f5f921f677e0768c080dbd83b8fe5c2d6fec49b0efb5ad6b4a79cf562",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-060",
+          "quoteSha256": "b3f16553acfe40103dc88f966d0ceb1ccc4aad662fc2f32f2639562e6278ae52",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Apple Privacy Policy",
+        "profile": "general",
+        "documentHash": "9bbef678755f02c37bda94ee6e4f2b5823d2cd5211420c2be596b9b8d000edf5",
+        "clauseCount": 108,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 11
+      },
+      "Score": 90,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 6
+      },
+      "DurationSeconds": 39
+    },
+    {
+      "ID": "apple_es",
+      "URL": "https://www.apple.com/legal/privacy/es/",
+      "Locale": "es",
+      "SourceSHA256": "a4e187b62bf9a3ed0bc3b6d9a8eaf592573375a1d820b8d9dfff506179d6616e",
+      "Characters": 32122,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-041",
+          "quoteSha256": "d187110c52c62f64cf2884374d4a8438bf1c640b4e32996471a13a3c66398153",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-033",
+          "quoteSha256": "a04c0c056ecf561c3f7c54547b50adb0219162b91c50f38b71063f32953281b4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-028",
+          "quoteSha256": "61bddbe0d2c7a5ad3631ff1e96d266a86d0f991e4a40f6d14cdff8dfb291f05f",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-087",
+          "quoteSha256": "1e85612b8645ca6fad8d31c7038d2dfede5f65ee00ac90decd808a55e9b65795",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de Privacidad de Apple",
+        "profile": "general",
+        "documentHash": "b2c2340e22c584e5fad202b7bf7e7dc0efecef66aefc8da388c89548dec9dcdf",
+        "clauseCount": 126,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 4,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 17
+      },
+      "Score": 84,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 4,
+        "citationsRejected": 13
+      },
+      "DurationSeconds": 51
+    },
+    {
+      "ID": "spotify_en",
+      "URL": "https://www.spotify.com/uk/legal/privacy-policy/",
+      "Locale": "en",
+      "SourceSHA256": "be7bd79c6ba5ecb10f100ac1359fc619a8f46f1d64e71661bc8296ca85f56d37",
+      "Characters": 43615,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "biometric",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "biometric",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-204",
+          "quoteSha256": "4c1cbd51748349d43d9863c732e55aff224cc3994cd402b0331f76e0424f7ba6",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-228",
+          "quoteSha256": "26c6033ba59d4ea686cfdebdca31ca01e8a425df18a4a5fc256a0ff6ffdac2e6",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-217",
+          "quoteSha256": "373c4d73ee189a250af115a9be9af3db24ac76f329649382790141a4654c8965",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-322",
+          "quoteSha256": "0e975283ea839cc1673062143637c7d3ec89274c5fca92373ca7ffe7bdfdddd0",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-115",
+          "quoteSha256": "23ff7d8dca7a4e1d4c7cbdd97b0affa06caa57bda26d04b828ad332e181304c4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-546",
+          "quoteSha256": "da077b1d35fb771b7a944865d65997191fb436d970bb8ff848962e1784f2005b",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Spotify Privacy Policy",
+        "profile": "general",
+        "documentHash": "9d8c8c7d87594eefce6ef93f42ee15b8d8c1149904e6e2e166eae630a49b51c7",
+        "clauseCount": 585,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 26
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 20
+      },
+      "DurationSeconds": 83
+    },
+    {
+      "ID": "spotify_es",
+      "URL": "https://www.spotify.com/es/legal/privacy-policy/",
+      "Locale": "es",
+      "SourceSHA256": "19cd08258383564856ee8f5b95d00e92eaf873a16334fc82d4c8cd0851f1ae11",
+      "Characters": 51336,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "biometric",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "biometric",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-199",
+          "quoteSha256": "be09d66515e2b388855654d2ea67f83f47bf4c728326dbbb9455c074085dbe25",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-228",
+          "quoteSha256": "f4f3de4aaf208911509e27f5cbdffb080f06b64a59b8faa832928fe3995d0e4f",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-246",
+          "quoteSha256": "385a25f2e326da20385a5eba850b11fb2cc1d7309e53c1759cb6b521ece8c3ce",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-331",
+          "quoteSha256": "5a0dfbc52a83fee61260bd28dfdb17c6ffe7ccb840ad507b1bf174f35bd23e54",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-114",
+          "quoteSha256": "52742429354d870d836671c7d9f85b03e3d37d08041367077887ac1212fc6c05",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-074",
+          "quoteSha256": "7e5ab05090f99fafc04ff6a9df0462316f860618d59288ba92de9f7c48c55a91",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de Spotify",
+        "profile": "general",
+        "documentHash": "d2bafe53496535d8c09654884f97a816e9bb0cb204278f5071dee2a157feb040",
+        "clauseCount": 617,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 45
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 39
+      },
+      "DurationSeconds": 118
+    }
+  ]
+}
