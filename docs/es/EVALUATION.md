@@ -210,3 +210,28 @@ El reservado supera los umbrales elegidos del 90 % de precisión y cobertura **e
 go run ./cmd/evaluate -data evaluation/real_round6_dev.tsv
 go run ./cmd/evaluate -data evaluation/real_round6_holdout.tsv
 ```
+
+## 25 de noviembre: otras cuarenta pruebas con fuentes reales
+
+Congelamos el prompt `b821d56` y el modelo instalado `qwen3:4b-instruct`. Seleccionamos 40 fragmentos breves de 40 URL oficiales nuevas, mitad en inglés y mitad en español, repartidos entre `real_round7a.tsv` y `real_round7b.tsv`. Confirmamos las etiquetas y los enlaces antes de ejecutar la inferencia. El verificador de metadatos cubre 220 casos en todos los conjuntos reales y limita cada cita a 25 palabras por URL. Algunas URL inglesas y españolas son traducciones del mismo artículo; 40 URL **no** significan 40 políticas independientes.
+
+| Corrida | Etiquetas acertadas | Falsos positivos | Omisiones | Precisión | Cobertura | Casos exactos |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `real_round7a.tsv`, primera corrida | 8 | 1 | 2 | 88,9 % | 80,0 % | 17/20 |
+| `real_round7b.tsv`, primera corrida | 6 | 4 | 4 | 60,0 % | 60,0 % | 13/20 |
+| **Ambos conjuntos, primeras corridas** | **14** | **5** | **6** | **73,7 %** | **70,0 %** | **30/40** |
+| `real_round7b.tsv`, repetición con cita corregida | 6 | 4 | 4 | 60,0 % | 60,0 % | 13/20 |
+
+Los casos en inglés tuvieron 9 etiquetas acertadas, 2 falsos positivos y 2 omisiones (81,8 % de precisión y cobertura; 16/20 casos exactos). Los españoles tuvieron 5 aciertos, 3 falsos positivos y 4 omisiones (62,5 % de precisión, 55,6 % de cobertura; 14/20 casos exactos). En total, 10 casos difirieron de las etiquetas de referencia. Las primeras corridas tardaron 23 y 21 segundos en el equipo local; la repetición corregida tardó 22 segundos.
+
+Las omisiones fueron R7AE10 (chats archivados que siguen guardados), R7AS05 (avisos de viaje basados en ubicación), R7BE07 (acceso condicional de My AI a la ubicación), R7BS06 (insignias de ubicación), R7BS09 (listas de clientes para audiencias publicitarias) y R7BS10 (personalización publicitaria con señales de ChatGPT). Los falsos positivos fueron R7AS07 y R7BE09 (confundió datos de un contacto de confianza con acceso a la agenda del dispositivo), R7BE03 y R7BS08 (confundió autenticación biométrica en el dispositivo con recopilación biométrica por el proveedor) y R7BS09 (confundió audiencias publicitarias con contactos del dispositivo). R7AS05, R7BS06 y R7BS10 dependen en parte del contexto de su página; otra persona debería revisar esas etiquetas. No modificamos las etiquetas tras ver las respuestas.
+
+Después de las primeras corridas descubrimos que la cita española R7BS01 coincidía con otra variante regional, pero no literalmente con la URL `es-es` registrada. Corregimos **solo su redacción** según esa página oficial y repetimos el conjunto B. La predicción y las cifras no cambiaron. Conservamos por separado el resultado inicial de B, que ya no se puede reproducir byte por byte con el TSV corregido. Antes de cualquier corrida exitosa, otro ajuste del formato TSV quitó las comillas de R7AS04. Los informes sin resumir están en `real_round7a_result.json`, `real_round7b_initial_result.json` y `real_round7b_result.json`, junto a los conjuntos.
+
+**Evaluación franca:** esta ronda queda bastante por debajo del 90 % de precisión y cobertura. El 100 %/94,1 % del reservado de la sexta ronda fue propio de esa muestra y no se repite en estas cláusulas seleccionadas. El clasificador sirve como apoyo a la revisión, pero sus hallazgos necesitan comprobación humana; no corresponde afirmar que tenga 90 % de fiabilidad en políticas desconocidas. En esta ronda no entrenamos los pesos del modelo ni ajustamos el prompt tras los resultados. Los fragmentos breves tampoco prueban políticas completas. Para repetir las pruebas con Ollama activo:
+
+```powershell
+cd apps/api
+go run ./cmd/evaluate -data evaluation/real_round7a.tsv
+go run ./cmd/evaluate -data evaluation/real_round7b.tsv
+```
