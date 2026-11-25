@@ -12,12 +12,13 @@ function rows(file, header) {
 }
 
 const urlsBySet = [];
-for (const name of ["real_dev", "real_holdout", "real_holdout_90", "real_holdout_90_final", "real_round3", "real_round4", "real_round5"]) {
+for (const name of ["real_dev", "real_holdout", "real_holdout_90", "real_holdout_90_final", "real_round3", "real_round4", "real_round5", "real_round6_dev", "real_round6_holdout"]) {
   const cases = rows(`${name}.tsv`, "id\tlocale\ttext\texpected");
   const sources = rows(`${name}_sources.tsv`, "id\turl");
   if (cases.length !== 20 || sources.length !== 20) throw new Error(`${name}: expected 20 cases and sources`);
   const sourceMap = new Map(sources);
   if (sourceMap.size !== 20) throw new Error(`${name}: duplicate source ID`);
+  if (name.startsWith("real_round6_") && new Set(sourceMap.values()).size !== 20) throw new Error(`${name}: duplicate source URL`);
   const ids = new Set();
   const locales = { en: 0, es: 0 };
   const wordsByUrl = new Map();
@@ -46,4 +47,4 @@ for (let i = 0; i < urlsBySet.length; i++) {
     }
   }
 }
-console.log("Real-source evaluation metadata passed: 140 cases, 140 source links, 20 per set, 10 per language in each set.");
+console.log("Real-source evaluation metadata passed: 180 cases, 180 source links, 20 per set, 10 per language in each set; round six has 40 distinct new URLs.");
