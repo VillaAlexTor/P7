@@ -1,0 +1,21 @@
+id	locale	text	expected
+RFE01	en	If you choose to sync your contacts, we will collect information, such as names, phone numbers, and email addresses from your device’s phone book	contacts
+RFE02	en	We automatically collect information about your approximate location based on our Logs Data.	location
+RFE03	en	We use this demographic data, as well as general location information based on your IP address, to help tailor the advertising	location,advertising
+RFE04	en	we keep your shared list of contacts until you ask us to remove them in our app settings	retention
+RFE05	en	You can use the contact upload feature and provide us, if permitted by applicable laws, with the phone numbers in your address book	contacts
+RFE06	en	We provide ad companies with information that allows them to serve you with more useful and relevant Amazon ads	third-parties,advertising
+RFE07	en	we retain store information for two years before we begin the process of deleting or anonymizing personal information	-
+RFE08	en	By default, neither Notion nor our AI providers use your Customer Data to train any models.	-
+RFE09	en	Biometric data defined under U.S. laws or other applicable laws (e.g., faceprints and voiceprints, etc.)	biometric
+RFE10	en	Your fingerprint, face, or other biometric data is never sent to, stored by, or accessible to IBM Verify or your organization.	-
+RFS01	es	O si proporcionaste acceso a los contactos de tu teléfono o de una plataforma de terceros para facilitar la amistad	contacts
+RFS02	es	Puedes elegir sincronizar la libreta de direcciones de tu dispositivo para saber qué contactos también utilizan WhatsApp.	contacts
+RFS03	es	Almacenamos información durante el tiempo que sea necesario para los fines que se identifican en esta Política de privacidad	retention
+RFS04	es	anuncios elegidos en función de tu uso o interacciones con sitios web o aplicaciones de terceros no afiliados a lo largo del tiempo.	advertising
+RFS05	es	No procesamos tus Datos de cliente para entrenar nuestros modelos y tampoco permitimos que nuestros subencargados procesen tus Datos de cliente para entrenar los suyos.	-
+RFS06	es	Canva podría obtener tu ubicación precisa o aproximada de las siguientes formas: Infiriéndola a partir de tu dirección IP.	location
+RFS07	es	Las copias de seguridad se conservan hasta 30 días.	-
+RFS08	es	Conservamos los datos para cumplir la ley, prevenir el fraude, cobrar tarifas pendientes, resolver disputas, solucionar problemas	retention
+RFS09	es	También divulgamos información personal a otras empresas del grupo de Adobe y a los socios de publicidad y ventas, conforme a sus elecciones.	third-parties
+RFS10	es	Tu ubicación no se compartirá en el Mapa hasta que lo abras por primera vez.	-
