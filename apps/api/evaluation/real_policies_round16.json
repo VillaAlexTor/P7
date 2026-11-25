@@ -1,0 +1,27 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Complete official Pinterest and Slack privacy text extracted by scripts/prepare-real-policies-round16.py; one reviewer froze document-category labels and questions before inference; source text stays in gitignored .cache/real_policies_round16.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "Pinterest's current policy says it continues processing contacts previously synced; this affirms retention of already shared contacts, not a current device-address-book import. Contacts is negative under the existing classifier definition.",
+    "Pinterest explicitly trains machine-learning and generative-AI models with Pins, including a body-type technology trained on images; body-type processing is not identity recognition and biometric remains negative.",
+    "Slack explicitly describes optional device/API address-book import, targeted ads on non-Slack sites, and retention of Other Information after deactivation. Its policy does not affirm AI model training.",
+    "Advertising is positive for both publishers; location, outside sharing, and retention are positive for all four localized pages."
+  ],
+  "auditQuestions": [
+    {"id":"P1","en":"Does Pinterest's current notice affirm a new device address-book import?","es":"¿La política actual de Pinterest afirma una nueva importación de la agenda del dispositivo?","category":"contacts","reference":"not-established"},
+    {"id":"P2","en":"Does Pinterest train AI models with user Pins?","es":"¿Pinterest entrena modelos de IA con los Pines de usuarios?","category":"ai-training","reference":"yes"},
+    {"id":"P3","en":"Does Pinterest select ads using inferred interests?","es":"¿Pinterest selecciona anuncios según intereses inferidos?","category":"advertising","reference":"yes"},
+    {"id":"P4","en":"Does body-type technology trained on images establish identity recognition?","es":"¿La tecnología de tipos de cuerpo entrenada con imágenes demuestra identificación biométrica?","category":"biometric","reference":"not-established"},
+    {"id":"S1","en":"Does Slack collect an address book when an authorized user chooses to import it?","es":"¿Slack recoge una agenda cuando un usuario autorizado decide importarla?","category":"contacts","reference":"yes"},
+    {"id":"S2","en":"Does this Slack notice affirm AI model training on workspace content?","es":"¿Este aviso de Slack afirma entrenamiento de IA con contenido del espacio de trabajo?","category":"ai-training","reference":"not-established"},
+    {"id":"S3","en":"Does Slack disclose data sharing for targeted ads outside Slack?","es":"¿Slack declara compartir datos para anuncios dirigidos fuera de Slack?","category":"advertising","reference":"yes"},
+    {"id":"S4","en":"May Slack retain Other Information after account deactivation?","es":"¿Puede Slack conservar Otra Información tras desactivar la cuenta?","category":"retention","reference":"yes"}
+  ],
+  "policies": [
+    {"id":"pinterest_en","title":"Pinterest Privacy Policy","locale":"en","url":"https://policy.pinterest.com/en/privacy-policy","characters":49591,"sha256":"a184a2ffac32ee2b73622a88fd2d9999b7b088f2437336b05bd0039160558aa6","expected":["location","third-parties","advertising","ai-training","retention"],"referenceLines":{"location":33,"third-parties":541,"advertising":339,"ai-training":83,"retention":581},"contextLines":{"contacts":37,"biometric":83}},
+    {"id":"pinterest_es","title":"Política de privacidad de Pinterest","locale":"es","url":"https://policy.pinterest.com/es/privacy-policy","characters":58404,"sha256":"0ea94a517316ac60af3c79d0bd9d3aec483fc2677a2217c16b089c39524b5918","expected":["location","third-parties","advertising","ai-training","retention"],"referenceLines":{"location":33,"third-parties":541,"advertising":339,"ai-training":83,"retention":581},"contextLines":{"contacts":37,"biometric":83}},
+    {"id":"slack_en","title":"Slack Privacy Policy","locale":"en","url":"https://slack.com/trust/privacy/privacy-policy","characters":39142,"sha256":"87332d8173c62cb7dd33864b95a920a68ea4432c40ad76e24fb4bcfc1a959537","expected":["location","contacts","third-parties","advertising","retention"],"referenceLines":{"location":67,"contacts":73,"third-parties":201,"advertising":291,"retention":225}},
+    {"id":"slack_es","title":"Política de Privacidad de Slack","locale":"es","url":"https://slack.com/intl/es-es/trust/privacy/privacy-policy","characters":46335,"sha256":"bcfb3ad5f31f2ca1e39cc647fdb7b6c97c2f76b396ebd1f6291febb9fb52ede1","expected":["location","contacts","third-parties","advertising","retention"],"referenceLines":{"location":67,"contacts":73,"third-parties":205,"advertising":295,"retention":229}}
+  ]
+}
