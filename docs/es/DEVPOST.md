@@ -52,10 +52,11 @@ La confianza requiere separar lo que el documento confirma, lo que el sistema in
 - Interfaz y resultado funcionan en español e inglés.
 - Las pruebas cubren siete pilares, contrato API, seguridad, paridad de idiomas, build, auditoría de dependencias y paridad documental.
 - Una [evaluación sintética reproducible de 40 cláusulas](EVALUATION.md) informa 27 positivos verdaderos, cero falsos positivos y un falso negativo tras ajustar el prompt con el mismo conjunto.
+- Una comprobación aparte con 20 fragmentos de fuentes de privacidad publicadas detectó 17 de 19 prácticas etiquetadas sin falsos positivos en esa corrida. La muestra es pequeña y no mide la exactitud con políticas completas.
 
 ## Próximos pasos
 
-Evaluaremos el clasificador con un conjunto independiente y realizaremos el [protocolo preparado para cinco personas](USER_STUDY.md). Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
+Ampliaremos la evaluación con políticas reales, pediremos a otra persona que revise las etiquetas y realizaremos el [protocolo preparado para cinco personas](USER_STUDY.md). Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
 
 ## Declaración
 
