@@ -1,0 +1,21 @@
+id	locale	text	expected
+R9BE01	en	With your consent, the location of your device will also be used to provide geographically relevant results.	location
+R9BE02	en	You are in control over which data is stored in the Health app and which data is shared with third-party apps and people you trust.	third-parties
+R9BE03	en	Google Analytics, which places a cookie on your device, to obtain metrics on how users engage with our websites.	third-parties
+R9BE04	en	we only keep it long enough to do what we collected it for. Once we don't need it, we take steps to destroy it	retention
+R9BE05	en	We create segments to deliver personalized ads on the App Store, Apple News, and Stocks.	advertising
+R9BE06	en	Location Services allows Apple and third-party apps and websites to gather and use information based on the current location of your iPhone	location,third-parties
+R9BE07	en	Your location is retained for up to 24 hours in order to provide the service, after which it is deleted.	location,retention
+R9BE08	en	We also use information about your account, purchases, and downloads in the stores to offer advertising	advertising
+R9BE09	en	We may also use information about your subscriptions to personalize your ads on the App Store.	advertising
+R9BE10	en	Some of the above information, account-related information, and paired-device details may be shared with your card issuer or bank to determine eligibility	third-parties
+R9BS01	es	Si das tu consentimiento, también se usará la ubicación de tu dispositivo para ofrecerte resultados pertinentes geográficamente.	location
+R9BS02	es	Tú controlas qué datos se guardan en la app Salud y qué datos se comparten con apps de terceros	third-parties
+R9BS03	es	Google Analytics, que coloca una cookie en su dispositivo para obtener indicadores sobre la interacción de los usuarios con nuestros sitios web.	third-parties
+R9BS04	es	Tampoco es nuestra voluntad mantener sus informaciones personales por más tiempo del necesario; por eso, tales informaciones son almacenadas apenas durante el tiempo necesario	retention
+R9BS05	es	Creamos segmentos para enviar publicidad segmentada en las apps App Store, Apple News y Bolsa.	advertising
+R9BS06	es	La localización permite que las apps y los sitios web de Apple o de terceros recopilen y usen información basada en la ubicación actual	location,third-parties
+R9BS07	es	la información de ubicación se conserva durante un plazo de 24 horas y, una vez transcurrido ese tiempo, se elimina.	location,retention
+R9BS08	es	Además, utilizamos información sobre tu cuenta, tus compras y descargas en las tiendas para ofrecerte publicidad	advertising
+R9BS09	es	También podemos usar información acerca de tus suscripciones para personalizar la publicidad que ves en App Store.	advertising
+R9BS10	es	parte de esta información, de los datos relativos a la cuenta y de los dispositivos enlazados a la entidad emisora de la tarjeta	third-parties
