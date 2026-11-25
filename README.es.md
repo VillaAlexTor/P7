@@ -1,10 +1,18 @@
-# p7
+# p7 — Privacidad, descifrada.
 
-**Privacidad, descifrada.**
+<p align="center"><img src="docs/assets/devpost-thumbnail-p7.png" width="360" alt="p7 — Privacidad, descifrada." /></p>
 
-[English](README.md) · **Español**
+**Un lector bilingüe de políticas de privacidad, respaldado por evidencia y por un LLM local.**
 
-p7 convierte políticas de privacidad en evaluaciones personales, explicables y respaldadas por evidencia. El MVP usa un LLM local mediante Ollama, sin cuentas, base de datos, claves API ni créditos pagados.
+[English](README.md) · **Español** · [Documentación](docs/README.md)
+
+**MVP del hackathon STEM2Connect.** Las políticas de privacidad son largas y difíciles de comparar. p7 convierte el texto pegado en una lectura estructurada y personal: prácticas declaradas, evidencia exacta, vacíos, posibles impactos y acciones concretas. Es una aplicación local funcional diseñada para revisión humana.
+
+## Inicio rápido y demostración
+
+Con Docker Desktop iniciado, ejecuta `iniciar.cmd` en Windows o `docker compose up --build --wait` en una terminal. La primera ejecución descarga el modelo local y puede tardar varios minutos. Abre **http://localhost:3000**, elige idioma y perfil, pulsa **Cargar ejemplo** y luego **Analizar política**. Revisa los hallazgos citados, el mapa de datos, los vacíos, los escenarios de impacto y las acciones. El ejemplo incluido es ficticio; también puedes pegar una política propia. La aplicación no visita URL arbitrarias.
+
+Detén los servicios con `docker compose down`.
 
 ## Siete diferenciadores implementados
 
@@ -15,6 +23,20 @@ p7 convierte políticas de privacidad en evaluaciones personales, explicables y 
 5. **Simulación de impacto:** explica consecuencias posibles sin presentarlas como hechos.
 6. **Consentimiento inteligente:** genera acciones concretas y priorizadas.
 7. **Privacidad para todos:** aplicación, ejemplos y resultados completos en español e inglés.
+
+## Evaluación de IA medida
+
+Los casos, las URL oficiales y la **salida cruda del modelo** están en [apps/api/evaluation](apps/api/evaluation). El [historial en español](docs/es/EVALUATION.md) y el [historial en inglés](docs/en/EVALUATION.md) explican cada ronda y las salvedades de las etiquetas.
+
+| Mismo clasificador, nuevos fragmentos oficiales | Precisión | Cobertura | Casos exactos |
+| --- | ---: | ---: | ---: |
+| Ronda 7 · 40 casos | 73,7 % | 70,0 % | 30/40 |
+| Ronda 8 · 40 casos | 96,0 % | 85,7 % | 35/40 |
+| **Ronda 9 · 40 casos** | **100,0 %** | **75,0 %** | **30/40** |
+
+La última ronda usó **40 URL oficiales nuevas** de Google, Spotify, Microsoft, Mozilla y Apple, divididas por igual entre idiomas. Hubo 33 etiquetas acertadas, ningún falso positivo y 11 omisiones. Las mayores deficiencias fueron transferencia a terceros y retención. Son fragmentos cortos seleccionados, algunos traducidos de un mismo aviso, etiquetados por una persona. **No** miden el rendimiento en documentos completos; el 100 % observado no garantiza fiabilidad general. El prompt y los pesos del modelo siguieron iguales entre rondas. p7 ayuda a revisar, pero una persona debe comprobar hallazgos y posibles omisiones.
+
+[Casos A](apps/api/evaluation/real_round9a.tsv) · [Fuentes A](apps/api/evaluation/real_round9a_sources.tsv) · [Salida cruda A](apps/api/evaluation/real_round9a_result.json) · [Casos B](apps/api/evaluation/real_round9b.tsv) · [Fuentes B](apps/api/evaluation/real_round9b_sources.tsv) · [Salida cruda B](apps/api/evaluation/real_round9b_result.json)
 
 ## Stack
 
@@ -55,9 +77,15 @@ Abre `http://localhost:3000`, carga el ejemplo y ejecuta el análisis. El select
 
 ## Docker
 
+Con Docker Desktop iniciado, ejecuta `iniciar.cmd` desde la raíz del proyecto (doble clic o desde una terminal). El archivo construye la web y la API, inicia Ollama, descarga el modelo local la primera vez, espera a que todos los servicios estén sanos y abre `http://localhost:3000`.
+
+También puedes iniciarlo manualmente:
+
 ```powershell
-docker compose up --build
+docker compose up --build --wait
 ```
+
+El modelo se conserva en el volumen `ollama-data`, por lo que no vuelve a descargarse en cada inicio. Para detener los servicios usa `docker compose down`. Para eliminar también el modelo descargado usa `docker compose down --volumes`.
 
 ## Verificación automática
 
@@ -93,7 +121,7 @@ Perfiles: `general`, `student`, `journalist`, `parent` y `activist`. Idiomas: `e
 
 ## Uso de IA
 
-El producto ejecutable llama al modelo local `qwen3:4b-instruct` mediante Ollama. El modelo clasifica las cláusulas con un esquema JSON restringido y propone referencias exactas. Go rechaza categorías desconocidas y cualquier cita que no esté contenida en la cláusula indicada; luego aplica pesos por perfil y calcula el índice. ChatGPT y Codex también apoyaron investigación, alcance, arquitectura, código, diseño, pruebas y documentación. Aquí no se almacena ninguna clave API ni secreto.
+El producto ejecutable llama al modelo local `qwen3:4b-instruct` mediante Ollama en cinco pasadas centradas en categorías. El modelo clasifica las cláusulas con un esquema JSON restringido y propone referencias exactas. Go rechaza categorías desconocidas y cualquier cita que no esté contenida en la cláusula indicada; luego aplica pesos por perfil y calcula el índice. Si Ollama no está disponible, el análisis devuelve un error de servicio en vez de sustituir silenciosamente la IA por palabras clave. ChatGPT y Codex también apoyaron investigación, alcance, arquitectura, código, diseño, pruebas y documentación. Aquí no se almacena ninguna clave API ni secreto.
 
 ## Documentación
 
