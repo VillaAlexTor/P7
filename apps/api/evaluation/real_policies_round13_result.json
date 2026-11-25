@@ -1,0 +1,375 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 267,
+  "Overall": {
+    "tp": 23,
+    "fp": 0,
+    "fn": 1
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "location": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "third-parties": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "openai_en",
+      "URL": "https://openai.com/policies/privacy-policy/",
+      "Locale": "en",
+      "SourceSHA256": "84542bcf86fde0dbf46d742e0a224a373f2284558658287359db79cfe1ab5582",
+      "Characters": 22484,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-041",
+          "quoteSha256": "d971d3919feb0a918ba3181929d5bdb7ffcc84c4a152e4e4faddb435d9800cba",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-021",
+          "quoteSha256": "d4b1495dd8befaa7fcb966ea28470f522e1e3c0b51875fd474aad0153f966845",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-038",
+          "quoteSha256": "359aff8323afd3f5d3718582f27aefd31f708765353d7843fe1f875e9591e4e2",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-015",
+          "quoteSha256": "82f07a8aca6f522bcc2a34da3eab6eab62dbf17f96573dec71fa83a4ccb06ec8",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-031",
+          "quoteSha256": "343254da14dd232810cae805019eb4becd95b659249ff3598f96423a44078aa4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-057",
+          "quoteSha256": "d796381306a994ee1536215433e06210260a6cf7daed5051bc0982e142039e5c",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "OpenAI Privacy Policy",
+        "profile": "general",
+        "documentHash": "b879c19c4c207560e516026933aeed9db528be780bae768d1322e655089c69c2",
+        "clauseCount": 113,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 16
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 10
+      },
+      "DurationSeconds": 40
+    },
+    {
+      "ID": "openai_es",
+      "URL": "https://openai.com/es-419/policies/privacy-policy/",
+      "Locale": "es",
+      "SourceSHA256": "a241f4a7bbe8b963c25349bee0e7213d5a456deab2fb7f427f1afbed42ccd3fd",
+      "Characters": 25843,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-043",
+          "quoteSha256": "bc3b0e352fc576bf8caaba0f5f62883c4464bc1e5f776bee9d0fa715c038f3cf",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-023",
+          "quoteSha256": "041d615c432f909f2fc01f67d7b679a0b29afcde2938ff2279051115bbe683ae",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-040",
+          "quoteSha256": "ca6c07f538333aa9d5dd313bba823ed8b3a4d4a8db69a13387d85372f7ca61b7",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-026",
+          "quoteSha256": "4f209b13faf3096363f44bc6f3c33e8b2b4cc5879445f3e4439e54abeb9563d6",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-059",
+          "quoteSha256": "23067a7ae8308f49bfc626ccf5ce10d8ed2d6b9aeed5c9b88c8ee94480664f12",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de OpenAI",
+        "profile": "general",
+        "documentHash": "0a3615cc75b044d8b49ed080812318c0c06ba64aecf3386c7babed21bff0b617",
+        "clauseCount": 114,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 9
+      },
+      "Score": 96,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 4
+      },
+      "DurationSeconds": 40
+    },
+    {
+      "ID": "tiktok_en",
+      "URL": "https://www.tiktok.com/legal/page/eea/privacy-policy/en",
+      "Locale": "en",
+      "SourceSHA256": "f54dc279482377559ab3fd807f3a037767b906891ae7d11a505d8008c72b117e",
+      "Characters": 46731,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-028",
+          "quoteSha256": "dc8de51da9e6c4ca26f9237cd54290526f258b3259b5ae662d17e51b671923f1",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-021",
+          "quoteSha256": "584eda779c262226624d91aa09ffb12caf2ad1aa2e608426cdd0a14c94de7202",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-126",
+          "quoteSha256": "52cf743c16c389a942e8ac98d4e77d0145b421ddac82c9dbe0b3d43f3385ef7a",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-014",
+          "quoteSha256": "01c2e1cd4624664a089490556d2792ac77e2573934111d956eb9d74535f720d9",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-050",
+          "quoteSha256": "d24191c27bf1d7ac79c97b946b38e4294f694dd626aeabb540b621ef8bc2fc2b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-212",
+          "quoteSha256": "00f8374a38a76204b6130a77e57d9dea58a63f8b90e4d032ccb440683c507d0e",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "TikTok Privacy Policy (EEA)",
+        "profile": "general",
+        "documentHash": "be470e5ef62e9478a8061cf55c14f44c0b726c86871082c025c0b349ee4a03c6",
+        "clauseCount": 236,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 36
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 30
+      },
+      "DurationSeconds": 85
+    },
+    {
+      "ID": "tiktok_es",
+      "URL": "https://www.tiktok.com/legal/page/eea/privacy-policy/es",
+      "Locale": "es",
+      "SourceSHA256": "6f91c02d0739808a508676a2730f2de069c96607cc8c0b838fa1dfc1306210dd",
+      "Characters": 53600,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-036",
+          "quoteSha256": "89f19c0bff27abd0da03725494c9d09eb7777ce2e628c2beae27d50c96e63f69",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-029",
+          "quoteSha256": "1c24c5afeae4c5aa099e3283c43f7ecdcf6a048d9131e8bb5cd87f45704a3eb1",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-061",
+          "quoteSha256": "ce4551e3833832a2500b127294f57f8a6883eb9347a4ef3e0053396e7166e382",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-018",
+          "quoteSha256": "d9f0800e7bd7d5b000f6e349ef67c8d37e0f6b5c7b6559914e523897526d06f3",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-032",
+          "quoteSha256": "ab0a29cbc14c345f9bba4d0d312cb8b81cb9caf8254597924151f12b0a770588",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-229",
+          "quoteSha256": "38b64c182e807473cbb5216585af3c118c1b4456bd8c44d717acea54c460311f",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de TikTok (EEE)",
+        "profile": "general",
+        "documentHash": "424533a564349a793540bd19471157c5820c494b5af0891cb4ce6e697ffe7c51",
+        "clauseCount": 252,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 40
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 34
+      },
+      "DurationSeconds": 100
+    }
+  ]
+}
