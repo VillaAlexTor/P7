@@ -104,6 +104,27 @@ The final misses were X03 and X23 (payment gateways), X06 and X26 (typing rhythm
 
 We stopped changing the classifier after the untouched set exceeded the chosen **80% recall** threshold with no false positives in this run. This is evidence of progress on synthetic clauses, not 80% statistical confidence in real-world accuracy or readiness for unreviewed decisions.
 
+## Evaluation on excerpts from real policies
+
+On November 25, 2026, we collected 40 short, verbatim excerpts from published privacy policies and official privacy explanations: 20 English and 20 Spanish. The exact text, labels, and source URLs are in `evaluation/real_dev.tsv`, `evaluation/real_dev_sources.tsv`, `evaluation/real_holdout.tsv`, and `evaluation/real_holdout_sources.tsv`. The URLs allow each excerpt to be reviewed against its published page. A single reviewer assigned the labels before model inference. The two sets use different source pages; no prompt, model, or classification-code change was made after either set was assembled. We corrected one UK spelling, shortened one negative excerpt, and replaced one development source that overlapped the holdout, then reran that set. The holdout was run once and left unchanged.
+
+| Real-source set | Correct labels | False positive labels | Missed labels | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Development, 20 excerpts | 18 | 1 | 1 | 94.7% | 94.7% |
+| **Untouched holdout, 20 excerpts** | **17** | **0** | **2** | **100.0%** | **89.5%** |
+| Both sets, 40 excerpts | 35 | 1 | 3 | 97.2% | 92.1% |
+
+The holdout had 8/9 correct English labels and 9/10 correct Spanish labels; all three negative controls had no finding. The misses were RF06, Discord's use of IP data to determine a region, and RF16, Discord's periodic synchronization of phone numbers from a device. RD07 in the development set gained an unsupported third-party label, while RD12's broad retention was missed. The frozen five-pass classifier **cleared the 80% recall threshold on real published excerpts without another tuning step**, so we stopped iterating.
+
+Reproduce from `apps/api` with Ollama running:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_dev.tsv
+go run ./cmd/evaluate -data evaluation/real_holdout.tsv
+```
+
+This supports the judgment that the project is moving in the right direction. The sample is small, selected rather than random, and labeled by one reviewer; several excerpts come from the same publisher. We evaluated short excerpts individually, not complete policies, and the output of the local model can vary between runs even at temperature zero. These percentages are **not** a measured accuracy guarantee for arbitrary real policies. A second annotator, more publishers, full-document tests, and latency measurements remain necessary before any reliability claim.
+
 ## Next evaluation
 
-Before a production claim, collect a labeled set from diverse public policies with permission to quote excerpts, have a second person review disputed labels, measure full-document latency, and report per-language precision and recall. Keep all six synthetic sets as regression checks; any later prompt change needs a new untouched set.
+Before a production claim, expand the real-source sample, have a second person review disputed labels, measure full-document latency, and report per-language precision and recall. Keep the six synthetic and two real-source sets as regression checks; any later prompt change needs a new untouched set.
