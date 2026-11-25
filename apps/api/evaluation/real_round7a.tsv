@@ -12,7 +12,7 @@ R7AE10	en	Archiving removes the chat from the regular sidebar but does not delet
 R7AS01	es	Cuando utilizas nuestros servicios para particulares, como ChatGPT, podemos usar tu contenido para entrenar nuestros modelos.	ai-training
 R7AS02	es	Tus datos de cliente en Slack (como los mensajes y archivos) no se utilizan para entrenar LLM.	-
 R7AS03	es	No, no lo entrenamos mediante el contenido personal de los suscriptores de Creative Cloud.	-
-R7AS04	es	Cuando habilites "Mis amigxs", tu ubicación se compartirá con todos tus amigxs, ¡incluidos los que agregues en el futuro!	location
+R7AS04	es	tu ubicación se compartirá con todos tus amigxs, ¡incluidos los que agregues en el futuro!	location
 R7AS05	es	Estas notificaciones son visibles para los amigos con los que compartes tu ubicación	location
 R7AS06	es	Microsoft Edge elimina automáticamente los grupos de intereses de más de 30 días	-
 R7AS07	es	OpenAI puede recibir de ese usuario tu nombre, dirección de correo electrónico o número de teléfono.	-
