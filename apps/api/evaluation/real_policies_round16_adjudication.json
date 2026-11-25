@@ -1,0 +1,13 @@
+{
+  "status": "post-inference sensitivity analysis; frozen manifest and raw result remain unchanged",
+  "frozenManifestCommit": "f563e0c",
+  "reason": "The initial biometric negatives considered Pinterest's body-type model training but overlooked the same policy's optional facial comparison against a government ID for age verification. This is closer to identity matching under the category definition used in earlier rounds. The correction is a reviewer judgment after model output and needs independent adjudication.",
+  "labelCorrections": [
+    {"id": "pinterest_en", "category": "biometric", "frozen": "not-established", "alternative": "yes", "sourceLines": [95, 199], "predicted": "no"},
+    {"id": "pinterest_es", "category": "biometric", "frozen": "not-established", "alternative": "yes", "sourceLines": [95, 199], "predicted": "yes"}
+  ],
+  "frozenOverall": {"tp": 17, "fp": 4, "fn": 3, "precision": 0.8095, "recall": 0.85},
+  "alternativeOverall": {"tp": 18, "fp": 3, "fn": 4, "precision": 0.8571, "recall": 0.8182},
+  "exactPagesUnderBoth": 1,
+  "note": "No model, prompt, code, or frozen manifest was changed or rerun. This is not a replacement pre-registered result."
+}
