@@ -186,3 +186,27 @@ The fifth set is small, selected, and labeled by one reviewer. Its perfect obser
 ```powershell
 go run ./cmd/evaluate -data evaluation/real_round5.tsv
 ```
+
+## November 25: forty more real-source tests
+
+We prepared **40 new verbatim excerpts** from 40 previously unused official URLs: 20 English and 20 Spanish. We split them in advance into a 20-case development set and a separate 20-case holdout, each balanced by language. Text, reference labels, and source URLs were committed before either first inference. The metadata checker now covers 180 cases and 180 source links, verifies that the 40 new URLs are distinct, and limits each source quote to 25 words. An older development set reuses one source URL for two cases. Reference labels were not changed after inference.
+
+We again changed **prompts only**, not the local `qwen3:4b-instruct` model weights. The development set revealed two false biometric findings where fingerprint or face data stayed on the user's device and two missed indefinite-retention findings where chats remained saved until a user deleted them. The first prompt revision fixed three of those four errors; a second device-only biometric clarification fixed the last in the development rerun. We froze revision `b821d56` before running the holdout.
+
+| Run | Correct labels | False positives | Missed labels | Precision | Recall | Interpretation |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `real_round6_dev.tsv`, first run with prior prompt | 12 | 2 | 2 | 85.7% | 85.7% | Development baseline |
+| `real_round6_dev.tsv`, after first revision | 14 | 1 | 0 | 93.3% | 100.0% | Development rerun |
+| `real_round6_dev.tsv`, after second revision | 14 | 0 | 0 | 100.0% | 100.0% | Development rerun |
+| `real_round4.tsv`, revision `b821d56` | 18 | 1 | 2 | 94.7% | 90.0% | Prior-set regression rerun |
+| `real_round5.tsv`, revision `b821d56` | 17 | 0 | 1 | 100.0% | 94.4% | Prior-set regression rerun |
+| **`real_round6_holdout.tsv`, first run with frozen `b821d56`** | **16** | **0** | **1** | **100.0%** | **94.1%** | **Independent first run** |
+
+The holdout's five negative controls produced no findings. R6HE01 was the sole miss: its short excerpt describes someone uploading address-book contacts but omits the service name; the reference label relies partly on source-page context. A second reviewer should assess that label. We kept the frozen wording and score. In the fifth-set regression rerun, R5E08's third-party subprocessor label was missed despite being found in its original run. Output can vary between runs at temperature zero; the perfect fifth-round score must not be treated as a stable guarantee. Earlier round-four misses also remain visible.
+
+The holdout exceeds the selected 90% precision and recall thresholds **on these 20 selected excerpts**. The combined 40-case development-plus-holdout result is 30 correct labels, zero false positives, and one miss, but it is not an independent 40-case estimate because half the cases guided the prompt. One reviewer labeled the samples; short clauses and repeated publishers do not establish performance on whole policies. Reproduce from `apps/api` with Ollama running:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_round6_dev.tsv
+go run ./cmd/evaluate -data evaluation/real_round6_holdout.tsv
+```
