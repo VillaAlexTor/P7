@@ -186,3 +186,27 @@ La quinta muestra es pequeña, seleccionada y etiquetada por una sola persona. S
 ```powershell
 go run ./cmd/evaluate -data evaluation/real_round5.tsv
 ```
+
+## 25 de noviembre: cuarenta pruebas reales adicionales
+
+Preparamos **40 fragmentos literales nuevos** de 40 URL oficiales no utilizadas antes: 20 ingleses y 20 españoles. Los dividimos de antemano en un conjunto de trabajo de 20 casos y otro reservado de 20, ambos equilibrados por idioma. Confirmamos el texto, las etiquetas de referencia y las URL en Git antes de cada primera inferencia. El comprobador cubre ahora 180 casos y 180 enlaces de origen, verifica que las 40 URL nuevas sean distintas y limita cada cita a 25 palabras. Un conjunto de trabajo antiguo usa la misma URL para dos casos. No cambiamos las etiquetas después de ver las respuestas.
+
+De nuevo cambiamos **solo el prompt**, no los pesos del modelo local `qwen3:4b-instruct`. El conjunto de trabajo reveló dos avisos biométricos falsos cuando la huella o el rostro permanecían en el dispositivo del usuario, y dos omisiones de retención sin plazo cuando los chats seguían guardados hasta que el usuario los borrara. La primera revisión del prompt corrigió tres de los cuatro errores; una segunda aclaración sobre biometría exclusiva del dispositivo corrigió el último en la repetición de trabajo. Congelamos la revisión `b821d56` antes de ejecutar el reservado.
+
+| Corrida | Etiquetas acertadas | Falsos positivos | Omisiones | Precisión | Cobertura | Interpretación |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `real_round6_dev.tsv`, primera corrida con el prompt anterior | 12 | 2 | 2 | 85,7 % | 85,7 % | Base de trabajo |
+| `real_round6_dev.tsv`, tras la primera revisión | 14 | 1 | 0 | 93,3 % | 100,0 % | Repetición de trabajo |
+| `real_round6_dev.tsv`, tras la segunda revisión | 14 | 0 | 0 | 100,0 % | 100,0 % | Repetición de trabajo |
+| `real_round4.tsv`, revisión `b821d56` | 18 | 1 | 2 | 94,7 % | 90,0 % | Regresión con conjunto anterior |
+| `real_round5.tsv`, revisión `b821d56` | 17 | 0 | 1 | 100,0 % | 94,4 % | Regresión con conjunto anterior |
+| **`real_round6_holdout.tsv`, primera corrida con `b821d56` congelado** | **16** | **0** | **1** | **100,0 %** | **94,1 %** | **Primera corrida independiente** |
+
+Los cinco controles negativos del reservado quedaron sin hallazgos. R6HE01 fue la única omisión: su fragmento breve describe que alguien sube contactos de una agenda, pero no nombra al servicio; la etiqueta de referencia depende en parte del contexto de la página. Otra persona debería revisarla. Conservamos el texto congelado y la puntuación. En la repetición de la quinta ronda se omitió la etiqueta de subprocesadores externos de R5E08, pese a que había sido detectada en la corrida original. La salida puede variar entre corridas con temperatura cero; el resultado perfecto de la quinta ronda no debe interpretarse como garantía estable. También siguen visibles las omisiones anteriores de la cuarta ronda.
+
+El reservado supera los umbrales elegidos del 90 % de precisión y cobertura **en estos 20 fragmentos seleccionados**. El resultado combinado de trabajo y reservado en 40 casos es de 30 etiquetas acertadas, cero falsos positivos y una omisión, pero no estima 40 casos independientes porque la mitad guió el prompt. Una persona etiquetó las muestras; las cláusulas breves y las empresas repetidas no establecen rendimiento con políticas completas. Para repetirlo desde `apps/api`, con Ollama activo:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_round6_dev.tsv
+go run ./cmd/evaluate -data evaluation/real_round6_holdout.tsv
+```
