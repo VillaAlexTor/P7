@@ -1,0 +1,21 @@
+id	locale	text	expected
+R3E01	en	We retain your Personal Data for as long as we continue to provide the Services to you or our Business Users	retention
+R3E02	en	We ask your permission before syncing your contacts.	contacts
+R3E03	en	We retain your Information for as long as necessary to deliver the Services	retention
+R3E04	en	We will train new models using data from Free, Pro, and Max accounts when this setting is on	ai-training
+R3E05	en	Apple’s advertising platform does not track you	-
+R3E06	en	We don’t sell or share your data as defined by these state laws.	-
+R3E07	en	When you give WhatsApp access to these contacts, WhatsApp is your data Processor.	contacts
+R3E08	en	Where Shopify transfers your Personal Data to any third parties (for example, when we send this information to our Subprocessors)	third-parties
+R3E09	en	Ads are not currently shown on Kids profiles.	-
+R3E10	en	You can withdraw your consent to Stripe's use of your biometric information at any point	biometric
+R3S01	es	Puedes dar tu consentimiento por separado para que usemos tus datos biométricos con el fin de mejorar nuestra tecnología de verificación	biometric
+R3S02	es	la plataforma de publicidad de Apple podrá utilizar la ubicación aproximada de tu dispositivo para ofrecerte anuncios segmentados geográficamente	location,advertising
+R3S03	es	Si permites que la app Mapas acceda a tu ubicación	location
+R3S04	es	Los datos de Face ID no salen del dispositivo, nunca están disponibles para iOS o iPadOS, las apps ni Apple	-
+R3S05	es	nos proporcionas los números de teléfono que figuran en tu libreta de contactos de forma regular	contacts
+R3S06	es	para los que no contratamos publicidad conductual	-
+R3S07	es	Por eso usamos parte de la información que vamos conociendo sobre ti para intentar seleccionar los anuncios correctos en el momento adecuado.	advertising
+R3S08	es	Conservamos la Información Personal durante el tiempo mínimo necesario cuando su conservación resulta aconsejable en vista de litigios	retention
+R3S09	es	ofrece el programa AI LEAP, que permite compartir datos del espacio de trabajo con el fin de contribuir a la mejora de los modelos subyacentes	ai-training
+R3S10	es	Nuestros socios publicitarios reciben tus consultas (si determinamos que hay intención comercial) y contexto adicional, incluido tu rango de edad	third-parties
