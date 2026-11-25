@@ -149,3 +149,24 @@ Run the additional sets from `apps/api` with Ollama running:
 go run ./cmd/evaluate -data evaluation/real_holdout_90.tsv
 go run ./cmd/evaluate -data evaluation/real_holdout_90_final.tsv
 ```
+
+## November 25: fourth real-source round and prompt history
+
+We continued improving **prompts and inference only** with the local `qwen3:4b-instruct`; its weights were not trained or changed. Each set has 10 English and 10 Spanish short excerpts, labels assigned before inference, and separate official-page URLs. The source checker verifies 120 excerpts, 120 distinct URLs, and at most 25 quoted words per URL across all six real-source sets.
+
+| Chronological run | True positive labels | False positive labels | Missed labels | Precision | Recall | Status |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `real_round3.tsv`, first run with `cf8884a` | 13 | 1 | 3 | 92.9% | 81.3% | Untouched first run |
+| `real_round3.tsv`, after prompt revision `c90c9e9` | 16 | 0 | 0 | 100.0% | 100.0% | Development rerun |
+| `real_holdout_90_final.tsv`, same revision | 16 | 1 | 0 | 94.1% | 100.0% | Development rerun |
+| **`real_round4.tsv`, first run with frozen `c90c9e9`** | **18** | **2** | **2** | **90.0%** | **90.0%** | **Untouched first run** |
+
+The first round-three run missed R3E01 and R3E03 (open-ended retention) and R3E10 (consented biometric use); it added advertising to R3S10, which only described a transfer to advertising partners. We revised the prompt to recognize purpose-based retention and optional biometric use while requiring an affirmative claim of ad targeting. The revised results on round three and the earlier set are development results because those clauses had already informed the instructions. The older set still has an unsupported advertising finding at RFS09.
+
+We committed the round-four text and source links **before** its first inference, then ran the frozen classifier once. R4E01 missed contact import because the proposed supporting citation was rejected; R4E04 missed ad targeting by outside parties. R4E05 incorrectly called Apple Ads an outside recipient, and R4S06 inferred ad targeting from a transfer to advertising partners. English had 9 true positives, 1 false positive, and 2 misses; Spanish had 9 true positives, 1 false positive, and no misses. The three negative controls produced no findings. We did not alter the labels or prompt after seeing these results.
+
+The observed 90% precision and recall meet the chosen stop point **for this 20-excerpt, selected holdout only**. They do not measure statistical confidence, whole-policy performance, or general reliability. One reviewer labeled the excerpts, and several publishers appear in multiple sets. A second reviewer, more independent publishers, full-document evaluation, and latency measurements are still needed. To reproduce the last run from `apps/api` with Ollama running:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_round4.tsv
+```
