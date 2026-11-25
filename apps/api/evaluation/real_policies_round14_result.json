@@ -1,0 +1,373 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 433,
+  "Overall": {
+    "tp": 21,
+    "fp": 2,
+    "fn": 1
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 1,
+      "fp": 2,
+      "fn": 1
+    },
+    "location": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "third-parties": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "linkedin_en",
+      "URL": "https://www.linkedin.com/legal/privacy-policy",
+      "Locale": "en",
+      "SourceSHA256": "d6f59841ecf6b09b2462da504c8e131742a5d3efe32a39f0c6f7e8b4cb94620b",
+      "Characters": 42150,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-183",
+          "quoteSha256": "41453b4b7af3eab118fe25cd2a03afc00cf85d3677b4980e034f55f260fc1795",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-061",
+          "quoteSha256": "7a38f5cc971bfae06b499c3efcf823cd4d4f706427860dbac2565d4983cae8a1",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-077",
+          "quoteSha256": "c860f028eeb753f7a3cdc2554441cb9af9da9ebe8fa37ef222325bb661dfed31",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-056",
+          "quoteSha256": "c6caab072674726ca1935e9a8a19c7ee3f920c1b3ae1070322579fae4158ccc8",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-216",
+          "quoteSha256": "4266da44bdcb5e594a4f8692bb77e21d78e57b7497b9e3023aeaf8134c9a0801",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "LinkedIn Privacy Policy",
+        "profile": "general",
+        "documentHash": "01167cb8c31e906a51eb56a1a5992e8e33a06603f13bc693c0ce72a451295067",
+        "clauseCount": 251,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 34
+      },
+      "Score": 92,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 29
+      },
+      "DurationSeconds": 68
+    },
+    {
+      "ID": "linkedin_es",
+      "URL": "https://es.linkedin.com/legal/privacy-policy",
+      "Locale": "es",
+      "SourceSHA256": "45b8a5e96ab821b23e279dd8a7cff94ec81117266099f1b1d7bb043359b04ec6",
+      "Characters": 52350,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-044",
+          "quoteSha256": "83a321eee9867f380ba48b8bfbe3f8556a0727ca2cafe5da2dd385c51cb8a085",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-062",
+          "quoteSha256": "683d45500dd58c7521cfd37e24bacd6542529eb7a5e58b5a05f488d561111b57",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-082",
+          "quoteSha256": "463b7e40667977c7aaf7f424a5ce0ee269d48f2a4f7278c4b53ac3210831658a",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-043",
+          "quoteSha256": "96614475058d5074bdaf6fcff1643d9f2e76067b2a7132acedfc4f5851b2bd1b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-055",
+          "quoteSha256": "15bfb23ccdb8051c382143964d6cb73f4b495d1d9064956cfa280ce1130686e8",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-240",
+          "quoteSha256": "f0b289295d5ee7778341bcecdbc47bd8537ac8c34c17923121a5a4f32d819076",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de LinkedIn",
+        "profile": "general",
+        "documentHash": "72d1cf5633a43a5fe663f0cc45f851b135e615d0e99810213b4a74371dcd778e",
+        "clauseCount": 277,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 29
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 23
+      },
+      "DurationSeconds": 100
+    },
+    {
+      "ID": "zoom_en",
+      "URL": "https://www.zoom.com/en/trust/privacy/privacy-statement/",
+      "Locale": "en",
+      "SourceSHA256": "68be30236cc737e975699960ee8a78abcebf2ae5f50feb51dad5d8b430c60ee9",
+      "Characters": 53936,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "biometric",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "biometric",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-076",
+          "quoteSha256": "dc4f832157098a7d3aa149c95c07486a1f907676c8477a2001d485b85ac50555",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-049",
+          "quoteSha256": "8a08e13f074273f34e71be0cd6009645b46cf6ee186e5c88d6708eacc88fa8b9",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-025",
+          "quoteSha256": "4f31e5691f490c66284b89c5c56d6081b381bb75002e0a4c845ab454f85a05dd",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-022",
+          "quoteSha256": "2aa3eb5a03c2393ab60b75f7856a83613074ca0ab9cbc8efde358a6b9ad328ca",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-049",
+          "quoteSha256": "8a08e13f074273f34e71be0cd6009645b46cf6ee186e5c88d6708eacc88fa8b9",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-167",
+          "quoteSha256": "cc964e6a0ae1c1cc4defcdcca0d7b58f6f4c3971f0a2511befebb551b6fa2946",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Zoom Privacy Statement",
+        "profile": "general",
+        "documentHash": "dd8becf6998ab8598735632f75b4fe5a8d91ca191981c55ceab0c276c74ee17f",
+        "clauseCount": 283,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 18
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 12
+      },
+      "DurationSeconds": 114
+    },
+    {
+      "ID": "zoom_es",
+      "URL": "https://www.zoom.com/es/trust/privacy/privacy-statement/",
+      "Locale": "es",
+      "SourceSHA256": "589ed6975a3e11456d469cc4414c4e98a4a55cc3f848898218133123211d335d",
+      "Characters": 64369,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "biometric",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "biometric",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-061",
+          "quoteSha256": "9cc9889af87e97fe8b6b1c2e7c64ab847568e50bfa245335084bd2f283f1f28d",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-050",
+          "quoteSha256": "3d7739d062d2ca9060f3d977aa3c468f31cb088a86edaeda09ec29f1071a47f5",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-025",
+          "quoteSha256": "96d982f6d1068a65589825fe58775293dc39318b2a5eebbe7cff81aecc99611e",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-022",
+          "quoteSha256": "bb2c888bb39a72e3a2615e6313644b3285e3cc0e541aeba55db034a899433e82",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-050",
+          "quoteSha256": "e4eebf6fdd6c088ff3c8e32a84f2bee748f626013a89ceee27d5f74919cda6d5",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-183",
+          "quoteSha256": "9681b8b232b2f9f8f96a65ce69d21323f2dc0d52ea61ac83373e7c063e6ea401",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Declaración de privacidad de Zoom",
+        "profile": "general",
+        "documentHash": "1124213730b0716c9206d967921ce4ca7dd3e454d96458265b89c3604aaa4c82",
+        "clauseCount": 301,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 22
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 16
+      },
+      "DurationSeconds": 149
+    }
+  ]
+}
