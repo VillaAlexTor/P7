@@ -53,6 +53,36 @@ All 12 negative controls were classified without a finding. No proposed citation
 
 For example, H02 (conditional contact import), H03 (fraud contractor), and P07 (indefinite storage of inactive account records) were missed. H04 and P04 received the advertising label but missed the simultaneous third-party disclosure. These are material gaps for a tool that helps people interpret privacy terms. The zero false positive count applies only to these 40 synthetic clauses, and the labels were assigned by one reviewer. This is an independent check of the prompt on new synthetic cases, not an estimate of performance on real policies or full documents.
 
+## Third evaluation: 40 more clauses
+
+We kept the same `qwen3:4b-instruct` model and prompt. The third synthetic set, `evaluation/heldout_2.tsv`, was written before running the classifier and contains another 20 English and 20 Spanish clauses. Each language has 14 affirmative cases, including two cases with two labels, and six negative controls. It tests conditional access, subcontractors, combined practices, future hypotheticals, discontinued features, and fixed deletion periods. The labels were assigned by one reviewer.
+
+Run from `apps/api`:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/heldout_2.tsv
+```
+
+| Set | Correct labels | False positive labels | Missed labels | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| First, after tuning on the same set | 27 | 0 | 1 | 100.0% | 96.4% |
+| Second, new synthetic set | 19 | 0 | 11 | 100.0% | 63.3% |
+| Third, new synthetic set | 25 | 0 | 7 | 100.0% | 78.1% |
+
+The 12 negative controls produced no findings, and no citation was rejected. The 40 calls took about 18 seconds on the development machine. The English cases had 12 correct and four missed labels; the Spanish cases had 13 correct and three missed labels.
+
+| Category | Correct | Missed |
+| --- | ---: | ---: |
+| Location | 3 | 1 |
+| Contacts | 4 | 0 |
+| Third parties | 5 | 1 |
+| Advertising | 4 | 2 |
+| AI training | 4 | 0 |
+| Biometric | 4 | 0 |
+| Retention | 1 | 3 |
+
+T07, T14, and S07 were missed retention practices. T04 and S04 each lost one of two expected labels, as did T08 and S08. The third set confirms that broad retention language and clauses with two simultaneous practices remain weak spots. These figures describe only this small synthetic sample; they do not validate real policy analysis or whole-document performance.
+
 ## Next evaluation
 
-Review the 11 misses, then collect a labeled set from diverse public policies with permission to quote excerpts. Have a second person review labels and report per-language precision and recall with disagreements. Keep both synthetic sets as regression checks; any prompt change must be evaluated on a new untouched set.
+Review the misses across the second and third sets, then collect a labeled set from diverse public policies with permission to quote excerpts. Have a second person review labels and report per-language precision and recall with disagreements. Keep all three synthetic sets as regression checks; any prompt change must be evaluated on a new untouched set.
