@@ -128,3 +128,24 @@ This supports the judgment that the project is moving in the right direction. Th
 ## Next evaluation
 
 Before a production claim, expand the real-source sample, have a second person review disputed labels, measure full-document latency, and report per-language precision and recall. Keep the six synthetic and two real-source sets as regression checks; any later prompt change needs a new untouched set.
+
+## November 25 follow-up: 90% target
+
+We strengthened the local `qwen3:4b-instruct` classifier's instructions and split location, contacts, and biometric into separate passes. **This changes the prompt and inference workflow, not the model weights.** We assembled two additional bilingual sets of 20 short excerpts each from published official pages, with one source URL per excerpt. Their texts, labels, and URLs are in `evaluation/real_holdout_90*.tsv`. Both sets are now development data because their errors informed further changes.
+
+| Run | True positive labels | False positive labels | Missed labels | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| First new set, first run | 18 | 3 | 0 | 85.7% | 100.0% |
+| Second new set, first run | 13 | 5 | 3 | 72.2% | 81.3% |
+| Second set, after seven focused passes | 14 | 1 | 2 | 93.3% | 87.5% |
+
+The first set's first-run excerpt for R9S01 was shortened afterward to meet the 25-word quotation limit. Its label stayed the same; the first-run score cannot be reproduced byte for byte from the committed file. The second set's first-run score was recorded before any tuning on it. The last row is a development rerun, **not an independent holdout result**. Its remaining errors are a missed biometric label in a context-dependent list (RFE09), missed broad retention (RFS08), and an unsupported advertising label when sharing with advertising partners is mentioned (RFS09). A second reviewer should examine the context-dependent RFE09 label.
+
+The observed results do **not** support a 90% claim for both precision and recall on untouched real excerpts. A larger locally installed `qwen3-coder:latest` model was loaded for comparison, but its CPU-heavy inference did not complete the 20-excerpt run in several minutes; we stopped that comparison and did not switch the product model. The next valid check needs another untouched, independently labeled real-source set, followed by full-document and latency tests. Do not infer statistical confidence or accuracy on arbitrary policies from these selected excerpts.
+
+Run the additional sets from `apps/api` with Ollama running:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_holdout_90.tsv
+go run ./cmd/evaluate -data evaluation/real_holdout_90_final.tsv
+```
