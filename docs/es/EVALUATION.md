@@ -149,3 +149,24 @@ Ejecuta los conjuntos adicionales desde `apps/api`, con Ollama activo:
 go run ./cmd/evaluate -data evaluation/real_holdout_90.tsv
 go run ./cmd/evaluate -data evaluation/real_holdout_90_final.tsv
 ```
+
+## 25 de noviembre: cuarta ronda real e historial del prompt
+
+Seguimos mejorando **las instrucciones y la inferencia** del modelo local `qwen3:4b-instruct`; no entrenamos ni cambiamos sus pesos. Cada conjunto tiene 10 fragmentos breves en inglés y 10 en español, etiquetas asignadas antes de la inferencia y URL de páginas oficiales por separado. El comprobador de fuentes verifica 120 fragmentos, 120 URL distintas y un máximo de 25 palabras citadas por URL en los seis conjuntos reales.
+
+| Corrida cronológica | Etiquetas acertadas | Falsos positivos | Omisiones | Precisión | Cobertura | Estado |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| `real_round3.tsv`, primera corrida con `cf8884a` | 13 | 1 | 3 | 92,9 % | 81,3 % | Primera corrida intacta |
+| `real_round3.tsv`, tras revisar el prompt en `c90c9e9` | 16 | 0 | 0 | 100,0 % | 100,0 % | Repetición de trabajo |
+| `real_holdout_90_final.tsv`, misma revisión | 16 | 1 | 0 | 94,1 % | 100,0 % | Repetición de trabajo |
+| **`real_round4.tsv`, primera corrida con `c90c9e9` congelado** | **18** | **2** | **2** | **90,0 %** | **90,0 %** | **Primera corrida intacta** |
+
+La primera corrida de la tercera ronda omitió R3E01 y R3E03 (retención sin plazo) y R3E10 (uso biométrico con consentimiento); añadió publicidad a R3S10, que solo describía una transferencia a socios publicitarios. Revisamos el prompt para reconocer retención por finalidad y biometría opcional, y exigir una afirmación explícita de segmentación publicitaria. Los resultados posteriores de la tercera ronda y del conjunto anterior son de trabajo porque esas cláusulas ya habían guiado las instrucciones. En el conjunto anterior aún queda una etiqueta de publicidad sin sustento en RFS09.
+
+Confirmamos el texto y las fuentes de la cuarta ronda en Git **antes** de su primera inferencia y ejecutamos una sola vez el clasificador congelado. R4E01 omitió la importación de contactos porque rechazó la cita propuesta; R4E04 omitió la segmentación de anuncios por terceros. R4E05 llamó erróneamente tercero a Apple Ads y R4S06 dedujo segmentación publicitaria de una transferencia a socios publicitarios. En inglés hubo 9 aciertos, 1 falso positivo y 2 omisiones; en español, 9 aciertos, 1 falso positivo y ninguna omisión. Los tres controles negativos quedaron sin hallazgos. No cambiamos las etiquetas ni el prompt después de ver estos resultados.
+
+La precisión y cobertura observadas del 90 % alcanzan el punto de parada elegido **solo en esta muestra seleccionada de 20 fragmentos**. No miden confianza estadística, rendimiento con políticas completas ni fiabilidad general. Una sola persona etiquetó los fragmentos y algunas empresas aparecen en varios conjuntos. Aún hacen falta otra persona para revisar las etiquetas, más empresas independientes, evaluación de documentos completos y medidas de latencia. Para repetir la última corrida desde `apps/api`, con Ollama activo:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_round4.tsv
+```
