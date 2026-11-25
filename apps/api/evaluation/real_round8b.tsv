@@ -1,0 +1,21 @@
+id	locale	text	expected
+R8BE01	en	Zoom's AI features may use third-party AI-model providers, and we will share relevant data with those third parties when you use the feature.	third-parties
+R8BE02	en	Your feedback isn’t used to train Notion AI.	-
+R8BE03	en	Access to your contacts lets Signal associate incoming phone numbers with names and display contact information	contacts
+R8BE04	en	Signal does not have access to your message history, contact list, profile information, whom you’ve blocked, and other personal data.	-
+R8BE05	en	Signal messages, pictures, files, and other contents are stored locally on your device.	-
+R8BE06	en	We retain your account data as long as your account remains active.	retention
+R8BE07	en	We do not retain this information on our servers after processing.	-
+R8BE08	en	you may use a password, PIN, or biometric data like a fingerprint or facial recognition if you have Windows Hello set up.	-
+R8BE09	en	Location Services uses information from various kinds of networks to determine your approximate or precise location.	location
+R8BE10	en	Zoom does not use customer audio, video, chat, files, or transcripts to train its AI models.	-
+R8BS01	es	Zoom no utiliza el audio, el vídeo, el chat, los archivos ni las transcripciones de los clientes para entrenar sus modelos de IA.	-
+R8BS02	es	compartiremos datos pertinentes con esos terceros cuando se utilice la característica.	third-parties
+R8BS03	es	En iPads vinculados, se sincronizan desde la aplicación Contactos del teléfono principal.	contacts
+R8BS04	es	Signal no tiene acceso a la información de tu lista de contactos: todos los datos se almacenan únicamente en tu teléfono.	-
+R8BS05	es	Todos los mensajes, imágenes, archivos y otros contenidos de Signal se almacenan de forma local en tu dispositivo.	-
+R8BS06	es	De forma predeterminada, ni Notion ni nuestros proveedores de IA utilizan tus datos para entrenar ningún modelo.	-
+R8BS07	es	La app de Uber no recibe ni almacena tus datos biométricos.	-
+R8BS08	es	Conservamos los datos de tu cuenta mientras tu cuenta permanezca activa.	retention
+R8BS09	es	No haremos ningún seguimiento de vuestra ubicación. Solo comprobaremos la dirección para verificar el domicilio.	-
+R8BS10	es	la localización utiliza información de distintos tipos de redes para determinar tu ubicación aproximada o exacta.	location
