@@ -34,9 +34,11 @@ Los casos, las URL oficiales y la **salida cruda del modelo** están en [apps/ap
 | Ronda 8 · 40 casos | 96,0 % | 85,7 % | 35/40 |
 | **Ronda 9 · 40 casos** | **100,0 %** | **75,0 %** | **30/40** |
 
-La última ronda usó **40 URL oficiales nuevas** de Google, Spotify, Microsoft, Mozilla y Apple, divididas por igual entre idiomas. Hubo 33 etiquetas acertadas, ningún falso positivo y 11 omisiones. Las mayores deficiencias fueron transferencia a terceros y retención. Son fragmentos cortos seleccionados, algunos traducidos de un mismo aviso, etiquetados por una persona. **No** miden el rendimiento en documentos completos; el 100 % observado no garantiza fiabilidad general. El prompt y los pesos del modelo siguieron iguales entre rondas. p7 ayuda a revisar, pero una persona debe comprobar hallazgos y posibles omisiones.
+La ronda 9 usó 40 fragmentos cortos seleccionados de páginas oficiales. Esas cifras **no** miden el rendimiento con documentos completos. El prompt y los pesos del modelo siguieron iguales entre rondas.
 
 [Casos A](apps/api/evaluation/real_round9a.tsv) · [Fuentes A](apps/api/evaluation/real_round9a_sources.tsv) · [Salida cruda A](apps/api/evaluation/real_round9a_result.json) · [Casos B](apps/api/evaluation/real_round9b.tsv) · [Fuentes B](apps/api/evaluation/real_round9b_sources.tsv) · [Salida cruda B](apps/api/evaluation/real_round9b_result.json)
+
+**Prueba más reciente y realista:** p7 analizó cuatro páginas oficiales de **políticas de privacidad completas**: Cuentas de Mozilla y Proton, cada una en inglés y español. Encontró 6 de 10 categorías de referencia, añadió 5 categorías incorrectas y omitió 4: **54,5 % de precisión, 60,0 % de cobertura y 1/4 documentos exactos**. Son dos políticas subyacentes, etiquetadas por una persona; la muestra de documentos es pequeña. Las citas exactas no evitaron interpretaciones erróneas. La versión actual requiere revisión humana y no está demostrada una fiabilidad del 90 % con políticas reales. Consulta las [fuentes y etiquetas congeladas](apps/api/evaluation/real_policies_round10.json), los [resultados crudos de la aplicación](apps/api/evaluation/real_policies_round10_result.json) y el [análisis completo](docs/es/EVALUATION.md#25-de-noviembre-décima-ronda-con-políticas-reales-completas).
 
 ## Stack
 
