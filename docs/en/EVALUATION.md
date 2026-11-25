@@ -83,6 +83,27 @@ The 12 negative controls produced no findings, and no citation was rejected. The
 
 T07, T14, and S07 were missed retention practices. T04 and S04 each lost one of two expected labels, as did T08 and S08. The third set confirms that broad retention language and clauses with two simultaneous practices remain weak spots. These figures describe only this small synthetic sample; they do not validate real policy analysis or whole-document performance.
 
+## Iterative improvement and stop point
+
+We improved the **instructions and inference workflow** around the local `qwen3:4b-instruct` model; we did not update its weights or fine-tune it. The one-pass classifier still missed practices in a new 40-clause set, so we split classification into focused category passes. We then separated retention into its own pass. Each version was checked against the development clauses before we wrote a final untouched set.
+
+| Run | Set | Correct labels | False positives | Missed labels | Recall |
+| --- | --- | ---: | ---: | ---: | ---: |
+| One pass | `heldout_4.tsv`, first run | 22 | 1 | 10 | 68.8% |
+| Four passes | `heldout_4.tsv`, development rerun | 27 | 1 | 5 | 84.4% |
+| Five passes | `heldout_4.tsv`, development rerun | 30 | 0 | 2 | 93.8% |
+| **Five passes, final untouched check** | **`heldout_5.tsv`** | **27** | **0** | **5** | **84.4%** |
+
+The final set was written before its first run: 20 English and 20 Spanish clauses, 28 affirmative cases with four two-label cases, and 12 negative controls. The model found at least one positive in each of the seven categories and returned no finding for any negative control. No accepted finding lacked a verbatim quote; one proposed quote was rejected. Run it from `apps/api` with:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/heldout_5.tsv
+```
+
+The final misses were X03 and X23 (payment gateways), X06 and X26 (typing rhythm), and X27 (open-ended retention). The payment-gateway wording does not explicitly say the gateway is external, so those two reference labels are open to reviewer disagreement. We kept the original labels and the reported score unchanged. Model outputs also varied between repeated runs despite temperature zero. Five model calls per clause batch cost more time than the original one-pass flow.
+
+We stopped changing the classifier after the untouched set exceeded the chosen **80% recall** threshold with no false positives in this run. This is evidence of progress on synthetic clauses, not 80% statistical confidence in real-world accuracy or readiness for unreviewed decisions.
+
 ## Next evaluation
 
-Review the misses across the second and third sets, then collect a labeled set from diverse public policies with permission to quote excerpts. Have a second person review labels and report per-language precision and recall with disagreements. Keep all three synthetic sets as regression checks; any prompt change must be evaluated on a new untouched set.
+Before a production claim, collect a labeled set from diverse public policies with permission to quote excerpts, have a second person review disputed labels, measure full-document latency, and report per-language precision and recall. Keep all six synthetic sets as regression checks; any later prompt change needs a new untouched set.
