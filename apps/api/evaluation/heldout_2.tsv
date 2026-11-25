@@ -1,0 +1,41 @@
+id	locale	text	expected
+T01	en	Our weather widget records the city inferred from nearby Wi-Fi networks each time it opens.	location
+T02	en	To suggest teammates, we read the entries in your device's address book after you grant permission.	contacts
+T03	en	A contracted transcription company receives audio files that you submit for captioning.	third-parties
+T04	en	We send your purchase history to an advertising partner so it can select ads tailored to you.	third-parties,advertising
+T05	en	Messages you submit are added to a corpus used to improve our machine-learning assistant.	ai-training
+T06	en	Your fingerprint template is compared with the template saved at registration when you sign in.	biometric
+T07	en	We store support tickets for as long as we consider them useful to operate the service.	retention
+T08	en	We use your recent travel locations to decide which sponsored offers to display.	location,advertising
+T09	en	The invitation tool uploads the email addresses in your contact list to find existing members.	contacts
+T10	en	Our delivery subcontractor receives your shipping address and order number.	third-parties
+T11	en	An identifier follows your visits across our pages to build an audience for targeted promotions.	advertising
+T12	en	User-submitted corrections become examples for the next training run of our translation model.	ai-training
+T13	en	We extract facial landmarks from a selfie to verify that the account holder is present.	biometric
+T14	en	After an account closes, related logs can remain in storage for an unspecified period.	retention
+T15	en	If we ever introduce location tracking, we will ask for permission in a new notice.	-
+T16	en	The address-book feature was removed; current versions cannot access saved contacts.	-
+T17	en	We do not give order details to delivery companies or any other outside recipient.	-
+T18	en	The sample phrase ads based on browsing is an illustration and does not describe our service.	-
+T19	en	We test face matching on invented images only and do not process users' biometric data.	-
+T20	en	All support tickets are permanently deleted thirty days after the case is closed.	-
+S01	es	La función del clima registra la ciudad deducida de las redes Wi-Fi cercanas al abrirse.	location
+S02	es	Para sugerir compañeros leemos las entradas de la libreta de direcciones después de tu autorización.	contacts
+S03	es	Una empresa contratada para transcribir recibe los audios que envías para crear subtítulos.	third-parties
+S04	es	Enviamos tu historial de compras a un socio publicitario para que elija anuncios personalizados.	third-parties,advertising
+S05	es	Los mensajes enviados se incorporan a un corpus para mejorar nuestro asistente de aprendizaje automático.	ai-training
+S06	es	Al iniciar sesión comparamos tu plantilla dactilar con la guardada durante el registro.	biometric
+S07	es	Conservamos las consultas de soporte mientras consideremos que sirven para operar el servicio.	retention
+S08	es	Usamos los lugares que visitaste recientemente para decidir qué ofertas patrocinadas mostrar.	location,advertising
+S09	es	La herramienta de invitaciones carga las direcciones de correo de tu agenda para encontrar miembros.	contacts
+S10	es	Nuestro subcontratista de entregas recibe tu dirección de envío y el número de pedido.	third-parties
+S11	es	Un identificador sigue tus visitas entre nuestras páginas para crear audiencias de promociones dirigidas.	advertising
+S12	es	Las correcciones de los usuarios se convierten en ejemplos para el próximo entrenamiento del modelo de traducción.	ai-training
+S13	es	Extraemos puntos de referencia faciales de una selfie para verificar al titular de la cuenta.	biometric
+S14	es	Tras cerrar la cuenta, los registros relacionados pueden permanecer almacenados por un período indefinido.	retention
+S15	es	Si algún día añadimos seguimiento de ubicación, pediremos permiso mediante un aviso nuevo.	-
+S16	es	La función de agenda fue retirada y la versión actual no puede acceder a los contactos guardados.	-
+S17	es	No damos datos de pedidos a empresas de reparto ni a otros destinatarios externos.	-
+S18	es	La expresión «anuncios según la navegación» es solo un ejemplo y no describe nuestro servicio.	-
+S19	es	Probamos el reconocimiento facial solo con imágenes inventadas y no procesamos datos biométricos de usuarios.	-
+S20	es	Todas las consultas de soporte se eliminan de forma permanente treinta días después del cierre.	-
