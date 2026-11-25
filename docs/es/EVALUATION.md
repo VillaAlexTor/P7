@@ -333,3 +333,15 @@ python scripts/prepare-real-policies-round11.py --fetch
 cd apps/api
 go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round11.json -text-dir ../../.cache/real_policies_round11
 ```
+
+## 25 de noviembre: duodécima ronda con políticas completas más largas y difíciles
+
+Fijamos los [hashes de las cuatro fuentes, las etiquetas de siete categorías y ocho preguntas de control](../../apps/api/evaluation/real_policies_round12.json) en el commit `194da5e` antes de la inferencia. Las nuevas páginas completas fueron [Google EN](https://policies.google.com/privacy?hl=en), [Google ES](https://policies.google.com/privacy?hl=es), [WhatsApp EEE EN](https://www.whatsapp.com/legal/privacy-policy-eea?lang=en_gb) y [WhatsApp EEE ES](https://www.whatsapp.com/legal/privacy-policy-eea?lang=es_LA), con 349.926 caracteres extraídos en total. Ejecutamos una vez por página el mismo modelo local, prompts, flujo y perfil general. El [resultado de máquina](../../apps/api/evaluation/real_policies_round12_result.json) registra las predicciones finales sin republicar las políticas.
+
+| Ronda de políticas completas | Aciertos | Falsos positivos | Omisiones | Precisión | Cobertura | Páginas exactas | Tiempo |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 10 · Mozilla, Proton | 6 | 5 | 4 | 54,5 % | 60,0 % | 1/4 | 125 s |
+| 11 · Apple, Spotify | 19 | 2 | 1 | 90,5 % | 95,0 % | 2/4 | 291 s |
+| **12 · Google, WhatsApp** | **16** | **6** | **0** | **72,7 %** | **100,0 %** | **1/4** | **646 s** |
+
+Google EN y ES confundieron datos de contacto de la cuenta con acceso a la agenda del dispositivo y clasificaron un pasaje sobre entrenamiento con datos web públicos como entrenamiento con datos privados del usuario, según nuestra interpretación congelada. WhatsApp EN infirió erróneamente personalización de anuncios a partir de cookies para anuncios e identificación biométrica a partir de una selfie en vídeo para estimar la edad. WhatsApp ES tuvo el conjunto exacto de categorías. La referencia de IA de Google es discutible: si el material personal público se considera dato del usuario para entrenamiento, la precisión de la ronda doce subiría a 81,8 % sin cambiar la cobertura. Conservamos las etiquetas y el resultado originales. El **[estudio de caso en español, pregunta por pregunta](ROUND12_CASE_STUDY.md)** explica las ocho preguntas preconfirmadas, el error biométrico adicional, las líneas de origen, la sensibilidad de etiquetas y los 274 segundos de latencia en WhatsApp ES. Una sola persona etiquetó los documentos, las traducciones están correlacionadas y esto no demuestra validación independiente ni mejora del modelo.
