@@ -1,0 +1,41 @@
+id	locale	text	expected
+V01	en	The transit feature logs which station you pass using Bluetooth beacons installed nearby.	location
+V02	en	With your permission, we read saved names and numbers from your phone to suggest people you know.	contacts
+V03	en	An outside analytics firm receives session logs containing your account identifier.	third-parties
+V04	en	We provide a retail partner with your purchase interests so it can send targeted coupons.	third-parties,advertising
+V05	en	Customer chat replies are reused to retrain the automated support model.	ai-training
+V06	en	The scanner stores an iris pattern and matches it when you unlock the application.	biometric
+V07	en	Uploaded documents remain on our systems indefinitely unless you ask us to remove them.	retention
+V08	en	Your current city determines which sponsored listings appear in your feed.	location,advertising
+V09	en	We upload hashed email addresses from your device contacts to identify other members.	contacts
+V10	en	An external hosting provider processes your account records for us.	third-parties
+V11	en	We observe your activity across partner sites to choose personalized banners.	advertising
+V12	en	Search queries submitted to the service are used to train our recommendation model.	ai-training
+V13	en	We map the shape of your palm to confirm that the same person returns.	biometric
+V14	en	We preserve usage records for as long as they support our internal research goals.	retention
+V15	en	The station finder uses a city that you type manually and does not read device location.	-
+V16	en	We explain how contacts could be imported in a future version; this version has no import function.	-
+V17	en	Account records stay on our own systems and are never supplied to outside processors.	-
+V18	en	Sponsored listings are selected at random and never depend on a visitor profile.	-
+V19	en	Our AI model is fixed and no customer messages are used to train or improve it.	-
+V20	en	Usage records are erased ninety days after the account is closed.	-
+V21	es	Durante una entrega registramos la posición GPS del repartidor para mostrar el trayecto.	location
+V22	es	Con tu permiso leemos los números guardados en el teléfono para sugerir conocidos.	contacts
+V23	es	Una firma externa de análisis recibe registros de sesión con el identificador de tu cuenta.	third-parties
+V24	es	Entregamos tus intereses de compra a un comercio asociado para que envíe cupones dirigidos.	third-parties,advertising
+V25	es	Las respuestas del chat de atención se reutilizan para volver a entrenar el modelo de soporte.	ai-training
+V26	es	El escáner conserva un patrón del iris y lo compara cuando desbloqueas la aplicación.	biometric
+V27	es	Los documentos cargados permanecen en nuestros sistemas indefinidamente salvo que solicites borrarlos.	retention
+V28	es	Tu ciudad actual determina qué publicaciones patrocinadas aparecen en tu pantalla.	location,advertising
+V29	es	Subimos las direcciones de correo de tus contactos del dispositivo para identificar otros miembros.	contacts
+V30	es	Un proveedor externo de alojamiento procesa los registros de tu cuenta por encargo nuestro.	third-parties
+V31	es	Observamos tu actividad en sitios asociados para elegir anuncios personalizados.	advertising
+V32	es	Las búsquedas enviadas al servicio se usan para entrenar nuestro modelo de recomendaciones.	ai-training
+V33	es	Registramos la forma de tu palma para comprobar que vuelve la misma persona.	biometric
+V34	es	Conservamos los registros de uso mientras respalden nuestras metas internas de investigación.	retention
+V35	es	El buscador de estaciones utiliza una ciudad escrita manualmente y no lee la ubicación del dispositivo.	-
+V36	es	Explicamos cómo se podrían importar contactos en una versión futura; esta versión carece de esa función.	-
+V37	es	Los registros de las cuentas permanecen en nuestros sistemas y nunca se entregan a procesadores externos.	-
+V38	es	Las publicaciones patrocinadas se eligen al azar y no dependen del perfil de quien visita.	-
+V39	es	Nuestro modelo de IA es fijo y ningún mensaje de clientes se usa para entrenarlo o mejorarlo.	-
+V40	es	Los registros de uso se borran noventa días después del cierre de la cuenta.	-
