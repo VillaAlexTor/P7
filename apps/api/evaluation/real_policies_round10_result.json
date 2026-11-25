@@ -1,0 +1,277 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 125,
+  "Overall": {
+    "tp": 6,
+    "fp": 5,
+    "fn": 4
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "location": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "third-parties": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "mozilla_en",
+      "URL": "https://www.mozilla.org/en-US/privacy/mozilla-accounts/",
+      "Locale": "en",
+      "SourceSHA256": "0cf0540334210cb9700a8140d2c9cdaef312fe2d96d0028cb9358a4d86efa057",
+      "Characters": 16843,
+      "Expected": [
+        "location",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location"
+      ],
+      "Findings": [
+        {
+          "category": "location",
+          "clauseId": "clause-094",
+          "quoteSha256": "8b72aa9bbecf4eb2156af41fe69e7d617d7ab1f1771ac006c4a229dfe629db45",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-028",
+          "quoteSha256": "c4436e95832ec1ac618bb28c8a8aa237eb718f9b616c789b0f48cc52610fd1a9",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-150",
+          "quoteSha256": "4c2441b1bb132e1189ad68cbe94114a0831cd9bbb62d2f0afe3efe63dd283554",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Mozilla Accounts Privacy Notice",
+        "profile": "general",
+        "documentHash": "b9afdeedd7454df1754f3cf5b49545259a307641ebc9fc1aa69dd23e7902e12d",
+        "clauseCount": 155,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 3,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 11
+      },
+      "Score": 60,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 3,
+        "citationsRejected": 8
+      },
+      "DurationSeconds": 27
+    },
+    {
+      "ID": "mozilla_es",
+      "URL": "https://www.mozilla.org/es-ES/privacy/mozilla-accounts/",
+      "Locale": "es",
+      "SourceSHA256": "4e6dc06d0df4e45e2c5802a978da5c354caa54a1585e1155c2ac37c84e55432e",
+      "Characters": 19732,
+      "Expected": [
+        "location",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention"
+      ],
+      "Findings": [
+        {
+          "category": "location",
+          "clauseId": "clause-013",
+          "quoteSha256": "4d0da323357a705d38f144687667c7fef35673b028fa0ed3af1c6597dfcb6d61",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-028",
+          "quoteSha256": "df428e9324615d49b30249e334337d707243bb58124c7a87e444b2577efe09cd",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-152",
+          "quoteSha256": "72289bda5fa4a101be03fd2689fe356cc7cd7dcf52bd80e048ddd7cd132b893c",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-057",
+          "quoteSha256": "53ee9c1026024085c3d99ff263b59c91d13a27f57489ee806abb7cd4179109a8",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Aviso de privacidad de cuentas de Mozilla",
+        "profile": "general",
+        "documentHash": "6b4e8533fb73ff76ab66d79f806d9dddf83c0e31a5201cfd1793aa9c2e656267",
+        "clauseCount": 157,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 4,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 8
+      },
+      "Score": 74,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 4,
+        "citationsRejected": 4
+      },
+      "DurationSeconds": 39
+    },
+    {
+      "ID": "proton_en",
+      "URL": "https://proton.me/legal/privacy",
+      "Locale": "en",
+      "SourceSHA256": "aa329f8a0da841c59905c5bbf88e52d792501d5929645a2582d42e51fa8f6a7b",
+      "Characters": 18129,
+      "Expected": [
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-058",
+          "quoteSha256": "6bf0065ded5a8cb92711a2d1e486a643c9210a4a37a44c734cb6bdb06007b34d",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-032",
+          "quoteSha256": "caa00171154a6a0c40ba694f4d1305558d7c3bca61014451595b60d1edac0abe",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Proton Privacy Policy",
+        "profile": "general",
+        "documentHash": "2eb467fd237c51d1061f63b5c63f2af599818bbf9f530d5b0523bf95448bad0b",
+        "clauseCount": 132,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 2,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 12
+      },
+      "Score": 50,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 2,
+        "citationsRejected": 10
+      },
+      "DurationSeconds": 25
+    },
+    {
+      "ID": "proton_es",
+      "URL": "https://proton.me/es-419/legal/privacy",
+      "Locale": "es",
+      "SourceSHA256": "aef6c90ac8873efbcb038118db7ef89081a718b813ea0ff540a5fe72307e86e3",
+      "Characters": 20873,
+      "Expected": [
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-056",
+          "quoteSha256": "3e4610c9819ef79e08658f365ef884d852c86dfdaf32f9ddb1ce9748c26dbcc2",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-044",
+          "quoteSha256": "c3d30b1ef222d7daecdb0a3df0e831d319d8de3408bce8aa4e2a1f7a868b4391",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de Proton",
+        "profile": "general",
+        "documentHash": "20d0cdbfbba8030abcb964a965b5cdd6097acc19e0c81a443a3ad506f9cf27d1",
+        "clauseCount": 130,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 2,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 9
+      },
+      "Score": 48,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 2,
+        "citationsRejected": 7
+      },
+      "DurationSeconds": 31
+    }
+  ]
+}
