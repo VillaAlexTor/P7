@@ -4,7 +4,7 @@
 
 [English](README.md) · **Español**
 
-p7 convierte políticas de privacidad en evaluaciones personales, explicables y respaldadas por evidencia. El MVP funciona sin cuentas, base de datos ni API de IA pagada.
+p7 convierte políticas de privacidad en evaluaciones personales, explicables y respaldadas por evidencia. El MVP usa un LLM local mediante Ollama, sin cuentas, base de datos, claves API ni créditos pagados.
 
 ## Siete diferenciadores implementados
 
@@ -20,16 +20,25 @@ p7 convierte políticas de privacidad en evaluaciones personales, explicables y 
 
 - Frontend: Next.js 16, React 19 y TypeScript.
 - Backend: Go con biblioteca estándar HTTP.
+- IA: Ollama con clasificación semántica estructurada mediante `qwen3:4b-instruct`.
 - Pruebas: Go `testing`, `httptest` y Vitest.
 - Operación: Docker Compose y GitHub Actions.
 
 ## Ejecutar en desarrollo
+
+Instala Ollama, descarga `qwen3:4b-instruct` una sola vez y mantén Ollama activo en `http://127.0.0.1:11434`:
+
+```powershell
+ollama pull qwen3:4b-instruct
+```
 
 Terminal 1:
 
 ```powershell
 cd apps/api
 $env:P7_API_PORT = "8080"
+$env:P7_OLLAMA_URL = "http://127.0.0.1:11434"
+$env:P7_OLLAMA_MODEL = "qwen3:4b-instruct"
 go run ./cmd/server
 ```
 
@@ -84,7 +93,7 @@ Perfiles: `general`, `student`, `journalist`, `parent` y `activist`. Idiomas: `e
 
 ## Uso de IA
 
-ChatGPT y Codex apoyaron investigación, alcance, arquitectura, programación, diseño, pruebas y documentación. La versión actual usa un motor determinista local y no depende de créditos externos. Un futuro clasificador semántico será opcional y no controlará la puntuación final.
+El producto ejecutable llama al modelo local `qwen3:4b-instruct` mediante Ollama. El modelo clasifica las cláusulas con un esquema JSON restringido y propone referencias exactas. Go rechaza categorías desconocidas y cualquier cita que no esté contenida en la cláusula indicada; luego aplica pesos por perfil y calcula el índice. ChatGPT y Codex también apoyaron investigación, alcance, arquitectura, código, diseño, pruebas y documentación. Aquí no se almacena ninguna clave API ni secreto.
 
 ## Documentación
 

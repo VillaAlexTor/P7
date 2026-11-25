@@ -9,7 +9,7 @@ Browser (Next.js, TypeScript)
 Go HTTP API
   ├─ input limits and locale selection
   ├─ normalization and clause segmentation
-  ├─ bilingual rule catalog
+  ├─ Ollama structured semantic classification
   ├─ exact evidence verification
   ├─ deterministic profile weighting
   └─ flow map, gaps, scenarios, and actions
@@ -21,9 +21,9 @@ The MVP has no account system or database. Policy text is processed in memory an
 
 1. Normalize line endings and spacing without rewriting meaning.
 2. Split the document into stable clause identifiers.
-3. Match bilingual signals for declared privacy practices.
-4. Copy the complete source clause into each finding.
-5. Verify that the clause identifier exists and contains the quote exactly.
+3. Send clause batches to local `qwen3:4b-instruct` with a constrained JSON schema.
+4. Receive semantic categories, clause identifiers, and verbatim proposed quotes.
+5. Reject any unsupported category or quote not contained exactly in its referenced clause.
 6. Classify disclosure controls as specified, ambiguous, or missing.
 7. Apply transparent profile multipliers and cap the index at 100.
 8. Derive a declared data-flow map, possible-impact scenarios, and actions.
@@ -39,13 +39,13 @@ The MVP has no account system or database. Policy text is processed in memory an
 | Evidence Engine | `verifyEvidence` rejects empty, unknown, or fabricated citations. |
 | Impact Simulation | `buildGuidance` emits scenarios explicitly labeled as hypothetical. |
 | Smart Consent | The same guidance layer creates prioritized, interactive actions. |
-| Privacy for Everyone | UI, samples, rules, errors, and reports support Spanish and English. |
+| Privacy for Everyone | UI, samples, prompts, errors, and reports support Spanish and English. |
 
 ## Trust boundaries
 
 The document is untrusted data. p7 never executes instructions found inside it. Known instruction-like patterns are counted in the safety report, but they do not alter analysis behavior. Request bodies are limited to 1 MiB and documents to 200,000 characters. CORS origins are configured through `P7_ALLOWED_ORIGINS`.
 
-An optional future LLM classifier must return structured candidates with a clause reference. The Go backend remains responsible for citation verification, deduplication, weights, and the final score.
+Ollama runs `qwen3:4b-instruct` locally and returns candidates constrained by a JSON schema: category, clause ID, and verbatim quote. The Go backend rejects unsupported categories and quotes that do not occur in the referenced clause, deduplicates findings, applies profile weights, and calculates the final score. If Ollama is unavailable, the analysis endpoint returns a service error instead of silently replacing AI with keyword classification.
 
 ## Deliberate scope decisions
 

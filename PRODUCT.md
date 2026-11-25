@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Delegated from the existing project plan: Next.js with TypeScript for the web application, Go for the analysis API, and Docker Compose for local orchestration. The MVP must remain useful without a paid AI API; an external model is an optional enhancement.
+Delegated from the existing project plan: Next.js with TypeScript for the web application, Go for the analysis API, Ollama with `qwen3:4b-instruct` for local semantic classification, and Docker Compose for orchestration. The MVP requires a real LLM but no paid AI API or API key.
 
 ## Users
 
@@ -20,7 +20,7 @@ p7 turns dense privacy policies and terms into personalized, evidence-backed pri
 
 ## Positioning
 
-p7 combines seven connected mechanisms instead of acting as a generic document summarizer: data-flow mapping, profile-weighted risk, missing-information detection, verifiable evidence, impact simulation, actionable consent guidance, and a Latin American accessibility focus. AI may interpret text, but deterministic rules verify citations and calculate the final score.
+p7 combines seven connected mechanisms instead of acting as a generic document summarizer: data-flow mapping, profile-weighted risk, missing-information detection, verifiable evidence, impact simulation, actionable consent guidance, and a Latin American accessibility focus. A local LLM classifies clauses semantically; deterministic rules verify citations and calculate the final score.
 
 ## Operating Context
 
@@ -66,6 +66,6 @@ The MVP provides complete English and Spanish interfaces and analysis output. Th
 
 ## Open Decisions
 
-- The final external AI provider and production hosting target are intentionally undecided.
+- Production hosting remains undecided; the MVP AI provider is Ollama with `qwen3:4b-instruct`.
 - Domain and trademark availability for `p7` have not been verified.
 - The visual direction recorded during this build is an implementation assumption and remains revisable.

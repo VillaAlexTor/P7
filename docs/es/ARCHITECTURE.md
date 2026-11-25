@@ -9,7 +9,7 @@ Navegador (Next.js, TypeScript)
 API HTTP en Go
   ├─ límites de entrada y selección de idioma
   ├─ normalización y segmentación
-  ├─ catálogo bilingüe de reglas
+  ├─ clasificación semántica estructurada con Ollama
   ├─ verificación exacta de evidencia
   ├─ ponderación determinista por perfil
   └─ mapa, vacíos, escenarios y acciones
@@ -21,9 +21,9 @@ El MVP no tiene cuentas ni base de datos. El texto se procesa en memoria y la ap
 
 1. Normaliza saltos y espacios sin reescribir el significado.
 2. Divide el documento en identificadores estables de cláusula.
-3. Busca señales bilingües de prácticas de privacidad declaradas.
-4. Copia la cláusula fuente completa en cada hallazgo.
-5. Comprueba que el identificador existe y contiene la cita exacta.
+3. Envía lotes de cláusulas a `qwen3:4b-instruct` local con un esquema JSON restringido.
+4. Recibe categorías semánticas, identificadores de cláusula y citas literales propuestas.
+5. Rechaza categorías no admitidas o citas que no estén contenidas exactamente en la cláusula indicada.
 6. Clasifica controles como especificados, ambiguos o ausentes.
 7. Aplica multiplicadores transparentes por perfil y limita el índice a 100.
 8. Deriva mapa de flujo, escenarios posibles y acciones.
@@ -39,13 +39,13 @@ El MVP no tiene cuentas ni base de datos. El texto se procesa en memoria y la ap
 | Evidence Engine | `verifyEvidence` rechaza citas vacías, desconocidas o fabricadas. |
 | Impact Simulation | `buildGuidance` emite escenarios etiquetados como hipotéticos. |
 | Smart Consent | La misma capa crea acciones priorizadas e interactivas. |
-| Privacy for Everyone | Interfaz, ejemplos, reglas, errores e informes funcionan en español e inglés. |
+| Privacy for Everyone | Interfaz, ejemplos, prompts, errores e informes funcionan en español e inglés. |
 
 ## Límites de confianza
 
 El documento es una entrada no confiable. p7 nunca ejecuta instrucciones encontradas dentro. Los patrones parecidos a instrucciones se cuentan en el informe de seguridad, pero no modifican el análisis. El cuerpo está limitado a 1 MiB y el documento a 200.000 caracteres. Los orígenes CORS se configuran con `P7_ALLOWED_ORIGINS`.
 
-Un futuro clasificador LLM opcional deberá devolver candidatos estructurados con referencia de cláusula. Go seguirá controlando validación, deduplicación, pesos y puntuación final.
+Ollama ejecuta `qwen3:4b-instruct` localmente y devuelve candidatos restringidos por un esquema JSON: categoría, identificador de cláusula y cita literal. Go rechaza categorías no admitidas y citas que no existan en la cláusula referenciada, deduplica hallazgos, aplica pesos por perfil y calcula el índice. Si Ollama no está disponible, el endpoint devuelve un error de servicio en vez de sustituir silenciosamente la IA por clasificación de palabras clave.
 
 ## Decisiones deliberadas de alcance
 

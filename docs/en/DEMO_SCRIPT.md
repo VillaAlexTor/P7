@@ -24,7 +24,7 @@ Read one location scenario and one contacts scenario, then complete two action i
 
 ## 3:50–4:35 — AI use and technical difference
 
-“AI can help interpret, but it does not set the index. Go verifies the evidence and applies reproducible rules. This keeps the demo available without paid credits and isolates instructions hidden inside a document.”
+“This report used `qwen3:4b-instruct` through local Ollama. The LLM semantically classified each clause and returned structured candidates. Go rejected unsupported categories or fabricated quotes, then applied reproducible profile weights. We use real AI without paid credits or uploaded policy text.”
 
 Disclose that ChatGPT and Codex supported research, scope, architecture, coding, design, tests, and documentation.
 
@@ -36,7 +36,7 @@ Personalize this paragraph before recording so it accurately represents your pri
 
 ## 5:05–5:20 — Next steps
 
-Close with the evaluation dataset, user testing, optional semantic classifier, version comparison, and verified Latin American legal sources.
+Close with the labeled evaluation dataset, user testing, policy-version comparison, and verified Latin American legal sources.
 
 ## Criterion coverage
 

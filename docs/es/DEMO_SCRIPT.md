@@ -24,7 +24,7 @@ Lee un escenario de ubicación y otro de contactos, y completa dos acciones. Se�
 
 ## 3:50–4:35 — Uso de IA y diferencia técnica
 
-“La IA puede ayudar a interpretar, pero no establece el índice. Go verifica evidencia y aplica reglas reproducibles. Así la demo funciona sin créditos pagados y aísla instrucciones escondidas dentro del documento.”
+“Este informe usó `qwen3:4b-instruct` mediante Ollama local. El LLM clasificó semánticamente cada cláusula y devolvió candidatos estructurados. Go rechazó categorías no admitidas o citas inventadas y luego aplicó pesos reproducibles por perfil. Usamos IA real sin créditos pagados ni subir la política.”
 
 Divulga que ChatGPT y Codex apoyaron investigación, alcance, arquitectura, código, diseño, pruebas y documentación.
 
@@ -36,7 +36,7 @@ Personaliza este párrafo antes de grabar para que refleje con precisión tu exp
 
 ## 5:05–5:20 — Próximos pasos
 
-Cierra con conjunto de evaluación, pruebas de usuarios, clasificador semántico opcional, comparación de versiones y fuentes jurídicas verificadas para América Latina.
+Cierra con conjunto de evaluación etiquetado, pruebas de usuarios, comparación de versiones y fuentes jurídicas verificadas para América Latina.
 
 ## Cobertura de criterios
 

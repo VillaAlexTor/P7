@@ -31,7 +31,7 @@
 
 - URL analysis with SSRF protection and allowed-scheme validation.
 - Sandboxed PDF extraction with strict limits.
-- Optional Gemini or Ollama semantic classifier behind evidence validation.
+- [x] Local Ollama semantic classifier with structured output behind evidence validation.
 - Policy version comparison and change monitoring.
 - Accessible report export.
 - Verified jurisdictional sources for Latin America.

@@ -11,6 +11,10 @@ export interface AnalysisResponse {
     engine: string;
     evidenceChecked: number;
     locale: string;
+    aiUsed: boolean;
+    aiProvider: string;
+    aiModel: string;
+    aiCandidates: number;
   };
   score: number;
   level: Severity;
@@ -34,6 +38,7 @@ export interface AnalysisResponse {
     inputTreatedAsData: boolean;
     ignoredInstructionPatterns: number;
     citationsVerified: number;
+    citationsRejected: number;
   };
 }
 

@@ -28,13 +28,13 @@ El documento normalizado recibe un hash SHA-256 para identificar la versión exa
 
 ## Cómo lo construimos
 
-La aplicación usa Next.js, React y TypeScript. Una API Go normaliza y segmenta políticas, aplica reglas bilingües, verifica cada cita, evalúa siete controles, aplica pesos transparentes por perfil y deriva el mapa y las recomendaciones. El MVP no usa cuentas ni base de datos.
+La aplicación usa Next.js, React y TypeScript. Una API Go segmenta políticas y envía lotes de cláusulas a Ollama local, donde `qwen3:4b-instruct` devuelve candidatos semánticos restringidos por esquema. Go verifica cada cita, evalúa controles, aplica pesos transparentes y deriva el mapa y las recomendaciones. El MVP no usa cuentas, base de datos, API pagada ni clave.
 
 ## Cómo usamos IA
 
 ChatGPT y Codex apoyaron investigación de competencia, definición del problema, alcance, arquitectura, programación, diseño, pruebas y documentación. Esta asistencia está divulgada en el repositorio y la presentación.
 
-La versión ejecutable sigue siendo reproducible sin créditos API pagados. La IA podrá proponer clasificaciones semánticas, pero no controlará el índice. Go seguirá verificando citas, deduplicando y aplicando pesos deterministas. Elegimos esta arquitectura porque una respuesta convincente no es suficiente en privacidad: cada hallazgo debe volver a la política.
+La versión ejecutable llama a `qwen3:4b-instruct` mediante Ollama local y solicita candidatos de clasificación semántica estructurados. Sigue siendo reproducible sin créditos API pagados ni secretos. Go verifica cada cita propuesta contra su cláusula, rechaza salidas no admitidas, deduplica y aplica pesos deterministas. Elegimos esta arquitectura porque una respuesta convincente no es suficiente en privacidad: cada hallazgo debe volver a la política.
 
 ## Desafíos
 
@@ -54,7 +54,7 @@ La confianza requiere separar lo que el documento confirma, lo que el sistema in
 
 ## Próximos pasos
 
-Evaluaremos el motor con cláusulas etiquetadas y pruebas breves de usuarios. Después añadiremos un clasificador semántico opcional, comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
+Evaluaremos el clasificador semántico con cláusulas etiquetadas y pruebas breves de usuarios. Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
 
 ## Declaración
 

@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Next.js con TypeScript para la aplicación, Go para la API de análisis y Docker Compose para orquestación local. El MVP debe funcionar sin una API de IA pagada; un modelo externo será una mejora opcional.
+Next.js con TypeScript para la aplicación, Go para la API, Ollama con `qwen3:4b-instruct` para clasificación semántica local y Docker Compose para orquestación. El MVP requiere un LLM real, pero no una API de IA pagada ni una clave.
 
 ## Usuarios
 
@@ -20,7 +20,7 @@ p7 convierte políticas y términos complejos en evaluaciones personalizadas res
 
 ## Posicionamiento
 
-p7 combina siete mecanismos en lugar de actuar como resumidor: mapa de datos, riesgo por perfil, detección de vacíos, evidencia verificable, simulación de impacto, acciones de consentimiento y acceso bilingüe con enfoque latinoamericano. La IA puede interpretar, pero reglas deterministas verifican citas y calculan el índice.
+p7 combina siete mecanismos en lugar de actuar como resumidor: mapa de datos, riesgo por perfil, detección de vacíos, evidencia verificable, simulación de impacto, acciones de consentimiento y acceso bilingüe con enfoque latinoamericano. Un LLM local clasifica cláusulas semánticamente; reglas deterministas verifican citas y calculan el índice.
 
 ## Contexto de uso
 
@@ -66,6 +66,6 @@ La aplicación es bilingüe español/inglés, cumple fundamentos WCAG 2.2 AA, pe
 
 ## Decisiones abiertas
 
-- Proveedor externo de IA y hosting final.
+- El hosting de producción; el proveedor de IA del MVP es Ollama con `qwen3:4b-instruct`.
 - Disponibilidad del dominio y de la marca `p7`.
 

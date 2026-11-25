@@ -28,13 +28,13 @@ The normalized document receives a SHA-256 hash so the report identifies the exa
 
 ## How we built it
 
-The web application uses Next.js, React, and TypeScript. A Go API normalizes and segments policies, applies a bilingual rule catalog, verifies every citation against its source clause, evaluates seven disclosure controls, applies transparent profile weights, and derives the map and guidance. The MVP deliberately uses no account system or database.
+The web application uses Next.js, React, and TypeScript. A Go API segments policies and sends clause batches to local Ollama, where `qwen3:4b-instruct` returns schema-constrained semantic candidates. Go verifies every citation, evaluates disclosure controls, applies transparent profile weights, and derives the map and guidance. The MVP deliberately uses no account system, database, paid API, or API key.
 
 ## How we used AI
 
 ChatGPT and Codex supported competitor research, problem framing, scope, architecture, coding, design, tests, and documentation. This assistance is disclosed in the repository and submission.
 
-The current executable remains reproducible without paid API credits. AI can later provide semantic classification candidates, but it will not control the final score. The Go backend must still verify citations, deduplicate results, and apply deterministic weights. We chose this design because a plausible answer is insufficient for privacy: every finding must trace back to the policy.
+The executable calls `qwen3:4b-instruct` through local Ollama and requests structured semantic-classification candidates. It remains reproducible without paid API credits or secrets. Go verifies every proposed quote against its clause, rejects unsupported output, deduplicates results, and applies deterministic weights. We chose this design because a plausible answer is insufficient for privacy: every finding must trace back to the policy.
 
 ## Challenges
 
@@ -54,7 +54,7 @@ Trust requires separating what the document confirms, what the system interprets
 
 ## What's next
 
-We will evaluate the engine with manually labeled clauses and short user studies. Future work includes an optional semantic classifier, policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
+We will evaluate the semantic classifier with manually labeled clauses and short user studies. Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
 
 ## Disclosure
 

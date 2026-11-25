@@ -2,17 +2,36 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/VillaAlexTor/p7/apps/api/internal/analysis"
+	"github.com/VillaAlexTor/p7/apps/api/internal/domain"
 )
+
+type fakeClassifier struct{}
+
+func (fakeClassifier) Provider() string { return "test" }
+func (fakeClassifier) Model() string    { return "semantic-test" }
+func (fakeClassifier) Classify(_ context.Context, clauses []domain.Clause, _ string) ([]analysis.SemanticCandidate, error) {
+	for _, clause := range clauses {
+		if strings.Contains(clause.Text, "precise location") {
+			return []analysis.SemanticCandidate{{Category: "location", ClauseID: clause.ID, Quote: clause.Text}}, nil
+		}
+	}
+	return []analysis.SemanticCandidate{}, nil
+}
+
+func testHandler() http.Handler { return newHandlerWithClassifier(fakeClassifier{}) }
 
 func TestHealthAndSecurityHeaders(t *testing.T) {
 	request := httptest.NewRequest(http.MethodGet, "/health", nil)
 	response := httptest.NewRecorder()
-	newHandler().ServeHTTP(response, request)
+	testHandler().ServeHTTP(response, request)
 	if response.Code != http.StatusOK {
 		t.Fatalf("expected 200, got %d", response.Code)
 	}
@@ -27,12 +46,15 @@ func TestAnalyzeContractInEnglish(t *testing.T) {
 	request := httptest.NewRequest(http.MethodPost, "/api/v1/analyze", bytes.NewReader(body))
 	request.Header.Set("Content-Type", "application/json")
 	response := httptest.NewRecorder()
-	newHandler().ServeHTTP(response, request)
+	testHandler().ServeHTTP(response, request)
 	if response.Code != http.StatusOK {
 		t.Fatalf("expected 200, got %d: %s", response.Code, response.Body.String())
 	}
 	if !strings.Contains(response.Body.String(), `"locale":"en"`) || !strings.Contains(response.Body.String(), `"inputTreatedAsData":true`) {
 		t.Fatalf("missing localized or safety contract: %s", response.Body.String())
+	}
+	if !strings.Contains(response.Body.String(), `"aiUsed":true`) || !strings.Contains(response.Body.String(), `"aiModel":"semantic-test"`) {
+		t.Fatalf("missing AI execution metadata: %s", response.Body.String())
 	}
 }
 
@@ -42,7 +64,7 @@ func TestValidationAndCORS(t *testing.T) {
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("Origin", "https://p7.example")
 	response := httptest.NewRecorder()
-	newHandler().ServeHTTP(response, request)
+	testHandler().ServeHTTP(response, request)
 	if response.Code != http.StatusUnprocessableEntity {
 		t.Fatalf("expected 422, got %d", response.Code)
 	}

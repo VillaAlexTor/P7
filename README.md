@@ -4,7 +4,7 @@
 
 **English** · [Español](README.es.md)
 
-p7 turns privacy policies into personal, explainable, evidence-backed assessments. The MVP works without accounts, a database, or a paid AI API.
+p7 turns privacy policies into personal, explainable, evidence-backed assessments. The MVP uses a local Ollama LLM without accounts, a database, API keys, or paid AI credits.
 
 ## Seven implemented differentiators
 
@@ -20,16 +20,25 @@ p7 turns privacy policies into personal, explainable, evidence-backed assessment
 
 - Frontend: Next.js 16, React 19, and TypeScript.
 - Backend: Go using the standard HTTP library.
+- AI: Ollama with `qwen3:4b-instruct` structured semantic classification.
 - Tests: Go `testing`, `httptest`, and Vitest.
 - Operations: Docker Compose and GitHub Actions.
 
 ## Run locally
+
+Install Ollama, download `qwen3:4b-instruct` once, and keep Ollama running on `http://127.0.0.1:11434`:
+
+```powershell
+ollama pull qwen3:4b-instruct
+```
 
 Terminal 1:
 
 ```powershell
 cd apps/api
 $env:P7_API_PORT = "8080"
+$env:P7_OLLAMA_URL = "http://127.0.0.1:11434"
+$env:P7_OLLAMA_MODEL = "qwen3:4b-instruct"
 go run ./cmd/server
 ```
 
@@ -84,7 +93,7 @@ Profiles: `general`, `student`, `journalist`, `parent`, and `activist`. Locales:
 
 ## AI use
 
-ChatGPT and Codex supported research, scope, architecture, coding, design, tests, and documentation. The current product uses a deterministic local engine and does not depend on external credits. A future semantic classifier will remain optional and will not control the final score.
+The executable product calls the local `qwen3:4b-instruct` model through Ollama. The model classifies clauses with a constrained JSON schema and proposes exact references. Go rejects unknown categories and quotes that are not contained in the referenced clause, then applies profile weights and calculates the score. ChatGPT and Codex also supported research, scope, architecture, coding, design, tests, and documentation. No API key or secret is stored here.
 
 ## Documentation
 

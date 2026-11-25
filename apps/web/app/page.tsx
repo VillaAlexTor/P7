@@ -290,6 +290,10 @@ function AnalysisReport({ result, profileLabel, checked, setChecked, reportRef, 
           <p>{t.methodBody}</p>
           <div className="methodMeta">
             <code>{result.meta.engine}</code>
+            <strong>{result.meta.aiProvider} · {result.meta.aiModel}</strong>
+            <span>{t.aiClassified}</span>
+            <span>{result.meta.aiCandidates} {t.aiCandidates}</span>
+            <span>{result.safety.citationsRejected} {t.rejectedCitations}</span>
             <span>{t.inputSafety}</span>
             <span>{result.safety.ignoredInstructionPatterns} {t.ignoredInstructions}</span>
           </div>

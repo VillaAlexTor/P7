@@ -1,6 +1,7 @@
 package analysis
 
 import (
+	"context"
 	"crypto/sha256"
 	"fmt"
 	"regexp"
@@ -12,6 +13,18 @@ import (
 )
 
 type localized struct{ ES, EN string }
+
+type SemanticCandidate struct {
+	Category string `json:"category"`
+	ClauseID string `json:"clauseId"`
+	Quote    string `json:"quote"`
+}
+
+type SemanticClassifier interface {
+	Classify(context.Context, []domain.Clause, string) ([]SemanticCandidate, error)
+	Provider() string
+	Model() string
+}
 
 func (value localized) text(locale string) string {
 	if locale == "en" {
@@ -25,7 +38,6 @@ type rule struct {
 	title                     localized
 	severity                  string
 	interpretation            localized
-	patterns                  []string
 	baseWeight                int
 	dataLabel, impact, action localized
 }
@@ -37,13 +49,13 @@ type gapCheck struct {
 }
 
 var rules = []rule{
-	{category: "location", title: localized{"Recopilación de ubicación", "Location collection"}, severity: "high", interpretation: localized{"El documento declara que puede recopilar datos de ubicación o movimiento.", "The document states that it may collect location or movement data."}, patterns: []string{"ubicación", "geolocalización", "location", "gps"}, baseWeight: 18, dataLabel: localized{"Ubicación", "Location"}, impact: localized{"La ubicación frecuente puede permitir inferir rutinas, lugares habituales y patrones de desplazamiento.", "Frequent location data may reveal routines, regularly visited places, and movement patterns."}, action: localized{"Restringe la ubicación a «solo mientras usas la aplicación» o desactívala si no es necesaria.", "Restrict location access to “only while using the app,” or disable it when unnecessary."}},
-	{category: "contacts", title: localized{"Acceso a contactos", "Contacts access"}, severity: "high", interpretation: localized{"El servicio contempla acceder o procesar información de la libreta de contactos.", "The service may access or process address-book information."}, patterns: []string{"contactos", "libreta de direcciones", "address book", "contacts"}, baseWeight: 16, dataLabel: localized{"Contactos", "Contacts"}, impact: localized{"La libreta de contactos también contiene información de personas que quizá no usan el servicio.", "An address book also contains information about people who may not use the service."}, action: localized{"Deniega el permiso de contactos salvo que una función esencial lo requiera.", "Deny contacts access unless a core feature requires it."}},
-	{category: "third-parties", title: localized{"Transferencia a terceros", "Third-party sharing"}, severity: "high", interpretation: localized{"La política permite compartir datos con terceros, socios o proveedores.", "The policy allows data sharing with third parties, partners, or service providers."}, patterns: []string{"terceros", "socios comerciales", "proveedores de servicios", "third parties", "business partners", "service providers"}, baseWeight: 20, dataLabel: localized{"Datos personales", "Personal data"}, impact: localized{"Más destinatarios aumentan la superficie de exposición y dificultan seguir el recorrido de los datos.", "More recipients increase exposure and make the data trail harder to follow."}, action: localized{"Revisa las opciones para limitar publicidad, analítica y transferencias a socios.", "Review settings that limit advertising, analytics, and partner sharing."}},
-	{category: "advertising", title: localized{"Publicidad personalizada", "Personalized advertising"}, severity: "medium", interpretation: localized{"El documento menciona perfiles, anuncios personalizados o seguimiento con fines publicitarios.", "The document mentions profiling, personalized ads, or advertising-related tracking."}, patterns: []string{"publicidad personalizada", "anuncios personalizados", "perfil publicitario", "personalized advertising", "targeted advertising"}, baseWeight: 12, dataLabel: localized{"Actividad", "Activity"}, impact: localized{"La actividad puede combinarse para inferir intereses y personalizar contenido o anuncios.", "Activity may be combined to infer interests and personalize content or advertising."}, action: localized{"Desactiva la personalización de anuncios y limita el seguimiento entre aplicaciones.", "Turn off ad personalization and limit cross-app tracking."}},
-	{category: "ai-training", title: localized{"Uso para entrenamiento de IA", "AI training use"}, severity: "high", interpretation: localized{"El texto contempla usar contenido o datos para entrenar o mejorar modelos de inteligencia artificial.", "The text allows content or data to be used to train or improve AI models."}, patterns: []string{"entrenar modelos", "entrenamiento de inteligencia artificial", "model training", "train our ai", "train artificial intelligence", "machine learning models"}, baseWeight: 18, dataLabel: localized{"Contenido", "Content"}, impact: localized{"El contenido podría incorporarse a procesos de entrenamiento según los controles y condiciones del proveedor.", "Content could enter model-training processes depending on the provider's controls and terms."}, action: localized{"Busca una opción de exclusión del entrenamiento y evita enviar contenido sensible.", "Look for an AI-training opt-out and avoid submitting sensitive content."}},
-	{category: "biometric", title: localized{"Datos biométricos", "Biometric data"}, severity: "critical", interpretation: localized{"La política menciona identificadores biométricos o rasgos físicos usados para reconocer a una persona.", "The policy mentions biometric identifiers or physical traits used to recognize a person."}, patterns: []string{"biométr", "reconocimiento facial", "huella digital", "biometric", "facial recognition", "fingerprint"}, baseWeight: 24, dataLabel: localized{"Biometría", "Biometrics"}, impact: localized{"Los identificadores biométricos son difíciles de reemplazar si se exponen o usan fuera del contexto esperado.", "Biometric identifiers are difficult to replace if exposed or used outside the expected context."}, action: localized{"Evita habilitar identificación biométrica si existe un método alternativo adecuado.", "Avoid biometric identification when a suitable alternative is available."}},
-	{category: "retention", title: localized{"Conservación prolongada", "Broad retention period"}, severity: "medium", interpretation: localized{"El documento permite conservar información durante periodos amplios o mientras sea necesaria.", "The document allows information to be retained for broad periods or as long as necessary."}, patterns: []string{"mientras sea necesario", "periodo necesario", "indefinidamente", "as long as necessary", "indefinitely"}, baseWeight: 10, dataLabel: localized{"Datos conservados", "Retained data"}, impact: localized{"Una conservación amplia mantiene los datos expuestos durante más tiempo y puede dificultar saber cuándo se eliminan.", "Broad retention keeps data exposed longer and may make deletion timing unclear."}, action: localized{"Solicita la eliminación de datos y confirma si las copias de respaldo siguen otro plazo.", "Request data deletion and confirm whether backup copies follow a different schedule."}},
+	{category: "location", title: localized{"Recopilación de ubicación", "Location collection"}, severity: "high", interpretation: localized{"El documento declara que puede recopilar datos de ubicación o movimiento.", "The document states that it may collect location or movement data."}, baseWeight: 18, dataLabel: localized{"Ubicación", "Location"}, impact: localized{"La ubicación frecuente puede permitir inferir rutinas, lugares habituales y patrones de desplazamiento.", "Frequent location data may reveal routines, regularly visited places, and movement patterns."}, action: localized{"Restringe la ubicación a «solo mientras usas la aplicación» o desactívala si no es necesaria.", "Restrict location access to “only while using the app,” or disable it when unnecessary."}},
+	{category: "contacts", title: localized{"Acceso a contactos", "Contacts access"}, severity: "high", interpretation: localized{"El servicio contempla acceder o procesar información de la libreta de contactos.", "The service may access or process address-book information."}, baseWeight: 16, dataLabel: localized{"Contactos", "Contacts"}, impact: localized{"La libreta de contactos también contiene información de personas que quizá no usan el servicio.", "An address book also contains information about people who may not use the service."}, action: localized{"Deniega el permiso de contactos salvo que una función esencial lo requiera.", "Deny contacts access unless a core feature requires it."}},
+	{category: "third-parties", title: localized{"Transferencia a terceros", "Third-party sharing"}, severity: "high", interpretation: localized{"La política permite compartir datos con terceros, socios o proveedores.", "The policy allows data sharing with third parties, partners, or service providers."}, baseWeight: 20, dataLabel: localized{"Datos personales", "Personal data"}, impact: localized{"Más destinatarios aumentan la superficie de exposición y dificultan seguir el recorrido de los datos.", "More recipients increase exposure and make the data trail harder to follow."}, action: localized{"Revisa las opciones para limitar publicidad, analítica y transferencias a socios.", "Review settings that limit advertising, analytics, and partner sharing."}},
+	{category: "advertising", title: localized{"Publicidad personalizada", "Personalized advertising"}, severity: "medium", interpretation: localized{"El documento menciona perfiles, anuncios personalizados o seguimiento con fines publicitarios.", "The document mentions profiling, personalized ads, or advertising-related tracking."}, baseWeight: 12, dataLabel: localized{"Actividad", "Activity"}, impact: localized{"La actividad puede combinarse para inferir intereses y personalizar contenido o anuncios.", "Activity may be combined to infer interests and personalize content or advertising."}, action: localized{"Desactiva la personalización de anuncios y limita el seguimiento entre aplicaciones.", "Turn off ad personalization and limit cross-app tracking."}},
+	{category: "ai-training", title: localized{"Uso para entrenamiento de IA", "AI training use"}, severity: "high", interpretation: localized{"El texto contempla usar contenido o datos para entrenar o mejorar modelos de inteligencia artificial.", "The text allows content or data to be used to train or improve AI models."}, baseWeight: 18, dataLabel: localized{"Contenido", "Content"}, impact: localized{"El contenido podría incorporarse a procesos de entrenamiento según los controles y condiciones del proveedor.", "Content could enter model-training processes depending on the provider's controls and terms."}, action: localized{"Busca una opción de exclusión del entrenamiento y evita enviar contenido sensible.", "Look for an AI-training opt-out and avoid submitting sensitive content."}},
+	{category: "biometric", title: localized{"Datos biométricos", "Biometric data"}, severity: "critical", interpretation: localized{"La política menciona identificadores biométricos o rasgos físicos usados para reconocer a una persona.", "The policy mentions biometric identifiers or physical traits used to recognize a person."}, baseWeight: 24, dataLabel: localized{"Biometría", "Biometrics"}, impact: localized{"Los identificadores biométricos son difíciles de reemplazar si se exponen o usan fuera del contexto esperado.", "Biometric identifiers are difficult to replace if exposed or used outside the expected context."}, action: localized{"Evita habilitar identificación biométrica si existe un método alternativo adecuado.", "Avoid biometric identification when a suitable alternative is available."}},
+	{category: "retention", title: localized{"Conservación prolongada", "Broad retention period"}, severity: "medium", interpretation: localized{"El documento permite conservar información durante periodos amplios o mientras sea necesaria.", "The document allows information to be retained for broad periods or as long as necessary."}, baseWeight: 10, dataLabel: localized{"Datos conservados", "Retained data"}, impact: localized{"Una conservación amplia mantiene los datos expuestos durante más tiempo y puede dificultar saber cuándo se eliminan.", "Broad retention keeps data exposed longer and may make deletion timing unclear."}, action: localized{"Solicita la eliminación de datos y confirma si las copias de respaldo siguen otro plazo.", "Request data deletion and confirm whether backup copies follow a different schedule."}},
 }
 
 var gapChecks = []gapCheck{
@@ -65,12 +77,20 @@ var profileMultipliers = map[string]map[string]float64{
 
 var instructionPatterns = []string{"ignore previous instructions", "ignore all instructions", "system prompt", "developer message", "ignora las instrucciones anteriores", "ignora todas las instrucciones", "mensaje del sistema"}
 
-func Analyze(req domain.AnalyzeRequest) domain.AnalysisResponse {
+func AnalyzeWithClassifier(ctx context.Context, req domain.AnalyzeRequest, classifier SemanticClassifier) (domain.AnalysisResponse, error) {
 	text := normalize(req.Text)
 	locale := normalizeLocale(req.Locale, text)
 	clauses := segment(text)
 	profile := normalizeProfile(req.Profile)
-	findings := find(clauses, profile, locale)
+	candidates, err := classifier.Classify(ctx, clauses, locale)
+	if err != nil {
+		return domain.AnalysisResponse{}, fmt.Errorf("semantic classification failed: %w", err)
+	}
+	findings, rejected := findSemantic(clauses, candidates, profile, locale)
+	return buildResponse(req, text, locale, profile, clauses, findings, "p7-hybrid/0.3", true, classifier.Provider(), classifier.Model(), len(candidates), rejected), nil
+}
+
+func buildResponse(req domain.AnalyzeRequest, text, locale, profile string, clauses []domain.Clause, findings []domain.Finding, engine string, aiUsed bool, provider, model string, candidateCount, rejected int) domain.AnalysisResponse {
 	gaps := detectGaps(text, locale)
 	score := calculateScore(findings, gaps)
 	hash := fmt.Sprintf("%x", sha256.Sum256([]byte(text)))
@@ -82,10 +102,10 @@ func Analyze(req domain.AnalyzeRequest) domain.AnalysisResponse {
 	}
 	verified := verifiedCount(findings)
 	return domain.AnalysisResponse{
-		Meta:  domain.AnalysisMeta{Title: title, Profile: profile, DocumentHash: hash, ClauseCount: len(clauses), Language: detectLanguage(text), Engine: "p7-rules/0.2", EvidenceChecked: verified, Locale: locale},
+		Meta:  domain.AnalysisMeta{Title: title, Profile: profile, DocumentHash: hash, ClauseCount: len(clauses), Language: detectLanguage(text), Engine: engine, EvidenceChecked: verified, Locale: locale, AIUsed: aiUsed, AIProvider: provider, AIModel: model, AICandidates: candidateCount},
 		Score: score, Level: scoreLevel(score), Summary: summary(score, len(findings), gaps, locale), Clauses: clauses,
 		Findings: findings, Gaps: gaps, Nodes: nodes, Edges: edges, Impacts: impacts, Actions: actions,
-		Safety: domain.SafetyReport{InputTreatedAsData: true, IgnoredInstructionPatterns: countInstructionPatterns(text), CitationsVerified: verified},
+		Safety: domain.SafetyReport{InputTreatedAsData: true, IgnoredInstructionPatterns: countInstructionPatterns(text), CitationsVerified: verified, CitationsRejected: rejected},
 	}
 }
 
@@ -142,27 +162,36 @@ func segment(text string) []domain.Clause {
 	return clauses
 }
 
-func find(clauses []domain.Clause, profile, locale string) []domain.Finding {
-	result := make([]domain.Finding, 0)
+func findSemantic(clauses []domain.Clause, candidates []SemanticCandidate, profile, locale string) ([]domain.Finding, int) {
+	result := make([]domain.Finding, 0, len(candidates))
 	seen := map[string]bool{}
-	for _, clause := range clauses {
-		lower := strings.ToLower(clause.Text)
-		for _, candidate := range rules {
-			if seen[candidate.category] || !containsAny(lower, candidate.patterns) {
-				continue
-			}
-			multiplier := profileMultipliers[profile][candidate.category]
-			if multiplier == 0 {
-				multiplier = 1
-			}
-			evidence := domain.Evidence{ClauseID: clause.ID, Quote: clause.Text}
-			evidence.Verified = verifyEvidence(clauses, evidence)
-			result = append(result, domain.Finding{ID: fmt.Sprintf("finding-%03d", len(result)+1), Category: candidate.category, Title: candidate.title.text(locale), Severity: candidate.severity, Interpretation: candidate.interpretation.text(locale), Evidence: evidence, Weight: int(float64(candidate.baseWeight)*multiplier + 0.5)})
-			seen[candidate.category] = true
+	rejected := 0
+	for _, proposed := range candidates {
+		candidate, ok := ruleForCategory(strings.ToLower(strings.TrimSpace(proposed.Category)))
+		evidence := domain.Evidence{ClauseID: strings.TrimSpace(proposed.ClauseID), Quote: strings.TrimSpace(proposed.Quote)}
+		if !ok || seen[candidate.category] || !verifyEvidence(clauses, evidence) {
+			rejected++
+			continue
 		}
+		evidence.Verified = true
+		multiplier := profileMultipliers[profile][candidate.category]
+		if multiplier == 0 {
+			multiplier = 1
+		}
+		result = append(result, domain.Finding{ID: fmt.Sprintf("finding-%03d", len(result)+1), Category: candidate.category, Title: candidate.title.text(locale), Severity: candidate.severity, Interpretation: candidate.interpretation.text(locale), Evidence: evidence, Weight: int(float64(candidate.baseWeight)*multiplier + 0.5)})
+		seen[candidate.category] = true
 	}
 	sort.SliceStable(result, func(i, j int) bool { return result[i].Weight > result[j].Weight })
-	return result
+	return result, rejected
+}
+
+func ruleForCategory(category string) (rule, bool) {
+	for _, candidate := range rules {
+		if candidate.category == category {
+			return candidate, true
+		}
+	}
+	return rule{}, false
 }
 
 func verifyEvidence(clauses []domain.Clause, evidence domain.Evidence) bool {

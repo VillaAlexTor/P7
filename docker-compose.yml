@@ -5,6 +5,8 @@ services:
     environment:
       P7_API_PORT: "8080"
       P7_ALLOWED_ORIGINS: http://localhost:3000
+      P7_OLLAMA_URL: http://host.docker.internal:11434
+      P7_OLLAMA_MODEL: qwen3:4b-instruct
     ports:
       - "8080:8080"
 

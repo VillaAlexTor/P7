@@ -18,6 +18,11 @@ if ($LASTEXITCODE -ne 0) {
     $env:GOOS = "js"
     $env:GOARCH = "wasm"
 
+    go test -c -o (Join-Path $TaskCache "ai.test.wasm") ./internal/ai
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    node --stack-size=8192 (Join-Path $ProjectRoot "scripts/run-go-wasm-test.cjs") $WasmRunner (Join-Path $TaskCache "ai.test.wasm")
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
     go test -c -o (Join-Path $TaskCache "analysis.test.wasm") ./internal/analysis
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     node --stack-size=8192 (Join-Path $ProjectRoot "scripts/run-go-wasm-test.cjs") $WasmRunner (Join-Path $TaskCache "analysis.test.wasm")

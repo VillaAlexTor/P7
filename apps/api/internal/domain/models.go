@@ -67,12 +67,17 @@ type AnalysisMeta struct {
 	Engine          string `json:"engine"`
 	EvidenceChecked int    `json:"evidenceChecked"`
 	Locale          string `json:"locale"`
+	AIUsed          bool   `json:"aiUsed"`
+	AIProvider      string `json:"aiProvider"`
+	AIModel         string `json:"aiModel"`
+	AICandidates    int    `json:"aiCandidates"`
 }
 
 type SafetyReport struct {
 	InputTreatedAsData         bool `json:"inputTreatedAsData"`
 	IgnoredInstructionPatterns int  `json:"ignoredInstructionPatterns"`
 	CitationsVerified          int  `json:"citationsVerified"`
+	CitationsRejected          int  `json:"citationsRejected"`
 }
 
 type AnalysisResponse struct {

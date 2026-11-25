@@ -31,7 +31,7 @@
 
 - Análisis por URL con protección SSRF y esquemas permitidos.
 - Extracción aislada de PDF con límites estrictos.
-- Clasificador semántico opcional Gemini u Ollama detrás de la validación de evidencia.
+- [x] Clasificador semántico local con Ollama y salida estructurada detrás de la validación de evidencia.
 - Comparación entre versiones y monitoreo de cambios.
 - Exportación accesible del informe.
 - Fuentes jurisdiccionales verificadas para América Latina.
