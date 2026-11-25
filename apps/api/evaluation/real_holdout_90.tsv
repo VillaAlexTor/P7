@@ -1,0 +1,21 @@
+id	locale	text	expected
+R9E01	en	If you use Contact Sync, you will provide your phone number and give the Duolingo app permission to access the contacts stored on your phone	contacts
+R9E02	en	by inferring your location from your IP address	location
+R9E03	en	Zoom uses third-party marketing, advertising, and analytics providers	third-parties
+R9E04	en	We also disclose information with third parties we engage to process personal information on our behalf	third-parties
+R9E05	en	using information (such as Pins, regardless of when they were posted) to train, develop and improve our technology such as our machine learning models	ai-training
+R9E06	en	Biometric data: Such as voice identification, photo identification, or face scans, which we may collect when you consent	biometric
+R9E07	en	We retain Personal Data for as long as we have an ongoing business need to do so	retention
+R9E08	en	By default, we do not use your workspace data or personal information to train our models.	-
+R9E09	en	we do not do any targeted advertising or any profiling.	-
+R9E10	en	We generally retain your personal data as long as you keep your account open or as needed to provide you Services.	retention
+R9S01	es	información personal con terceros, incluidos nuestros socios publicitarios. Lo hacemos para mostrarle anuncios en otros sitios web que se ajusten mejor a sus intereses	third-parties,advertising
+R9S02	es	Canva puede compartir cierta información con nuestros socios publicitarios externos, como su dirección de correo electrónico, ubicación	third-parties
+R9S03	es	la dirección IP (que puede utilizarse para deducir la ubicación general en una ciudad o país)	location
+R9S04	es	Los datos de los estudiantes no se utilizan para crear perfiles para publicidad segmentada ni se venden a terceros.	-
+R9S05	es	Si eliges sincronizar tus contactos con tu cuenta de Pinterest, accederemos a los contactos almacenados en tu dispositivo	contacts
+R9S06	es	Datos biométricos: Por ejemplo, la identificación por voz, la identificación con foto o los escaneos faciales, que podemos recopilar	biometric
+R9S07	es	De forma predeterminada, no utilizamos los datos de tu espacio de trabajo ni tu información personal para entrenar nuestros modelos.	-
+R9S08	es	el proveedor de la plataforma de soporte de chat en vivo de Proton, procese los datos contenidos en su interacción de chat en vivo	third-parties
+R9S09	es	Conservamos tus datos personales incluso después de haber cerrado la cuenta si es razonablemente necesario para cumplir con nuestras obligaciones legales	retention
+R9S10	es	Usamos estos datos demográficos, así como los datos de ubicación general basados en tu dirección IP, como ayuda para adaptar la publicidad	location,advertising
