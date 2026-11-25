@@ -1,0 +1,37 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Complete official HTML main element extracted by scripts/prepare-real-policies.py; single-reviewer labels frozen before inference; full text remains in gitignored .cache/real_policies.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "policies": [
+    {
+      "id": "mozilla_en", "title": "Mozilla Accounts Privacy Notice", "locale": "en",
+      "url": "https://www.mozilla.org/en-US/privacy/mozilla-accounts/",
+      "characters": 16843, "sha256": "0cf0540334210cb9700a8140d2c9cdaef312fe2d96d0028cb9358a4d86efa057",
+      "expected": ["location", "third-parties", "retention"],
+      "referenceLines": {"location": 187, "third-parties": 77, "retention": 97}
+    },
+    {
+      "id": "mozilla_es", "title": "Aviso de privacidad de cuentas de Mozilla", "locale": "es",
+      "url": "https://www.mozilla.org/es-ES/privacy/mozilla-accounts/",
+      "characters": 19732, "sha256": "4e6dc06d0df4e45e2c5802a978da5c354caa54a1585e1155c2ac37c84e55432e",
+      "expected": ["location", "third-parties", "retention"],
+      "referenceLines": {"location": 187, "third-parties": 77, "retention": 97}
+    },
+    {
+      "id": "proton_en", "title": "Proton Privacy Policy", "locale": "en",
+      "url": "https://proton.me/legal/privacy",
+      "characters": 18129, "sha256": "aa329f8a0da841c59905c5bbf88e52d792501d5929645a2582d42e51fa8f6a7b",
+      "expected": ["third-parties", "retention"],
+      "referenceLines": {"third-parties": 57, "retention": 55},
+      "negativeControlLines": {"location": 67, "ai-training": 69}
+    },
+    {
+      "id": "proton_es", "title": "Política de privacidad de Proton", "locale": "es",
+      "url": "https://proton.me/es-419/legal/privacy",
+      "characters": 20873, "sha256": "aef6c90ac8873efbcb038118db7ef89081a718b813ea0ff540a5fe72307e86e3",
+      "expected": ["third-parties", "retention"],
+      "referenceLines": {"third-parties": 57, "retention": 55},
+      "negativeControlLines": {"location": 67, "ai-training": 69}
+    }
+  ]
+}
