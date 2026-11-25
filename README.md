@@ -34,9 +34,11 @@ Cases, official source URLs, and **raw model output** are stored in [apps/api/ev
 | Round 8 · 40 cases | 96.0% | 85.7% | 35/40 |
 | **Round 9 · 40 cases** | **100.0%** | **75.0%** | **30/40** |
 
-The final round used **40 new official-page URLs** from Google, Spotify, Microsoft, Mozilla, and Apple, evenly split by language. It produced 33 correct labels, no false positives, and 11 missed labels. Third-party sharing and retention were the largest gaps. These are selected short excerpts, some translated versions of one notice, labeled by one reviewer. They do **not** measure full-document performance; observed 100% precision is not a general reliability claim. The prompt and model weights stayed unchanged between rounds. p7 is a review aid, and a person must check findings and possible omissions.
+Round 9 used 40 selected short excerpts from official pages. Those results do **not** measure full-document performance. The prompt and model weights stayed unchanged between rounds.
 
 [Cases A](apps/api/evaluation/real_round9a.tsv) · [Sources A](apps/api/evaluation/real_round9a_sources.tsv) · [Raw output A](apps/api/evaluation/real_round9a_result.json) · [Cases B](apps/api/evaluation/real_round9b.tsv) · [Sources B](apps/api/evaluation/real_round9b_sources.tsv) · [Raw output B](apps/api/evaluation/real_round9b_result.json)
+
+**Newest, more realistic check:** p7 analyzed four **complete official privacy-policy pages**: Mozilla Accounts and Proton, each in English and Spanish. It found 6 of 10 reference categories, added 5 incorrect categories, and missed 4: **54.5% precision, 60.0% recall, 1/4 exact documents**. This is two underlying policies, labeled by one reviewer, so it is a small document-level test. Exact citations did not prevent incorrect interpretations. The current version needs human review and is not established as 90% reliable on real policies. See the [frozen sources and labels](apps/api/evaluation/real_policies_round10.json), [raw application results](apps/api/evaluation/real_policies_round10_result.json), and [full analysis](docs/en/EVALUATION.md#november-25-tenth-round-complete-real-privacy-policies).
 
 ## Stack
 
