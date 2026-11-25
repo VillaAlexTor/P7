@@ -1,0 +1,21 @@
+id	locale	text	expected
+R7BE01	en	We have contractual agreements with our AI subprocessors that prohibit the use of customer data to train their models.	-
+R7BE02	en	Slack does not train generative AI models on Customer Data.	-
+R7BE03	en	Approving a purchase requires biometric verification, such as Face ID or Touch ID, on a supported device.	-
+R7BE04	en	Temporary chats don’t show in history, don’t use/create memories, and aren’t used to train models.	-
+R7BE05	en	chats you keep (unarchived or archived) are saved in your account until you delete them.	retention
+R7BE06	en	when ads personalization is enabled, select signals from a user’s broader ChatGPT experience	advertising
+R7BE07	en	My AI only has access to your general location if you share it with Snapchat or chat about it with My AI.	location
+R7BE08	en	Snapchat needs access to your contacts to match a phone number to a Snapchat account.	contacts
+R7BE09	en	If a ChatGPT user asks you to be their trusted contact, OpenAI may receive your name, email address, and/or phone number from that user.	-
+R7BE10	en	Deleted chats are permanently removed from OpenAI systems within 30 days	-
+R7BS01	es	toda la conversación relacionada con ellos podría utilizarse para entrenar los modelos de OpenAI.	ai-training
+R7BS02	es	Slack no entrena modelos de IA generativa con los Datos del cliente.	-
+R7BS03	es	Tenemos acuerdos contractuales con subprocesadores de IA que prohíben el uso de datos de clientes para entrenar sus modelos.	-
+R7BS04	es	Snapchat necesita acceso a tus contactos para hacer coincidir un número de teléfono con una cuenta de Snapchat.	contacts
+R7BS05	es	My AI utiliza la información de Snapchat de tu ubicación y tu entorno para ofrecerte recomendaciones de lugares	location
+R7BS06	es	Solo los amigos con los que compartes tu ubicación pueden ver tus insignias	location
+R7BS07	es	Los chats temporales no aparecen en el historial, no usan ni crean recuerdos y no se utilizan para entrenar modelos.	-
+R7BS08	es	Al iniciar sesión, puede usar una contraseña, PIN o datos biométricos, como una huella digital o un reconocimiento facial, si tiene Windows Hello configurado.	-
+R7BS09	es	Las audiencias personalizadas se crean a partir de listas de clientes o clientes potenciales mediante direcciones de correo electrónico, números de teléfono	advertising
+R7BS10	es	cuando está activada la personalización de anuncios, determinadas señales de la experiencia general del usuario en ChatGPT	advertising
