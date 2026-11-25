@@ -38,7 +38,14 @@ Round 9 used 40 selected short excerpts from official pages. Those results do **
 
 [Cases A](apps/api/evaluation/real_round9a.tsv) · [Sources A](apps/api/evaluation/real_round9a_sources.tsv) · [Raw output A](apps/api/evaluation/real_round9a_result.json) · [Cases B](apps/api/evaluation/real_round9b.tsv) · [Sources B](apps/api/evaluation/real_round9b_sources.tsv) · [Raw output B](apps/api/evaluation/real_round9b_result.json)
 
-**Newest, more realistic check:** p7 analyzed four **complete official privacy-policy pages**: Mozilla Accounts and Proton, each in English and Spanish. It found 6 of 10 reference categories, added 5 incorrect categories, and missed 4: **54.5% precision, 60.0% recall, 1/4 exact documents**. This is two underlying policies, labeled by one reviewer, so it is a small document-level test. Exact citations did not prevent incorrect interpretations. The current version needs human review and is not established as 90% reliable on real policies. See the [frozen sources and labels](apps/api/evaluation/real_policies_round10.json), [raw application results](apps/api/evaluation/real_policies_round10_result.json), and [full analysis](docs/en/EVALUATION.md#november-25-tenth-round-complete-real-privacy-policies).
+**Complete-policy checks:** We also ran the unchanged model on four underlying privacy policies, each in English and Spanish. These document-level results are more representative of actual use than selected excerpts:
+
+| Official complete policies | Precision | Recall | Exact pages |
+| --- | ---: | ---: | ---: |
+| Round 10 · Mozilla Accounts, Proton | 54.5% | 60.0% | 1/4 |
+| **Round 11 · Apple, Spotify** | **90.5%** | **95.0%** | **2/4** |
+
+Round 11 had 19 correct categories, two false `contacts` findings from ordinary contact details, and one missed retention category in Apple Spanish. **The model and prompts did not change:** the higher score reflects different policies, not proven improvement. Across both rounds, the descriptive totals are 78.1% precision and 83.3% recall. Four underlying policies and one reviewer cannot establish general reliability; exact citations can still support a wrong interpretation. Human review remains necessary. See [round 11 sources and labels](apps/api/evaluation/real_policies_round11.json), [machine results](apps/api/evaluation/real_policies_round11_result.json), and the [full English analysis](docs/en/EVALUATION.md#november-25-eleventh-round-two-different-complete-policies).
 
 ## Stack
 
