@@ -20,7 +20,8 @@
 ## Antes del envío
 
 - [x] Crear un conjunto etiquetado de 40 cláusulas sintéticas.
-- [x] Medir precisión y cobertura por categoría en el mismo conjunto; falta evaluación independiente.
+- [x] Medir precisión y cobertura en el mismo conjunto, en conjuntos sintéticos reservados y en fragmentos de fuentes reales.
+- [x] Evaluar 40 fragmentos de políticas reales en inglés y español, incluidos 20 fragmentos reservados.
 - [x] Preparar el protocolo para cinco personas; faltan las sesiones.
 - [ ] Probar con 3–5 usuarios y documentar comentarios anónimos.
 - [ ] Preparar ejemplos de riesgo bajo, medio y alto.
@@ -34,7 +35,7 @@
 
 - Análisis por URL con protección SSRF y esquemas permitidos.
 - Extracción aislada de PDF con límites estrictos.
-- Evaluación independiente con fragmentos de políticas reales reservados.
+- Evaluación más amplia, revisada de manera independiente, con políticas reales completas.
 - Comparación entre versiones y monitoreo de cambios.
 - Exportación accesible del informe.
 - Fuentes jurisdiccionales verificadas para América Latina.
