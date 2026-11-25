@@ -1,5 +1,5 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const enDir = resolve(root, "docs", "en");
@@ -24,19 +24,31 @@ for (const file of english) {
   if (!en.startsWith("#") || !es.startsWith("#")) throw new Error(`${file} must start with a Markdown heading.`);
 }
 
-const rootPairs = [
-  ["README.md", "README.es.md"],
-  ["PRODUCT.md", "PRODUCT.es.md"],
-  ["DESIGN.md", "DESIGN.es.md"],
-  ["CONTRIBUTING.md", "CONTRIBUTING.es.md"],
-  ["SECURITY.md", "SECURITY.es.md"],
-];
-
-for (const [enFile, esFile] of rootPairs) {
-  if (!existsSync(resolve(root, enFile)) || !existsSync(resolve(root, esFile))) {
-    throw new Error(`Missing root language pair: ${enFile} / ${esFile}`);
-  }
+const excluded = new Set([".git", "node_modules", ".next", "dist", "build", "coverage"]);
+function collectMarkdown(directory) {
+  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) return excluded.has(entry.name) ? [] : collectMarkdown(path);
+    return entry.isFile() && entry.name.endsWith(".md") ? [relative(root, path).replaceAll("\\", "/")] : [];
+  });
 }
 
-console.log(`Documentation parity passed: ${english.length} paired documents and ${rootPairs.length} root pairs.`);
+const files = new Set(collectMarkdown(root));
+let adjacentPairs = 0;
+for (const file of files) {
+  if (file.startsWith("docs/en/") || file.startsWith("docs/es/")) continue;
+  if (file.endsWith(".es.md")) {
+    const counterpart = file.replace(/\.es\.md$/, ".md");
+    if (!files.has(counterpart)) throw new Error(`Missing English counterpart: ${counterpart}`);
+    continue;
+  }
+  const counterpart = file.replace(/\.md$/, ".es.md");
+  if (!files.has(counterpart)) throw new Error(`Missing Spanish counterpart: ${counterpart}`);
+  const en = readFileSync(resolve(root, file), "utf8").trim();
+  const es = readFileSync(resolve(root, counterpart), "utf8").trim();
+  if (!en || !es) throw new Error(`Incomplete language pair: ${file} / ${counterpart}`);
+  adjacentPairs++;
+}
+
+console.log(`Documentation parity passed: ${english.length} paired documents and ${adjacentPairs} adjacent pairs.`);
 

@@ -2,8 +2,6 @@
 
 English is the official submission language. Every official document has a Spanish counterpart for review and understanding.
 
-El inglés es el idioma oficial de la entrega. Cada documento oficial tiene una copia equivalente en español para revisión y comprensión.
-
 | Topic | English | Español |
 | --- | --- | --- |
 | Architecture | [English](en/ARCHITECTURE.md) | [Español](es/ARCHITECTURE.md) |
@@ -16,4 +14,4 @@ El inglés es el idioma oficial de la entrega. Cada documento oficial tiene una 
 | Personal reflection draft | [English](en/REFLECTION.md) | [Español](es/REFLECTION.md) |
 | Demo deployment | [English](en/DEPLOYMENT.md) | [Español](es/DEPLOYMENT.md) |
 
-Run `node scripts/check-docs.mjs` to verify that both language directories contain the same document set.
+Run `node scripts/check-docs.mjs` to verify that every Markdown file has an English and Spanish counterpart.

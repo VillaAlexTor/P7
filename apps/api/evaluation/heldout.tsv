@@ -1,0 +1,41 @@
+id	locale	text	expected
+H01	en	When you enable nearby offers, we estimate where you are from cell towers and store that area.	location
+H02	en	If you choose Find Friends, the app imports names and phone numbers from your device.	contacts
+H03	en	We disclose transaction identifiers to our fraud prevention contractor.	third-parties
+H04	en	Partner ad networks receive a segment based on the articles you read.	third-parties,advertising
+H05	en	Customer support transcripts are incorporated into training datasets for our language model.	ai-training
+H06	en	We compare a voiceprint with your enrollment recording to unlock the account.	biometric
+H07	en	Inactive accounts remain in our archives without a fixed deletion date.	retention
+H08	en	Location is inferred from your IP address for local recommendations.	location
+H09	en	We synchronize the contact list only after you press Import.	contacts
+H10	en	Independent cloud hosts process uploaded files on our behalf.	third-parties
+H11	en	We customize promotions using an inferred interest score.	advertising
+H12	en	Photos you upload are used to fine-tune an image generation system.	ai-training
+H13	en	We retain a mathematical representation of your face for identity checks.	biometric
+H14	en	We keep backups until operationally convenient, with no stated maximum period.	retention
+H15	en	We do not infer location from IP addresses or cellular signals.	-
+H16	en	The Find Friends feature never reads the address book.	-
+H17	en	Our policy prohibits transferring account data to outside vendors.	-
+H18	en	Advertisements are contextual and are not selected from your behavior.	-
+H19	en	Voice recordings are deleted after playback and are not used for identification.	-
+H20	en	We erase archived copies within seven days of account deletion.	-
+P01	es	Para ofrecer rutas guardamos los lugares visitados que calcula el GPS.	location
+P02	es	Al activar invitaciones copiamos nombres y teléfonos de la agenda.	contacts
+P03	es	Una empresa de alojamiento externo procesa tus documentos por nuestra cuenta.	third-parties
+P04	es	Los anunciantes reciben un segmento construido a partir de tus búsquedas.	third-parties,advertising
+P05	es	Las preguntas enviadas alimentan un conjunto de entrenamiento para nuestro asistente de IA.	ai-training
+P06	es	Comparamos tu patrón de voz con una muestra registrada para acceder.	biometric
+P07	es	Los registros de cuentas inactivas permanecen sin fecha prevista de borrado.	retention
+P08	es	Calculamos el barrio aproximado usando la dirección IP.	location
+P09	es	Al pulsar Sincronizar, importamos la agenda del teléfono.	contacts
+P10	es	Un procesador de pagos independiente recibe los identificadores de transacción.	third-parties
+P11	es	Personalizamos ofertas según los intereses inferidos de tu navegación.	advertising
+P12	es	Las fotografías cargadas sirven para ajustar un modelo generador de imágenes.	ai-training
+P13	es	Conservamos una plantilla facial para comparar identidad.	biometric
+P14	es	Mantenemos copias de seguridad hasta que ya no sean útiles para operaciones.	retention
+P15	es	No estimamos tu ubicación a partir de redes o IP.	-
+P16	es	La opción de invitar no consulta los números guardados en el dispositivo.	-
+P17	es	Está prohibido entregar información de usuarios a proveedores externos.	-
+P18	es	Los anuncios son iguales para todos y no dependen de la actividad.	-
+P19	es	Las grabaciones de voz se descartan y nunca identifican personas.	-
+P20	es	Las copias de respaldo se borran siete días después del cierre.	-
