@@ -170,3 +170,19 @@ La precisión y cobertura observadas del 90 % alcanzan el punto de parada elegid
 ```powershell
 go run ./cmd/evaluate -data evaluation/real_round4.tsv
 ```
+
+## 25 de noviembre: quinta ronda con fuentes reales
+
+Congelamos el mismo prompt y flujo de inferencia de `c90c9e9`, y confirmamos `real_round5.tsv` y `real_round5_sources.tsv` antes de la primera corrida del modelo. El conjunto nuevo contiene 10 fragmentos ingleses y 10 españoles de 20 páginas oficiales que no aparecían en los conjuntos reales anteriores. Tiene 18 etiquetas afirmativas, incluido un caso de dos etiquetas, y tres controles negativos. El comprobador de fuentes cubre ahora 140 fragmentos y 140 URL distintas, con un máximo de 25 palabras citadas por URL.
+
+| Corrida | Etiquetas acertadas | Falsos positivos | Omisiones | Precisión | Cobertura |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `real_round5.tsv`, prompt congelado, primera corrida | 18 | 0 | 0 | 100,0 % | 100,0 % |
+
+Los tres controles negativos quedaron sin hallazgos. **No cambiamos el prompt ni el modelo** después de la corrida: la muestra nueva no mostró un error que justificara otra revisión específica. Esto evalúa de nuevo el modelo local y sus instrucciones; no entrena los pesos del modelo. La primera corrida de la cuarta ronda sigue siendo 90,0 % de precisión y 90,0 % de cobertura; el resultado nuevo no borra sus cuatro errores.
+
+La quinta muestra es pequeña, seleccionada y etiquetada por una sola persona. Su resultado observado perfecto no estima la exactitud general ni demuestra rendimiento con documentos completos. El trabajo siguiente debe dar prioridad a etiquetas revisadas por otra persona, más empresas, pruebas de documentos completos y medidas de repetibilidad y latencia. Para repetirla desde `apps/api`, con Ollama activo:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_round5.tsv
+```
