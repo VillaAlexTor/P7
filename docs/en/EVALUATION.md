@@ -333,3 +333,15 @@ python scripts/prepare-real-policies-round11.py --fetch
 cd apps/api
 go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round11.json -text-dir ../../.cache/real_policies_round11
 ```
+
+## November 25: twelfth round, longer and harder complete policies
+
+We froze the [four source hashes, seven-category labels, and eight audit questions](../../apps/api/evaluation/real_policies_round12.json) in commit `194da5e` before inference. The new full policy pages were [Google EN](https://policies.google.com/privacy?hl=en), [Google ES](https://policies.google.com/privacy?hl=es), [WhatsApp EEA EN](https://www.whatsapp.com/legal/privacy-policy-eea?lang=en_gb), and [WhatsApp EEA ES](https://www.whatsapp.com/legal/privacy-policy-eea?lang=es_LA), totaling 349,926 extracted characters. We ran the same local model, prompts, pipeline, and general profile once per page. The [machine report](../../apps/api/evaluation/real_policies_round12_result.json) records the final predictions without republishing the policies.
+
+| Complete-policy round | True positives | False positives | Misses | Precision | Recall | Exact pages | Time |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 10 · Mozilla, Proton | 6 | 5 | 4 | 54.5% | 60.0% | 1/4 | 125 s |
+| 11 · Apple, Spotify | 19 | 2 | 1 | 90.5% | 95.0% | 2/4 | 291 s |
+| **12 · Google, WhatsApp** | **16** | **6** | **0** | **72.7%** | **100.0%** | **1/4** | **646 s** |
+
+Google EN and ES both falsely labeled account contact details as device address-book access and both labeled a public-web AI-training passage as training on private user data under our frozen interpretation. WhatsApp EN falsely inferred ad personalization from ad-related cookies and biometric identification from an age-estimation video selfie. WhatsApp ES had the exact category set. The Google AI reference is contestable: treating public personal material as user training data would raise round-twelve precision to 81.8% without changing recall. We preserve the original labels and result. The **[bilingual, question-by-question case study](ROUND12_CASE_STUDY.md)** explains all eight precommitted questions, the extra biometric error, source-line reasoning, category sensitivity, and the 274-second WhatsApp ES latency. One reviewer assigned the labels; translation pairs are correlated; this is neither independent validation nor evidence of a model improvement.
