@@ -20,7 +20,8 @@
 ## Before submission
 
 - [x] Create a manually labeled set of 40 synthetic clauses.
-- [x] Measure in-sample category precision and recall; independent evaluation remains open.
+- [x] Measure in-sample, synthetic held-out, and sourced real-excerpt precision and recall.
+- [x] Evaluate 40 sourced real-policy excerpts in English and Spanish, including a separate 20-excerpt holdout.
 - [x] Prepare a five-person usability protocol; sessions remain open.
 - [ ] Test with 3–5 users and document anonymous feedback.
 - [ ] Prepare low-, medium-, and high-risk examples.
@@ -34,7 +35,7 @@
 
 - URL analysis with SSRF protection and allowed-scheme validation.
 - Sandboxed PDF extraction with strict limits.
-- Independent evaluation on held-out real policy excerpts.
+- Larger independently reviewed evaluation on full real policies.
 - Policy version comparison and change monitoring.
 - Accessible report export.
 - Verified jurisdictional sources for Latin America.
