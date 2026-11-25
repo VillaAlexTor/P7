@@ -53,6 +53,36 @@ Los 12 controles negativos quedaron sin hallazgos. No se rechazó ninguna cita p
 
 Por ejemplo, se omitieron H02 (importación condicionada de contactos), H03 (contratista de prevención de fraude) y P07 (almacenamiento sin fecha de borrado). H04 y P04 recibieron la etiqueta de publicidad, pero omitieron la divulgación simultánea a terceros. Son vacíos relevantes para una herramienta que ayuda a interpretar condiciones de privacidad. El cero de falsos positivos solo corresponde a estas 40 cláusulas sintéticas, y una sola persona asignó las etiquetas. Es una comprobación independiente del prompt con casos sintéticos nuevos, no una estimación del rendimiento con políticas reales o documentos completos.
 
+## Tercera evaluación: otras 40 cláusulas
+
+Mantuvimos el mismo modelo `qwen3:4b-instruct` y el mismo prompt. El tercer conjunto sintético, `evaluation/heldout_2.tsv`, se escribió antes de ejecutar el clasificador y contiene otras 20 cláusulas en inglés y 20 en español. Cada idioma tiene 14 casos afirmativos, incluidos dos casos con dos etiquetas, y seis controles negativos. Examina acceso condicionado, subcontratistas, prácticas combinadas, situaciones futuras hipotéticas, funciones retiradas y plazos fijos de eliminación. Una sola persona asignó las etiquetas.
+
+Ejecuta desde `apps/api`:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/heldout_2.tsv
+```
+
+| Conjunto | Etiquetas acertadas | Falsos positivos | Etiquetas omitidas | Precisión | Cobertura |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Primero, tras ajustar con el mismo conjunto | 27 | 0 | 1 | 100,0 % | 96,4 % |
+| Segundo, conjunto sintético nuevo | 19 | 0 | 11 | 100,0 % | 63,3 % |
+| Tercero, conjunto sintético nuevo | 25 | 0 | 7 | 100,0 % | 78,1 % |
+
+Los 12 controles negativos quedaron sin hallazgos y no se rechazó ninguna cita. Las 40 llamadas tardaron unos 18 segundos en la computadora de desarrollo. En inglés hubo 12 etiquetas acertadas y cuatro omitidas; en español, 13 acertadas y tres omitidas.
+
+| Categoría | Aciertos | Omisiones |
+| --- | ---: | ---: |
+| Ubicación | 3 | 1 |
+| Contactos | 4 | 0 |
+| Terceros | 5 | 1 |
+| Publicidad | 4 | 2 |
+| Entrenamiento de IA | 4 | 0 |
+| Biometría | 4 | 0 |
+| Retención | 1 | 3 |
+
+T07, T14 y S07 omitieron prácticas de retención. T04 y S04 perdieron una de sus dos etiquetas esperadas, igual que T08 y S08. El tercer conjunto confirma que la retención expresada de forma amplia y las cláusulas con dos prácticas simultáneas siguen siendo puntos débiles. Estas cifras describen solo esta pequeña muestra sintética; no validan el análisis de políticas reales ni documentos completos.
+
 ## Siguiente evaluación
 
-Revisar las 11 omisiones y luego reunir un conjunto etiquetado de políticas públicas diversas con permiso para citar fragmentos. Pedir a otra persona que revise las etiquetas e informar precisión y cobertura por idioma con ejemplos de desacuerdos. Conservar ambos conjuntos sintéticos como pruebas de regresión; cualquier cambio del prompt deberá evaluarse con otro conjunto intacto.
+Revisar las omisiones del segundo y tercer conjunto y luego reunir un conjunto etiquetado de políticas públicas diversas con permiso para citar fragmentos. Pedir a otra persona que revise las etiquetas e informar precisión y cobertura por idioma con ejemplos de desacuerdos. Conservar los tres conjuntos sintéticos como pruebas de regresión; cualquier cambio del prompt deberá evaluarse con otro conjunto intacto.
