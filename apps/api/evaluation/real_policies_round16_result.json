@@ -1,0 +1,357 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 363,
+  "Overall": {
+    "tp": 17,
+    "fp": 4,
+    "fn": 3
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "ai-training": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 2,
+      "fp": 2,
+      "fn": 0
+    },
+    "location": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "third-parties": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "pinterest_en",
+      "URL": "https://policy.pinterest.com/en/privacy-policy",
+      "Locale": "en",
+      "SourceSHA256": "a184a2ffac32ee2b73622a88fd2d9999b7b088f2437336b05bd0039160558aa6",
+      "Characters": 49591,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-029",
+          "quoteSha256": "c1aedf2b2e604d48894cdb2eb1d57541b0b48e70217b33fa52c1d675eb5a2a11",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-017",
+          "quoteSha256": "f68385d96790e94f7ebb2b3de046433fa34ab3a6eba294800204e704bddd5c1c",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-046",
+          "quoteSha256": "2d31c7b5134f551688624a881a5a05ab2f82245917a0540240a0c0712b1cd3f4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-019",
+          "quoteSha256": "10b3248b0fcae1698d48c2d9e53cd07b13de6bd9ac0f6b2c7c018c7f7c1f8449",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-032",
+          "quoteSha256": "c68cca0b81dd4eb77ac62c36aa5cb07a4f071c7b9493e275687d405d0e3c9022",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Pinterest Privacy Policy",
+        "profile": "general",
+        "documentHash": "7b56c041310f1e8dd5872091c099472b899f4e45c4a98bf8b7eb5a3ca822037d",
+        "clauseCount": 320,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 40
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 35
+      },
+      "DurationSeconds": 87
+    },
+    {
+      "ID": "pinterest_es",
+      "URL": "https://policy.pinterest.com/es/privacy-policy",
+      "Locale": "es",
+      "SourceSHA256": "0ea94a517316ac60af3c79d0bd9d3aec483fc2677a2217c16b089c39524b5918",
+      "Characters": 58404,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "biometric",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-122",
+          "quoteSha256": "119dd52318a4ee2e41779b71f8a7c21961cd3210e7ea1d653c43359bd55e7f98",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-038",
+          "quoteSha256": "b2d6687ab168dc1452ca70a545619a0236e59a922d65a62faf83e449dbcd7575",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-035",
+          "quoteSha256": "725828da6d2e65a1b462cc40c9365eee733421db819762324ce9544b68be86d8",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-055",
+          "quoteSha256": "178a89014689a031ead1ba97ab922d0247ad246385522ae097282577fb587773",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-025",
+          "quoteSha256": "0e6ef1389eec165301fa62a2bf37931010f80649adc5ba6d831ac3efd136833c",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-041",
+          "quoteSha256": "808348d2865c1b2ff983386e6e47f30515c12a5c36974881b1b3c6137abbf0de",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-318",
+          "quoteSha256": "ae8a29ea48740057cc6b0d7310ddc20df73b483e87e15e594e218480b6d851a7",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de Pinterest",
+        "profile": "general",
+        "documentHash": "7b5532a2905c6cd6d65e1058a86bca6fba1fabb14849db3f39bbceda5fbad0ed",
+        "clauseCount": 352,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 7,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 51
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 7,
+        "citationsRejected": 44
+      },
+      "DurationSeconds": 122
+    },
+    {
+      "ID": "slack_en",
+      "URL": "https://slack.com/trust/privacy/privacy-policy",
+      "Locale": "en",
+      "SourceSHA256": "87332d8173c62cb7dd33864b95a920a68ea4432c40ad76e24fb4bcfc1a959537",
+      "Characters": 39142,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-043",
+          "quoteSha256": "3c5f5e82ac4e38d9fade2d8520a0c0b242dce4d602adac78ec0a115bf08482b4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-038",
+          "quoteSha256": "34ddece85e5c1c5d109e251d45d5a06d9abd813d7e16f62449cc5476b9649ee6",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-050",
+          "quoteSha256": "72811bd3d3a1ebc1466cc35e7776a9deece17e27526e53f54eddf47fe4fe2683",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-102",
+          "quoteSha256": "bea8049f70769982652a9113d42f1e71e6880899bf26f41dfff23f80c17c5e23",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-144",
+          "quoteSha256": "5ae16c05a7a16081743a6f3614ea06436add7725fbf0c3968f0060041e9bd6e8",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Slack Privacy Policy",
+        "profile": "general",
+        "documentHash": "0b4ca0a5805bd11fb82af3f30d90ac4460c82c5c261450bb8ca9478084dac209",
+        "clauseCount": 212,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 21
+      },
+      "Score": 92,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 16
+      },
+      "DurationSeconds": 67
+    },
+    {
+      "ID": "slack_es",
+      "URL": "https://slack.com/intl/es-es/trust/privacy/privacy-policy",
+      "Locale": "es",
+      "SourceSHA256": "bcfb3ad5f31f2ca1e39cc647fdb7b6c97c2f76b396ebd1f6291febb9fb52ede1",
+      "Characters": 46335,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "biometric",
+        "contacts",
+        "location",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-076",
+          "quoteSha256": "e8393b018271a84a196ee77bc3a1804cf2ab10fb9597283e07e731baf427a4e9",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-043",
+          "quoteSha256": "c2a9f8a235987807c30a255f2c9e81fef733da4e9c389660ad95f2c03d0cc110",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-038",
+          "quoteSha256": "b693d38decec39bdf8ed212848970e9c152f674eb03818f0b205812b0e3b19d4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-050",
+          "quoteSha256": "32f41d1b3a13e1e8d3ebc4d048cd126fb9f5ed19bf8d92884d2322b97d82b7c6",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de Privacidad de Slack",
+        "profile": "general",
+        "documentHash": "8025de411bf0682ff173086c202bf47cd96546dadc382c40bdf1d625734b1ce8",
+        "clauseCount": 234,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 4,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 26
+      },
+      "Score": 96,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 4,
+        "citationsRejected": 22
+      },
+      "DurationSeconds": 85
+    }
+  ]
+}
