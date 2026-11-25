@@ -1,0 +1,348 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 192,
+  "Overall": {
+    "tp": 17,
+    "fp": 3,
+    "fn": 1
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 2,
+      "fp": 2,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 2,
+      "fp": 1,
+      "fn": 0
+    },
+    "location": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "third-parties": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "dropbox_en",
+      "URL": "https://www.dropbox.com/en/privacy",
+      "Locale": "en",
+      "SourceSHA256": "55677f92a2f0af289f0b3b953da248cc0a11a15c5baf02c3f3495b0e4e972d9c",
+      "Characters": 17774,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-028",
+          "quoteSha256": "b3124481ea479b499779d58a70c179f261abf9e389ff2a01ca6dddd980b1c272",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-014",
+          "quoteSha256": "f2666f99493015260481d49c1e62739d0845cf76438036a3337a0a270a1445af",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-012",
+          "quoteSha256": "fe05c64fd9daa43972bd6d4c7c4021afb9b1f6ef377d6b3cf8d50f49d09c5f6b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-023",
+          "quoteSha256": "108c5d2b75cf4b922c1a2667871f44ec77403c685576870bf8370fe89f4371fa",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-051",
+          "quoteSha256": "42ab38df315c546694ac051cc19087da7aba6bf0dd6b78521fc150d91791947d",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Dropbox Privacy Policy",
+        "profile": "general",
+        "documentHash": "e374eac7b6a3b016051be320123a40310ab4cf36c0d1ac1eb2f0aee6805a3e25",
+        "clauseCount": 77,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 6
+      },
+      "Score": 90,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 1
+      },
+      "DurationSeconds": 25
+    },
+    {
+      "ID": "dropbox_es",
+      "URL": "https://www.dropbox.com/es/privacy",
+      "Locale": "es",
+      "SourceSHA256": "141a944453aee2eb563480f4f4aabef2bfa46d83e6704f761dafb2d98bd990cd",
+      "Characters": 21270,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-034",
+          "quoteSha256": "7002a67a0c5db670cfed3a89965e509d28ae12f95cc58e977b7583fd67e8294b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-015",
+          "quoteSha256": "99a2fc327f9322c5993202901be6030291108e22f3b488ae53f2be73feeee599",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-013",
+          "quoteSha256": "1b7d37203d1182b5bf6028b21a8ca83d9c13cfec94394020533d149ff403e7bb",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-021",
+          "quoteSha256": "4a6d3939658cf122066254bb1ffea4beceb3ed8ba856b89dfb298fc1470a1148",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-061",
+          "quoteSha256": "71698f1b9815feb43209d1acc6171cd6a5ad0223b85870e67c89bccf69cbd64b",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de Dropbox",
+        "profile": "general",
+        "documentHash": "b8b5ecac80bee849a3a1fb0f4300c42dfc088ff3902eba5d9a5117d95e2b0eb1",
+        "clauseCount": 93,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 5
+      },
+      "Score": 94,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 0
+      },
+      "DurationSeconds": 28
+    },
+    {
+      "ID": "github_en",
+      "URL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+      "Locale": "en",
+      "SourceSHA256": "9406a118982b941facb8c3bf816a43d7e4d0f96037fb316fc89e0e85d2568249",
+      "Characters": 40790,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-061",
+          "quoteSha256": "b95dacf9c3035768487df72aa30029cf421e08e266fa3426ab998bf78da28eed",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-031",
+          "quoteSha256": "b755cc53984e760f2e023b6acb8b51bcbb69fcf9540b4fd36ad4507a53099480",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-049",
+          "quoteSha256": "9e996e975c8f322b3ca7ea3474156ad8d91efb8f6a88b83ddcc2587359647d57",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-204",
+          "quoteSha256": "3d4ed0d339ae8fa930277328c47e5ca494058372a000528ddc4a8034463104b4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-166",
+          "quoteSha256": "4016cd080150340e4eb0700c4c8d69d3ee440aab2ee79d8de306f973be979ad8",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "GitHub General Privacy Statement",
+        "profile": "general",
+        "documentHash": "a4dd6e086f822198d51f306c68cbb90407e916a7dee98de108d0089bd610dcce",
+        "clauseCount": 227,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 22
+      },
+      "Score": 98,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 17
+      },
+      "DurationSeconds": 62
+    },
+    {
+      "ID": "github_es",
+      "URL": "https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement",
+      "Locale": "es",
+      "SourceSHA256": "a34ab905913eabd0de10ad0fc0c7a20bb834d3aadc2e70714a5c539b3110a383",
+      "Characters": 47638,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-039",
+          "quoteSha256": "27a9dd36e14f8750581ee056157feb27713ba23ca8872767b676ee65eae64714",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-035",
+          "quoteSha256": "6d1800debcd5313ff5e359b8f2ac86aa797b4075a0f5be629ce4255daf767748",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-053",
+          "quoteSha256": "53ccb31867d0345c0c634b144cdf392dac02a8443de3a8bf24fde709f261b8d4",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-144",
+          "quoteSha256": "2952dbeb22e92ca8d325f848695042d023673bd6787f84de1bb9b84e14b36375",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-093",
+          "quoteSha256": "3e816678ac06be581d79c5a1a184e3a3fe3d151d235ce94099cc30bfc83464a1",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Declaración de privacidad general de GitHub",
+        "profile": "general",
+        "documentHash": "4e9548bec03d411686ae672f35b1c33b2c8d753e7f22938ee8c2baa97e6eed84",
+        "clauseCount": 228,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 5,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 21
+      },
+      "Score": 96,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 5,
+        "citationsRejected": 16
+      },
+      "DurationSeconds": 75
+    }
+  ]
+}
