@@ -1,0 +1,20 @@
+# Dependencies and builds
+node_modules/
+.next/
+dist/
+coverage/
+*.exe
+*.test
+*.tsbuildinfo
+.cache/
+
+# Environment and local state
+.env
+.env.local
+!.env.example
+.DS_Store
+Thumbs.db
+
+# Impeccable review output
+.impeccable/review/
+
