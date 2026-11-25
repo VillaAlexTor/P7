@@ -1,0 +1,240 @@
+{
+  "model": "qwen3:4b-instruct",
+  "cases": 20,
+  "durationSeconds": 28,
+  "overall": {
+    "tp": 16,
+    "fp": 0,
+    "fn": 4
+  },
+  "byCategory": {
+    "advertising": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "location": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 1
+    },
+    "retention": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "third-parties": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "outcomes": [
+    {
+      "id": "R8AE01",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE02",
+      "expected": [
+        "contacts"
+      ],
+      "predicted": [
+        "contacts"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE03",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [
+        "retention"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE04",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE05",
+      "expected": [
+        "biometric"
+      ],
+      "predicted": [
+        "biometric"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE06",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE07",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE08",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE09",
+      "expected": [
+        "location"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AE10",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS01",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS02",
+      "expected": [
+        "contacts"
+      ],
+      "predicted": [
+        "contacts"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS03",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [
+        "retention"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS04",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS05",
+      "expected": [
+        "biometric",
+        "third-parties"
+      ],
+      "predicted": [
+        "biometric"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS06",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS07",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS08",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS09",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8AS10",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    }
+  ]
+}
