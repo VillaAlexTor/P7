@@ -1,0 +1,21 @@
+id	locale	text	expected
+R6HE01	en	someone you know has your phone number saved in their device’s address book and chooses to upload their contacts.	contacts
+R6HE02	en	Contacts may be accessed to back up, restore, and sync your contacts.	contacts
+R6HE03	en	Apple’s advertising platform might use the current location of your device to provide you with geographically-targeted ads on the App Store	location,advertising
+R6HE04	en	We use the IP address in order to approximate your location because MDN Plus is currently only available in certain countries.	location
+R6HE05	en	We do not train and have never trained Adobe Firefly on user content.	-
+R6HE06	en	we maintain your list of friends until you ask us to delete them.	retention
+R6HE07	en	When you create an avatar in Google Flow and Gemini, your face and voice data are recorded and securely stored in your Google Account.	biometric
+R6HE08	en	OpenAI uses service providers to help operate its services, including hosting, cloud infrastructure, support, safety, and email delivery.	third-parties
+R6HE09	en	Microsoft is not storing any copy of biometrics inside or outside of your device	-
+R6HE10	en	OpenAI does not sell your data or share your ChatGPT conversations with advertisers or marketing partners.	-
+R6HS01	es	OpenAI puede tratar tu número de teléfono si alguien que conoces lo tiene guardado en la agenda de su dispositivo y decide subir sus contactos.	contacts
+R6HS02	es	Puede acceder a Teléfono en segundo plano para importar contactos de la tarjeta SIM y verificar el número de teléfono asociado a tu cuenta	contacts
+R6HS03	es	la plataforma de publicidad de Apple use la ubicación actual de este para brindarte anuncios orientados geográficamente en App Store y Apple News.	location,advertising
+R6HS04	es	No analizamos su contenido para entrenar modelos de IA generativa, a menos que decida enviar contenido al mercado de Adobe Stock.	-
+R6HS05	es	Los datos de los clientes nunca salen de la infraestructura controlada por Slack y no se utilizan para entrenar grandes modelos de lenguaje (LLM).	-
+R6HS06	es	Con tu permiso, recopilaremos y usaremos tu actividad de exploración desde Microsoft Edge para personalizar la publicidad	advertising
+R6HS07	es	Para ver las sugerencias meteorológicas de tu ubicación en la barra de direcciones, Firefox utiliza tu dirección IP para determinar tu ubicación aproximada.	location
+R6HS08	es	OpenAI puede usar los chats y la información recordada para mejorar los modelos si está activada la opción Mejorar el modelo para todos.	ai-training
+R6HS09	es	Solo las personas que elijas pueden ver tu ubicación. Puedes elegir compartir tu ubicación con todos los amigos que has vuelto a añadir	location
+R6HS10	es	Compartimos contenido con un grupo selecto de proveedores de confianza que nos ayudan a prestar nuestros servicios.	third-parties
