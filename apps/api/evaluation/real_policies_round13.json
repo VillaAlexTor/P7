@@ -1,0 +1,55 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Official complete HTML policy content extracted by scripts/prepare-real-policies-round13.py; one reviewer froze document-category labels and questions before inference; full text stays in gitignored .cache/real_policies_round13.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "An optional practice is affirmative when the notice says the service performs it after user choice or consent.",
+    "OpenAI explicitly describes optional device-address-book upload, user-content model training, and personalized ads for Free/Go users in the retrieved July 30, 2026 policy text.",
+    "TikTok explicitly describes optional phone-book sync, model training from information collected through the platform, and interest-based ads with consent in its November 30, 2025 EEA notice.",
+    "Biometric requires a physical or behavioral identifier used to recognize a person. TikTok's face/body detection for effects and its collection of keystroke rhythms do not explicitly affirm identity recognition; OpenAI's age/identity-verification vendor mention does not specify a biometric identifier."
+  ],
+  "auditQuestions": [
+    {"id": "O1", "en": "Does optional OpenAI contact connection upload the device address book?", "es": "¿La conexión opcional de contactos de OpenAI carga la agenda del dispositivo?", "category": "contacts", "reference": "yes"},
+    {"id": "O2", "en": "Can user content be used to train the models that power ChatGPT?", "es": "¿Puede utilizarse contenido del usuario para entrenar los modelos de ChatGPT?", "category": "ai-training", "reference": "yes"},
+    {"id": "O3", "en": "Does this OpenAI policy affirm personalized ads for some users?", "es": "¿Esta política de OpenAI confirma anuncios personalizados para algunos usuarios?", "category": "advertising", "reference": "yes"},
+    {"id": "O4", "en": "Does the notice affirm biometric identity recognition by OpenAI?", "es": "¿El aviso confirma reconocimiento biométrico de identidad por OpenAI?", "category": "biometric", "reference": "not-established"},
+    {"id": "T1", "en": "Does optional TikTok contact sync collect the device phone book?", "es": "¿La sincronización opcional de TikTok recoge la agenda del dispositivo?", "category": "contacts", "reference": "yes"},
+    {"id": "T2", "en": "Does TikTok describe training machine-learning models with platform information?", "es": "¿TikTok describe entrenamiento de modelos con información de la plataforma?", "category": "ai-training", "reference": "yes"},
+    {"id": "T3", "en": "Does TikTok serve interest-based ads when permitted?", "es": "¿TikTok muestra anuncios basados en intereses cuando está permitido?", "category": "advertising", "reference": "yes"},
+    {"id": "T4", "en": "Does detecting faces for effects establish biometric identity recognition?", "es": "¿Detectar rostros para efectos demuestra reconocimiento biométrico de identidad?", "category": "biometric", "reference": "not-established"}
+  ],
+  "policies": [
+    {
+      "id": "openai_en", "title": "OpenAI Privacy Policy", "locale": "en",
+      "url": "https://openai.com/policies/privacy-policy/",
+      "characters": 22484, "sha256": "84542bcf86fde0dbf46d742e0a224a373f2284558658287359db79cfe1ab5582",
+      "expected": ["location", "contacts", "third-parties", "advertising", "ai-training", "retention"],
+      "referenceLines": {"location": 45, "contacts": 33, "third-parties": 85, "advertising": 65, "ai-training": 79, "retention": 103},
+      "contextLines": {"biometric": 35}
+    },
+    {
+      "id": "openai_es", "title": "Política de privacidad de OpenAI", "locale": "es",
+      "url": "https://openai.com/es-419/policies/privacy-policy/",
+      "characters": 25843, "sha256": "a241f4a7bbe8b963c25349bee0e7213d5a456deab2fb7f427f1afbed42ccd3fd",
+      "expected": ["location", "contacts", "third-parties", "advertising", "ai-training", "retention"],
+      "referenceLines": {"location": 45, "contacts": 33, "third-parties": 85, "advertising": 65, "ai-training": 79, "retention": 103},
+      "contextLines": {"biometric": 35}
+    },
+    {
+      "id": "tiktok_en", "title": "TikTok Privacy Policy (EEA)", "locale": "en",
+      "url": "https://www.tiktok.com/legal/page/eea/privacy-policy/en",
+      "characters": 46731, "sha256": "f54dc279482377559ab3fd807f3a037767b906891ae7d11a505d8008c72b117e",
+      "expected": ["location", "contacts", "third-parties", "advertising", "ai-training", "retention"],
+      "referenceLines": {"location": 33, "contacts": 19, "third-parties": 95, "advertising": 299, "ai-training": 75, "retention": 381},
+      "contextLines": {"biometric": 37}
+    },
+    {
+      "id": "tiktok_es", "title": "Política de privacidad de TikTok (EEE)", "locale": "es",
+      "url": "https://www.tiktok.com/legal/page/eea/privacy-policy/es",
+      "characters": 53600, "sha256": "6f91c02d0739808a508676a2730f2de069c96607cc8c0b838fa1dfc1306210dd",
+      "expected": ["location", "contacts", "third-parties", "advertising", "ai-training", "retention"],
+      "referenceLines": {"location": 33, "contacts": 19, "third-parties": 95, "advertising": 299, "ai-training": 75, "retention": 381},
+      "contextLines": {"biometric": 37}
+    }
+  ]
+}
