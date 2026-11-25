@@ -118,7 +118,7 @@ func readExamples(path string) ([]example, error) {
 	for _, row := range rows[1:] {
 		expected := map[string]bool{}
 		for _, label := range strings.Split(row[3], ",") {
-			if label = strings.TrimSpace(label); label != "" {
+			if label = strings.TrimSpace(label); label != "" && label != "-" {
 				expected[label] = true
 			}
 		}

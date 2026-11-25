@@ -13,12 +13,12 @@ E11	en	We build an interest profile to select personalized advertising.	advertis
 E12	en	User conversations improve the weights of our generative model.	ai-training
 E13	en	A fingerprint scan is converted into a template for sign-in.	biometric
 E14	en	We keep your information for as long as necessary for business purposes.	retention
-E15	en	We do not collect your location or GPS coordinates.	
-E16	en	We never access your contacts or address book.	
-E17	en	We do not share personal data with third parties.	
-E18	en	We do not use your data for targeted advertising or model training.	
-E19	en	We delete all account records within 30 days after your request.	
-E20	en	This policy mentions facial recognition only to state that it is not used.	
+E15	en	We do not collect your location or GPS coordinates.	-
+E16	en	We never access your contacts or address book.	-
+E17	en	We do not share personal data with third parties.	-
+E18	en	We do not use your data for targeted advertising or model training.	-
+E19	en	We delete all account records within 30 days after your request.	-
+E20	en	This policy mentions facial recognition only to state that it is not used.	-
 S01	es	Recopilamos tu ubicación precisa mediante GPS durante el uso de la aplicación.	location
 S02	es	La aplicación carga tu libreta de contactos para encontrar amistades.	contacts
 S03	es	Compartimos identificadores de cuenta con proveedores externos de analítica.	third-parties
@@ -33,9 +33,9 @@ S11	es	Construimos un perfil de intereses para publicidad dirigida.	advertising
 S12	es	El contenido que envías mejora los parámetros del modelo generativo.	ai-training
 S13	es	Una huella digital se transforma en plantilla para iniciar sesión.	biometric
 S14	es	Guardamos tu información mientras sea necesaria para nuestros fines comerciales.	retention
-S15	es	No recopilamos ubicación ni coordenadas GPS.	
-S16	es	Nunca accedemos a tus contactos ni a la libreta de direcciones.	
-S17	es	No compartimos datos personales con terceros.	
-S18	es	No usamos tus datos para publicidad dirigida ni para entrenar modelos.	
-S19	es	Eliminamos todos los registros de la cuenta en treinta días tras tu solicitud.	
-S20	es	Esta política menciona reconocimiento facial solo para aclarar que no se utiliza.	
+S15	es	No recopilamos ubicación ni coordenadas GPS.	-
+S16	es	Nunca accedemos a tus contactos ni a la libreta de direcciones.	-
+S17	es	No compartimos datos personales con terceros.	-
+S18	es	No usamos tus datos para publicidad dirigida ni para entrenar modelos.	-
+S19	es	Eliminamos todos los registros de la cuenta en treinta días tras tu solicitud.	-
+S20	es	Esta política menciona reconocimiento facial solo para aclarar que no se utiliza.	-
