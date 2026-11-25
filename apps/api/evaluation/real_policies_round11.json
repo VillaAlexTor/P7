@@ -1,0 +1,43 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Complete official HTML main element extracted by scripts/prepare-real-policies-round11.py; single-reviewer document-category labels frozen before inference; source text remains in gitignored .cache/real_policies_round11.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "Contacts requires device address-book access, not ordinary contact information.",
+    "Spotify face-photo verification against an identity document is counted as biometric use; facial age estimation alone would not establish identity recognition.",
+    "Spotify's development and training of algorithmic and machine-learning models is counted as ai-training because the same purpose table lists user, usage, voice, message, and service data.",
+    "Applebot crawling publicly available web material is not counted as training with private Apple user data; the notice expressly denies that private personal data is used for foundational-model training."
+  ],
+  "policies": [
+    {
+      "id": "apple_en", "title": "Apple Privacy Policy", "locale": "en",
+      "url": "https://www.apple.com/legal/privacy/en-ww/",
+      "characters": 28051, "sha256": "ec9c6e178521b9081642a5ac9b9eac211b158ce29bcc0580e4a7088019f9b1c0",
+      "expected": ["location", "third-parties", "advertising", "retention"],
+      "referenceLines": {"location": 65, "third-parties": 117, "advertising": 167, "retention": 113},
+      "negativeControlLines": {"contacts": 55, "ai-training": 89}
+    },
+    {
+      "id": "apple_es", "title": "Política de Privacidad de Apple", "locale": "es",
+      "url": "https://www.apple.com/legal/privacy/es/",
+      "characters": 32122, "sha256": "a4e187b62bf9a3ed0bc3b6d9a8eaf592573375a1d820b8d9dfff506179d6616e",
+      "expected": ["location", "third-parties", "advertising", "retention"],
+      "referenceLines": {"location": 59, "third-parties": 111, "advertising": 161, "retention": 107},
+      "negativeControlLines": {"contacts": 49, "ai-training": 83}
+    },
+    {
+      "id": "spotify_en", "title": "Spotify Privacy Policy", "locale": "en",
+      "url": "https://www.spotify.com/uk/legal/privacy-policy/",
+      "characters": 43615, "sha256": "be7bd79c6ba5ecb10f100ac1359fc619a8f46f1d64e71661bc8296ca85f56d37",
+      "expected": ["location", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+      "referenceLines": {"location": 459, "third-parties": 1011, "advertising": 237, "ai-training": 689, "biometric": 431, "retention": 1159}
+    },
+    {
+      "id": "spotify_es", "title": "Política de privacidad de Spotify", "locale": "es",
+      "url": "https://www.spotify.com/es/legal/privacy-policy/",
+      "characters": 51336, "sha256": "19cd08258383564856ee8f5b95d00e92eaf873a16334fc82d4c8cd0851f1ae11",
+      "expected": ["location", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+      "referenceLines": {"location": 457, "third-parties": 1007, "advertising": 235, "ai-training": 685, "biometric": 429, "retention": 1155}
+    }
+  ]
+}
