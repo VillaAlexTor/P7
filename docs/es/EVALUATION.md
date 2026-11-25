@@ -235,3 +235,25 @@ cd apps/api
 go run ./cmd/evaluate -data evaluation/real_round7a.tsv
 go run ./cmd/evaluate -data evaluation/real_round7b.tsv
 ```
+
+## 25 de noviembre: octava ronda con fuentes reales
+
+Probamos el prompt `b821d56` sin cambios y el modelo local `qwen3:4b-instruct` con otros **40 fragmentos breves y literales de 40 URL oficiales no utilizadas antes**: 20 ingleses y 20 españoles. Confirmamos en Git el texto, las etiquetas y las URL antes de la primera inferencia. El verificador de fuentes cubre ahora 260 casos y 260 enlaces, y limita cada cita a 25 palabras. Algunas URL son versiones idiomáticas del mismo artículo; no representan 40 políticas independientes. No cambiamos el prompt ni los pesos del modelo después de ver los resultados.
+
+| Primera corrida | Etiquetas acertadas | Falsos positivos | Omisiones | Precisión | Cobertura | Casos exactos |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `real_round8a.tsv` | 16 | 0 | 4 | 100,0 % | 80,0 % | 16/20 |
+| `real_round8b.tsv` | 8 | 1 | 0 | 88,9 % | 100,0 % | 19/20 |
+| **Ambos conjuntos nuevos** | **24** | **1** | **4** | **96,0 %** | **85,7 %** | **35/40** |
+
+En inglés hubo 12 etiquetas acertadas, un falso positivo y dos omisiones: 92,3 % de precisión, 85,7 % de cobertura y 17/20 casos exactos. En español hubo 12 aciertos, ningún falso positivo y dos omisiones: 100,0 % de precisión, 85,7 % de cobertura y 18/20 casos exactos. Las corridas tardaron 28 y 21 segundos en el equipo local.
+
+Las cuatro omisiones fueron R8AE08 (personalización publicitaria con datos de la cuenta), R8AE09 (información de ubicación con plazo fijo de borrado), R8AS05 (proveedor externo que procesa datos faciales) y R8AS08 (actividad guardada en una cuenta sin plazo de borrado). R8BE08 fue el único falso positivo: confundió el inicio de sesión con Windows Hello con recopilación biométrica por el proveedor. La etiqueta de R8AE09 depende del contexto porque el fragmento breve describe el borrado de información de ubicación y no su recopilación inicial; otra persona debería revisarla. Esta ronda no contiene un caso afirmativo de entrenamiento de IA, aunque sí controles negativos de entrenamiento.
+
+La ronda anterior de 40 casos dio 73,7 % de precisión y 70,0 % de cobertura. El resultado mayor de ahora es **variación entre muestras con el mismo clasificador**, no una mejora causada por entrenamiento. La cobertura nueva sigue por debajo del 90 %. Una sola persona asignó las etiquetas y los fragmentos seleccionados no demuestran fiabilidad con políticas completas. Los hallazgos del producto deben mantenerse bajo revisión humana. Los informes de máquina confirmados son `real_round8a_result.json` y `real_round8b_result.json`, junto a los TSV de casos y fuentes. Para repetir con Ollama activo:
+
+```powershell
+cd apps/api
+go run ./cmd/evaluate -data evaluation/real_round8a.tsv
+go run ./cmd/evaluate -data evaluation/real_round8b.tsv
+```
