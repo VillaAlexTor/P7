@@ -257,3 +257,27 @@ cd apps/api
 go run ./cmd/evaluate -data evaluation/real_round8a.tsv
 go run ./cmd/evaluate -data evaluation/real_round8b.tsv
 ```
+
+## November 25: ninth real-source round (final session of the day)
+
+We froze the prompt from `b821d56` and ran the installed local `qwen3:4b-instruct` model once on **40 previously unseen excerpts from 40 new official URLs**. Cases, reference labels, and URLs were committed before inference (`9b973ee`–`e74f664`). The sources are substantive privacy policies and product notices from Google, Spotify, Microsoft, Mozilla, and Apple. Each set contains ten English and ten Spanish excerpts. Source text is quoted verbatim in spans of at most 25 words; the checker now covers **300 labeled excerpts and 300 source links**. Some URLs are translations of one underlying notice, so this is not a sample of 40 independent policies.
+
+| First run | True positives | False positives | Missed labels | Precision | Recall | Exact cases | Time |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `real_round9a.tsv` | 19 | 0 | 1 | 100.0% | 95.0% | 19/20 | 30 s |
+| `real_round9b.tsv` | 14 | 0 | 10 | 100.0% | 58.3% | 11/20 | 24 s |
+| **Combined** | **33** | **0** | **11** | **100.0%** | **75.0%** | **30/40** | **54 s** |
+
+English: 17 correct labels, no false positives, five missed labels, **77.3% recall and 15/20 exact cases**. Spanish: 16 correct labels, no false positives, six missed labels, **72.7% recall and 15/20 exact cases**. Precision is 100% in each language *for this small selected sample*, not a general guarantee. By category, advertising was 16/16, AI training 2/2, location 9/10, retention 2/6, and third-party sharing 4/10. Contacts and biometrics were absent and cannot be assessed from this round.
+
+The ten mismatched cases were R9AE09; R9BE03, R9BE04, R9BE07, R9BE10; and R9BS03, R9BS04, R9BS06, R9BS07, R9BS10. The model missed explicit retention language in both Mozilla policy excerpts and the 24-hour deletion in Apple's Find My notice. It also missed several outside processors, including card issuers and health-data recipients. R9AE09 and both Google Analytics excerpts (R9BE03/R9BS03) are somewhat context-sensitive: the short quotes identify third-party cookies or a named external analytics service, but do not spell out every data transfer. We retained the precommitted labels and flag those three for independent adjudication. The other misses remain visible in the raw reports.
+
+**Current state:** this round missed the 90% recall target by a wide margin, despite zero false positives. Round eight's 96.0% precision and 85.7% recall and round seven's 73.7%/70.0% show substantial sample variation under the same classifier. P7 is a usable privacy-review aid with verifiable citations, but findings still need human review and omissions remain possible. We did not retrain model weights, edit the prompt, or change reference labels after seeing these results. One reviewer labeled selected short excerpts; neither inter-reviewer agreement nor whole-document performance has been established.
+
+The raw machine output, including every prediction and rejected-citation count, is committed in `apps/api/evaluation/real_round9a_result.json` and `real_round9b_result.json`. Reproduce with Ollama and `qwen3:4b-instruct` running:
+
+```powershell
+cd apps/api
+go run ./cmd/evaluate -data evaluation/real_round9a.tsv
+go run ./cmd/evaluate -data evaluation/real_round9b.tsv
+```
