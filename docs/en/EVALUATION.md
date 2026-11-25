@@ -210,3 +210,28 @@ The holdout exceeds the selected 90% precision and recall thresholds **on these 
 go run ./cmd/evaluate -data evaluation/real_round6_dev.tsv
 go run ./cmd/evaluate -data evaluation/real_round6_holdout.tsv
 ```
+
+## November 25: forty further real-source checks
+
+We froze the `b821d56` prompt and the installed `qwen3:4b-instruct` model. We selected 40 short excerpts from 40 new official-page URLs, split evenly between English and Spanish and between `real_round7a.tsv` and `real_round7b.tsv`. The labels and source links were committed before inference. The metadata checker covers 220 cases across all real-source sets and enforces at most 25 quoted words per URL. Some English and Spanish URLs are translations of the same underlying article, so 40 URLs do **not** mean 40 independent policies.
+
+| Run | Correct labels | False positives | Missed labels | Precision | Recall | Exact cases |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `real_round7a.tsv`, first run | 8 | 1 | 2 | 88.9% | 80.0% | 17/20 |
+| `real_round7b.tsv`, first run | 6 | 4 | 4 | 60.0% | 60.0% | 13/20 |
+| **Both sets together, first runs** | **14** | **5** | **6** | **73.7%** | **70.0%** | **30/40** |
+| `real_round7b.tsv`, quote-corrected rerun | 6 | 4 | 4 | 60.0% | 60.0% | 13/20 |
+
+The English cases had 9 correct labels, 2 false positives, and 2 misses (81.8% precision and recall; 16/20 exact cases). Spanish had 5 correct labels, 3 false positives, and 4 misses (62.5% precision, 55.6% recall; 14/20 exact cases). Across both sets, 10 cases differed from their reference labels. The first runs took 23 and 21 seconds respectively on the local machine; the corrected rerun took 22 seconds.
+
+The misses were R7AE10 (archived chats remain saved), R7AS05 (location-based travel notifications), R7BE07 (conditional location access by My AI), R7BS06 (location badges), R7BS09 (customer lists for ad audiences), and R7BS10 (ad personalization from broader ChatGPT signals). False positives were R7AS07 and R7BE09 (trusted-contact details mistaken for device address-book access), R7BE03 and R7BS08 (device biometric sign-in mistaken for provider biometric collection), and R7BS09 (advertising audiences mistaken for device contacts). R7AS05, R7BS06, and R7BS10 use short fragments whose interpretation depends partly on page context; a second annotator should review them. The reference labels were not changed after seeing model output.
+
+After the first runs, we discovered that R7BS01's Spanish quotation matched another regional version but not its recorded `es-es` URL. We corrected **only its wording** to the literal text on that recorded official page and reran set B. Its prediction and scores were unchanged. The first-run B result is retained separately and is not byte-for-byte reproducible from the corrected TSV. An earlier parser-only change to R7AS04 removed quote marks before any successful model run. The raw reports are in `real_round7a_result.json`, `real_round7b_initial_result.json`, and `real_round7b_result.json` beside the datasets.
+
+**Candid assessment:** this new round falls well below 90% precision and recall. The prior round-six holdout's 100%/94.1% result was sample-specific and does not generalize to these selected clauses. The present classifier is useful as a review aid, but its findings should require human checking; we should not claim it is 90% reliable on unseen policies. No model weights were trained in this round, and the prompt was not tuned after these results. These short excerpts still do not test complete policy documents. Reproduce with Ollama running:
+
+```powershell
+cd apps/api
+go run ./cmd/evaluate -data evaluation/real_round7a.tsv
+go run ./cmd/evaluate -data evaluation/real_round7b.tsv
+```
