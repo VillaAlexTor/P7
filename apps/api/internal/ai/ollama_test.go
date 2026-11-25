@@ -41,7 +41,7 @@ func TestOllamaUsesStructuredOutput(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(findings) != 1 || findings[0].Category != "location" || client.Model() != "test-model" || requests != 5 {
+	if len(findings) != 1 || findings[0].Category != "location" || client.Model() != "test-model" || requests != 7 {
 		t.Fatalf("unexpected result: %#v", findings)
 	}
 }
