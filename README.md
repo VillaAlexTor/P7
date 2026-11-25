@@ -1,10 +1,18 @@
-# p7
+# p7 — Privacy. Decoded.
 
-**Privacy. Decoded.**
+<p align="center"><img src="docs/assets/devpost-thumbnail-p7.png" width="360" alt="p7 — Privacy. Decoded." /></p>
 
-**English** · [Español](README.es.md)
+**A bilingual, evidence-backed privacy policy reader powered by a local LLM.**
 
-p7 turns privacy policies into personal, explainable, evidence-backed assessments. The MVP uses a local Ollama LLM without accounts, a database, API keys, or paid AI credits.
+**English** · [Español](README.es.md) · [Documentation](docs/README.md)
+
+**STEM2Connect hackathon MVP.** Privacy policies are long and hard to compare. p7 turns pasted policy text into a structured, personal reading: declared practices, exact evidence, disclosure gaps, possible impacts, and concrete actions. It is a working local application designed for human review.
+
+## Quick start and demo
+
+With Docker Desktop running, use `iniciar.cmd` on Windows or run `docker compose up --build --wait` in a terminal. The first launch downloads the local model and may take several minutes. Open **http://localhost:3000**, choose a language and profile, click **Load example**, then **Analyze policy**. Review the cited findings, data map, gaps, impact scenarios, and actions. The included example is fictional; you can also paste your own policy text. The app does not fetch arbitrary URLs.
+
+Stop the stack with `docker compose down`.
 
 ## Seven implemented differentiators
 
@@ -15,6 +23,20 @@ p7 turns privacy policies into personal, explainable, evidence-backed assessment
 5. **Impact Simulation:** explains possible consequences without presenting them as facts.
 6. **Smart Consent:** creates concrete, prioritized actions.
 7. **Privacy for Everyone:** complete interface, examples, and reports in English and Spanish.
+
+## Measured AI evaluation
+
+Cases, official source URLs, and **raw model output** are stored in [apps/api/evaluation](apps/api/evaluation). The [English history](docs/en/EVALUATION.md) and [Spanish history](docs/es/EVALUATION.md) explain every round and annotation caveats.
+
+| Frozen classifier, new official excerpts | Precision | Recall | Exact cases |
+| --- | ---: | ---: | ---: |
+| Round 7 · 40 cases | 73.7% | 70.0% | 30/40 |
+| Round 8 · 40 cases | 96.0% | 85.7% | 35/40 |
+| **Round 9 · 40 cases** | **100.0%** | **75.0%** | **30/40** |
+
+The final round used **40 new official-page URLs** from Google, Spotify, Microsoft, Mozilla, and Apple, evenly split by language. It produced 33 correct labels, no false positives, and 11 missed labels. Third-party sharing and retention were the largest gaps. These are selected short excerpts, some translated versions of one notice, labeled by one reviewer. They do **not** measure full-document performance; observed 100% precision is not a general reliability claim. The prompt and model weights stayed unchanged between rounds. p7 is a review aid, and a person must check findings and possible omissions.
+
+[Cases A](apps/api/evaluation/real_round9a.tsv) · [Sources A](apps/api/evaluation/real_round9a_sources.tsv) · [Raw output A](apps/api/evaluation/real_round9a_result.json) · [Cases B](apps/api/evaluation/real_round9b.tsv) · [Sources B](apps/api/evaluation/real_round9b_sources.tsv) · [Raw output B](apps/api/evaluation/real_round9b_result.json)
 
 ## Stack
 
@@ -55,9 +77,15 @@ Open `http://localhost:3000`, load the example, and run the analysis. The ES/EN 
 
 ## Docker
 
+With Docker Desktop running, execute `iniciar.cmd` from the project root (double-click it or run it in a terminal). It builds the web app and API, starts Ollama, downloads the local model on first use, waits until every service is healthy, and opens `http://localhost:3000`.
+
+You can also start it manually:
+
 ```powershell
-docker compose up --build
+docker compose up --build --wait
 ```
+
+The model is stored in the `ollama-data` volume, so it is not downloaded on every start. Run `docker compose down` to stop the services, or `docker compose down --volumes` to also remove the downloaded model.
 
 ## Automated verification
 
@@ -93,7 +121,7 @@ Profiles: `general`, `student`, `journalist`, `parent`, and `activist`. Locales:
 
 ## AI use
 
-The executable product calls the local `qwen3:4b-instruct` model through Ollama. The model classifies clauses with a constrained JSON schema and proposes exact references. Go rejects unknown categories and quotes that are not contained in the referenced clause, then applies profile weights and calculates the score. ChatGPT and Codex also supported research, scope, architecture, coding, design, tests, and documentation. No API key or secret is stored here.
+The executable product calls the local `qwen3:4b-instruct` model through Ollama in five focused category passes. The model classifies clauses with a constrained JSON schema and proposes exact references. Go rejects unknown categories and quotes that are not contained in the referenced clause, then applies profile weights and calculates the score. When Ollama is unavailable, analysis returns a service error instead of silently substituting a keyword classifier. ChatGPT and Codex also supported research, scope, architecture, coding, design, tests, and documentation. No API key or secret is stored here.
 
 ## Documentation
 
