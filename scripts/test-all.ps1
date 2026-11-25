@@ -5,7 +5,7 @@ $TaskCache = Join-Path $ProjectRoot ".cache"
 New-Item -ItemType Directory -Force (Join-Path $TaskCache "go-build") | Out-Null
 New-Item -ItemType Directory -Force (Join-Path $TaskCache "tmp") | Out-Null
 
-Write-Host "[1/6] Go tests"
+Write-Host "[1/7] Go tests"
 Push-Location (Join-Path $ProjectRoot "apps/api")
 $env:GOCACHE = Join-Path $TaskCache "go-build"
 $env:GOTMPDIR = Join-Path $TaskCache "tmp"
@@ -38,26 +38,30 @@ if ($LASTEXITCODE -ne 0) {
 }
 Pop-Location
 
-Write-Host "[2/6] Frontend tests"
+Write-Host "[2/7] Frontend tests"
 Push-Location (Join-Path $ProjectRoot "apps/web")
 npm test
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-Write-Host "[3/6] TypeScript"
+Write-Host "[3/7] TypeScript"
 npm run typecheck
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-Write-Host "[4/6] Production build"
+Write-Host "[4/7] Production build"
 npm run build
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-Write-Host "[5/6] Production dependency audit"
+Write-Host "[5/7] Production dependency audit"
 npm audit --omit=dev --audit-level=high
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 Pop-Location
 
-Write-Host "[6/6] Documentation parity"
+Write-Host "[6/7] Documentation parity"
 node (Join-Path $ProjectRoot "scripts/check-docs.mjs")
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+Write-Host "[7/7] Real evaluation source metadata"
+node (Join-Path $ProjectRoot "scripts/check-real-evaluation.mjs")
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "All p7 checks passed." -ForegroundColor Green
