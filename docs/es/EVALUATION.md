@@ -128,3 +128,24 @@ Esto respalda la conclusión de que el proyecto va por buen camino. La muestra e
 ## Siguiente evaluación
 
 Antes de afirmar utilidad en producción, ampliar la muestra de fuentes reales, pedir a otra persona que revise las etiquetas discutidas, medir la latencia con documentos completos e informar precisión y cobertura por idioma. Conservar los seis conjuntos sintéticos y los dos de fuentes reales como pruebas de regresión; cualquier cambio posterior del prompt necesita otro conjunto intacto.
+
+## Seguimiento del 25 de noviembre: objetivo del 90 %
+
+Reforzamos las instrucciones del clasificador local `qwen3:4b-instruct` y separamos ubicación, contactos y biometría en consultas individuales. **Esto cambia el prompt y el flujo de inferencia, no los pesos del modelo.** Preparamos otros dos conjuntos bilingües de 20 fragmentos breves cada uno, de páginas oficiales publicadas, con una URL de origen por fragmento. Sus textos, etiquetas y URL están en `evaluation/real_holdout_90*.tsv`. Ambos conjuntos ya son datos de trabajo porque sus errores guiaron cambios posteriores.
+
+| Corrida | Etiquetas acertadas | Falsos positivos | Etiquetas omitidas | Precisión | Cobertura |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Primer conjunto nuevo, primera corrida | 18 | 3 | 0 | 85,7 % | 100,0 % |
+| Segundo conjunto nuevo, primera corrida | 13 | 5 | 3 | 72,2 % | 81,3 % |
+| Segundo conjunto, tras siete consultas enfocadas | 14 | 1 | 2 | 93,3 % | 87,5 % |
+
+Después de la primera corrida acortamos el fragmento R9S01 del primer conjunto para cumplir el límite de 25 palabras citadas. Su etiqueta no cambió; la puntuación inicial no se puede reproducir byte por byte con el archivo confirmado. La primera puntuación del segundo conjunto se registró antes de ajustarlo. La última fila es una repetición sobre datos de trabajo, **no una prueba reservada independiente**. Sus errores restantes son una etiqueta biométrica omitida en una lista que depende del contexto (RFE09), una retención amplia omitida (RFS08) y una etiqueta publicitaria sin sustento cuando solo se menciona compartir datos con socios publicitarios (RFS09). Otra persona debería revisar la etiqueta RFE09 con el contexto original.
+
+Los resultados observados **no** respaldan afirmar 90 % tanto de precisión como de cobertura en fragmentos reales intactos. Cargamos el modelo local más grande `qwen3-coder:latest` para comparar, pero la ejecución dependiente de CPU no completó los 20 fragmentos tras varios minutos; detuvimos esa comparación y no cambiamos el modelo del producto. La siguiente comprobación válida necesita otro conjunto real, intacto y etiquetado de forma independiente, seguido de pruebas con documentos completos y latencia. Estos fragmentos seleccionados no dan confianza estadística ni garantizan exactitud en políticas arbitrarias.
+
+Ejecuta los conjuntos adicionales desde `apps/api`, con Ollama activo:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_holdout_90.tsv
+go run ./cmd/evaluate -data evaluation/real_holdout_90_final.tsv
+```
