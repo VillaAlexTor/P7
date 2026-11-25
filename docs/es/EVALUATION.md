@@ -104,6 +104,27 @@ Las omisiones finales fueron X03 y X23 (pasarelas de pago), X06 y X26 (ritmo de 
 
 Dejamos de cambiar el clasificador cuando el conjunto intacto superó el umbral elegido de **80 % de cobertura** sin falsos positivos en esta corrida. Esto evidencia progreso con cláusulas sintéticas; no significa un 80 % de confianza estadística en su exactitud con políticas reales ni que esté listo para decisiones sin revisión.
 
+## Evaluación con fragmentos de políticas reales
+
+El 25 de noviembre de 2026 reunimos 40 fragmentos breves y literales de políticas de privacidad y explicaciones oficiales publicadas: 20 en inglés y 20 en español. El texto exacto, las etiquetas y las URL de origen están en `evaluation/real_dev.tsv`, `evaluation/real_dev_sources.tsv`, `evaluation/real_holdout.tsv` y `evaluation/real_holdout_sources.tsv`. Las URL permiten contrastar cada fragmento con su página publicada. Una sola persona asignó las etiquetas antes de ejecutar el modelo. Los dos conjuntos usan páginas de origen diferentes; no cambiamos el prompt, el modelo ni el código de clasificación después de preparar cada conjunto. Corregimos una grafía británica, acortamos un fragmento negativo y sustituimos una fuente del conjunto de trabajo que coincidía con el reservado; después repetimos ese conjunto. Ejecutamos una sola vez el conjunto reservado y no lo modificamos.
+
+| Conjunto de fuentes reales | Etiquetas acertadas | Falsos positivos | Etiquetas omitidas | Precisión | Cobertura |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Trabajo, 20 fragmentos | 18 | 1 | 1 | 94,7 % | 94,7 % |
+| **Reservado intacto, 20 fragmentos** | **17** | **0** | **2** | **100,0 %** | **89,5 %** |
+| Ambos conjuntos, 40 fragmentos | 35 | 1 | 3 | 97,2 % | 92,1 % |
+
+En el reservado acertó 8/9 etiquetas inglesas y 9/10 españolas; los tres controles negativos quedaron sin hallazgos. Las omisiones fueron RF06, el uso de la IP por Discord para determinar una región, y RF16, la sincronización periódica de números telefónicos del dispositivo por Discord. RD07 recibió una etiqueta de terceros sin fundamento en el conjunto de trabajo, mientras que RD12 omitió retención amplia. El clasificador congelado de cinco pasadas **superó el umbral de 80 % de cobertura con fragmentos reales publicados sin otro ajuste**, así que detuvimos las iteraciones.
+
+Para reproducirlo desde `apps/api`, con Ollama activo:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_dev.tsv
+go run ./cmd/evaluate -data evaluation/real_holdout.tsv
+```
+
+Esto respalda la conclusión de que el proyecto va por buen camino. La muestra es pequeña, seleccionada y etiquetada por una sola persona; varios fragmentos proceden de la misma empresa. Evaluamos fragmentos breves por separado, no políticas completas, y la salida del modelo local puede variar entre corridas aun con temperatura cero. Los porcentajes **no** garantizan exactitud para cualquier política real. Antes de afirmar fiabilidad hacen falta otra persona que revise las etiquetas, más empresas, pruebas con documentos completos y medidas de latencia.
+
 ## Siguiente evaluación
 
-Antes de afirmar utilidad en producción, reunir un conjunto etiquetado de políticas públicas diversas con permiso para citar fragmentos, pedir a otra persona que revise las etiquetas discutidas, medir la latencia con documentos completos e informar precisión y cobertura por idioma. Conservar los seis conjuntos sintéticos como pruebas de regresión; cualquier cambio posterior del prompt necesita otro conjunto intacto.
+Antes de afirmar utilidad en producción, ampliar la muestra de fuentes reales, pedir a otra persona que revise las etiquetas discutidas, medir la latencia con documentos completos e informar precisión y cobertura por idioma. Conservar los seis conjuntos sintéticos y los dos de fuentes reales como pruebas de regresión; cualquier cambio posterior del prompt necesita otro conjunto intacto.
