@@ -1,0 +1,21 @@
+id	locale	text	expected
+R6DE01	en	We share content with a select group of trusted service providers that help us provide our services.	third-parties
+R6DE02	en	After enabling Find Your Friends, Discord periodically syncs phone numbers from your phone to Discord's servers.	contacts
+R6DE03	en	we use the IP address in order to approximate your location because Mozilla Subscription Services availability, pricing and offers may depend on your country.	location
+R6DE04	en	The Signal service does not have any knowledge of your contacts.	-
+R6DE05	en	Your biometric data, used for fingerprint or face unlock, stays on your device and is never shared with Google.	-
+R6DE06	en	If memory is on, ChatGPT may save and use memories and reference recent chats when selecting an ad.	advertising
+R6DE07	en	Location sharing on Snap Map is off by default. Only the people you choose can see your location	location
+R6DE08	en	OpenAI may keep a copy of a temporary chat for up to 30 days for safety purposes.	-
+R6DE09	en	Customer data never leaves Slack-controlled infrastructure and is never used to train large language models (LLMs).	-
+R6DE10	en	Regular and archived chats remain saved to your account until you delete them or an applicable workspace retention policy removes them.	retention
+R6DS01	es	Cuando la personalización de anuncios está activada, determinadas señales del resto de tu experiencia con ChatGPT pueden ayudarnos a evaluar mejor qué anuncios podrían interesarte.	advertising
+R6DS02	es	Si activas el modo fantasma, tu ubicación se seguirá compartiendo con Snap, pero no será visible para nadie más en el Mapa.	location
+R6DS03	es	Firefox utiliza información como la dirección IP de tu dispositivo y las redes Wi-Fi cercanas para estimar tu ubicación.	location
+R6DS04	es	crearemos plantillas faciales a partir del video en vivo de tu rostro que subas y de la foto de tu pasaporte.	biometric
+R6DS05	es	Si decides enviar comentarios, toda la conversación asociada a ellos podrá usarse para entrenar nuestros modelos.	ai-training
+R6DS06	es	Si compartes tu ubicación con Snapchat, se compartirá con My AI, incluso en el modo fantasma.	location
+R6DS07	es	Tus datos biométricos, que se utilizan para el desbloqueo facial o con huella digital, permanecen en tu dispositivo y nunca se comparten con Google.	-
+R6DS08	es	Abstenerse de utilizar Datos del cliente para entrenar los modelos de Notion y prohibir contractualmente a los subprocesadores de IA que lo hagan	-
+R6DS09	es	Si decides subir tus contactos, los números de teléfono de los contactos de tu dispositivo se envían a OpenAI	contacts
+R6DS10	es	Los chats se guardan en tu cuenta hasta que los eliminas manualmente.	retention
