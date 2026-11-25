@@ -1,0 +1,21 @@
+id	locale	text	expected
+R8AE01	en	We may collect location information at any time, even when you’re not actively using the Uber app.	location
+R8AE02	en	The app will continue to ask for the contacts permission if you use features that display your address book within the app	contacts
+R8AE03	en	Uber may retain certain information after account deletion as required or permitted by law.	retention
+R8AE04	en	In some cases, Uber uses third parties for account verification. Those third parties are contractually prohibited from using your information	third-parties
+R8AE05	en	Uber may also use facial recognition to compare your profile photo with the photo on your ID document	biometric
+R8AE06	en	latitude and longitude coordinates collected while you used the Spotify app	location
+R8AE07	en	Turn this on to allow Spotify to use your precise location for certain features.	location
+R8AE08	en	We make it easy to control the data used to personalize ads to you in Ad Settings.	advertising
+R8AE09	en	location info about where your device is and your IP address are deleted from your Web & App Activity after 30 days.	location
+R8AE10	en	Ads you see on Google are either personalized, using factors like your choices in My Ad Center, or non-personalized.	advertising
+R8AS01	es	Podemos recopilar los datos de tu ubicación en cualquier momento, incluso cuando no uses activamente la app de Uber.	location
+R8AS02	es	La app aún te pedirá permisos relacionados con los contactos si usas funciones que requieren mostrar tus contactos en la app	contacts
+R8AS03	es	Uber puede conservar cierta información después de eliminar la cuenta, según lo que requiera o permita la ley.	retention
+R8AS04	es	En algunos casos, la app de Uber usa a terceros para la verificación de la cuenta. Esos terceros tienen prohibido por contrato usar tu información	third-parties
+R8AS05	es	Microsoft, siguiendo nuestras instrucciones, usa un software de reconocimiento facial para comparar esta foto con la foto de perfil que cargaste anteriormente.	biometric,third-parties
+R8AS06	es	se puede utilizar tu información y tu actividad para mostrarte anuncios de productos y marcas que te interesen.	advertising
+R8AS07	es	podrá recoger datos para mejorar la precisión y los servicios basados en la ubicación.	location
+R8AS08	es	algunas de las actividades que llevas a cabo se guardan en tu cuenta de Google.	retention
+R8AS09	es	la ubicación precisa de tu dispositivo se guarda periódicamente en tus dispositivos.	location
+R8AS10	es	No vendemos tu información personal a nadie.	-
