@@ -42,7 +42,7 @@ The hardest challenge was preventing the product from becoming another legal-tex
 
 ## What we learned
 
-Trust requires separating what the document confirms, what the system interprets, and what could happen. A useful score must expose its weights and change with a person's priorities. Reducing the scope to pasted text, five profiles, and an in-memory engine made it possible to ship a complete flow rather than many incomplete features. Next time, we would prepare the labeled evaluation set and begin user-comprehension testing earlier.
+Trust requires separating what the document confirms, what the system interprets, and what could happen. In our first 40-clause synthetic evaluation, the model classified all 28 affirmative practices but also misclassified all 12 denials. Prompt revision reduced false positives to zero, while one affirmative retention clause remained missed. This taught us to measure mistakes explicitly and to treat a demo as evidence of functionality, not accuracy. The [personal reflection draft](REFLECTION.md) needs the author's review before submission.
 
 ## Accomplishments
 
@@ -51,10 +51,11 @@ Trust requires separating what the document confirms, what the system interprets
 - The same policy produces different deterministic scores for different profiles.
 - The interface and analysis output work in English and Spanish.
 - Automated tests cover the seven pillars, API contract, security behavior, frontend language parity, production build, dependency audit, and documentation parity.
+- A reproducible [40-clause synthetic evaluation](EVALUATION.md) reports 27 true positives, zero false positives, and one false negative after in-sample prompt tuning.
 
 ## What's next
 
-We will evaluate the semantic classifier with manually labeled clauses and short user studies. Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
+We will evaluate the classifier on a separate held-out set and conduct the prepared [five-person usability study](USER_STUDY.md). Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
 
 ## Disclosure
 

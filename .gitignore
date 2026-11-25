@@ -11,7 +11,16 @@ coverage/
 # Environment and local state
 .env
 .env.local
+.env.*
 !.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.db
+*.gguf
+*.safetensors
 .DS_Store
 Thumbs.db
 

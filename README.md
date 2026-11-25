@@ -97,7 +97,7 @@ The executable product calls the local `qwen3:4b-instruct` model through Ollama.
 
 ## Documentation
 
-English is the official submission language and every official document has a Spanish counterpart. See the [bilingual index](docs/README.md), [architecture](docs/en/ARCHITECTURE.md), [judging strategy](docs/en/JUDGING.md), and [demo script](docs/en/DEMO_SCRIPT.md).
+English is the official submission language and every official document has a Spanish counterpart. See the [bilingual index](docs/README.md), [AI evaluation](docs/en/EVALUATION.md), [five-person study](docs/en/USER_STUDY.md), and [demo deployment decision](docs/en/DEPLOYMENT.md).
 
 ## License
 

@@ -97,7 +97,7 @@ El producto ejecutable llama al modelo local `qwen3:4b-instruct` mediante Ollama
 
 ## Documentación
 
-El inglés es el idioma oficial de la presentación y cada documento tiene copia en español. Consulta el [índice bilingüe](docs/README.md), la [arquitectura](docs/es/ARCHITECTURE.md), la [estrategia de evaluación](docs/es/JUDGING.md) y el [guion](docs/es/DEMO_SCRIPT.md).
+El inglés es el idioma oficial de la presentación y cada documento tiene copia en español. Consulta el [índice bilingüe](docs/README.md), la [evaluación de IA](docs/es/EVALUATION.md), el [protocolo para cinco personas](docs/es/USER_STUDY.md) y la [decisión de despliegue](docs/es/DEPLOYMENT.md).
 
 ## Licencia
 

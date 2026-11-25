@@ -42,7 +42,7 @@ El desafío principal fue evitar que el producto se convierta en otro resumidor 
 
 ## Qué aprendimos
 
-La confianza requiere separar lo que el documento confirma, lo que el sistema interpreta y lo que podría ocurrir. Un índice útil debe exponer sus pesos y cambiar según las prioridades. Reducir el alcance a texto pegado, cinco perfiles y un motor en memoria permitió entregar un flujo completo. En una siguiente iteración prepararíamos antes el conjunto etiquetado y probaríamos comprensión con usuarios desde el inicio.
+La confianza requiere separar lo que el documento confirma, lo que el sistema interpreta y lo que podría ocurrir. En la primera evaluación sintética de 40 cláusulas, el modelo clasificó las 28 prácticas afirmativas, pero también marcó las 12 negaciones. Tras revisar el prompt, los falsos positivos bajaron a cero, aunque todavía omitió una cláusula afirmativa de conservación. Aprendimos a medir errores explícitamente y a distinguir una demo funcional de una prueba de exactitud. El [borrador de reflexión personal](REFLECTION.md) requiere revisión del autor antes de enviarlo.
 
 ## Logros
 
@@ -51,10 +51,11 @@ La confianza requiere separar lo que el documento confirma, lo que el sistema in
 - La misma política produce índices deterministas distintos según el perfil.
 - Interfaz y resultado funcionan en español e inglés.
 - Las pruebas cubren siete pilares, contrato API, seguridad, paridad de idiomas, build, auditoría de dependencias y paridad documental.
+- Una [evaluación sintética reproducible de 40 cláusulas](EVALUATION.md) informa 27 positivos verdaderos, cero falsos positivos y un falso negativo tras ajustar el prompt con el mismo conjunto.
 
 ## Próximos pasos
 
-Evaluaremos el clasificador semántico con cláusulas etiquetadas y pruebas breves de usuarios. Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
+Evaluaremos el clasificador con un conjunto independiente y realizaremos el [protocolo preparado para cinco personas](USER_STUDY.md). Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
 
 ## Declaración
 

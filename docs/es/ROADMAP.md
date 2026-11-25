@@ -14,24 +14,27 @@
 - [x] Aislamiento de patrones de prompt injection e informe de seguridad.
 - [x] Pruebas de backend, contrato API, frontend, build y paridad documental.
 - [x] Docker e integración continua.
+- [x] Clasificador semántico local con Ollama y salida estructurada.
+- [x] Cuarenta cláusulas sintéticas etiquetadas y métricas reproducibles.
 
 ## Antes del envío
 
-- [ ] Crear un conjunto etiquetado de 20–30 cláusulas.
-- [ ] Medir precisión y cobertura por categoría.
+- [x] Crear un conjunto etiquetado de 40 cláusulas sintéticas.
+- [x] Medir precisión y cobertura por categoría en el mismo conjunto; falta evaluación independiente.
+- [x] Preparar el protocolo para cinco personas; faltan las sesiones.
 - [ ] Probar con 3–5 usuarios y documentar comentarios anónimos.
 - [ ] Preparar ejemplos de riesgo bajo, medio y alto.
 - [ ] Grabar una comparación de dos perfiles.
-- [ ] Desplegar frontend y API públicamente.
+- [x] Documentar la demo local; el hosting público no figura como requisito de envío.
 - [ ] Grabar y subtitular una demo menor a seis minutos.
-- [ ] Publicar el repositorio y completar la divulgación de IA.
-- [ ] Completar la reflexión personal de aprendizaje.
+- [x] Publicar el repositorio y redactar la divulgación de IA.
+- [x] Preparar borrador de reflexión personal; falta revisión del autor.
 
 ## Después del hackathon
 
 - Análisis por URL con protección SSRF y esquemas permitidos.
 - Extracción aislada de PDF con límites estrictos.
-- [x] Clasificador semántico local con Ollama y salida estructurada detrás de la validación de evidencia.
+- Evaluación independiente con fragmentos de políticas reales reservados.
 - Comparación entre versiones y monitoreo de cambios.
 - Exportación accesible del informe.
 - Fuentes jurisdiccionales verificadas para América Latina.

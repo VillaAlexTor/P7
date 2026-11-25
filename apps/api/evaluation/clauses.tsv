@@ -1,0 +1,41 @@
+id	locale	text	expected
+E01	en	We collect your precise GPS coordinates while the app is open.	location
+E02	en	Our service accesses your phone address book when you invite friends.	contacts
+E03	en	We send account identifiers to payment processors and analytics vendors.	third-parties
+E04	en	Your browsing activity determines the targeted ads you see.	advertising
+E05	en	We use submitted essays to train our machine learning models.	ai-training
+E06	en	Face templates are stored to authenticate your identity.	biometric
+E07	en	We retain account data indefinitely after account closure.	retention
+E08	en	We derive your approximate position from nearby Wi-Fi networks.	location
+E09	en	The app uploads your saved phone numbers to help find friends.	contacts
+E10	en	Independent research partners receive pseudonymous usage records.	third-parties
+E11	en	We build an interest profile to select personalized advertising.	advertising
+E12	en	User conversations improve the weights of our generative model.	ai-training
+E13	en	A fingerprint scan is converted into a template for sign-in.	biometric
+E14	en	We keep your information for as long as necessary for business purposes.	retention
+E15	en	We do not collect your location or GPS coordinates.	
+E16	en	We never access your contacts or address book.	
+E17	en	We do not share personal data with third parties.	
+E18	en	We do not use your data for targeted advertising or model training.	
+E19	en	We delete all account records within 30 days after your request.	
+E20	en	This policy mentions facial recognition only to state that it is not used.	
+S01	es	Recopilamos tu ubicación precisa mediante GPS durante el uso de la aplicación.	location
+S02	es	La aplicación carga tu libreta de contactos para encontrar amistades.	contacts
+S03	es	Compartimos identificadores de cuenta con proveedores externos de analítica.	third-parties
+S04	es	Tu actividad se usa para seleccionar anuncios personalizados.	advertising
+S05	es	Usamos tus mensajes para entrenar modelos de inteligencia artificial.	ai-training
+S06	es	Guardamos una plantilla de tu rostro para verificar tu identidad.	biometric
+S07	es	Conservamos tus datos indefinidamente después del cierre de la cuenta.	retention
+S08	es	Inferimos tu posición aproximada usando redes Wi-Fi cercanas.	location
+S09	es	Subimos los números guardados en tu teléfono para recomendar contactos.	contacts
+S10	es	Nuestros socios comerciales reciben datos de uso seudónimos.	third-parties
+S11	es	Construimos un perfil de intereses para publicidad dirigida.	advertising
+S12	es	El contenido que envías mejora los parámetros del modelo generativo.	ai-training
+S13	es	Una huella digital se transforma en plantilla para iniciar sesión.	biometric
+S14	es	Guardamos tu información mientras sea necesaria para nuestros fines comerciales.	retention
+S15	es	No recopilamos ubicación ni coordenadas GPS.	
+S16	es	Nunca accedemos a tus contactos ni a la libreta de direcciones.	
+S17	es	No compartimos datos personales con terceros.	
+S18	es	No usamos tus datos para publicidad dirigida ni para entrenar modelos.	
+S19	es	Eliminamos todos los registros de la cuenta en treinta días tras tu solicitud.	
+S20	es	Esta política menciona reconocimiento facial solo para aclarar que no se utiliza.	

@@ -3,15 +3,21 @@ package ai
 import (
 	"context"
 	"encoding/json"
+	"io"
 	"net/http"
-	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/VillaAlexTor/p7/apps/api/internal/domain"
 )
 
+type transportFunc func(*http.Request) (*http.Response, error)
+
+func (fn transportFunc) RoundTrip(request *http.Request) (*http.Response, error) { return fn(request) }
+
 func TestOllamaUsesStructuredOutput(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	client := NewOllama("http://127.0.0.1:11434", "test-model")
+	client.client.Transport = transportFunc(func(r *http.Request) (*http.Response, error) {
 		if r.URL.Path != "/api/chat" {
 			t.Fatalf("unexpected path %q", r.URL.Path)
 		}
@@ -22,11 +28,9 @@ func TestOllamaUsesStructuredOutput(t *testing.T) {
 		if payload["format"] == nil || payload["stream"] != false {
 			t.Fatalf("expected non-streaming structured request: %#v", payload)
 		}
-		_ = json.NewEncoder(w).Encode(map[string]any{"message": map[string]string{"role": "assistant", "content": `{"findings":[{"category":"location","clauseId":"clause-001","quote":"We collect precise location."}]}`}})
-	}))
-	defer server.Close()
+		return &http.Response{StatusCode: http.StatusOK, Body: io.NopCloser(strings.NewReader(`{"message":{"role":"assistant","content":"{\"findings\":[{\"category\":\"location\",\"clauseId\":\"clause-001\",\"quote\":\"We collect precise location.\"}]}"}}`)), Header: make(http.Header)}, nil
+	})
 
-	client := NewOllama(server.URL, "test-model")
 	findings, err := client.Classify(context.Background(), []domain.Clause{{ID: "clause-001", Text: "We collect precise location."}}, "en")
 	if err != nil {
 		t.Fatal(err)

@@ -14,24 +14,27 @@
 - [x] Prompt-injection pattern isolation and safety report.
 - [x] Backend, API-contract, frontend, build, and documentation-parity tests.
 - [x] Docker and continuous integration configuration.
+- [x] Local Ollama semantic classifier with structured output.
+- [x] Forty synthetic, labeled evaluation clauses and reproducible metrics.
 
 ## Before submission
 
-- [ ] Create a manually labeled set of 20–30 clauses.
-- [ ] Measure category precision and recall.
+- [x] Create a manually labeled set of 40 synthetic clauses.
+- [x] Measure in-sample category precision and recall; independent evaluation remains open.
+- [x] Prepare a five-person usability protocol; sessions remain open.
 - [ ] Test with 3–5 users and document anonymous feedback.
 - [ ] Prepare low-, medium-, and high-risk examples.
 - [ ] Record a two-profile comparison.
-- [ ] Deploy the web app and API publicly.
+- [x] Document local demo deployment; public hosting is not a stated submission requirement.
 - [ ] Record and caption a demo under six minutes.
-- [ ] Publish the repository and finish the AI disclosure.
-- [ ] Complete the personal learning reflection.
+- [x] Publish the repository and draft the AI disclosure.
+- [x] Prepare a personal learning reflection draft; author review remains open.
 
 ## After the hackathon
 
 - URL analysis with SSRF protection and allowed-scheme validation.
 - Sandboxed PDF extraction with strict limits.
-- [x] Local Ollama semantic classifier with structured output behind evidence validation.
+- Independent evaluation on held-out real policy excerpts.
 - Policy version comparison and change monitoring.
 - Accessible report export.
 - Verified jurisdictional sources for Latin America.
