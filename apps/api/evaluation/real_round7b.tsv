@@ -9,7 +9,7 @@ R7BE07	en	My AI only has access to your general location if you share it with Sn
 R7BE08	en	Snapchat needs access to your contacts to match a phone number to a Snapchat account.	contacts
 R7BE09	en	If a ChatGPT user asks you to be their trusted contact, OpenAI may receive your name, email address, and/or phone number from that user.	-
 R7BE10	en	Deleted chats are permanently removed from OpenAI systems within 30 days	-
-R7BS01	es	toda la conversación relacionada con ellos podría utilizarse para entrenar los modelos de OpenAI.	ai-training
+R7BS01	es	toda la conversación asociada a esos comentarios podrá usarse para entrenar los modelos de OpenAI.	ai-training
 R7BS02	es	Slack no entrena modelos de IA generativa con los Datos del cliente.	-
 R7BS03	es	Tenemos acuerdos contractuales con subprocesadores de IA que prohíben el uso de datos de clientes para entrenar sus modelos.	-
 R7BS04	es	Snapchat necesita acceso a tus contactos para hacer coincidir un número de teléfono con una cuenta de Snapchat.	contacts
