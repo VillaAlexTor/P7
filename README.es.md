@@ -127,6 +127,8 @@ El producto ejecutable llama al modelo local `qwen3:4b-instruct` mediante Ollama
 
 El inglés es el idioma oficial de la presentación y cada documento tiene copia en español. Consulta el [índice bilingüe](docs/README.md), la [evaluación de IA](docs/es/EVALUATION.md), el [protocolo para cinco personas](docs/es/USER_STUDY.md) y la [decisión de despliegue](docs/es/DEPLOYMENT.md).
 
+La [galería para la presentación](docs/assets/devpost-gallery/ready-1500x1000/) contiene ocho capturas del producto; también hay un [ZIP listo para subir](docs/assets/devpost-gallery/p7-devpost-gallery-1500x1000.zip).
+
 ## Licencia
 
 MIT. Consulta [LICENSE](LICENSE).
