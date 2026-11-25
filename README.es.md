@@ -38,14 +38,15 @@ La ronda 9 usó 40 fragmentos cortos seleccionados de páginas oficiales. Esas c
 
 [Casos A](apps/api/evaluation/real_round9a.tsv) · [Fuentes A](apps/api/evaluation/real_round9a_sources.tsv) · [Salida cruda A](apps/api/evaluation/real_round9a_result.json) · [Casos B](apps/api/evaluation/real_round9b.tsv) · [Fuentes B](apps/api/evaluation/real_round9b_sources.tsv) · [Salida cruda B](apps/api/evaluation/real_round9b_result.json)
 
-**Pruebas con políticas completas:** También ejecutamos el mismo modelo con cuatro políticas subyacentes, cada una en inglés y español. Estas mediciones por documento se acercan más al uso real que los fragmentos elegidos:
+**Pruebas con políticas completas:** También ejecutamos el mismo modelo con seis políticas subyacentes, cada una en inglés y español. Estas mediciones por documento se acercan más al uso real que los fragmentos elegidos:
 
 | Políticas oficiales completas | Precisión | Cobertura | Páginas exactas |
 | --- | ---: | ---: | ---: |
 | Ronda 10 · Cuentas de Mozilla, Proton | 54,5 % | 60,0 % | 1/4 |
-| **Ronda 11 · Apple, Spotify** | **90,5 %** | **95,0 %** | **2/4** |
+| Ronda 11 · Apple, Spotify | 90,5 % | 95,0 % | 2/4 |
+| **Ronda 12 · Google, WhatsApp** | **72,7 %** | **100,0 %** | **1/4** |
 
-La ronda 11 tuvo 19 categorías acertadas, dos falsos hallazgos de `contacts` derivados de datos de contacto corrientes y una omisión de conservación en Apple ES. **No cambiaron el modelo ni los prompts:** la cifra mayor se debe a políticas diferentes, no a una mejora demostrada. En ambas rondas, los totales descriptivos son 78,1 % de precisión y 83,3 % de cobertura. Cuatro políticas subyacentes y una sola persona que asignó etiquetas no demuestran fiabilidad general; una cita exacta también puede sostener una interpretación errónea. Sigue siendo necesaria la revisión humana. Consulta las [fuentes y etiquetas de la ronda 11](apps/api/evaluation/real_policies_round11.json), los [resultados de máquina](apps/api/evaluation/real_policies_round11_result.json) y el [análisis completo en español](docs/es/EVALUATION.md#25-de-noviembre-undécima-ronda-con-otras-dos-políticas-completas).
+La ronda 12 usó páginas de hasta 120.506 caracteres. Encontró las 16 categorías de referencia, pero añadió seis hallazgos no respaldados; solo WhatsApp ES fue exacta. Los cuatro análisis tardaron **10 minutos y 46 segundos** en el equipo local. La etiqueta de entrenamiento de IA de Google es discutible y se analiza por separado. **No cambiaron el modelo ni los prompts:** las diferencias entre rondas reflejan otras políticas, no una mejora demostrada. En las tres rondas de políticas completas, los totales descriptivos son **75,9 % de precisión y 89,1 % de cobertura**. Seis políticas subyacentes y una sola persona que asignó etiquetas no demuestran fiabilidad general; una cita exacta también puede sostener una interpretación errónea. Sigue siendo necesaria la revisión humana. Consulta las [fuentes, etiquetas y preguntas de la ronda 12](apps/api/evaluation/real_policies_round12.json), los [resultados de máquina](apps/api/evaluation/real_policies_round12_result.json) y el [estudio de caso pregunta por pregunta](docs/es/ROUND12_CASE_STUDY.md).
 
 ## Stack
 
