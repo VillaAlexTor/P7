@@ -83,6 +83,27 @@ Los 12 controles negativos quedaron sin hallazgos y no se rechazó ninguna cita.
 
 T07, T14 y S07 omitieron prácticas de retención. T04 y S04 perdieron una de sus dos etiquetas esperadas, igual que T08 y S08. El tercer conjunto confirma que la retención expresada de forma amplia y las cláusulas con dos prácticas simultáneas siguen siendo puntos débiles. Estas cifras describen solo esta pequeña muestra sintética; no validan el análisis de políticas reales ni documentos completos.
 
+## Mejora iterativa y punto de parada
+
+Mejoramos las **instrucciones y el flujo de inferencia** alrededor del modelo local `qwen3:4b-instruct`; no actualizamos sus pesos ni lo ajustamos con entrenamiento adicional. El clasificador de una sola pasada seguía omitiendo prácticas en un conjunto nuevo de 40 cláusulas, así que dividimos la clasificación en pasadas enfocadas. Después separamos retención en su propia pasada. Comprobamos cada versión con las cláusulas de trabajo antes de redactar un conjunto final intacto.
+
+| Corrida | Conjunto | Etiquetas acertadas | Falsos positivos | Etiquetas omitidas | Cobertura |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Una pasada | `heldout_4.tsv`, primera corrida | 22 | 1 | 10 | 68,8 % |
+| Cuatro pasadas | `heldout_4.tsv`, repetición de trabajo | 27 | 1 | 5 | 84,4 % |
+| Cinco pasadas | `heldout_4.tsv`, repetición de trabajo | 30 | 0 | 2 | 93,8 % |
+| **Cinco pasadas, comprobación final intacta** | **`heldout_5.tsv`** | **27** | **0** | **5** | **84,4 %** |
+
+El conjunto final se escribió antes de su primera ejecución: 20 cláusulas en inglés y 20 en español, 28 casos afirmativos con cuatro casos de dos etiquetas, y 12 controles negativos. El modelo acertó al menos un positivo en cada una de las siete categorías y no produjo hallazgos para los controles negativos. Ningún hallazgo aceptado careció de cita literal; una cita propuesta fue rechazada. Ejecútalo desde `apps/api` con:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/heldout_5.tsv
+```
+
+Las omisiones finales fueron X03 y X23 (pasarelas de pago), X06 y X26 (ritmo de tecleo) y X27 (retención abierta). Las cláusulas sobre pasarelas no dicen expresamente que sean externas, así que esas dos etiquetas de referencia pueden suscitar desacuerdo. Mantuvimos las etiquetas originales y el resultado informado. Las salidas del modelo también variaron entre corridas repetidas pese a usar temperatura cero. Cinco llamadas al modelo por lote de cláusulas tardan más que el flujo original de una sola pasada.
+
+Dejamos de cambiar el clasificador cuando el conjunto intacto superó el umbral elegido de **80 % de cobertura** sin falsos positivos en esta corrida. Esto evidencia progreso con cláusulas sintéticas; no significa un 80 % de confianza estadística en su exactitud con políticas reales ni que esté listo para decisiones sin revisión.
+
 ## Siguiente evaluación
 
-Revisar las omisiones del segundo y tercer conjunto y luego reunir un conjunto etiquetado de políticas públicas diversas con permiso para citar fragmentos. Pedir a otra persona que revise las etiquetas e informar precisión y cobertura por idioma con ejemplos de desacuerdos. Conservar los tres conjuntos sintéticos como pruebas de regresión; cualquier cambio del prompt deberá evaluarse con otro conjunto intacto.
+Antes de afirmar utilidad en producción, reunir un conjunto etiquetado de políticas públicas diversas con permiso para citar fragmentos, pedir a otra persona que revise las etiquetas discutidas, medir la latencia con documentos completos e informar precisión y cobertura por idioma. Conservar los seis conjuntos sintéticos como pruebas de regresión; cualquier cambio posterior del prompt necesita otro conjunto intacto.
