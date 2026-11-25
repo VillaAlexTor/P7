@@ -1,0 +1,28 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Complete official LinkedIn and Zoom privacy text extracted by scripts/prepare-real-policies-round14.py; one reviewer froze document-category labels and questions before inference; source text stays in gitignored .cache/real_policies_round14.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "An optional practice counts when expressly described as occurring after a user choice or consent.",
+    "Contacts requires an express device address-book upload or access. LinkedIn says address book uploads; Zoom says contact lists and third-party app integration without affirming device address-book access.",
+    "AI training requires an affirmative use of personal/user data to train models. LinkedIn affirms it; Zoom expressly denies training its or third-party models on communications-like Customer Content and mentions AI processing only to deliver intelligent features. This negative label does not establish that no other data is ever used for training.",
+    "Biometric requires a distinctive physical or behavioral identifier used for recognition. Zoom's optional voiceprints/facial geometry and its stated authentication purpose count; local-only face/hand positions for effects do not. LinkedIn's age/gender inferences do not qualify.",
+    "Advertising requires personalization or targeting with personal data; both notices affirm it."
+  ],
+  "auditQuestions": [
+    {"id":"L1","en":"Does LinkedIn use data from device address-book uploads to suggest connections?","es":"¿LinkedIn usa datos de agendas cargadas para sugerir contactos?","category":"contacts","reference":"yes"},
+    {"id":"L2","en":"Does LinkedIn say it may train AI models with personal data?","es":"¿LinkedIn afirma que puede entrenar modelos de IA con datos personales?","category":"ai-training","reference":"yes"},
+    {"id":"L3","en":"Does LinkedIn serve tailored or personalized ads?","es":"¿LinkedIn muestra anuncios personalizados?","category":"advertising","reference":"yes"},
+    {"id":"L4","en":"Does the policy establish biometric identity recognition?","es":"¿La política afirma reconocimiento biométrico de identidad?","category":"biometric","reference":"not-established"},
+    {"id":"Z1","en":"Does Zoom train AI models on customer meeting, chat, and audio content?","es":"¿Zoom entrena modelos de IA con reuniones, chats y audio del cliente?","category":"ai-training","reference":"not-established"},
+    {"id":"Z2","en":"Does Zoom process optional voiceprints or facial geometry for features including authentication?","es":"¿Zoom procesa huellas de voz o geometría facial opcionales para funciones que incluyen autenticación?","category":"biometric","reference":"yes"},
+    {"id":"Z3","en":"Do Zoom contact lists establish device address-book access?","es":"¿Las listas de contactos de Zoom demuestran acceso a la agenda del dispositivo?","category":"contacts","reference":"not-established"},
+    {"id":"Z4","en":"Does Zoom disclose targeted advertising based on website use?","es":"¿Zoom declara publicidad dirigida según el uso de su sitio?","category":"advertising","reference":"yes"}
+  ],
+  "policies": [
+    {"id":"linkedin_en","title":"LinkedIn Privacy Policy","locale":"en","url":"https://www.linkedin.com/legal/privacy-policy","characters":42150,"sha256":"d6f59841ecf6b09b2462da504c8e131742a5d3efe32a39f0c6f7e8b4cb94620b","expected":["location","contacts","third-parties","advertising","ai-training","retention"],"referenceLines":{"location":125,"contacts":173,"third-parties":345,"advertising":207,"ai-training":161,"retention":365}},
+    {"id":"linkedin_es","title":"Política de privacidad de LinkedIn","locale":"es","url":"https://es.linkedin.com/legal/privacy-policy","characters":52350,"sha256":"45b8a5e96ab821b23e279dd8a7cff94ec81117266099f1b1d7bb043359b04ec6","expected":["location","contacts","third-parties","advertising","ai-training","retention"],"referenceLines":{"location":125,"contacts":173,"third-parties":345,"advertising":207,"ai-training":161,"retention":365}},
+    {"id":"zoom_en","title":"Zoom Privacy Statement","locale":"en","url":"https://www.zoom.com/en/trust/privacy/privacy-statement/","characters":53936,"sha256":"68be30236cc737e975699960ee8a78abcebf2ae5f50feb51dad5d8b430c60ee9","expected":["location","third-parties","advertising","biometric","retention"],"referenceLines":{"location":45,"third-parties":93,"advertising":97,"biometric":335,"retention":241},"contextLines":{"contacts":39,"ai-training":63,"local-effects":69}},
+    {"id":"zoom_es","title":"Declaración de privacidad de Zoom","locale":"es","url":"https://www.zoom.com/es/trust/privacy/privacy-statement/","characters":64369,"sha256":"589ed6975a3e11456d469cc4414c4e98a4a55cc3f848898218133123211d335d","expected":["location","third-parties","advertising","biometric","retention"],"referenceLines":{"location":45,"third-parties":93,"advertising":97,"biometric":335,"retention":241},"contextLines":{"contacts":39,"ai-training":63,"local-effects":69}}
+  ]
+}
