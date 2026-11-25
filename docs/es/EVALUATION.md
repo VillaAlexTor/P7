@@ -257,3 +257,27 @@ cd apps/api
 go run ./cmd/evaluate -data evaluation/real_round8a.tsv
 go run ./cmd/evaluate -data evaluation/real_round8b.tsv
 ```
+
+## 25 de noviembre: novena ronda con fuentes reales (última sesión del día)
+
+Congelamos el prompt del commit `b821d56` y ejecutamos una vez el modelo local `qwen3:4b-instruct` sobre **40 fragmentos no vistos de 40 URL oficiales nuevas**. Los casos, las etiquetas de referencia y las URL quedaron en commits antes de la inferencia (`9b973ee`–`e74f664`). Las fuentes son políticas de privacidad y avisos de producto sustanciales de Google, Spotify, Microsoft, Mozilla y Apple. Cada conjunto incluye diez fragmentos en inglés y diez en español. Las citas literales tienen como máximo 25 palabras; el validador ya cubre **300 fragmentos etiquetados y 300 enlaces de origen**. Algunas URL son traducciones del mismo aviso: no equivalen a 40 políticas independientes.
+
+| Primera ejecución | Aciertos de etiqueta | Falsos positivos | Etiquetas omitidas | Precisión | Cobertura | Casos exactos | Tiempo |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `real_round9a.tsv` | 19 | 0 | 1 | 100,0 % | 95,0 % | 19/20 | 30 s |
+| `real_round9b.tsv` | 14 | 0 | 10 | 100,0 % | 58,3 % | 11/20 | 24 s |
+| **Conjunto** | **33** | **0** | **11** | **100,0 %** | **75,0 %** | **30/40** | **54 s** |
+
+Inglés: 17 etiquetas acertadas, ningún falso positivo, cinco omitidas, **77,3 % de cobertura y 15/20 casos exactos**. Español: 16 aciertos, ningún falso positivo, seis omisiones, **72,7 % de cobertura y 15/20 casos exactos**. La precisión de cada idioma es 100 % *en esta pequeña muestra seleccionada*, sin garantía general. Por categoría: publicidad 16/16; entrenamiento de IA 2/2; ubicación 9/10; retención 2/6; transferencia a terceros 4/10. No hubo casos de contactos ni biometría, así que esta ronda no los evalúa.
+
+Los diez casos discrepantes fueron R9AE09; R9BE03, R9BE04, R9BE07, R9BE10; y R9BS03, R9BS04, R9BS06, R9BS07, R9BS10. El modelo omitió la retención explícita de ambos fragmentos de la política de Mozilla y la eliminación a las 24 horas del aviso Buscar de Apple. También omitió varios procesadores externos, incluidos emisores de tarjetas y destinatarios de datos de salud. R9AE09 y los dos fragmentos de Google Analytics (R9BE03/R9BS03) dependen algo del contexto: las citas breves identifican cookies de terceros o un servicio analítico externo, pero no detallan toda la transferencia de datos. Conservamos las etiquetas fijadas previamente y marcamos esos tres casos para una segunda revisión independiente. Las demás omisiones siguen visibles en los resultados crudos.
+
+**Estado actual:** esta ronda quedó muy por debajo del objetivo de 90 % de cobertura, aunque no registró falsos positivos. La octava ronda obtuvo 96,0 % de precisión y 85,7 % de cobertura, y la séptima 73,7 %/70,0 %: hay variación considerable entre muestras con el mismo clasificador. P7 es una ayuda utilizable para revisar privacidad y verificar citas, pero sus hallazgos aún requieren revisión humana y puede omitir información. No reentrenamos pesos, modificamos el prompt ni cambiamos etiquetas de referencia después de ver los resultados. Una persona etiquetó fragmentos breves seleccionados; faltan acuerdo entre revisores y pruebas sobre documentos completos.
+
+La salida cruda de máquina, con cada predicción y las citas rechazadas, está en `apps/api/evaluation/real_round9a_result.json` y `real_round9b_result.json`. Para reproducir con Ollama y `qwen3:4b-instruct` en ejecución:
+
+```powershell
+cd apps/api
+go run ./cmd/evaluate -data evaluation/real_round9a.tsv
+go run ./cmd/evaluate -data evaluation/real_round9b.tsv
+```
