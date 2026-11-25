@@ -1,0 +1,240 @@
+{
+  "model": "qwen3:4b-instruct",
+  "cases": 20,
+  "durationSeconds": 24,
+  "overall": {
+    "tp": 14,
+    "fp": 0,
+    "fn": 10
+  },
+  "byCategory": {
+    "advertising": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "location": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 1
+    },
+    "retention": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+    },
+    "third-parties": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 5
+    }
+  },
+  "outcomes": [
+    {
+      "id": "R9BE01",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE02",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE03",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE04",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE05",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE06",
+      "expected": [
+        "location",
+        "third-parties"
+      ],
+      "predicted": [
+        "location",
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE07",
+      "expected": [
+        "location",
+        "retention"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE08",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE09",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BE10",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS01",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS02",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS03",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS04",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS05",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS06",
+      "expected": [
+        "location",
+        "third-parties"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS07",
+      "expected": [
+        "location",
+        "retention"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS08",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS09",
+      "expected": [
+        "advertising"
+      ],
+      "predicted": [
+        "advertising"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R9BS10",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [],
+      "rejectedCitations": 0
+    }
+  ]
+}
