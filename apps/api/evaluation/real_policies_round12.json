@@ -1,0 +1,55 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Long official privacy-policy pages, extracted with scripts/prepare-real-policies-round12.py; one reviewer froze document-category labels and audit questions before inference; source text remains in gitignored .cache/real_policies_round12.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "Contacts requires an affirmative device address-book access or upload. Google recipient suggestions from existing contacts do not alone establish device address-book access; WhatsApp expressly allows contact upload.",
+    "Advertising requires use of personal information to choose, personalize, or target ads. WhatsApp's ads in Status/Channels and related cookies do not by themselves affirm targeting in this notice.",
+    "AI training requires affirmative training with users' content or personal data. Google describes public web material used to train models, and WhatsApp describes a Meta AI feature; neither passage alone affirms training on this policy's users' private content.",
+    "Retention is positive when information is held until account deletion or as long as needed, even though the same policy gives fixed deadlines for other categories."
+  ],
+  "auditQuestions": [
+    {"id": "G1", "en": "Does Google affirm collecting location information?", "es": "¿Google declara que recoge información de ubicación?", "category": "location", "reference": "yes"},
+    {"id": "G2", "en": "Does Google affirm uploading the device address book in this policy?", "es": "¿Google declara que carga la agenda del dispositivo en esta política?", "category": "contacts", "reference": "not-established"},
+    {"id": "G3", "en": "Does Google's public-web AI-model passage affirm training on private account content?", "es": "¿El pasaje de datos web públicos de Google confirma entrenamiento con contenido privado de la cuenta?", "category": "ai-training", "reference": "not-established"},
+    {"id": "G4", "en": "Does Google keep any categories for open-ended business or legal purposes?", "es": "¿Google conserva alguna categoría por fines comerciales o legales sin plazo fijo?", "category": "retention", "reference": "yes"},
+    {"id": "W1", "en": "Can WhatsApp upload contacts from the device address book?", "es": "¿WhatsApp puede cargar contactos de la agenda del dispositivo?", "category": "contacts", "reference": "yes"},
+    {"id": "W2", "en": "Does this WhatsApp notice affirm personal-data-based ad targeting?", "es": "¿Este aviso de WhatsApp confirma anuncios dirigidos con datos personales?", "category": "advertising", "reference": "not-established"},
+    {"id": "W3", "en": "Does using Meta AI through WhatsApp itself establish training on chat content?", "es": "¿Usar Meta AI en WhatsApp demuestra por sí solo entrenamiento con chats?", "category": "ai-training", "reference": "not-established"},
+    {"id": "W4", "en": "Does WhatsApp retain some account data while the account remains active?", "es": "¿WhatsApp conserva algunos datos mientras la cuenta esté activa?", "category": "retention", "reference": "yes"}
+  ],
+  "policies": [
+    {
+      "id": "google_en", "title": "Google Privacy Policy", "locale": "en",
+      "url": "https://policies.google.com/privacy?hl=en",
+      "characters": 57636, "sha256": "83ede12da2cc2c66efc1e895fdbb415e5bee1cd53443a4a1a027c2f0d93aa814",
+      "expected": ["location", "third-parties", "advertising", "retention"],
+      "referenceLines": {"location": 183, "third-parties": 369, "advertising": 223, "retention": 453},
+      "contextLines": {"contacts": 209, "ai-training": 761}
+    },
+    {
+      "id": "google_es", "title": "Política de Privacidad de Google", "locale": "es",
+      "url": "https://policies.google.com/privacy?hl=es",
+      "characters": 69807, "sha256": "77282be2878b68e847c7617b4d74787ce8995df6fb330e41faa9e83e4c2ec591",
+      "expected": ["location", "third-parties", "advertising", "retention"],
+      "referenceLines": {"location": 183, "third-parties": 369, "advertising": 223, "retention": 453},
+      "contextLines": {"contacts": 209, "ai-training": 701}
+    },
+    {
+      "id": "whatsapp_en", "title": "WhatsApp Privacy Policy (EEA)", "locale": "en",
+      "url": "https://www.whatsapp.com/legal/privacy-policy-eea?lang=en_gb",
+      "characters": 101977, "sha256": "db8902ac44570b008ffb0fbbebe38fd89cca07ee8beef67b738ce4187b4230a2",
+      "expected": ["location", "contacts", "third-parties", "retention"],
+      "referenceLines": {"location": 77, "contacts": 83, "third-parties": 163, "retention": 1739},
+      "contextLines": {"advertising": 117, "ai-training": 269}
+    },
+    {
+      "id": "whatsapp_es", "title": "Política de privacidad de WhatsApp (EEE)", "locale": "es",
+      "url": "https://www.whatsapp.com/legal/privacy-policy-eea?lang=es_LA",
+      "characters": 120506, "sha256": "d2bee1a54e138c45f6b9591c0f3c5a872a757838ca1e42969ea08ca8b8db2943",
+      "expected": ["location", "contacts", "third-parties", "retention"],
+      "referenceLines": {"location": 77, "contacts": 83, "third-parties": 163, "retention": 1739},
+      "contextLines": {"advertising": 117, "ai-training": 269}
+    }
+  ]
+}
