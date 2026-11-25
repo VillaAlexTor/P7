@@ -127,6 +127,8 @@ The executable product calls the local `qwen3:4b-instruct` model through Ollama 
 
 English is the official submission language and every official document has a Spanish counterpart. See the [bilingual index](docs/README.md), [AI evaluation](docs/en/EVALUATION.md), [five-person study](docs/en/USER_STUDY.md), and [demo deployment decision](docs/en/DEPLOYMENT.md).
 
+The [presentation gallery](docs/assets/devpost-gallery/ready-1500x1000/) contains eight product screenshots; a [ready-to-upload ZIP](docs/assets/devpost-gallery/p7-devpost-gallery-1500x1000.zip) is also available.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
