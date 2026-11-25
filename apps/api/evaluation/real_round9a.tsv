@@ -1,0 +1,21 @@
+id	locale	text	expected
+R9AE01	en	We collect location information when you use our services, which helps us offer features like driving directions, search results for things near you	location
+R9AE02	en	The ads you see can be based on your location information.	location,advertising
+R9AE03	en	We’ll keep this data in your Google Account until you choose to remove it.	retention
+R9AE04	en	to show ads that are likely to be more relevant (such as ads based on websites you have visited).	advertising
+R9AE05	en	Google may use cookie-based information or other advertising technologies to personalize ads unless you change your ads settings to turn off personalized ads.	advertising
+R9AE06	en	Google uses cookies and similar technologies for advertising purposes, including serving and rendering ads, and personalizing ads	advertising
+R9AE07	en	We can also safely share anonymized data externally, making it useful for others without putting the privacy of our users at risk.	-
+R9AE08	en	This includes development and training of algorithmic and machine learning models, which help us to keep our service safe and enhance our users’ experience.	ai-training
+R9AE09	en	Third party cookies are set directly by a third party or set by Spotify at the request of a third party	third-parties
+R9AE10	en	Personalized ads might use your chat history, saved memories, and other Microsoft data you've chosen to share to tailor ads and offers	advertising
+R9AS01	es	Ubicación precisa solo para permitir el uso de servicios como Buscar (o donde acepte servicios específicos de una región) y ubicación aproximada.	location
+R9AS02	es	Los anuncios que ves pueden estar basados en tu información de ubicación.	location,advertising
+R9AS03	es	Mantendremos estos datos en tu cuenta de Google hasta que decidas eliminarlos.	retention
+R9AS04	es	mostrar anuncios que es probable que sean más relevantes (por ejemplo, anuncios basados en los sitios web que has visitado).	advertising
+R9AS05	es	Google puede usar información basada en cookies u otras tecnologías publicitarias para personalizar los anuncios, a menos que cambies tu configuración de anuncios	advertising
+R9AS06	es	Google usa cookies y tecnologías similares con fines publicitarios, como publicar y renderizar anuncios, y personalizar anuncios	advertising
+R9AS07	es	También nos permite compartir datos anonimizados con terceros de forma que resulten útiles sin poner en riesgo la privacidad de nuestros usuarios.	-
+R9AS08	es	Esto incluye el desarrollo y entrenamiento de modelos algorítmicos y de aprendizaje automático, que nos ayudan a proteger nuestro servicio	ai-training
+R9AS09	es	Tus datos pueden almacenarse y procesarse en centros de datos de Apple y de terceros.	third-parties
+R9AS10	es	Los anuncios personalizados pueden usar el historial de chats, las memorias guardadas y otros datos de Microsoft que haya elegido compartir para adaptar los anuncios	advertising
