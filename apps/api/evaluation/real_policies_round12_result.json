@@ -1,0 +1,360 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 646,
+  "Overall": {
+    "tp": 16,
+    "fp": 6,
+    "fn": 0
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 2,
+      "fp": 1,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 2,
+      "fp": 2,
+      "fn": 0
+    },
+    "location": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "third-parties": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "google_en",
+      "URL": "https://policies.google.com/privacy?hl=en",
+      "Locale": "en",
+      "SourceSHA256": "83ede12da2cc2c66efc1e895fdbb415e5bee1cd53443a4a1a027c2f0d93aa814",
+      "Characters": 57636,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-201",
+          "quoteSha256": "144c50206a15b599042d3f3ee8cef877e1b41045f0b51203436e38ecf7e4696a",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-084",
+          "quoteSha256": "c2090264892208f28a61b8577f8f4145a68d18eab36a632536ce3abb7217acda",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-377",
+          "quoteSha256": "e613ec2d6b66f65faff46befa82b26e763944385c6642f3b44e3b7eacf08b080",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-164",
+          "quoteSha256": "a6807af4a7041598ad16f4dd3d31334892a3794acd89d56cfe345435712ef328",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-146",
+          "quoteSha256": "330b91a835cfb6761e44f4e4a29ca1e8d0d50e5a69194ad0404e9856d66f8c53",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-041",
+          "quoteSha256": "50aa89f39b885de79867c71690a822b1afc299187e4f123c451f62c7a5bbb045",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Google Privacy Policy",
+        "profile": "general",
+        "documentHash": "18e5bd7899cfd7e5d25bbc0416d4a8e128bb95762c52e8141d6021e2d244b130",
+        "clauseCount": 431,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 25
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 19
+      },
+      "DurationSeconds": 76
+    },
+    {
+      "ID": "google_es",
+      "URL": "https://policies.google.com/privacy?hl=es",
+      "Locale": "es",
+      "SourceSHA256": "77282be2878b68e847c7617b4d74787ce8995df6fb330e41faa9e83e4c2ec591",
+      "Characters": 69807,
+      "Expected": [
+        "location",
+        "third-parties",
+        "advertising",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "ai-training",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-218",
+          "quoteSha256": "e0404ca62ecdc499170e0d84cfc6b127a6c5e5ca1273f01b5005d322fc5b409c",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-095",
+          "quoteSha256": "7a82c6e1dcae52d47703710c84ba5f44b3fab71fd1776bb612700bc7b4190c10",
+          "evidenceVerified": true
+        },
+        {
+          "category": "ai-training",
+          "clauseId": "clause-377",
+          "quoteSha256": "108918fcb2ce9d8109218f780bbe06dec80ec13fd42b8668241530f7e8c3772a",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-181",
+          "quoteSha256": "fef2c718ce1642645ed9a01f4d51d58b2eab5fe112efd49e03f6bd2e910c30fb",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-067",
+          "quoteSha256": "110cc6b84d937d46500a8dca867ac2d4be2ccf08f8abbc8c4d25a725fb7e9246",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-155",
+          "quoteSha256": "872ea9dccda963707d3f7136f425b7522b2671db4d0cfe4c58bca41dc767791b",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de Privacidad de Google",
+        "profile": "general",
+        "documentHash": "c7b06f7614bbc052de0e1b0190e3f8f8e7ecb52187f2db1d18dc894a583b1341",
+        "clauseCount": 459,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 49
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 43
+      },
+      "DurationSeconds": 119
+    },
+    {
+      "ID": "whatsapp_en",
+      "URL": "https://www.whatsapp.com/legal/privacy-policy-eea?lang=en_gb",
+      "Locale": "en",
+      "SourceSHA256": "db8902ac44570b008ffb0fbbebe38fd89cca07ee8beef67b738ce4187b4230a2",
+      "Characters": 101977,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "advertising",
+        "biometric",
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "biometric",
+          "clauseId": "clause-117",
+          "quoteSha256": "228d636b00e126f64a1a9faa79f0cb2ce147f828fa48226970b211f92e2d6217",
+          "evidenceVerified": true
+        },
+        {
+          "category": "third-parties",
+          "clauseId": "clause-112",
+          "quoteSha256": "2fbf5e5e95e998ec4c5f2e59a046957bb73635832bb25cbb40e639bfe0d7be2f",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-073",
+          "quoteSha256": "4ace707734463314b494dfd2728fc35aef015d7ae818a972ca02377d399159f2",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-048",
+          "quoteSha256": "8efeddda7375f7913671eb473256bcac36b5c6e6a6679ba0fc35733e7762ed33",
+          "evidenceVerified": true
+        },
+        {
+          "category": "advertising",
+          "clauseId": "clause-074",
+          "quoteSha256": "c0691c33d95c5ca974d5d58e90b16540720abd9cde61ff6bd0601c92c4edaa09",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-530",
+          "quoteSha256": "61879c91b4063627cefb8ae37d204949385e9e594ff115631c7652f6bec88d9f",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "WhatsApp Privacy Policy (EEA)",
+        "profile": "general",
+        "documentHash": "cae65da08adb9f3c8ba81d145cb2080f244a6f947313deed311706609f03bd10",
+        "clauseCount": 967,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 6,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 69
+      },
+      "Score": 100,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 6,
+        "citationsRejected": 63
+      },
+      "DurationSeconds": 175
+    },
+    {
+      "ID": "whatsapp_es",
+      "URL": "https://www.whatsapp.com/legal/privacy-policy-eea?lang=es_LA",
+      "Locale": "es",
+      "SourceSHA256": "d2bee1a54e138c45f6b9591c0f3c5a872a757838ca1e42969ea08ca8b8db2943",
+      "Characters": 120506,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-119",
+          "quoteSha256": "2027753170fb6634cd21fefc41868f7caf7e055d06cb2a2524bca472d14b0cf3",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-046",
+          "quoteSha256": "09fb2c87d3db9185b8d3a1045070cff63a11983bff3995a7a0899b2b70ae8426",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-049",
+          "quoteSha256": "952e401e758518d6e7dd6cb9dc2cd2b08dbb6ef6df431a829d8f7f6da7783808",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-043",
+          "quoteSha256": "f6995e2a416449f46c11e2e0e911514c739b8a0dcc06f52af56a4482209c2f2c",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de WhatsApp (EEE)",
+        "profile": "general",
+        "documentHash": "7efd126a5571c404b75865a0eb2a63f3dbe046de007e628ac98f4d487a706ff2",
+        "clauseCount": 976,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 4,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 92
+      },
+      "Score": 76,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 4,
+        "citationsRejected": 88
+      },
+      "DurationSeconds": 274
+    }
+  ]
+}
