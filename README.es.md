@@ -38,7 +38,14 @@ La ronda 9 usó 40 fragmentos cortos seleccionados de páginas oficiales. Esas c
 
 [Casos A](apps/api/evaluation/real_round9a.tsv) · [Fuentes A](apps/api/evaluation/real_round9a_sources.tsv) · [Salida cruda A](apps/api/evaluation/real_round9a_result.json) · [Casos B](apps/api/evaluation/real_round9b.tsv) · [Fuentes B](apps/api/evaluation/real_round9b_sources.tsv) · [Salida cruda B](apps/api/evaluation/real_round9b_result.json)
 
-**Prueba más reciente y realista:** p7 analizó cuatro páginas oficiales de **políticas de privacidad completas**: Cuentas de Mozilla y Proton, cada una en inglés y español. Encontró 6 de 10 categorías de referencia, añadió 5 categorías incorrectas y omitió 4: **54,5 % de precisión, 60,0 % de cobertura y 1/4 documentos exactos**. Son dos políticas subyacentes, etiquetadas por una persona; la muestra de documentos es pequeña. Las citas exactas no evitaron interpretaciones erróneas. La versión actual requiere revisión humana y no está demostrada una fiabilidad del 90 % con políticas reales. Consulta las [fuentes y etiquetas congeladas](apps/api/evaluation/real_policies_round10.json), los [resultados crudos de la aplicación](apps/api/evaluation/real_policies_round10_result.json) y el [análisis completo](docs/es/EVALUATION.md#25-de-noviembre-décima-ronda-con-políticas-reales-completas).
+**Pruebas con políticas completas:** También ejecutamos el mismo modelo con cuatro políticas subyacentes, cada una en inglés y español. Estas mediciones por documento se acercan más al uso real que los fragmentos elegidos:
+
+| Políticas oficiales completas | Precisión | Cobertura | Páginas exactas |
+| --- | ---: | ---: | ---: |
+| Ronda 10 · Cuentas de Mozilla, Proton | 54,5 % | 60,0 % | 1/4 |
+| **Ronda 11 · Apple, Spotify** | **90,5 %** | **95,0 %** | **2/4** |
+
+La ronda 11 tuvo 19 categorías acertadas, dos falsos hallazgos de `contacts` derivados de datos de contacto corrientes y una omisión de conservación en Apple ES. **No cambiaron el modelo ni los prompts:** la cifra mayor se debe a políticas diferentes, no a una mejora demostrada. En ambas rondas, los totales descriptivos son 78,1 % de precisión y 83,3 % de cobertura. Cuatro políticas subyacentes y una sola persona que asignó etiquetas no demuestran fiabilidad general; una cita exacta también puede sostener una interpretación errónea. Sigue siendo necesaria la revisión humana. Consulta las [fuentes y etiquetas de la ronda 11](apps/api/evaluation/real_policies_round11.json), los [resultados de máquina](apps/api/evaluation/real_policies_round11_result.json) y el [análisis completo en español](docs/es/EVALUATION.md#25-de-noviembre-undécima-ronda-con-otras-dos-políticas-completas).
 
 ## Stack
 
