@@ -1,0 +1,21 @@
+id	locale	text	expected
+R5E01	en	we retain your personal information for as long as you have an active Discord account	retention
+R5E02	en	With your permission, we'll collect and use your browsing activity from within Microsoft Edge to personalize advertising, recommendations, and experiences	advertising
+R5E03	en	Where we process biometric identifiers or biometric information to deliver a feature requested by you, we delete this information once you turn off the feature	biometric
+R5E04	en	We infer your location from your IP address at the level of your country, city, or region.	location
+R5E05	en	By default, OpenAI does not use content from ChatGPT Business, Enterprise, or Edu workspaces to train its models.	-
+R5E06	en	Your existing device and SIM contacts are automatically saved as Google contacts and are synced to your Google Account.	contacts
+R5E07	en	our AI does not use biometric data to identify whether a person is underage. It does not create facial fingerprints	-
+R5E08	en	The GitHub Subprocessor List identifies subprocessors authorized to subprocess customer or personal data on behalf of GitHub to provide services to our Enterprise customers.	third-parties
+R5E09	en	We disclose information to third parties that help us operate, provide, improve, integrate, customize, support, and market our Services.	third-parties
+R5E10	en	we’ll use facial recognition technology to compare the selfie to the profile pictures on the account they’re trying to access	biometric
+R5S01	es	retenemos tu información personal por todo el tiempo que tu cuenta de Discord siga activa	retention
+R5S02	es	Los anuncios pueden mostrarse en función de sus interacciones actuales con nosotros, así como personalizarse con información sobre usted a lo largo del tiempo.	advertising
+R5S03	es	Inferimos su ubicación a partir de su dirección IP a nivel de su país, ciudad o región.	location
+R5S04	es	toda la conversación relacionada con ellos podría utilizarse para entrenar los modelos de OpenAI	ai-training
+R5S05	es	Compartimos contenido con un grupo selecto de proveedores de servicios de confianza que nos ayudan a ofrecer nuestros servicios.	third-parties
+R5S06	es	también usaremos tu actividad de exploración Microsoft Edge para personalizar tus anuncios y ofertas.	advertising
+R5S07	es	El acceso a tus contactos le permite a Signal asociar tu número de teléfono con tu nombre.	contacts
+R5S08	es	tienes la opción de permitir que Google lo utilice, así como los datos relacionados, para desarrollar y mejorar el reconocimiento facial	biometric
+R5S09	es	Usan credenciales criptográficas almacenadas en tu dispositivo o en una llave de seguridad, como una YubiKey, y están protegidas por métodos de seguridad integrados	-
+R5S10	es	Usamos estos datos demográficos, además de información de ubicación general basada en tu dirección IP, para personalizar la publicidad y mejorar la oferta de productos.	location,advertising
