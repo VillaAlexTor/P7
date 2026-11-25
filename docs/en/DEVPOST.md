@@ -52,10 +52,11 @@ Trust requires separating what the document confirms, what the system interprets
 - The interface and analysis output work in English and Spanish.
 - Automated tests cover the seven pillars, API contract, security behavior, frontend language parity, production build, dependency audit, and documentation parity.
 - A reproducible [40-clause synthetic evaluation](EVALUATION.md) reports 27 true positives, zero false positives, and one false negative after in-sample prompt tuning.
+- A separate 20-excerpt check from published privacy sources found 17 of 19 labeled practices with no false positive labels in that run. The sample is small and does not measure whole-policy accuracy.
 
 ## What's next
 
-We will evaluate the classifier on a separate held-out set and conduct the prepared [five-person usability study](USER_STUDY.md). Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
+We will expand the real-policy evaluation, review labels with another annotator, and conduct the prepared [five-person usability study](USER_STUDY.md). Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
 
 ## Disclosure
 
