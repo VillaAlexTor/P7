@@ -1,0 +1,41 @@
+id	locale	text	expected
+W01	en	The app estimates your neighborhood from nearby Bluetooth access points and saves it with the session.	location
+W02	en	When you set up emergency calling, we copy the selected entries from your phone contacts.	contacts
+W03	en	An independent identity-check company receives the ID photograph you upload.	third-parties
+W04	en	An advertiser receives the product identifiers you viewed to personalize its messages.	third-parties,advertising
+W05	en	Submitted voice messages are included in the next training cycle of our speech recognition model.	ai-training
+W06	en	We store a face embedding and compare it with later selfies when you sign in.	biometric
+W07	en	Incident records stay in our archive until we decide our internal audit goals have been met.	retention
+W08	en	Your GPS position determines which location-specific sponsored notifications we send.	location,advertising
+W09	en	The invitation flow copies email addresses from your phone's saved contacts.	contacts
+W10	en	A cloud translation vendor processes the text of messages you ask us to translate.	third-parties
+W11	en	We build advertising audiences from your visits to different product pages.	advertising
+W12	en	Uploaded diagrams are used to improve the next version of our image classifier.	ai-training
+W13	en	We record your walking pattern as a biometric signature for account verification.	biometric
+W14	en	We hold usage logs for as long as we deem them useful for business analysis.	retention
+W15	en	Weather results use a city you enter manually and do not read the device's position.	-
+W16	en	You type invitees' addresses yourself; the application never scans a contact list.	-
+W17	en	Our policy mentions possible vendors for illustration, but none receives customer information.	-
+W18	en	We purchase advertising space, but every visitor sees the same messages regardless of activity.	-
+W19	en	Face-scanning demonstrations use fictional avatars and no biometric identifiers from users.	-
+W20	en	Incident records are erased exactly twenty-four hours after a case is resolved.	-
+W21	es	La aplicación calcula el barrio desde la dirección IP y lo guarda junto a la sesión.	location
+W22	es	Al configurar avisos de emergencia copiamos las entradas seleccionadas de tus contactos telefónicos.	contacts
+W23	es	Una consultora externa de riesgos recibe la fotografía del documento de identidad que cargas.	third-parties
+W24	es	Un anunciante recibe los productos que miraste para personalizar sus mensajes comerciales.	third-parties,advertising
+W25	es	Los audios enviados se incluyen en el siguiente ciclo de entrenamiento de nuestro modelo de voz.	ai-training
+W26	es	Guardamos una representación matemática de tu rostro y la comparamos con nuevas selfies al entrar.	biometric
+W27	es	Los informes de incidentes quedan archivados hasta que decidamos que cumplieron nuestros objetivos internos de auditoría.	retention
+W28	es	Tu posición GPS determina qué notificaciones patrocinadas cercanas te enviamos.	location,advertising
+W29	es	El proceso de invitación copia direcciones de correo de los contactos guardados en tu teléfono.	contacts
+W30	es	Un proveedor externo de traducción procesa los mensajes que le pides traducir.	third-parties
+W31	es	Creamos audiencias publicitarias a partir de tus visitas a distintas páginas de productos.	advertising
+W32	es	Los diagramas cargados se utilizan para mejorar la siguiente versión de nuestro clasificador de imágenes.	ai-training
+W33	es	Registramos tu forma de caminar como firma biométrica para verificar la cuenta.	biometric
+W34	es	Guardamos registros de uso durante el tiempo que consideremos útil para el análisis comercial.	retention
+W35	es	El pronóstico usa una ciudad escrita manualmente y no consulta la posición del dispositivo.	-
+W36	es	Escribes tú mismo las direcciones de invitados; la aplicación nunca examina tu agenda.	-
+W37	es	La política menciona posibles proveedores como ejemplo, pero ninguno recibe información de clientes.	-
+W38	es	Compramos espacios publicitarios, pero todas las personas ven los mismos mensajes sin importar su actividad.	-
+W39	es	Las demostraciones de escaneo facial usan avatares ficticios y ningún identificador biométrico de usuarios.	-
+W40	es	Los informes de incidentes se borran exactamente veinticuatro horas después de resolver el caso.	-
