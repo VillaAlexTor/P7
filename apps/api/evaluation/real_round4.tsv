@@ -1,0 +1,21 @@
+id	locale	text	expected
+R4E01	en	any contact information that an Authorized User chooses to import (such as importing an address book to find coworkers and Slack Connect contacts	contacts
+R4E02	en	On paid subscriptions, the default message and file retention setting is to keep everything for as long as the paid workspace exists.	retention
+R4E03	en	We may share each of the categories of Personal Data we collect with the types of third-parties described below	third-parties
+R4E04	en	Some third parties that may collect information from or about you on Netflix services to provide more relevant advertising to you	third-parties,advertising
+R4E05	en	Maps will only share your approximate location with Apple Ads in order to serve you geographically relevant ads in Maps.	location,advertising
+R4E06	en	Signal can optionally discover which contacts in your address book are Signal users	contacts
+R4E07	en	IP address (which may be used to infer general location at a city or country level)	location
+R4E08	en	The browser’s built-in video player protects you from tracking cookies and personalized ads	-
+R4E09	en	When you use our services for individuals such as ChatGPT, we may use your content to train our models.	ai-training
+R4E10	en	We are a data controller of your biometric data as well for fraud and security purposes	biometric
+R4S01	es	Slack podrá conservar Otra información relativa a ti durante el tiempo que sea necesario para los fines descritos en la presente Política de privacidad	retention
+R4S02	es	En la versión gratuita de Slack, tendrás la opción de elegir si se eliminan los mensajes y archivos después de 90 días	-
+R4S03	es	Compartimos tus Datos personales con nuestros proveedores de servicios.	third-parties
+R4S04	es	Usamos parte de lo que sabemos de ti para mostrarte anuncios que te puedan interesar, y cuando te puedan interesar.	advertising
+R4S05	es	Stripe no puede acceder a estos datos biométricos.	-
+R4S06	es	Canva puede compartir cierta información con nuestros socios publicitarios externos, como su dirección de correo electrónico, ubicación, información cookie	third-parties
+R4S07	es	Cuando utilizas nuestros servicios para particulares, como ChatGPT y Codex, podemos usar tu contenido para entrenar nuestros modelos.	ai-training
+R4S08	es	Nos basamos en tu dirección IP y tu número de teléfono para estimar tu ubicación general (no precisa), como el país o la ciudad	location
+R4S09	es	Se comparte información estrictamente necesaria con Chargebee para las transacciones con tarjeta de crédito, PayPal, Stripe y Bitcoin	third-parties
+R4S10	es	la plataforma de publicidad de Apple puede usar la ubicación del dispositivo para ofrecerte anuncios en el App Store y Apple News	location,advertising
