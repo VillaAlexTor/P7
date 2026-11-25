@@ -306,3 +306,30 @@ python scripts/prepare-real-policies.py --fetch
 cd apps/api
 go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round10.json
 ```
+
+## 25 de noviembre: undécima ronda con otras dos políticas completas
+
+Probamos el flujo de p7 **sin cambios** con la [Política de privacidad de Apple en inglés](https://www.apple.com/legal/privacy/en-ww/), la [versión española de Apple](https://www.apple.com/legal/privacy/es/), la [política de Spotify en inglés para Reino Unido](https://www.spotify.com/uk/legal/privacy-policy/) y la [versión española de Spotify](https://www.spotify.com/es/legal/privacy-policy/). Apple y Spotify son proveedores distintos de los de la ronda diez. Extrajimos todo el contenido de `<main>` de cada página, comprobamos su inicio y final, y guardamos los textos de 28.051 a 51.336 caracteres en `.cache/real_policies_round11`, excluida de Git. El [manifiesto](../../apps/api/evaluation/real_policies_round11.json) fija las URL oficiales, los SHA-256 exactos, las longitudes, las etiquetas por documento y las líneas justificativas. Quedó en el commit `2b0f619` **antes de ejecutar el modelo**. Apple y Spotify ya habían aparecido en conjuntos anteriores de fragmentos, de modo que esta ronda no es independiente por proveedor respecto de todo el historial.
+
+Una persona asignó las siete etiquetas según las definiciones existentes de p7. Los datos de contacto corrientes no equivalen a acceso a la agenda del dispositivo. Contamos la comparación opcional de una foto facial con un documento de identidad de Spotify como uso biométrico; la estimación de edad por sí sola sería ambigua. Spotify describe expresamente el entrenamiento de modelos de aprendizaje automático en una tabla que incluye datos de usuario y de uso. Apple excluye expresamente los datos personales privados del entrenamiento de sus modelos fundacionales; el rastreo de material público mediante Applebot no demuestra entrenamiento con datos privados de usuarios de Apple. Estas decisiones quedaron escritas antes de la inferencia y necesitan revisión independiente.
+
+| Página completa | Categorías de referencia | Categorías de p7 | Conjunto exacto |
+| --- | --- | --- | --- |
+| Apple EN | ubicación, terceros, publicidad, conservación | las cuatro **más contactos** | No |
+| Apple ES | ubicación, terceros, publicidad, conservación | ubicación, terceros, publicidad, **contactos** | No |
+| Spotify EN | ubicación, terceros, publicidad, entrenamiento de IA, biometría, conservación | las seis | Sí |
+| Spotify ES | ubicación, terceros, publicidad, entrenamiento de IA, biometría, conservación | las seis | Sí |
+
+**Primera ejecución: 19 aciertos, 2 falsos positivos y 1 omisión; 90,5 % de precisión, 95,0 % de cobertura y 2/4 documentos con el conjunto exacto de categorías.** Las cuatro ejecuciones tardaron 291 segundos en el equipo local. El mismo `qwen3:4b-instruct` propuso 99 hallazgos; p7 conservó 21 y rechazó 78. El contador `citationsRejected` incluye propuestas duplicadas de una categoría **además** de evidencia inválida; por ello no se puede afirmar que las 78 fueran citas incorrectas. El [resultado de máquina](../../apps/api/evaluation/real_policies_round11_result.json) conserva todas las predicciones finales, categoría e ID de cláusula, hash de la cita, metadatos, puntuación y tiempo sin republicar los textos completos de terceros.
+
+**Errores por corregir:** Apple EN y ES produjeron un hallazgo de `contacts` a partir de información de contacto corriente. Se repite la confusión de la ronda diez entre correo o dirección y acceso a la agenda del dispositivo. Apple ES omitió la conservación amplia que Apple EN sí identificó. Una cita puede ser literal y, aun así, sostener una interpretación errónea. Las puntuaciones de riesgo, no validadas, fueron 90 y 84 para Apple y 100 para ambas páginas de Spotify; no son probabilidades de riesgo calibradas. Conviene exigir evidencia estricta de acceso a la agenda, revisar conservación en español y registrar los motivos de rechazo antes de otra prueba reservada.
+
+El resultado supera el 54,5 % de precisión y 60,0 % de cobertura de la ronda diez por **variación de la muestra con el mismo modelo y los mismos prompts**, no por mejora medida ni entrenamiento. Al sumar descriptivamente ambas rondas de documentos completos hay 25 aciertos, 7 falsos positivos y 5 omisiones (78,1 % de precisión y 83,3 % de cobertura) en ocho páginas localizadas de cuatro políticas subyacentes. Las traducciones están correlacionadas y una sola persona etiquetó todo. No cambiamos modelo, prompt, flujo ni etiquetas fijadas después de esta ejecución. Faltan revisión independiente y más políticas completas de otros proveedores.
+
+Para reproducir, descarga las páginas desde la raíz del repositorio mientras su contenido no haya cambiado, comprueba los hashes registrados y ejecuta el modelo desde `apps/api`:
+
+```powershell
+python scripts/prepare-real-policies-round11.py --fetch
+cd apps/api
+go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round11.json -text-dir ../../.cache/real_policies_round11
+```
