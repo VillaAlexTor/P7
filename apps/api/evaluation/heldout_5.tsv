@@ -1,0 +1,41 @@
+id	locale	text	expected
+X01	en	We determine the district where you are standing from the nearest mobile towers and save it for trip planning.	location
+X02	en	The setup screen retrieves names and phone numbers from your device address book for emergency alerts.	contacts
+X03	en	Our payment gateway receives your account number and transaction amount to process a charge.	third-parties
+X04	en	We transfer your favorite product categories to an ad agency that sends you personalized offers.	third-parties,advertising
+X05	en	We add your submitted questions to the next dataset used to train our language model.	ai-training
+X06	en	A typing-rhythm signature is stored and checked to confirm your identity during login.	biometric
+X07	en	We retain complaint records until we determine they have no further operational value.	retention
+X08	en	We use the area around your current GPS coordinates to choose promoted shops to display.	location,advertising
+X09	en	Selecting Invite imports the saved email addresses from your phone's contacts application.	contacts
+X10	en	A data recovery contractor processes copies of customer files when backups must be restored.	third-parties
+X11	en	Pages you viewed are used to assign you to a personalized advertising segment.	advertising
+X12	en	Your corrections to automated captions are used to update our speech model's parameters.	ai-training
+X13	en	We compare a stored voiceprint against a new recording before authorizing sensitive actions.	biometric
+X14	en	Archived account events are kept without a scheduled deletion date.	retention
+X15	en	The trip planner uses the district you enter by hand; it never determines where you are.	-
+X16	en	Emergency alerts use numbers typed into the form, and the address book is never read.	-
+X17	en	Payment information is processed entirely within our systems and is not shared with any gateway.	-
+X18	en	We describe targeted offers as an industry example; our offers do not use customer profiles.	-
+X19	en	No voiceprints or typing patterns are collected to recognize an account holder.	-
+X20	en	Complaint records are permanently removed fourteen days after resolution.	-
+X21	es	Calculamos la zona en que estás a partir de las antenas móviles cercanas y la guardamos para planear rutas.	location
+X22	es	La pantalla inicial obtiene nombres y números de la agenda del dispositivo para avisos de emergencia.	contacts
+X23	es	La pasarela de pagos recibe tu número de cuenta y el importe de la operación para cobrarla.	third-parties
+X24	es	Transmitimos tus categorías favoritas de productos a una agencia que te envía ofertas personalizadas.	third-parties,advertising
+X25	es	Agregamos tus preguntas enviadas al próximo conjunto de datos para entrenar nuestro modelo de lenguaje.	ai-training
+X26	es	Guardamos un patrón del ritmo de tecleo y lo comprobamos para confirmar tu identidad al ingresar.	biometric
+X27	es	Conservamos las reclamaciones hasta que decidamos que ya no tienen valor para nuestras operaciones.	retention
+X28	es	Usamos el área alrededor de tus coordenadas GPS actuales para elegir tiendas promocionadas.	location,advertising
+X29	es	Al pulsar Invitar se importan los correos guardados en la aplicación de contactos del teléfono.	contacts
+X30	es	Un contratista de recuperación procesa copias de archivos de clientes cuando restauramos respaldos.	third-parties
+X31	es	Las páginas que visitaste sirven para asignarte a un segmento de publicidad personalizada.	advertising
+X32	es	Tus correcciones a subtítulos automáticos se usan para actualizar los parámetros de nuestro modelo de voz.	ai-training
+X33	es	Comparamos una huella de voz guardada con una grabación nueva antes de autorizar acciones sensibles.	biometric
+X34	es	Los eventos archivados de la cuenta se guardan sin fecha programada de eliminación.	retention
+X35	es	El planificador usa el distrito que escribes a mano y nunca determina dónde estás.	-
+X36	es	Los avisos de emergencia usan números escritos en el formulario y jamás leen la agenda.	-
+X37	es	Los pagos se procesan solo en nuestros sistemas y no compartimos información con pasarelas.	-
+X38	es	Describimos las ofertas dirigidas como ejemplo del sector; nuestras ofertas no usan perfiles de clientes.	-
+X39	es	No recogemos huellas de voz ni patrones de tecleo para reconocer a titulares de cuentas.	-
+X40	es	Las reclamaciones se eliminan de forma permanente catorce días después de resolverse.	-
