@@ -1,0 +1,203 @@
+{
+  "model": "qwen3:4b-instruct",
+  "cases": 20,
+  "durationSeconds": 21,
+  "overall": {
+    "tp": 8,
+    "fp": 1,
+    "fn": 0
+  },
+  "byCategory": {
+    "advertising": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "contacts": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "location": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "retention": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "third-parties": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "outcomes": [
+    {
+      "id": "R8BE01",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE02",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE03",
+      "expected": [
+        "contacts"
+      ],
+      "predicted": [
+        "contacts"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE04",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE05",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE06",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [
+        "retention"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE07",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE08",
+      "expected": [],
+      "predicted": [
+        "biometric"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE09",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BE10",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS01",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS02",
+      "expected": [
+        "third-parties"
+      ],
+      "predicted": [
+        "third-parties"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS03",
+      "expected": [
+        "contacts"
+      ],
+      "predicted": [
+        "contacts"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS04",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS05",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS06",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS07",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS08",
+      "expected": [
+        "retention"
+      ],
+      "predicted": [
+        "retention"
+      ],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS09",
+      "expected": [],
+      "predicted": [],
+      "rejectedCitations": 0
+    },
+    {
+      "id": "R8BS10",
+      "expected": [
+        "location"
+      ],
+      "predicted": [
+        "location"
+      ],
+      "rejectedCitations": 0
+    }
+  ]
+}
