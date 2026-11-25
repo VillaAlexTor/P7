@@ -258,7 +258,7 @@ go run ./cmd/evaluate -data evaluation/real_round8a.tsv
 go run ./cmd/evaluate -data evaluation/real_round8b.tsv
 ```
 
-## November 25: ninth real-source round (final session of the day)
+## November 25: ninth real-source round
 
 We froze the prompt from `b821d56` and ran the installed local `qwen3:4b-instruct` model once on **40 previously unseen excerpts from 40 new official URLs**. Cases, reference labels, and URLs were committed before inference (`9b973ee`–`e74f664`). The sources are substantive privacy policies and product notices from Google, Spotify, Microsoft, Mozilla, and Apple. Each set contains ten English and ten Spanish excerpts. Source text is quoted verbatim in spans of at most 25 words; the checker now covers **300 labeled excerpts and 300 source links**. Some URLs are translations of one underlying notice, so this is not a sample of 40 independent policies.
 
@@ -280,4 +280,29 @@ The raw machine output, including every prediction and rejected-citation count, 
 cd apps/api
 go run ./cmd/evaluate -data evaluation/real_round9a.tsv
 go run ./cmd/evaluate -data evaluation/real_round9b.tsv
+```
+
+## November 25: tenth round, complete real privacy policies
+
+This run changed the unit of evaluation from selected excerpts to **entire published notices**. We downloaded the complete `<main>` content of the [Mozilla Accounts notice](https://www.mozilla.org/en-US/privacy/mozilla-accounts/) and the [Proton policy](https://proton.me/legal/privacy), plus their [Mozilla Spanish](https://www.mozilla.org/es-ES/privacy/mozilla-accounts/) and [Proton Spanish](https://proton.me/es-419/legal/privacy) versions. The extracted texts were 16,843–20,873 characters and 130–157 p7 clauses each. We checked the first and last sections and retained all main-content sections. The local extracts stay in gitignored `.cache/real_policies`; the [frozen manifest](../../apps/api/evaluation/real_policies_round10.json) records each official URL, exact SHA-256, text length, reference categories, and reference line numbers. It was committed as `4eed7b5` **before inference**. These publishers appeared in earlier excerpt sets, so this is a new *full-document test*, not publisher-independent holdout data.
+
+We ran the unchanged `qwen3:4b-instruct` and p7 `AnalyzeWithClassifier` pipeline once on each complete text, using the general profile. The seven categories were scored as present or absent **per document**, with one possible finding per category. A single reviewer assigned reference labels. The raw [machine report](../../apps/api/evaluation/real_policies_round10_result.json) preserves every document's predicted categories, score, clause IDs, citation verification counts, source hash, and timing. Evidence quotes are represented by hashes in the committed report so the third-party policy text is not republished.
+
+| Policy | Reference labels | p7 labels | Exact? |
+| --- | --- | --- | --- |
+| Mozilla EN | location, third parties, retention | location, contacts, advertising | No |
+| Mozilla ES | location, third parties, retention | location, contacts, advertising, retention | No |
+| Proton EN | third parties, retention | third parties, advertising | No |
+| Proton ES | third parties, retention | third parties, retention | Yes |
+
+**Observed document-category result: 6 true positives, 5 false positives, 4 misses; 54.5% precision, 60.0% recall, and 1/4 documents with an exact category set.** The four runs took 125 seconds total. Twenty-nine proposed citations were rejected by p7's exact-quote verifier; the 11 retained findings had verified literal quotes, but that verification did not establish semantic correctness. The two Mozilla contact findings refer to contact information, not access to a device address book. The three advertising findings do not establish personalized ad targeting under the frozen category definition. The English Mozilla notice's explicit outside recipients and broad retention were missed; the English Proton notice's potentially permanent IP retention was also missed. The Spanish versions sometimes produced different labels for equivalent policies.
+
+These four URLs are **two policies in two languages**, not four independent publishers. Negative labels for biometric and AI training provide limited coverage; there is no positive example of either category. The 0.3 hybrid risk scores (48–74) were generated but were **not validated** against a separate risk reference. The result is much lower than the ninth round's short-excerpt precision and recall and is the best current evidence of how this version behaves on complete policies. Do not present it as 90% reliable or use it for unsupervised privacy decisions. We did not change the model, prompts, code, or labels after this run. Independent label review, more publishers, and targeted fixes followed by a new holdout are needed.
+
+To reproduce the exact local texts, rerun the fetch script while the published pages are unchanged and compare the recorded hashes; publishers may edit them later. Then, from `apps/api` with Ollama serving the model:
+
+```powershell
+python scripts/prepare-real-policies.py --fetch
+cd apps/api
+go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round10.json
 ```
