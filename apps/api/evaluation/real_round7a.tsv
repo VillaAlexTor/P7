@@ -1,0 +1,21 @@
+id	locale	text	expected
+R7AE01	en	phone numbers from your device contacts are sent to OpenAI and converted into a coded format	contacts
+R7AE02	en	Biometric data stays on your device and is never shared with Microsoft.	-
+R7AE03	en	These groups are used in a confidential on-device auction process to show you relevant ads.	advertising
+R7AE04	en	Your Customer Data (like messages and files) is never used to train any LLMs.	-
+R7AE05	en	Atlassian uses the third-party entities listed below (each, a ‘Sub-processor’) to process Customer Personal Data on behalf of Atlassian customers	third-parties
+R7AE06	en	Firefox uses information like your device’s IP address and nearby Wi-Fi networks to estimate your location.	location
+R7AE07	en	We do not analyze your content to train generative AI models	-
+R7AE08	en	When you enable ‘My Friends,’ your location will be shared with all of your friends	location
+R7AE09	en	Data you share will be used to help identify usage patterns, measure model quality, and inform future evaluation and training of models.	ai-training
+R7AE10	en	Archiving removes the chat from the regular sidebar but does not delete it. Archived chats remain searchable.	retention
+R7AS01	es	Cuando utilizas nuestros servicios para particulares, como ChatGPT, podemos usar tu contenido para entrenar nuestros modelos.	ai-training
+R7AS02	es	Tus datos de cliente en Slack (como los mensajes y archivos) no se utilizan para entrenar LLM.	-
+R7AS03	es	No, no lo entrenamos mediante el contenido personal de los suscriptores de Creative Cloud.	-
+R7AS04	es	Cuando habilites "Mis amigxs", tu ubicación se compartirá con todos tus amigxs, ¡incluidos los que agregues en el futuro!	location
+R7AS05	es	Estas notificaciones son visibles para los amigos con los que compartes tu ubicación	location
+R7AS06	es	Microsoft Edge elimina automáticamente los grupos de intereses de más de 30 días	-
+R7AS07	es	OpenAI puede recibir de ese usuario tu nombre, dirección de correo electrónico o número de teléfono.	-
+R7AS08	es	Los chats eliminados se borran de forma permanente de los sistemas de OpenAI en un plazo de 30 días	-
+R7AS09	es	Usa un chat temporal si quieres que una conversación no aparezca en el historial ni se use para mejorar los modelos de OpenAI	-
+R7AS10	es	Los Chats temporales se eliminan de nuestros sistemas después de 30 días.	-
