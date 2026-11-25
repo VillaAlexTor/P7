@@ -306,3 +306,30 @@ python scripts/prepare-real-policies.py --fetch
 cd apps/api
 go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round10.json
 ```
+
+## November 25: eleventh round, two different complete policies
+
+We tested the **unchanged** p7 pipeline on the complete [Apple Privacy Policy (English)](https://www.apple.com/legal/privacy/en-ww/), [Apple Privacy Policy (Spanish)](https://www.apple.com/legal/privacy/es/), [Spotify Privacy Policy (UK English)](https://www.spotify.com/uk/legal/privacy-policy/), and [Spotify Privacy Policy (Spain Spanish)](https://www.spotify.com/es/legal/privacy-policy/). Apple and Spotify are different publishers from round ten. We extracted each page's full `<main>` content, checked the beginning and end of the extraction, and kept the 28,051–51,336-character texts in gitignored `.cache/real_policies_round11`. The [manifest](../../apps/api/evaluation/real_policies_round11.json) fixes official URLs, exact SHA-256 hashes, lengths, document-level labels, and supporting line numbers. It was committed as `2b0f619` **before model inference**. Apple and Spotify had appeared in earlier short-excerpt sets, so this is not a publisher-independent holdout across the entire project history.
+
+One reviewer labeled the seven categories using the existing p7 definitions. In particular, contact information alone is not device address-book access. We count Spotify's optional face-photo comparison to an identity document as biometric use; facial age estimation by itself would be ambiguous. Spotify explicitly describes training machine-learning models in a purpose table containing user and usage data. Apple's policy explicitly excludes private personal data from foundational-model training; Applebot's crawling of public web material does not establish training with private Apple-user data. These decisions were written in the manifest before inference and need independent adjudication.
+
+| Complete page | Reference categories | p7 categories | Exact set |
+| --- | --- | --- | --- |
+| Apple EN | location, third parties, advertising, retention | all four **plus contacts** | No |
+| Apple ES | location, third parties, advertising, retention | location, third parties, advertising, **contacts** | No |
+| Spotify EN | location, third parties, advertising, AI training, biometric, retention | all six | Yes |
+| Spotify ES | location, third parties, advertising, AI training, biometric, retention | all six | Yes |
+
+**First-run result: 19 true positives, 2 false positives, 1 miss; 90.5% precision, 95.0% recall, and 2/4 exact document-category sets.** The four runs took 291 seconds on the local machine. The unchanged `qwen3:4b-instruct` produced 99 candidate findings; p7 retained 21 and rejected 78. Its `citationsRejected` counter includes duplicate-category proposals **as well as** invalid evidence, so these 78 cannot be interpreted as 78 invalid quotes. The committed [machine report](../../apps/api/evaluation/real_policies_round11_result.json) retains every final prediction, finding category and clause ID, evidence-quote hash, metadata, score, and timing without republishing full third-party policy texts.
+
+**Errors to fix:** Apple EN and ES both produced a `contacts` finding from ordinary contact information, repeating round ten's confusion between an email/address field and device address-book access. Apple ES omitted the broad retention period that Apple EN identified. A citation can be literally present yet semantically wrong. The unvalidated risk scores were 90 and 84 for Apple and 100 for both Spotify pages; they should not be described as calibrated risk probabilities. The result suggests a stricter address-book criterion, Spanish retention checks, and rejection-reason instrumentation before another fresh holdout.
+
+The higher result than round ten's 54.5% precision / 60.0% recall is **sample variation under the same model and prompts**, not measured improvement or training. Combining the two full-policy rounds descriptively gives 25 true positives, 7 false positives, and 5 misses (78.1% precision, 83.3% recall) over eight localized pages from four underlying policies; language versions are correlated, and one reviewer supplied every label. No model, prompt, pipeline, or frozen label was changed after this run. Independent labeling and more publisher-independent complete policies are still needed.
+
+To reproduce, fetch the pages from the repository root while their contents are unchanged, verify the recorded hashes, and run the model from `apps/api`:
+
+```powershell
+python scripts/prepare-real-policies-round11.py --fetch
+cd apps/api
+go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round11.json -text-dir ../../.cache/real_policies_round11
+```
