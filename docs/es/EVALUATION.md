@@ -258,7 +258,7 @@ go run ./cmd/evaluate -data evaluation/real_round8a.tsv
 go run ./cmd/evaluate -data evaluation/real_round8b.tsv
 ```
 
-## 25 de noviembre: novena ronda con fuentes reales (última sesión del día)
+## 25 de noviembre: novena ronda con fuentes reales
 
 Congelamos el prompt del commit `b821d56` y ejecutamos una vez el modelo local `qwen3:4b-instruct` sobre **40 fragmentos no vistos de 40 URL oficiales nuevas**. Los casos, las etiquetas de referencia y las URL quedaron en commits antes de la inferencia (`9b973ee`–`e74f664`). Las fuentes son políticas de privacidad y avisos de producto sustanciales de Google, Spotify, Microsoft, Mozilla y Apple. Cada conjunto incluye diez fragmentos en inglés y diez en español. Las citas literales tienen como máximo 25 palabras; el validador ya cubre **300 fragmentos etiquetados y 300 enlaces de origen**. Algunas URL son traducciones del mismo aviso: no equivalen a 40 políticas independientes.
 
@@ -280,4 +280,29 @@ La salida cruda de máquina, con cada predicción y las citas rechazadas, está 
 cd apps/api
 go run ./cmd/evaluate -data evaluation/real_round9a.tsv
 go run ./cmd/evaluate -data evaluation/real_round9b.tsv
+```
+
+## 25 de noviembre: décima ronda con políticas reales completas
+
+Esta vez cambiamos la unidad de evaluación: pasamos de fragmentos seleccionados a **avisos publicados íntegros**. Descargamos el contenido completo de `<main>` del [aviso de cuentas de Mozilla](https://www.mozilla.org/en-US/privacy/mozilla-accounts/) y la [política de Proton](https://proton.me/legal/privacy), junto con sus versiones de [Mozilla en español](https://www.mozilla.org/es-ES/privacy/mozilla-accounts/) y [Proton en español](https://proton.me/es-419/legal/privacy). Los textos extraídos tienen entre 16.843 y 20.873 caracteres y entre 130 y 157 cláusulas segmentadas por p7. Revisamos las secciones iniciales y finales y conservamos todas las secciones del contenido principal. Las copias locales están en `.cache/real_policies`, excluida de Git; el [manifiesto congelado](../../apps/api/evaluation/real_policies_round10.json) registra cada URL oficial, SHA-256 exacto, longitud, categorías de referencia y líneas justificativas. Se confirmó en el commit `4eed7b5` **antes de la inferencia**. Estos proveedores ya aparecieron en pruebas anteriores con fragmentos: esta es una prueba nueva de *documentos completos*, no un conjunto independiente por proveedor.
+
+Ejecutamos una vez el modelo y los prompts sin cambios, `qwen3:4b-instruct`, mediante `AnalyzeWithClassifier` de p7, con el perfil general. Calificamos la presencia o ausencia de las siete categorías **por documento**; p7 puede devolver como máximo un hallazgo por categoría. Una sola persona asignó las etiquetas de referencia. El [resultado crudo de máquina](../../apps/api/evaluation/real_policies_round10_result.json) conserva las predicciones, puntuaciones, IDs de cláusulas, recuentos de citas verificadas, hash de fuente y tiempos de cada documento. Las citas aparecen representadas por hashes para evitar republicar los textos completos de terceros.
+
+| Política | Etiquetas de referencia | Etiquetas de p7 | ¿Exacto? |
+| --- | --- | --- | --- |
+| Mozilla EN | ubicación, terceros, conservación | ubicación, contactos, publicidad | No |
+| Mozilla ES | ubicación, terceros, conservación | ubicación, contactos, publicidad, conservación | No |
+| Proton EN | terceros, conservación | terceros, publicidad | No |
+| Proton ES | terceros, conservación | terceros, conservación | Sí |
+
+**Resultado observado por categoría y documento: 6 aciertos, 5 falsos positivos y 4 omisiones; 54,5 % de precisión, 60,0 % de cobertura y 1/4 documentos con el conjunto exacto de categorías.** Las cuatro ejecuciones tardaron 125 segundos en total. El verificador de citas exactas rechazó 29 propuestas; los 11 hallazgos conservados tenían una cita literal verificada, pero esa verificación no demuestra que su interpretación sea correcta. Los dos hallazgos de contactos en Mozilla se refieren a información de contacto, no al acceso a la agenda del dispositivo. Los tres hallazgos de publicidad no demuestran segmentación personalizada de anuncios según la definición congelada. Se omitieron destinatarios externos y conservación amplia explícitos en Mozilla EN, y la posible conservación permanente de registros IP en Proton EN. Las versiones en español produjeron a veces etiquetas distintas de sus equivalentes en inglés.
+
+Estas cuatro URL son **dos políticas en dos idiomas**, no cuatro proveedores independientes. Las etiquetas negativas de biometría y entrenamiento de IA aportan cobertura limitada; no hay ejemplos afirmativos de esas categorías. Las puntuaciones de riesgo del motor híbrido 0.3 (48–74) se generaron, pero **no se validaron** frente a una referencia externa de riesgo. El resultado es mucho más bajo que la precisión y cobertura de la novena ronda de fragmentos y constituye la mejor evidencia actual sobre el comportamiento de esta versión con políticas completas. No corresponde presentarla como fiable al 90 % ni usarla para decisiones de privacidad sin revisión humana. No cambiamos modelo, prompts, código ni etiquetas después de esta ejecución. Hacen falta revisión independiente de etiquetas, más proveedores y correcciones dirigidas seguidas de un conjunto reservado nuevo.
+
+Para reproducir los textos locales exactos, ejecuta de nuevo el script de descarga mientras las páginas publicadas permanezcan iguales y compara los hashes; los proveedores pueden modificarlas. Después, desde `apps/api` y con el modelo activo en Ollama:
+
+```powershell
+python scripts/prepare-real-policies.py --fetch
+cd apps/api
+go run ./cmd/evaluatepolicies -manifest evaluation/real_policies_round10.json
 ```
