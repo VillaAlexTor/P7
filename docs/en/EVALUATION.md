@@ -170,3 +170,19 @@ The observed 90% precision and recall meet the chosen stop point **for this 20-e
 ```powershell
 go run ./cmd/evaluate -data evaluation/real_round4.tsv
 ```
+
+## November 25: fifth real-source round
+
+We froze the same `c90c9e9` prompt and inference workflow, then committed `real_round5.tsv` and `real_round5_sources.tsv` before the model's first run. This new set contains 10 English and 10 Spanish excerpts from 20 official pages not used in the preceding real-source sets. It has 18 affirmative labels, including one two-label case, and three negative controls. The source checker now covers 140 excerpts and 140 distinct URLs, with no more than 25 quoted words per URL.
+
+| Run | True positive labels | False positive labels | Missed labels | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `real_round5.tsv`, frozen prompt, first run | 18 | 0 | 0 | 100.0% | 100.0% |
+
+All three negative controls had no finding. We made **no prompt or model change** after this run: the new sample supplied no observed error to justify another targeted revision. This is another evaluation of the existing local model and prompts, not training of model weights. The previous round-four first-run score remains 90.0% precision and 90.0% recall; its four errors have not been erased by the new result.
+
+The fifth set is small, selected, and labeled by one reviewer. Its perfect observed score is not a general accuracy estimate or evidence of performance on whole documents. Future work should prioritize independent annotation, broader publishers, full-document testing, and repeatability and latency measurements. To reproduce from `apps/api` with Ollama running:
+
+```powershell
+go run ./cmd/evaluate -data evaluation/real_round5.tsv
+```
