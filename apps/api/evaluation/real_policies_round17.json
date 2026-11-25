@@ -1,0 +1,28 @@
+{
+  "retrievedOn": "2026-11-25",
+  "method": "Complete official IKEA Spain privacy text extracted by scripts/prepare-real-policies-round17.py; one reviewer froze document-category labels and questions before inference; source HTML and text stay in gitignored .cache/real_policies_round17.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "The English and Spanish pages are long translations of the same Spain-specific policy, not independent organizations. They test multilingual consistency and semantically difficult clauses.",
+    "Location is conditional app processing; the policy explicitly asks for consent. Optional processing counts as affirmative.",
+    "Gift Registry recipients and professional contact details are not an imported device address book. Contacts is negative.",
+    "IKEA shares data with outside service providers, while expressly denying sharing for third-party commercial purposes. Third-parties is positive because the category is broader than marketing disclosure.",
+    "Advertising is positive because commercial messages are adapted to purchase history and website browsing, including Custom Audience; an explicit denial of consequential automated decisions does not negate tailored marketing.",
+    "IKEA describes AI analysis of call and chat transcripts and a virtual assistant, but does not state that it trains AI models with customer data. AI-training is negative.",
+    "CCTV and visitor counting do not establish biometric identity recognition. Biometric is negative.",
+    "Most retention periods are fixed, but contest and event records are kept for as long as necessary for legal obligations without a definite deadline. Retention is positive under the existing category definition."
+  ],
+  "auditQuestions": [
+    {"id":"I1","en":"Does optional IKEA app location processing count even when consent is required?","es":"¿Cuenta el tratamiento opcional de ubicación en la app aunque exija consentimiento?","category":"location","reference":"yes"},
+    {"id":"I2","en":"Do Gift Registry recipient details establish access to the device address book?","es":"¿Los destinatarios de la Lista de Regalos demuestran acceso a la agenda del dispositivo?","category":"contacts","reference":"not-established"},
+    {"id":"I3","en":"Does IKEA share personal data with service providers despite saying it does not share for third-party commercial purposes?","es":"¿IKEA comparte datos con proveedores pese a decir que no los cede a terceros con fines comerciales?","category":"third-parties","reference":"yes"},
+    {"id":"I4","en":"Are IKEA's profile-based electronic marketing messages personalized advertising?","es":"¿Los mensajes comerciales adaptados al perfil constituyen publicidad personalizada?","category":"advertising","reference":"yes"},
+    {"id":"I5","en":"Does AI analysis of call transcripts establish training of AI models on them?","es":"¿El análisis con IA de transcripciones demuestra que se entrenan modelos con ellas?","category":"ai-training","reference":"not-established"},
+    {"id":"I6","en":"Does visitor counting by CCTV establish biometric identity recognition?","es":"¿El conteo de visitantes mediante cámaras demuestra identificación biométrica?","category":"biometric","reference":"not-established"},
+    {"id":"I7","en":"Does any IKEA retention category lack a definite deletion deadline?","es":"¿Alguna categoría conservada por IKEA carece de plazo de eliminación concreto?","category":"retention","reference":"yes"}
+  ],
+  "policies": [
+    {"id":"ikea_en","title":"IKEA Spain Privacy Policy","locale":"en","url":"https://www.ikea.com/es/en/customer-service/privacy-policy/","characters":43120,"sha256":"e73576cac0fc1e505195b0a190728193eea4aa5d3410b2ee43aca70a54ff8a39","expected":["location","third-parties","advertising","retention"],"referenceLines":{"location":111,"third-parties":251,"advertising":167,"retention":329},"contextLines":{"contacts":113,"ai-training":137,"biometric":165,"marketing-denial":303}},
+    {"id":"ikea_es","title":"Política de privacidad de IKEA España","locale":"es","url":"https://www.ikea.com/es/es/customer-service/privacy-policy/","characters":47845,"sha256":"60c1052254e15ff9d37b053d8e71a47f66cd96d9a3704a3f849cff7c8166b728","expected":["location","third-parties","advertising","retention"],"referenceLines":{"location":111,"third-parties":253,"advertising":169,"retention":331},"contextLines":{"contacts":113,"ai-training":139,"biometric":167,"marketing-denial":305}}
+  ]
+}
