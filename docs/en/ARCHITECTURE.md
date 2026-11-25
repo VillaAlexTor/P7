@@ -21,7 +21,7 @@ The MVP has no account system or database. Policy text is processed in memory an
 
 1. Normalize line endings and spacing without rewriting meaning.
 2. Split the document into stable clause identifiers.
-3. Send clause batches to local `qwen3:4b-instruct` with a constrained JSON schema.
+3. Send each clause batch to local `qwen3:4b-instruct` in five focused category passes, each with a constrained JSON schema.
 4. Receive semantic categories, clause identifiers, and verbatim proposed quotes.
 5. Reject any unsupported category or quote not contained exactly in its referenced clause.
 6. Classify disclosure controls as specified, ambiguous, or missing.
@@ -45,7 +45,7 @@ The MVP has no account system or database. Policy text is processed in memory an
 
 The document is untrusted data. p7 never executes instructions found inside it. Known instruction-like patterns are counted in the safety report, but they do not alter analysis behavior. Request bodies are limited to 1 MiB and documents to 200,000 characters. CORS origins are configured through `P7_ALLOWED_ORIGINS`.
 
-Ollama runs `qwen3:4b-instruct` locally and returns candidates constrained by a JSON schema: category, clause ID, and verbatim quote. The Go backend rejects unsupported categories and quotes that do not occur in the referenced clause, deduplicates findings, applies profile weights, and calculates the final score. If Ollama is unavailable, the analysis endpoint returns a service error instead of silently replacing AI with keyword classification.
+Ollama runs `qwen3:4b-instruct` locally. The five passes cover location/contacts/biometrics, third parties, advertising, AI training, and retention. Each pass returns candidates constrained by a category-specific JSON schema: category, clause ID, and verbatim quote. The Go backend rejects unsupported categories and quotes that do not occur in the referenced clause, deduplicates findings, applies profile weights, and calculates the final score. Five model calls per batch increase latency and must be measured on full policies. If Ollama is unavailable, the analysis endpoint returns a service error instead of silently replacing AI with keyword classification.
 
 ## Deliberate scope decisions
 
