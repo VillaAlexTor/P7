@@ -2,6 +2,11 @@
 setlocal
 cd /d "%~dp0"
 
+if not defined P7_API_PORT set "P7_API_PORT=8080"
+if not defined P7_WEB_PORT set "P7_WEB_PORT=3000"
+if not defined NEXT_PUBLIC_API_URL set "NEXT_PUBLIC_API_URL=http://localhost:%P7_API_PORT%"
+if not defined P7_ALLOWED_ORIGINS set "P7_ALLOWED_ORIGINS=http://localhost:%P7_WEB_PORT%"
+
 echo.
 echo ========================================
 echo   p7 - Inicio completo con Docker
@@ -38,9 +43,9 @@ docker compose up --build --wait
 if errorlevel 1 goto :error
 
 echo.
-echo [2/2] p7 esta listo en http://localhost:3000
+echo [2/2] p7 esta listo en http://localhost:%P7_WEB_PORT%
 echo Para detenerlo ejecuta: docker compose down
-start "" "http://localhost:3000"
+start "" "http://localhost:%P7_WEB_PORT%"
 exit /b 0
 
 :error
