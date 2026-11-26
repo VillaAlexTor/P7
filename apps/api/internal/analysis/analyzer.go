@@ -200,7 +200,9 @@ func verifyEvidence(clauses []domain.Clause, evidence domain.Evidence) bool {
 	}
 	for _, clause := range clauses {
 		if clause.ID == evidence.ClauseID {
-			return strings.Contains(clause.Text, evidence.Quote)
+			// PDF extraction can insert line breaks within a sentence. Preserve
+			// every word and punctuation mark while allowing whitespace to vary.
+			return strings.Contains(strings.Join(strings.Fields(clause.Text), " "), strings.Join(strings.Fields(evidence.Quote), " "))
 		}
 	}
 	return false
