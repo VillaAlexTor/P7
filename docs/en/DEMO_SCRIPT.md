@@ -1,10 +1,10 @@
 # Demo Script
 
-Target duration: 5 minutes 25 seconds. Hackathon limit: 6 minutes.
+This is the planning outline. The completed video is 3 minutes 48.6 seconds; the hackathon limit is 6 minutes. Its final narration text is in `video/p7-demo/SCRIPT.md`.
 
 Use this as a natural guide rather than reading it word for word. Pause after starting the analysis if the local model needs extra time; that pause can be shortened during editing.
 
-**Camera and narration:** You do not need to show your face. Record the application screen and narrate the demo with your own voice. Voice narration is not stated as a formal eligibility requirement, but it is strongly recommended because it makes your problem, decisions, learning, and next steps clear to the judges. A small face-camera window is optional; use it only if it makes you more comfortable. If you cannot record voice, use complete, readable English captions and on-screen explanations instead.
+**Final production:** The video shows real application captures without a face camera. Its English narration was synthesized locally with Kokoro, then mixed with music; corrected English captions are supplied as a separate SRT. Disclose the synthetic voice in the Devpost description.
 
 ## 0:00–0:35 — Problem and impact
 
@@ -81,7 +81,7 @@ Use this as a natural guide rather than reading it word for word. Pause after st
 ## Recording checklist
 
 - Record the application screen; showing your face or webcam is optional.
-- Prefer your own voice for the narration. Speak naturally; you do not need to memorize the script.
+- Disclose the locally synthesized Kokoro narration in the submission.
 - Keep the final video at 6:00 or less.
 - Show a real completed analysis, not only screenshots or slides.
 - Keep model loading or waiting time short in the final edit.
