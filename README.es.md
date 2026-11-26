@@ -110,7 +110,7 @@ El endpoint es `POST /api/v1/analyze`. Recibe `title`, `text`, `locale` (`en` o 
 
 ## Declaración de IA y materiales
 
-El producto usa el LLM local descrito arriba. ChatGPT y Codex también ayudaron con investigación, alcance, arquitectura, código, diseño, pruebas y documentación. El video usa narración sintetizada localmente mediante Kokoro y se montó con HyperFrames. Revisamos y probamos ese trabajo. Consulta el [borrador de presentación](docs/es/DEVPOST.md), su [versión inglesa](docs/en/DEVPOST.md), el [índice bilingüe](docs/README.es.md) y la [auditoría de entrega](docs/es/SUBMISSION_AUDIT.md).
+El producto usa el LLM local descrito arriba. ChatGPT y Codex también ayudaron con investigación, alcance, arquitectura, código, diseño, pruebas y documentación. El video usa narración sintetizada localmente mediante Kokoro y se montó con HyperFrames. Revisamos y probamos ese trabajo. Consulta el [índice bilingüe](docs/README.es.md) y el [historial de evaluación](docs/es/EVALUATION.md).
 
 La [galería de presentación](docs/assets/devpost-gallery/ready-1500x1000/) contiene ocho imágenes del producto. El video de demostración se gestiona por separado del repositorio de código.
 
