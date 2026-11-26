@@ -19,7 +19,7 @@ p7 transforma una política en una evaluación personalizada y verificable. El u
 - mapa del flujo de datos declarado;
 - índice de riesgo personal determinista;
 - controles de información ausente o ambigua;
-- hallazgos vinculados a cláusulas exactas y verificadas;
+- hallazgos vinculados a cláusulas citadas, con comprobación textual de la cita;
 - escenarios posibles claramente etiquetados;
 - plan de acción priorizado para el consentimiento;
 - experiencia completa en español e inglés.
@@ -28,13 +28,13 @@ El documento normalizado recibe un hash SHA-256 para identificar la versión exa
 
 ## Cómo lo construimos
 
-La aplicación usa Next.js, React y TypeScript. Una API Go segmenta políticas y envía lotes de cláusulas a Ollama local, donde `qwen3:4b-instruct` devuelve candidatos semánticos restringidos por esquema. Go verifica cada cita, evalúa controles, aplica pesos transparentes y deriva el mapa y las recomendaciones. El MVP no usa cuentas, base de datos, API pagada ni clave.
+La aplicación usa Next.js, React y TypeScript. Una API Go segmenta políticas y envía lotes de cláusulas a Ollama local, donde `qwen3:4b-instruct` devuelve candidatos semánticos restringidos por esquema. Go comprueba la presencia textual de cada cita en su cláusula, evalúa controles, aplica pesos transparentes y deriva el mapa y las recomendaciones. Esta comprobación no demuestra que la interpretación sea correcta. El MVP no usa cuentas, base de datos, API pagada ni clave.
 
 ## Cómo usamos IA
 
 ChatGPT y Codex apoyaron investigación de competencia, definición del problema, alcance, arquitectura, programación, diseño, pruebas y documentación. Esta asistencia está divulgada en el repositorio y la presentación.
 
-La versión ejecutable llama a `qwen3:4b-instruct` mediante Ollama local y solicita candidatos de clasificación semántica estructurados. Sigue siendo reproducible sin créditos API pagados ni secretos. Go verifica cada cita propuesta contra su cláusula, rechaza salidas no admitidas, deduplica y aplica pesos deterministas. Elegimos esta arquitectura porque una respuesta convincente no es suficiente en privacidad: cada hallazgo debe volver a la política.
+La versión ejecutable llama a `qwen3:4b-instruct` mediante Ollama local y solicita candidatos de clasificación semántica estructurados. Sigue siendo reproducible sin créditos API pagados ni secretos. Go comprueba las citas contra sus cláusulas, admite diferencias de espacios causadas por PDF, rechaza categorías desconocidas, deduplica y aplica pesos deterministas. Una auditoría separada de citas hecha por una persona muestra que una coincidencia textual aún puede sostener una interpretación errónea.
 
 ## Desafíos
 
@@ -42,7 +42,9 @@ El desafío principal fue evitar que el producto se convierta en otro resumidor 
 
 ## Qué aprendimos
 
-La confianza requiere separar lo que el documento confirma, lo que el sistema interpreta y lo que podría ocurrir. En la primera evaluación sintética de 40 cláusulas, el modelo clasificó las 28 prácticas afirmativas, pero también marcó las 12 negaciones. Tras revisar el prompt, los falsos positivos bajaron a cero, aunque todavía omitió una cláusula afirmativa de conservación. Aprendimos a medir errores explícitamente y a distinguir una demo funcional de una prueba de exactitud. El [borrador de reflexión personal](REFLECTION.md) requiere revisión del autor antes de enviarlo.
+Llegué a p7 con más confianza en backend y ciberseguridad que en IA explicable o diseño de producto. Mi primer impulso fue concentrarme en lograr que el análisis funcionara. La primera evaluación me corrigió: el modelo interpretó con mucha seguridad las doce cláusulas negativas como si esas prácticas sí ocurrieran. Fue un error incómodo, pero útil. Revisé el prompt, añadí controles negativos, mantuve la verificación de evidencia exacta y dejé de confundir una respuesta convincente con una respuesta correcta.
+
+Las rondas posteriores con fuentes reales fueron igual de importantes. Los resultados variaron mucho entre fragmentos seleccionados y políticas completas. En la ronda 18, los saltos de línea del PDF hicieron que el verificador literal rechazara todos los candidatos de Airbnb. Al admitir diferencias de espacios, la cobertura en esas mismas cuatro páginas localizadas subió de 30 % a 70 %, pero ninguna tuvo un conjunto perfecto y 3 de 16 citas retenidas carecían de respaldo semántico. Aprendí que un resultado fuerte no garantiza fiabilidad, que una demo funcional no es un estudio de exactitud y que una cita coincidente puede sostener una interpretación equivocada. Si comenzara de nuevo, probaría mucho antes documentos completos y comprensión con usuarios.
 
 ## Logros
 
@@ -52,11 +54,15 @@ La confianza requiere separar lo que el documento confirma, lo que el sistema in
 - Interfaz y resultado funcionan en español e inglés.
 - Las pruebas cubren siete pilares, contrato API, seguridad, paridad de idiomas, build, auditoría de dependencias y paridad documental.
 - Una [evaluación sintética reproducible de 40 cláusulas](EVALUATION.md) informa 27 positivos verdaderos, cero falsos positivos y un falso negativo tras ajustar el prompt con el mismo conjunto.
-- Una comprobación aparte con 20 fragmentos de fuentes de privacidad publicadas detectó 17 de 19 prácticas etiquetadas sin falsos positivos en esa corrida. La muestra es pequeña y no mide la exactitud con políticas completas.
+- Nueve rondas con políticas completas conservan fuentes y salidas crudas del modelo. La última pasada revisada sobre Dropbox y Airbnb encontró 14 de 20 categorías de referencia, añadió 2 según la etiqueta discutida de contactos de Dropbox y omitió 6: 87,5 % de precisión, 70,0 % de cobertura y 0 de 4 páginas localizadas exactas. Fue una comprobación del arreglo sobre la misma muestra, no una nueva prueba independiente. Una auditoría de una persona encontró 13 de 16 citas retenidas pertinentes; el [estudio de la ronda 18](ROUND18_CASE_STUDY.md) documenta las salvedades.
 
 ## Próximos pasos
 
-Ampliaremos la evaluación con políticas reales, pediremos a otra persona que revise las etiquetas y realizaremos el [protocolo preparado para cinco personas](USER_STUDY.md). Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
+Pediremos a otra persona que revise las etiquetas, evaluaremos más políticas completas de proveedores independientes y realizaremos el [protocolo preparado para cinco personas](USER_STUDY.md). Después añadiremos comparación entre versiones, lectura segura por URL y PDF, exportación accesible y fuentes jurídicas verificadas para América Latina.
+
+## Declaración de trabajo previo
+
+No existía código de la aplicación antes de este hackathon. El concepto, la implementación, la evaluación, la documentación y los materiales de presentación de p7 se crearon durante el evento. El proyecto utiliza frameworks y bibliotecas de código abierto acreditados, el entorno de Ollama y el modelo `qwen3:4b-instruct`.
 
 ## Declaración
 
