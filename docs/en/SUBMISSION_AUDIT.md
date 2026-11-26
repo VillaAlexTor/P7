@@ -6,17 +6,18 @@ The [STEM2Connect Devpost page](https://stem2connect-online-hackathon.devpost.co
 
 ## Verified in this workspace
 
-- [VillaAlexTor/P7](https://github.com/VillaAlexTor/P7) is public, with `main` as its default branch. GitHub Actions reported success for the last published commit checked during this audit; newly edited files need another CI run after push.
-- The complete `scripts/test-all.ps1` suite passed: Go tests, four frontend tests, TypeScript, production build, production dependency audit with **zero vulnerabilities**, bilingual project-document parity, and real-evaluation source metadata.
-- A real local API request used Ollama `qwen3:4b-instruct` and returned four findings with four textually verified citations, seven disclosure checks, a five-node/four-edge map, four impact scenarios, and five actions. The English example scored **97** for Journalist and **80** for General when analyzed separately. The web returned HTTP 200 and the API health endpoint reported the correct model. CORS allowed the configured web origin.
+- [VillaAlexTor/P7](https://github.com/VillaAlexTor/P7) was confirmed public, with `main` as its default branch. The latest local commit and the changes from this review still require a new remote CI result after push.
+- The complete `scripts/test-all.ps1` suite passed on November 26: Go tests, six frontend tests, TypeScript, production build, production dependency audit with **zero vulnerabilities**, bilingual project-document parity, and real-evaluation source metadata.
+- A fresh request against the current Go code used Ollama `qwen3:4b-instruct` and returned four findings with four textually verified citations, seven disclosure checks, a five-node/four-edge map, four impact scenarios, and five actions. The English example scored **97** for Journalist; the earlier General run scored **80**. The API health endpoint reported the correct model. The previous web smoke test returned HTTP 200 and allowed the configured CORS origin.
 - The checked-in documentation is paired in English and Spanish. A scan of tracked filenames and common credential patterns found no committed secrets; `.cache` and the video's virtual environment and generated media are ignored.
 - The Devpost text, architecture, README, and demo script now describe the current seven category passes and the distinction between a textually matching citation and semantic proof.
+- The local final video was reviewed: H.264/AAC, 1920×1080 at 30 fps, **3:48.6** long. It shows the Analyze action, a completed four-finding report, and a second analysis changing Journalist **97** to General **80**. The latest evaluation slide states **87.5% precision, 70% recall, and 0/4 exact pages**. Its audio measures **−16.2 LUFS** integrated with **−1.5 dBFS** true peak; speech was machine-transcribed from the final mix. English captions are supplied as a separate SRT. This environment did not provide human auditory audition.
 
 ## Still required before submission
 
-- Finish and review the actual video, keep it at **6:00 or less**, show a completed live analysis, and upload to YouTube or Vimeo as public or unlisted. Verify the link while signed out. The video is being produced separately and was **not** reviewed in this audit.
+- Upload the reviewed video to YouTube or Vimeo as public or unlisted, add its corrected English SRT, and verify the link while signed out. No public video URL was found in the repository during this audit.
 - Complete the Devpost form, select **Community Impact** as the primary track, add the repository and video links, confirm each team member has joined, and review the personal reflection and previous-work disclosure for factual accuracy. Registration, student eligibility, team membership, and the Devpost submission cannot be verified from the repository.
-- A fresh Docker Compose startup was **not** completed on this machine: Docker Hub timed out during the `ollama/ollama` image TLS handshake. `docker compose config -q` passed, and the host Ollama + Go API + production Next.js path was tested successfully. Ports `8080` and `3000` may conflict with other local applications; the smoke test used API `18080` and web `13000`. This is a setup constraint to check on the recording machine.
+- A fresh Docker Compose startup was **not** completed on this machine: Docker Hub timed out during the `ollama/ollama` image TLS handshake. `docker compose config -q` passed again and the pinned Docker Hub image tag exists. The host Ollama + Go API + production Next.js path was tested successfully in the earlier smoke check. Ports `8080` and `3000` may conflict with other local applications; that check used API `18080` and web `13000`.
 
 ## Accuracy limit to state honestly
 
