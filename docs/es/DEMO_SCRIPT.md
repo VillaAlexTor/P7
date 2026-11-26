@@ -1,10 +1,10 @@
 # Guion de demostración
 
-Duración objetivo: 5 minutos y 25 segundos. Límite del hackathon: 6 minutos.
+Este es el esquema de planificación. El video terminado dura 3 minutos y 48,6 segundos; el límite del hackathon es de 6 minutos. La narración final está en `video/p7-demo/SCRIPT.md`.
 
 Úsalo como guía natural en vez de leerlo palabra por palabra. Si el modelo local tarda al iniciar el análisis, haz una pausa y recórtala durante la edición.
 
-**Cámara y narración:** No necesitas mostrar tu cara. Graba la pantalla de la aplicación y narra la demostración con tu propia voz. La narración hablada no figura como requisito formal de elegibilidad, pero es muy recomendable porque permite explicar con claridad el problema, tus decisiones, lo que aprendiste y los próximos pasos. Una pequeña ventana con tu cámara es opcional; úsala solo si te hace sentir más cómodo. Si no puedes grabar voz, reemplázala con subtítulos completos y explicaciones legibles en inglés dentro del video.
+**Producción final:** El video muestra capturas reales de la aplicación sin cámara del autor. La narración inglesa se sintetizó localmente con Kokoro y se mezcló con música; los subtítulos corregidos se entregan como archivo SRT separado. Declara la voz sintética en la postulación Devpost.
 
 ## 0:00–0:35 — Problema e impacto
 
@@ -81,7 +81,7 @@ Duración objetivo: 5 minutos y 25 segundos. Límite del hackathon: 6 minutos.
 ## Checklist de grabación
 
 - Graba la pantalla de la aplicación; mostrar tu cara o usar webcam es opcional.
-- Es preferible narrar con tu propia voz. Habla con naturalidad; no necesitas memorizar el guion.
+- Declara la narración sintetizada localmente con Kokoro en la postulación.
 - Mantén el video final en 6:00 o menos.
 - Muestra un análisis real completo, no solo capturas o diapositivas.
 - Recorta en la edición la espera de carga o inferencia del modelo.
