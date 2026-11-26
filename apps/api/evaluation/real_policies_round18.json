@@ -1,0 +1,30 @@
+{
+  "retrievedOn": "2026-11-26",
+  "method": "Complete current Dropbox privacy HTML and Airbnb 2026 privacy PDFs, extracted by scripts/prepare-real-policies-round18.py; one reviewer froze document-category labels and bilingual questions before inference; source files remain in gitignored .cache/real_policies_round18.",
+  "categories": ["location", "contacts", "third-parties", "advertising", "ai-training", "biometric", "retention"],
+  "annotationNotes": [
+    "The four documents represent two publishers, each in English and Spanish; translations are correlated, not four independent policies.",
+    "Dropbox's banner announces a January 1, 2027 replacement. The extracted text begins at the currently effective May 30, 2025 policy heading, so future-policy statements are excluded.",
+    "Dropbox says a user may give access to 'your contacts' and the service stores them, but does not specify a device address book in this policy. Under the fixed contacts definition, that is not enough to establish device address-book access. This borderline negative should receive independent review.",
+    "Dropbox's upgrade emails and event follow-up are generic marketing, not an affirmative claim of data-based targeting. A linked FAQ about AI use does not establish training in this policy.",
+    "Dropbox says devices may transmit location, third-party service providers access data, and data may be retained for legal obligations, disputes, or agreements without a fixed deadline.",
+    "Airbnb explicitly says users may import address-book contacts, describes facial recognition data from identity photos, says personal information may improve AI models, and describes personal-data-based ad personalization. Those are affirmative under the existing definitions.",
+    "Airbnb also describes geolocation, outward provider disclosure, and purpose-based retention without a definite deletion deadline."
+  ],
+  "auditQuestions": [
+    {"id":"D1","en":"Does Dropbox's mention of 'your contacts' prove device address-book access?","es":"¿La mención de 'tus contactos' en Dropbox demuestra acceso a la agenda del dispositivo?","category":"contacts","reference":"not-established"},
+    {"id":"D2","en":"Do generic paid-upgrade emails establish personalized advertising?","es":"¿Los correos genéricos sobre mejoras de pago prueban publicidad personalizada?","category":"advertising","reference":"not-established"},
+    {"id":"D3","en":"Does the current Dropbox policy say devices may transmit location?","es":"¿La política vigente de Dropbox dice que los dispositivos pueden transmitir ubicación?","category":"location","reference":"yes"},
+    {"id":"D4","en":"Can Dropbox retain some information for legal or dispute purposes without a fixed deadline?","es":"¿Puede Dropbox conservar algunos datos por fines legales o disputas sin plazo fijo?","category":"retention","reference":"yes"},
+    {"id":"A1","en":"Can an Airbnb user import address-book contacts?","es":"¿Puede un usuario de Airbnb importar contactos de una agenda?","category":"contacts","reference":"yes"},
+    {"id":"A2","en":"Does Airbnb describe facial-recognition information from identity documents?","es":"¿Airbnb describe datos de reconocimiento facial derivados de documentos de identidad?","category":"biometric","reference":"yes"},
+    {"id":"A3","en":"Does Airbnb permit personal information to be used to develop or improve AI models?","es":"¿Airbnb permite usar datos personales para desarrollar o mejorar modelos de IA?","category":"ai-training","reference":"yes"},
+    {"id":"A4","en":"Does Airbnb personalize advertising using personal information?","es":"¿Airbnb personaliza publicidad usando datos personales?","category":"advertising","reference":"yes"}
+  ],
+  "policies": [
+    {"id":"dropbox_en","title":"Dropbox Privacy Policy","locale":"en","url":"https://www.dropbox.com/en/privacy","characters":17456,"sha256":"7f3ee8dee9d2545bc9325bca02d9c5fbdccafecaecd37050df82c22df8804f63","expected":["location","third-parties","retention"],"referenceLines":{"location":23,"third-parties":41,"retention":75},"contextLines":{"contacts":19,"advertising":29,"ai-training":35,"future-banner-excluded":1}},
+    {"id":"dropbox_es","title":"Política de privacidad de Dropbox","locale":"es","url":"https://www.dropbox.com/es/privacy","characters":20744,"sha256":"ede9f1b453587c3da9e1dba3eacd8de9f0f92628cd761ad4e88dacc384bc04a1","expected":["location","third-parties","retention"],"referenceLines":{"location":23,"third-parties":41,"retention":75},"contextLines":{"contacts":19,"advertising":29,"ai-training":37,"future-banner-excluded":1}},
+    {"id":"airbnb_en","title":"Airbnb Privacy Policy 2026","locale":"en","url":"https://assets.airbnb.com/help/2026_Privacy_Policy-English.pdf","characters":54904,"sha256":"5871eb46af913f7b470266433eed41f4adfed26b1a51014c66b7b63754963972","expected":["location","contacts","third-parties","advertising","ai-training","biometric","retention"],"referenceLines":{"location":146,"contacts":138,"third-parties":310,"advertising":264,"ai-training":495,"biometric":107,"retention":512}},
+    {"id":"airbnb_es","title":"Política de Privacidad de Airbnb 2026","locale":"es","url":"https://assets.airbnb.com/help/2026_Privacy_Policy-Spanish_Spain.pdf","characters":61064,"sha256":"e259e966eab41f8ce9e9af3ce14c0c3ededa3ddeb146b96c68bb8937d9c657f7","expected":["location","contacts","third-parties","advertising","ai-training","biometric","retention"],"referenceLines":{"location":172,"contacts":164,"third-parties":410,"advertising":323,"ai-training":606,"biometric":124,"retention":626}}
+  ]
+}
