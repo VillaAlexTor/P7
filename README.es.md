@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="README.md">English</a> ·
+  <a href="https://youtu.be/xO7PG6xwfb8">Ver video</a> ·
   <a href="#prueba-p7">Prueba p7</a> ·
   <a href="#qué-hace-p7">Funciones</a> ·
   <a href="#evaluación-y-límites-reales">Evaluación</a> ·
@@ -22,6 +23,8 @@
 Las personas aceptan políticas de privacidad sin saber qué prácticas les afectan, qué deja sin aclarar el documento o qué pueden hacer después. Un resumen genérico no responde esas preguntas personales.
 
 **p7 convierte una política pegada en una lectura personalizada y vinculada con evidencia.** Identifica prácticas declaradas, representa el recorrido descrito de los datos, señala vacíos de información, explica posibles impactos y sugiere acciones. Es una aplicación local funcional creada para el [hackathon de IA STEM2Connect](https://stem2connect-online-hackathon.devpost.com/) en la categoría **Community Impact**.
+
+**[Mira la demostración de 3:49 en YouTube](https://youtu.be/xO7PG6xwfb8).** Muestra la aplicación funcionando con un ejemplo ficticio y compara dos perfiles de privacidad.
 
 > **Alcance:** p7 lee lo que dice un documento. No observa flujos reales de datos, no decide si un servicio cumple la ley y no sustituye una revisión humana o jurídica.
 
@@ -112,7 +115,7 @@ El endpoint es `POST /api/v1/analyze`. Recibe `title`, `text`, `locale` (`en` o 
 
 El producto usa el LLM local descrito arriba. ChatGPT y Codex también ayudaron con investigación, alcance, arquitectura, código, diseño, pruebas y documentación. El video usa narración sintetizada localmente mediante Kokoro y se montó con HyperFrames. Revisamos y probamos ese trabajo. Consulta el [índice bilingüe](docs/README.es.md) y el [historial de evaluación](docs/es/EVALUATION.md).
 
-La [galería de presentación](docs/assets/devpost-gallery/ready-1500x1000/) contiene ocho imágenes del producto. El video de demostración se gestiona por separado del repositorio de código.
+La [galería de presentación](docs/assets/devpost-gallery/ready-1500x1000/) contiene ocho imágenes del producto. [Mira la demostración](https://youtu.be/xO7PG6xwfb8) en YouTube.
 
 ## Licencia
 
