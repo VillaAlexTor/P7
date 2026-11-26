@@ -10,7 +10,7 @@ Go HTTP API
   ├─ input limits and locale selection
   ├─ normalization and clause segmentation
   ├─ Ollama structured semantic classification
-  ├─ exact evidence verification
+  ├─ textual citation verification
   ├─ deterministic profile weighting
   └─ flow map, gaps, scenarios, and actions
 ```
@@ -21,9 +21,9 @@ The MVP has no account system or database. Policy text is processed in memory an
 
 1. Normalize line endings and spacing without rewriting meaning.
 2. Split the document into stable clause identifiers.
-3. Send each clause batch to local `qwen3:4b-instruct` in five focused category passes, each with a constrained JSON schema.
+3. Send each clause batch to local `qwen3:4b-instruct` in seven category-focused passes, each with a constrained JSON schema.
 4. Receive semantic categories, clause identifiers, and verbatim proposed quotes.
-5. Reject any unsupported category or quote not contained exactly in its referenced clause.
+5. Reject unsupported categories and quotes that do not match their referenced clause after whitespace normalization.
 6. Classify disclosure controls as specified, ambiguous, or missing.
 7. Apply transparent profile multipliers and cap the index at 100.
 8. Derive a declared data-flow map, possible-impact scenarios, and actions.
@@ -33,19 +33,19 @@ The MVP has no account system or database. Policy text is processed in memory an
 
 | Differentiator | Implementation |
 | --- | --- |
-| Data Mapping | `buildFlow` produces typed nodes and edges from verified findings. |
+| Data Mapping | `buildFlow` produces typed nodes and edges from findings with textually checked citations. |
 | Risk Engine | `calculateScore` uses deterministic weights and profile multipliers. |
 | Gap Detection | `detectGaps` evaluates seven disclosure controls. |
-| Evidence Engine | `verifyEvidence` rejects empty, unknown, or fabricated citations. |
+| Evidence Engine | `verifyEvidence` rejects empty quotes, wrong clause IDs, and text that does not match the clause; it does not verify semantic support. |
 | Impact Simulation | `buildGuidance` emits scenarios explicitly labeled as hypothetical. |
 | Smart Consent | The same guidance layer creates prioritized, interactive actions. |
 | Privacy for Everyone | UI, samples, prompts, errors, and reports support Spanish and English. |
 
 ## Trust boundaries
 
-The document is untrusted data. p7 never executes instructions found inside it. Known instruction-like patterns are counted in the safety report, but they do not alter analysis behavior. Request bodies are limited to 1 MiB and documents to 200,000 characters. CORS origins are configured through `P7_ALLOWED_ORIGINS`.
+The document is untrusted data. The prompt tells the model to treat policy text as data, not instructions; prompt injection remains a model risk. Known instruction-like patterns are counted in the safety report. Request bodies are limited to 1 MiB and documents to 200,000 characters. CORS origins are configured through `P7_ALLOWED_ORIGINS`.
 
-Ollama runs `qwen3:4b-instruct` locally. The five passes cover location/contacts/biometrics, third parties, advertising, AI training, and retention. Each pass returns candidates constrained by a category-specific JSON schema: category, clause ID, and verbatim quote. The Go backend rejects unsupported categories and quotes that do not occur in the referenced clause, deduplicates findings, applies profile weights, and calculates the final score. Five model calls per batch increase latency and must be measured on full policies. If Ollama is unavailable, the analysis endpoint returns a service error instead of silently replacing AI with keyword classification.
+Ollama runs `qwen3:4b-instruct` locally. The seven passes cover location, contacts, biometrics, third parties, advertising, AI training, and retention separately. Each returns candidates constrained by a category-specific JSON schema: category, clause ID, and proposed quote. Go rejects unsupported categories and quotes that do not textually match the referenced clause after whitespace normalization, deduplicates findings, applies profile weights, and calculates the final score. This does not prove a quote supports its category. Seven model calls per batch increase latency and must be measured on full policies. If Ollama is unavailable, the analysis endpoint returns a service error instead of silently replacing AI with keyword classification.
 
 ## Deliberate scope decisions
 
