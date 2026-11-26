@@ -9,6 +9,7 @@
 
 <p align="center">
   <a href="README.es.md">Español</a> ·
+  <a href="https://youtu.be/xO7PG6xwfb8">Watch demo</a> ·
   <a href="#try-p7">Try p7</a> ·
   <a href="#what-p7-does">Features</a> ·
   <a href="#evaluation-and-honest-limits">Evaluation</a> ·
@@ -22,6 +23,8 @@
 People routinely accept privacy policies without knowing which practices affect them, what the document leaves unclear, or what they can do next. A generic summary does not answer those personal questions.
 
 **p7 turns a pasted policy into an evidence-linked, personalized reading.** It identifies declared practices, maps the described data path, checks disclosure gaps, explains possible impacts, and suggests actions. It is a working local application built for the [STEM2Connect AI Hackathon](https://stem2connect-online-hackathon.devpost.com/) in the **Community Impact** track.
+
+**[Watch the 3:49 demo on YouTube](https://youtu.be/xO7PG6xwfb8).** It shows the working app analyzing a fictional example and comparing two privacy profiles.
 
 > **Scope:** p7 reads what a document says. It does not observe real data flows, decide whether a service is lawful, or replace human or legal review.
 
@@ -112,7 +115,7 @@ The API endpoint is `POST /api/v1/analyze`. It accepts `title`, `text`, `locale`
 
 The product uses the local LLM described above. ChatGPT and Codex also assisted with research, scope, architecture, coding, design, tests, and documentation. The demo video uses locally synthesized narration via Kokoro and was assembled with HyperFrames. We reviewed and tested that work. See the [bilingual documentation index](docs/README.md) and [evaluation history](docs/en/EVALUATION.md).
 
-The [presentation gallery](docs/assets/devpost-gallery/ready-1500x1000/) contains eight product images. The demo video is managed separately from the source repository.
+The [presentation gallery](docs/assets/devpost-gallery/ready-1500x1000/) contains eight product images. [Watch the demo](https://youtu.be/xO7PG6xwfb8) on YouTube.
 
 ## License
 
