@@ -1,1 +1,0 @@
-This index is not invented directly by the language model. The model identifies candidate practices. The Go backend verifies the evidence and applies transparent profile weights. The SHA-256 value identifies the exact normalized document used for this report. The map shows the path declared in the policy. It does not claim to observe real network traffic.

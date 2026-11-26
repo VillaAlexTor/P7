@@ -8,12 +8,17 @@ coverage/
 *.tsbuildinfo
 .cache/
 /.internal/
-video/**/.venv*/
-video/**/.media/
-video/**/.hyperframes/
-video/**/.thumbnails/
-video/**/.waveform-cache/
-video/**/renders/
+
+# Local video-production workspace and exports
+/video/
+
+# Local Devpost working copy; the public project story lives in the README
+/DEVPOST_SUBMISSION.txt
+
+# Devpost keeps only the optimized 3:2 gallery under ready-1500x1000/
+/docs/assets/devpost-gallery/*.png
+/docs/assets/devpost-gallery/*.jpg
+/docs/assets/devpost-gallery/*.zip
 
 # Environment and local state
 .env
