@@ -19,7 +19,7 @@ p7 transforms a policy into a personalized, verifiable privacy assessment. Users
 - a declared data-flow map;
 - a deterministic personal risk index;
 - missing and ambiguous disclosure checks;
-- findings linked to exact verified clauses;
+- findings linked to cited policy clauses, with textual quote verification;
 - clearly labeled possible-impact scenarios;
 - a prioritized consent action plan;
 - complete Spanish and English experiences.
@@ -28,13 +28,13 @@ The normalized document receives a SHA-256 hash so the report identifies the exa
 
 ## How we built it
 
-The web application uses Next.js, React, and TypeScript. A Go API segments policies and sends clause batches to local Ollama, where `qwen3:4b-instruct` returns schema-constrained semantic candidates. Go verifies every citation, evaluates disclosure controls, applies transparent profile weights, and derives the map and guidance. The MVP deliberately uses no account system, database, paid API, or API key.
+The web application uses Next.js, React, and TypeScript. A Go API segments policies and sends clause batches to local Ollama, where `qwen3:4b-instruct` returns schema-constrained semantic candidates. Go checks each citation for textual presence in its clause, evaluates disclosure controls, applies transparent profile weights, and derives the map and guidance. This check does not prove the quote's interpretation. The MVP deliberately uses no account system, database, paid API, or API key.
 
 ## How we used AI
 
 ChatGPT and Codex supported competitor research, problem framing, scope, architecture, coding, design, tests, and documentation. This assistance is disclosed in the repository and submission.
 
-The executable calls `qwen3:4b-instruct` through local Ollama and requests structured semantic-classification candidates. It remains reproducible without paid API credits or secrets. Go verifies every proposed quote against its clause, rejects unsupported output, deduplicates results, and applies deterministic weights. We chose this design because a plausible answer is insufficient for privacy: every finding must trace back to the policy.
+The executable calls `qwen3:4b-instruct` through local Ollama and requests structured semantic-classification candidates. It remains reproducible without paid API credits or secrets. Go checks proposed quotes against their cited clauses, allowing whitespace differences from PDF extraction, rejects unknown categories, deduplicates results, and applies deterministic weights. A separate one-reviewer citation audit shows that a matching quote can still support the wrong interpretation.
 
 ## Challenges
 
@@ -42,7 +42,9 @@ The hardest challenge was preventing the product from becoming another legal-tex
 
 ## What we learned
 
-Trust requires separating what the document confirms, what the system interprets, and what could happen. In our first 40-clause synthetic evaluation, the model classified all 28 affirmative practices but also misclassified all 12 denials. Prompt revision reduced false positives to zero, while one affirmative retention clause remained missed. This taught us to measure mistakes explicitly and to treat a demo as evidence of functionality, not accuracy. The [personal reflection draft](REFLECTION.md) needs the author's review before submission.
+I came into p7 with more confidence in backend development and cybersecurity than in explainable AI or product design. My first instinct was to focus on making the analysis run. The first evaluation corrected me: the model confidently treated all twelve denial clauses as if the practices actually occurred. That was an uncomfortable but useful mistake. I revised the prompt, added negative controls, kept exact evidence checks, and stopped treating a convincing output as a correct one.
+
+The later real-source rounds were just as important. Results varied sharply between selected excerpts and complete policies. In round 18, PDF line wraps caused our literal citation gate to reject every Airbnb candidate. Fixing whitespace handling raised recall on those same four localized pages from 30% to 70%, yet none had a perfect category set and 3 of 16 retained citations lacked semantic support. I learned that one strong result is not a reliability guarantee, a working demo is not an accuracy study, and a matching citation can still support an incorrect interpretation. If I started again, I would test complete documents and user comprehension much earlier.
 
 ## Accomplishments
 
@@ -52,11 +54,15 @@ Trust requires separating what the document confirms, what the system interprets
 - The interface and analysis output work in English and Spanish.
 - Automated tests cover the seven pillars, API contract, security behavior, frontend language parity, production build, dependency audit, and documentation parity.
 - A reproducible [40-clause synthetic evaluation](EVALUATION.md) reports 27 true positives, zero false positives, and one false negative after in-sample prompt tuning.
-- A separate 20-excerpt check from published privacy sources found 17 of 19 labeled practices with no false positive labels in that run. The sample is small and does not measure whole-policy accuracy.
+- Nine full-policy rounds have frozen source records and raw model outputs. The latest revised pass on Dropbox and Airbnb found 14 of 20 reference categories, added 2 under its disputed Dropbox contact label, and missed 6: 87.5% precision, 70.0% recall, and 0 of 4 exact localized pages. It was an in-sample repair check, not a fresh independent holdout. A one-reviewer audit found 13 of 16 retained citations substantively relevant; the [round-18 case study](ROUND18_CASE_STUDY.md) records the caveats.
 
 ## What's next
 
-We will expand the real-policy evaluation, review labels with another annotator, and conduct the prepared [five-person usability study](USER_STUDY.md). Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
+We will review the labels with another annotator, evaluate more complete policies from independent providers, and conduct the prepared [five-person usability study](USER_STUDY.md). Future work includes policy-version comparison, safe URL and PDF ingestion, accessible report export, and verified legal sources for Latin American jurisdictions.
+
+## Previous work disclosure
+
+No application code existed before this hackathon. The concept, implementation, evaluation, documentation, and presentation materials for p7 were created during the event. The project uses credited open-source frameworks, libraries, the Ollama runtime, and the `qwen3:4b-instruct` model.
 
 ## Disclosure
 
