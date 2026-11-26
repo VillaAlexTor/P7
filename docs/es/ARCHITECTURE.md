@@ -10,7 +10,7 @@ API HTTP en Go
   ├─ límites de entrada y selección de idioma
   ├─ normalización y segmentación
   ├─ clasificación semántica estructurada con Ollama
-  ├─ verificación exacta de evidencia
+  ├─ comprobación textual de citas
   ├─ ponderación determinista por perfil
   └─ mapa, vacíos, escenarios y acciones
 ```
@@ -21,9 +21,9 @@ El MVP no tiene cuentas ni base de datos. El texto se procesa en memoria y la ap
 
 1. Normaliza saltos y espacios sin reescribir el significado.
 2. Divide el documento en identificadores estables de cláusula.
-3. Envía cada lote de cláusulas a `qwen3:4b-instruct` local en cinco pasadas por categorías, cada una con un esquema JSON restringido.
+3. Envía cada lote de cláusulas a `qwen3:4b-instruct` local en siete pasadas centradas en categorías, cada una con un esquema JSON restringido.
 4. Recibe categorías semánticas, identificadores de cláusula y citas literales propuestas.
-5. Rechaza categorías no admitidas o citas que no estén contenidas exactamente en la cláusula indicada.
+5. Rechaza categorías no admitidas o citas que no coincidan con su cláusula tras normalizar espacios.
 6. Clasifica controles como especificados, ambiguos o ausentes.
 7. Aplica multiplicadores transparentes por perfil y limita el índice a 100.
 8. Deriva mapa de flujo, escenarios posibles y acciones.
@@ -33,19 +33,19 @@ El MVP no tiene cuentas ni base de datos. El texto se procesa en memoria y la ap
 
 | Diferenciador | Implementación |
 | --- | --- |
-| Data Mapping | `buildFlow` produce nodos y conexiones desde hallazgos verificados. |
+| Data Mapping | `buildFlow` produce nodos y conexiones desde hallazgos con citas comprobadas textualmente. |
 | Risk Engine | `calculateScore` usa pesos deterministas y multiplicadores por perfil. |
 | Gap Detection | `detectGaps` evalúa siete controles de información. |
-| Evidence Engine | `verifyEvidence` rechaza citas vacías, desconocidas o fabricadas. |
+| Evidence Engine | `verifyEvidence` rechaza citas vacías, cláusulas incorrectas y texto que no coincide; no valida el respaldo semántico. |
 | Impact Simulation | `buildGuidance` emite escenarios etiquetados como hipotéticos. |
 | Smart Consent | La misma capa crea acciones priorizadas e interactivas. |
 | Privacy for Everyone | Interfaz, ejemplos, prompts, errores e informes funcionan en español e inglés. |
 
 ## Límites de confianza
 
-El documento es una entrada no confiable. p7 nunca ejecuta instrucciones encontradas dentro. Los patrones parecidos a instrucciones se cuentan en el informe de seguridad, pero no modifican el análisis. El cuerpo está limitado a 1 MiB y el documento a 200.000 caracteres. Los orígenes CORS se configuran con `P7_ALLOWED_ORIGINS`.
+El documento es una entrada no confiable. El prompt indica al modelo que trate la política como datos y no como instrucciones; la inyección de instrucciones sigue siendo un riesgo del modelo. Los patrones parecidos a instrucciones se cuentan en el informe de seguridad. El cuerpo está limitado a 1 MiB y el documento a 200.000 caracteres. Los orígenes CORS se configuran con `P7_ALLOWED_ORIGINS`.
 
-Ollama ejecuta `qwen3:4b-instruct` localmente. Las cinco pasadas cubren ubicación/contactos/biometría, terceros, publicidad, entrenamiento de IA y retención. Cada pasada devuelve candidatos restringidos por un esquema JSON específico de sus categorías: categoría, identificador de cláusula y cita literal. Go rechaza categorías no admitidas y citas que no existan en la cláusula referenciada, deduplica hallazgos, aplica pesos por perfil y calcula el índice. Cinco llamadas al modelo por lote aumentan la latencia y deben medirse con políticas completas. Si Ollama no está disponible, el endpoint devuelve un error de servicio en vez de sustituir silenciosamente la IA por clasificación de palabras clave.
+Ollama ejecuta `qwen3:4b-instruct` localmente. Las siete pasadas cubren ubicación, contactos, biometría, terceros, publicidad, entrenamiento de IA y retención por separado. Cada una devuelve candidatos restringidos por esquema: categoría, identificador de cláusula y cita propuesta. Go rechaza categorías no admitidas y citas que no coinciden textualmente con su cláusula tras normalizar espacios, deduplica, aplica pesos por perfil y calcula el índice. Esto no demuestra que la cita sostenga la categoría. Siete llamadas al modelo por lote aumentan la latencia y deben medirse con políticas completas. Si Ollama no está disponible, el endpoint devuelve un error de servicio en vez de sustituir silenciosamente la IA por palabras clave.
 
 ## Decisiones deliberadas de alcance
 
