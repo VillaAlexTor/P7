@@ -1,0 +1,262 @@
+{
+  "Model": "qwen3:4b-instruct",
+  "Method": "full-document AnalyzeWithClassifier; one finding per category per document",
+  "Documents": 4,
+  "DurationSeconds": 429,
+  "Overall": {
+    "tp": 6,
+    "fp": 2,
+    "fn": 14
+  },
+  "ByCategory": {
+    "advertising": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "ai-training": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "biometric": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "contacts": {
+      "tp": 0,
+      "fp": 2,
+      "fn": 2
+    },
+    "location": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "retention": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "third-parties": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "Outcomes": [
+    {
+      "ID": "dropbox_en",
+      "URL": "https://www.dropbox.com/en/privacy",
+      "Locale": "en",
+      "SourceSHA256": "7f3ee8dee9d2545bc9325bca02d9c5fbdccafecaecd37050df82c22df8804f63",
+      "Characters": 17456,
+      "Expected": [
+        "location",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-026",
+          "quoteSha256": "b3124481ea479b499779d58a70c179f261abf9e389ff2a01ca6dddd980b1c272",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-012",
+          "quoteSha256": "f2666f99493015260481d49c1e62739d0845cf76438036a3337a0a270a1445af",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-010",
+          "quoteSha256": "fe05c64fd9daa43972bd6d4c7c4021afb9b1f6ef377d6b3cf8d50f49d09c5f6b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-049",
+          "quoteSha256": "42ab38df315c546694ac051cc19087da7aba6bf0dd6b78521fc150d91791947d",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Dropbox Privacy Policy",
+        "profile": "general",
+        "documentHash": "87ce8cc8b8f4542a50937bcc7424e162e6b9caf2f733c3b462f54d89cfbdd252",
+        "clauseCount": 75,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 4,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 4
+      },
+      "Score": 78,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 4,
+        "citationsRejected": 0
+      },
+      "DurationSeconds": 67
+    },
+    {
+      "ID": "dropbox_es",
+      "URL": "https://www.dropbox.com/es/privacy",
+      "Locale": "es",
+      "SourceSHA256": "ede9f1b453587c3da9e1dba3eacd8de9f0f92628cd761ad4e88dacc384bc04a1",
+      "Characters": 20744,
+      "Expected": [
+        "location",
+        "third-parties",
+        "retention"
+      ],
+      "Predicted": [
+        "contacts",
+        "location",
+        "retention",
+        "third-parties"
+      ],
+      "Findings": [
+        {
+          "category": "third-parties",
+          "clauseId": "clause-031",
+          "quoteSha256": "7002a67a0c5db670cfed3a89965e509d28ae12f95cc58e977b7583fd67e8294b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "location",
+          "clauseId": "clause-012",
+          "quoteSha256": "99a2fc327f9322c5993202901be6030291108e22f3b488ae53f2be73feeee599",
+          "evidenceVerified": true
+        },
+        {
+          "category": "contacts",
+          "clauseId": "clause-010",
+          "quoteSha256": "df8e2428f55379f2d5cb1fb8dd9046c21c348b62d76e5da33dce698e1b78981b",
+          "evidenceVerified": true
+        },
+        {
+          "category": "retention",
+          "clauseId": "clause-058",
+          "quoteSha256": "71698f1b9815feb43209d1acc6171cd6a5ad0223b85870e67c89bccf69cbd64b",
+          "evidenceVerified": true
+        }
+      ],
+      "Meta": {
+        "title": "Política de privacidad de Dropbox",
+        "profile": "general",
+        "documentHash": "b28c080a2f30515a28fa8f49187ea5c26a3c71ba6ce317f9ef2194edf9c75182",
+        "clauseCount": 90,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 4,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 4
+      },
+      "Score": 82,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 4,
+        "citationsRejected": 0
+      },
+      "DurationSeconds": 32
+    },
+    {
+      "ID": "airbnb_en",
+      "URL": "https://assets.airbnb.com/help/2026_Privacy_Policy-English.pdf",
+      "Locale": "en",
+      "SourceSHA256": "5871eb46af913f7b470266433eed41f4adfed26b1a51014c66b7b63754963972",
+      "Characters": 54904,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "biometric",
+        "retention"
+      ],
+      "Predicted": [],
+      "Findings": [],
+      "Meta": {
+        "title": "Airbnb Privacy Policy 2026",
+        "profile": "general",
+        "documentHash": "10b48098abc4b00c32e531f679a9755df47ac0383da55a03e206f7f661891286",
+        "clauseCount": 397,
+        "language": "en",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 0,
+        "locale": "en",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 8
+      },
+      "Score": 14,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 0,
+        "citationsRejected": 8
+      },
+      "DurationSeconds": 122
+    },
+    {
+      "ID": "airbnb_es",
+      "URL": "https://assets.airbnb.com/help/2026_Privacy_Policy-Spanish_Spain.pdf",
+      "Locale": "es",
+      "SourceSHA256": "e259e966eab41f8ce9e9af3ce14c0c3ededa3ddeb146b96c68bb8937d9c657f7",
+      "Characters": 61064,
+      "Expected": [
+        "location",
+        "contacts",
+        "third-parties",
+        "advertising",
+        "ai-training",
+        "biometric",
+        "retention"
+      ],
+      "Predicted": [],
+      "Findings": [],
+      "Meta": {
+        "title": "Política de Privacidad de Airbnb 2026",
+        "profile": "general",
+        "documentHash": "3c446461a3a561c30e91ea5544c5d90eaa0187d6ac10895b7cf35ed3d13bfc37",
+        "clauseCount": 358,
+        "language": "es",
+        "engine": "p7-hybrid/0.3",
+        "evidenceChecked": 0,
+        "locale": "es",
+        "aiUsed": true,
+        "aiProvider": "Ollama",
+        "aiModel": "qwen3:4b-instruct",
+        "aiCandidates": 20
+      },
+      "Score": 18,
+      "Safety": {
+        "inputTreatedAsData": true,
+        "ignoredInstructionPatterns": 0,
+        "citationsVerified": 0,
+        "citationsRejected": 20
+      },
+      "DurationSeconds": 206
+    }
+  ]
+}
