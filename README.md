@@ -10,7 +10,7 @@
 
 ## Quick start and demo
 
-With Docker Desktop running, use `iniciar.cmd` on Windows or run `docker compose up --build --wait` in a terminal. The first launch downloads the local model and may take several minutes. Open **http://localhost:3000**, choose a language and profile, click **Load example**, then **Analyze policy**. Review the cited findings, data map, gaps, impact scenarios, and actions. The included example is fictional; you can also paste your own policy text. The app does not fetch arbitrary URLs.
+With Docker Desktop running and Docker Hub reachable, use `iniciar.cmd` on Windows or run `docker compose up --build --wait` in a terminal. The first launch downloads container images and the local model and may take several minutes. Open **http://localhost:3000**, choose a language and profile, click **Load example**, then **Analyze policy**. Review the cited findings, data map, gaps, impact scenarios, and actions. The included example is fictional; you can also paste your own policy text. The app does not fetch arbitrary URLs. If image download fails, use the local setup below.
 
 Stop the stack with `docker compose down`.
 
@@ -38,15 +38,23 @@ Round 9 used 40 selected short excerpts from official pages. Those results do **
 
 [Cases A](apps/api/evaluation/real_round9a.tsv) · [Sources A](apps/api/evaluation/real_round9a_sources.tsv) · [Raw output A](apps/api/evaluation/real_round9a_result.json) · [Cases B](apps/api/evaluation/real_round9b.tsv) · [Sources B](apps/api/evaluation/real_round9b_sources.tsv) · [Raw output B](apps/api/evaluation/real_round9b_result.json)
 
-**Complete-policy checks:** We also ran the unchanged model on six underlying privacy policies, each in English and Spanish. These document-level results are closer to actual use than selected excerpts:
+**Complete-policy checks:** We also tested full official policies in English and Spanish. These document-level results are closer to actual use than selected excerpts; prompts and evidence verification changed between some later rounds:
 
 | Official complete policies | Precision | Recall | Exact pages |
 | --- | ---: | ---: | ---: |
 | Round 10 · Mozilla Accounts, Proton | 54.5% | 60.0% | 1/4 |
 | Round 11 · Apple, Spotify | 90.5% | 95.0% | 2/4 |
 | **Round 12 · Google, WhatsApp** | **72.7%** | **100.0%** | **1/4** |
+| **Round 13 · OpenAI, TikTok EEA** | **100.0%** | **95.8%** | **3/4** |
+| Round 14 · LinkedIn, Zoom | 91.3% | 95.5% | 1/4 |
+| Round 15 · Dropbox, GitHub | 85.0% | 94.4% | 1/4 |
+| Round 16 · Pinterest, Slack | 81.0% | 85.0% | 1/4 |
+| Round 17 · IKEA Spain, after prompt revision | 87.5% | 87.5% | 1/2 |
+| **Round 18 · Dropbox, Airbnb, after PDF evidence fix** | **87.5%** | **70.0%** | **0/4** |
 
-Round 12 used pages up to 120,506 characters. It found all 16 reference categories but added six unsupported findings; only WhatsApp Spanish was exact. The four analyses took **10 minutes 46 seconds** locally. The Google AI-training label is contestable and is examined separately in the report. **The model and prompts did not change:** score differences across rounds reflect different policies, not proven improvement. Across all three complete-policy rounds, the descriptive totals are **75.9% precision and 89.1% recall**. Six underlying policies and one reviewer cannot establish general reliability; exact citations can still support a wrong interpretation. Human review remains necessary. See [round 12 sources, labels, and questions](apps/api/evaluation/real_policies_round12.json), [machine results](apps/api/evaluation/real_policies_round12_result.json), and the [question-by-question case study](docs/en/ROUND12_CASE_STUDY.md).
+Round 12 used pages up to 120,506 characters. It found all 16 reference categories but added six unsupported findings; only WhatsApp Spanish was exact. The four analyses took **10 minutes 46 seconds** locally. The Google AI-training label is contestable and is examined separately in the [round 12 case study](docs/en/ROUND12_CASE_STUDY.md).
+
+Round 18 revisited Dropbox with a stricter contact label and added Airbnb in two languages. A PDF line-wrap bug initially caused all Airbnb candidates to be rejected. After fixing textual citation verification, the same four pages yielded **14 true positives, 2 false positives, and 6 misses** under the frozen round-18 labels; none had a perfect category set. A separate human audit found **13 of 16 retained citations** semantically supportive. The repaired run is an **in-sample check**, not an independent holdout. The [bilingual round-18 study](docs/en/ROUND18_CASE_STUDY.md) and [raw outputs](apps/api/evaluation/real_policies_round18_result.json) explain the errors and the disputed Dropbox contact label, which was labeled positive in round 15. Selected policies, correlated translations, and one reviewer cannot establish general reliability. Human review remains necessary.
 
 ## Stack
 
@@ -84,6 +92,8 @@ npm run dev
 ```
 
 Open `http://localhost:3000`, load the example, and run the analysis. The ES/EN control switches the complete experience.
+
+If ports 8080 or 3000 are occupied, set `P7_API_PORT`, `P7_ALLOWED_ORIGINS`, and `NEXT_PUBLIC_API_URL` to matching alternatives, then start Next.js with `npm run dev -- -p <web-port>`. For example, API `18080` and web `13000` were used in the final local smoke test.
 
 ## Docker
 
@@ -124,18 +134,18 @@ Profiles: `general`, `student`, `journalist`, `parent`, and `activist`. Locales:
 
 - Maximum request body: 1 MiB; maximum document: 200,000 characters.
 - Policy content is untrusted data; instruction-like content is ignored.
-- Every citation is verified against its referenced clause.
+- Every citation is checked for textual presence in its referenced clause, allowing whitespace differences from PDF line wraps; this is not semantic validation.
 - The MVP intentionally persists no policy and has no user accounts.
 - Production CORS is configured with `P7_ALLOWED_ORIGINS`.
 - Results are informational and not legal advice.
 
 ## AI use
 
-The executable product calls the local `qwen3:4b-instruct` model through Ollama in five focused category passes. The model classifies clauses with a constrained JSON schema and proposes exact references. Go rejects unknown categories and quotes that are not contained in the referenced clause, then applies profile weights and calculates the score. When Ollama is unavailable, analysis returns a service error instead of silently substituting a keyword classifier. ChatGPT and Codex also supported research, scope, architecture, coding, design, tests, and documentation. No API key or secret is stored here.
+The executable product calls the local `qwen3:4b-instruct` model through Ollama in seven category-focused passes per clause batch. The model classifies clauses with a constrained JSON schema and proposes citations. Go rejects unknown categories and quotes that do not textually match the referenced clause after whitespace normalization, then applies profile weights and calculates the score. A matching quote can still support an incorrect interpretation. When Ollama is unavailable, analysis returns a service error instead of silently substituting a keyword classifier. ChatGPT and Codex also supported research, scope, architecture, coding, design, tests, and documentation. No API key or secret is stored here.
 
 ## Documentation
 
-English is the official submission language and every official document has a Spanish counterpart. See the [bilingual index](docs/README.md), [AI evaluation](docs/en/EVALUATION.md), [five-person study](docs/en/USER_STUDY.md), and [demo deployment decision](docs/en/DEPLOYMENT.md).
+English is the official submission language and every official document has a Spanish counterpart. See the [bilingual index](docs/README.md), [submission readiness audit](docs/en/SUBMISSION_AUDIT.md), [AI evaluation](docs/en/EVALUATION.md), [five-person study protocol](docs/en/USER_STUDY.md), and [demo deployment decision](docs/en/DEPLOYMENT.md).
 
 The [presentation gallery](docs/assets/devpost-gallery/ready-1500x1000/) contains eight product screenshots; a [ready-to-upload ZIP](docs/assets/devpost-gallery/p7-devpost-gallery-1500x1000.zip) is also available.
 
