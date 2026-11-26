@@ -7,6 +7,8 @@ coverage/
 *.test
 *.tsbuildinfo
 .cache/
+video/**/.venv*/
+video/**/.media/
 
 # Environment and local state
 .env
