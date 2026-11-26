@@ -204,6 +204,22 @@ func TestSemanticClassifierDrivesFindingsAndEvidenceGate(t *testing.T) {
 	}
 }
 
+func TestVerifyEvidenceAllowsPDFLineWrapsWithinSameClause(t *testing.T) {
+	clauses := []domain.Clause{
+		{ID: "clause-001", Text: "We may use personal information to improve\nAI models for the service."},
+		{ID: "clause-002", Text: "A separate clause about retention."},
+	}
+	if !verifyEvidence(clauses, domain.Evidence{ClauseID: "clause-001", Quote: "personal information to improve AI models"}) {
+		t.Fatal("a PDF line wrap must not invalidate an otherwise exact citation")
+	}
+	if verifyEvidence(clauses, domain.Evidence{ClauseID: "clause-002", Quote: "personal information to improve AI models"}) {
+		t.Fatal("the quote must belong to its claimed clause")
+	}
+	if verifyEvidence(clauses, domain.Evidence{ClauseID: "clause-001", Quote: "personal information to train AI models"}) {
+		t.Fatal("changing substantive words must still fail verification")
+	}
+}
+
 func request(text, profile, locale string) domain.AnalyzeRequest {
 	return domain.AnalyzeRequest{Text: text, Profile: profile, Locale: locale}
 }
