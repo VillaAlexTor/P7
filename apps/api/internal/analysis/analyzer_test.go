@@ -223,3 +223,16 @@ func TestVerifyEvidenceAllowsPDFLineWrapsWithinSameClause(t *testing.T) {
 func request(text, profile, locale string) domain.AnalyzeRequest {
 	return domain.AnalyzeRequest{Text: text, Profile: profile, Locale: locale}
 }
+
+func TestSegmentCapsUnpunctuatedClauses(t *testing.T) {
+	text := strings.Repeat("privacyword ", 2000)
+	clauses := segment(text)
+	if len(clauses) < 2 {
+		t.Fatalf("expected a long paragraph to be split, got %d clause", len(clauses))
+	}
+	for _, clause := range clauses {
+		if length := len([]rune(clause.Text)); length > maxClauseCharacters {
+			t.Fatalf("clause %s exceeds limit: %d", clause.ID, length)
+		}
+	}
+}

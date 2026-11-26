@@ -53,3 +53,22 @@ func TestBatchClausesPreservesAllClauses(t *testing.T) {
 		t.Fatalf("expected three batches, got %#v", batches)
 	}
 }
+
+func TestHealthRequiresConfiguredModel(t *testing.T) {
+	client := NewOllama("http://127.0.0.1:11434", "test-model")
+	client.client.Transport = transportFunc(func(r *http.Request) (*http.Response, error) {
+		if r.URL.Path != "/api/tags" {
+			t.Fatalf("unexpected path %q", r.URL.Path)
+		}
+		body := `{"models":[{"name":"test-model","model":"test-model"}]}`
+		return &http.Response{StatusCode: http.StatusOK, Status: "200 OK", Body: io.NopCloser(strings.NewReader(body)), Header: make(http.Header)}, nil
+	})
+	if err := client.Health(context.Background()); err != nil {
+		t.Fatalf("expected configured model to be ready: %v", err)
+	}
+
+	client.model = "missing-model"
+	if err := client.Health(context.Background()); err == nil {
+		t.Fatal("expected a missing configured model to fail readiness")
+	}
+}

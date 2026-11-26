@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { copy, type Locale, profiles, samples } from "@/lib/i18n";
 import type { AnalysisResponse, GapStatus, Severity } from "@/lib/types";
+import { analyzePolicy, isRequestTimeout } from "@/lib/api";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
@@ -32,18 +33,12 @@ export default function Home() {
     }
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/api/v1/analyze`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept-Language": locale },
-        body: JSON.stringify({ text, profile, title: title || (locale === "es" ? "Política analizada" : "Analyzed policy"), locale }),
-      });
-      const body = await response.json();
-      if (!response.ok) throw new Error(body.error || t.fallbackError);
+	  const body = await analyzePolicy(API_URL, { text, profile, title: title || (locale === "es" ? "Política analizada" : "Analyzed policy"), locale });
       setResult(body);
       setChecked({});
       window.setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : t.connectionError);
+      setError(isRequestTimeout(cause) ? t.timeoutError : cause instanceof Error ? cause.message : t.connectionError);
     } finally {
       setLoading(false);
     }
@@ -123,7 +118,7 @@ export default function Home() {
             onChange={(event) => setText(event.target.value)}
             placeholder={t.policyPlaceholder}
             aria-describedby="text-help"
-            maxLength={200000}
+            maxLength={125000}
           />
           <div className="fieldMeta" id="text-help">
             <span>{text.length.toLocaleString(locale === "es" ? "es-BO" : "en-US")} {t.characters}</span>

@@ -22,6 +22,7 @@
 - [x] Create a manually labeled set of 40 synthetic clauses.
 - [x] Measure in-sample, synthetic held-out, and sourced real-excerpt precision and recall.
 - [x] Evaluate 40 sourced real-policy excerpts in English and Spanish, including a separate 20-excerpt holdout.
+- [x] Run an initial document-level check on four complete official policy pages in English and Spanish.
 - [x] Prepare a five-person usability protocol; sessions remain open.
 - [ ] Test with 3–5 users and document anonymous feedback.
 - [ ] Prepare low-, medium-, and high-risk examples.
@@ -29,7 +30,7 @@
 - [x] Document local demo deployment; public hosting is not a stated submission requirement.
 - [ ] Record and caption a demo under six minutes.
 - [x] Publish the repository and draft the AI disclosure.
-- [x] Prepare a personal learning reflection draft; author review remains open.
+- [x] Prepare and personalize the learning reflection and previous-work disclosure.
 
 ## After the hackathon
 

@@ -2,7 +2,7 @@ name: p7
 
 services:
   ollama:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.40.18
     restart: unless-stopped
     volumes:
       - ollama-data:/root/.ollama
@@ -14,7 +14,7 @@ services:
       start_period: 10s
 
   ollama-init:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.40.18
     restart: "no"
     environment:
       OLLAMA_HOST: http://ollama:11434
@@ -32,6 +32,8 @@ services:
       P7_ALLOWED_ORIGINS: ${P7_ALLOWED_ORIGINS:-http://localhost:3000}
       P7_OLLAMA_URL: http://ollama:11434
       P7_OLLAMA_MODEL: ${P7_OLLAMA_MODEL:-qwen3:4b-instruct}
+      P7_MAX_CONCURRENT_ANALYSES: ${P7_MAX_CONCURRENT_ANALYSES:-1}
+      P7_ANALYSES_PER_MINUTE: ${P7_ANALYSES_PER_MINUTE:-6}
     ports:
       - "${P7_API_PORT:-8080}:8080"
     healthcheck:

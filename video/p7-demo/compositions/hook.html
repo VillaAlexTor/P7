@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f3efe5; color: #12120f; font-family: Inter, sans-serif; }
+    .policy { position: absolute; inset: -80px 80px; columns: 3; column-gap: 66px; font: 30px/1.43 Inter, sans-serif; color: #6f6a61; opacity: .78; }
+    .policy p { margin: 0 0 30px; }
+    .shade { position: absolute; inset: 0; background: rgba(243,239,229,.86); opacity: 0; }
+    .question { position: absolute; left: 120px; top: 300px; width: 1600px; font: 700 142px/.91 "EB Garamond", serif; letter-spacing: -.045em; opacity: 0; }
+    .question em { color: #df472f; font-style: normal; }
+    .kicker { position: absolute; left: 128px; top: 205px; font: 700 30px/1 Inter, sans-serif; letter-spacing: .15em; text-transform: uppercase; color: #df472f; opacity: 0; }
+    .rule { position: absolute; left: 128px; top: 720px; width: 0; height: 4px; background: #12120f; }
+    .sub { position: absolute; left: 128px; top: 765px; font: 400 38px/1.25 Inter, sans-serif; opacity: 0; }
+  </style>
+	<div id="root" data-composition-id="hook" data-duration="20.275">
+    <div class="policy" id="hook-policy">
+      <p>We collect account information, device identifiers, approximate location, and activity to provide, secure, personalize, and improve the service.</p>
+      <p>Information may be shared with service providers, analytics partners, advertising partners, and authorities when required by law.</p>
+      <p>Some information may be retained after an account is closed for security, legal, and operational purposes.</p>
+      <p>Your choices may include access, correction, deletion, advertising controls, and permission settings provided by your device.</p>
+      <p>Submitted content may be reviewed or used to improve automated systems, subject to the controls described in this policy.</p>
+      <p>By continuing, you acknowledge the practices described here and any later updates posted by the service.</p>
+    </div>
+    <div class="shade" id="hook-shade"></div>
+    <div class="kicker" id="hook-kicker">Before you click accept</div>
+    <div class="question" id="hook-question">What are you <em>accepting?</em></div>
+    <div class="rule" id="hook-rule"></div>
+    <div class="sub" id="hook-sub">p7 turns difficult consent into evidence, impact, and action.</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#hook-policy", { y: 0 }, { y: -135, duration: 5.8, ease: "none" }, 0);
+    tl.to("#hook-shade", { opacity: 1, duration: 1.1, ease: "power2.out" }, 4.8);
+    tl.fromTo("#hook-kicker", { opacity: 0, x: -35 }, { opacity: 1, x: 0, duration: .55, ease: "power3.out" }, 5.4);
+    tl.fromTo("#hook-question", { opacity: 0, y: 55 }, { opacity: 1, y: 0, duration: .85, ease: "power3.out" }, 5.7);
+    tl.to("#hook-rule", { width: 420, duration: .7, ease: "power3.out" }, 7.1);
+    tl.to("#hook-sub", { opacity: 1, duration: .6, ease: "power2.out" }, 7.35);
+    tl.to("#hook-question", { scale: 1.025, transformOrigin: "0 50%", duration: 9.5, ease: "sine.inOut" }, 8.5);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

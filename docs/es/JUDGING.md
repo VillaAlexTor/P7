@@ -5,9 +5,9 @@ Cada criterio representa 20% de la calificación. p7 debe mostrar evidencia dire
 | Criterio | Lo que p7 demuestra | Evidencia en la entrega | Trabajo pendiente |
 | --- | --- | --- | --- |
 | Problema e impacto | Las personas aceptan políticas sin comprender flujos de datos, riesgos o información ausente. | Política sintética realista, comparación antes/después y enfoque en estudiantes y comunidades latinoamericanas. | Realizar 3–5 sesiones breves y registrar comentarios anónimos. |
-| Uso de IA | Ollama ejecuta `qwen3:4b-instruct` localmente para clasificar cláusulas mediante salida estructurada. ChatGPT y Codex también apoyaron el desarrollo. El producto separa clasificación por IA, verificación y puntuación. | Metadatos del modelo en cada informe, divulgación en README y Devpost, control de citas exactas y ausencia de claves API. | Evaluar el clasificador con un conjunto de cláusulas etiquetadas. |
-| Funcionalidad | Funciona el flujo completo: entrada, perfil, análisis, hash, mapa, evidencia, vacíos, impactos y acciones. | Grabar un análisis real y comparar dos perfiles sobre la misma política. | Desplegar una URL pública y probar desde un equipo limpio. |
-| Aprendizaje y crecimiento | El proyecto convierte una idea amplia en un MVP verificable con límites de confianza para IA. | Explicar aprendizajes sobre evidencia, reglas reproducibles, entradas no confiables, accesibilidad y control de alcance. | Añadir una reflexión personal de 100–150 palabras. |
+| Uso de IA | Ollama ejecuta `qwen3:4b-instruct` localmente para clasificar cláusulas mediante salida estructurada. ChatGPT y Codex también apoyaron el desarrollo. El producto separa clasificación por IA, verificación y puntuación. | Metadatos del modelo, control de citas exactas, divulgación de IA, 300 fragmentos con fuentes y una evaluación de cuatro páginas completas. | Presentar con claridad en el video el resultado más bajo con políticas completas y la necesidad de revisión humana. |
+| Funcionalidad | Funciona el flujo completo: entrada, perfil, análisis, hash, mapa, evidencia, vacíos, impactos y acciones. | Verificaciones automáticas, configuración local reproducible, análisis en vivo y comparación entre dos perfiles. | Grabar el flujo final y probarlo una vez desde un clon limpio. |
+| Aprendizaje y crecimiento | El proyecto convierte una idea amplia en un MVP verificable con límites de confianza para IA. | Una reflexión personal explica el fallo con cláusulas negativas, la variación entre muestras, el trabajo bilingüe y las decisiones de alcance. | Contar la reflexión con naturalidad en vez de leerla como una lista. |
 | Presentación | La narrativa cubre problema, producto, diferencia técnica y próximos pasos. | Video menor a seis minutos mostrando el producto en funcionamiento. | Grabar, subtitular, verificar audio y subir como público o no listado. |
 
 ## Mensaje central
@@ -18,15 +18,15 @@ p7 no reemplaza a un abogado ni declara cumplimiento normativo. Ofrece una prime
 
 ## Checklist de evidencias
 
-- [ ] URL pública funcional y repositorio público.
-- [ ] README con instalación, arquitectura, divulgación de IA y licencia.
+- [x] Repositorio público. Una URL del producto alojado es opcional y no figura como requisito publicado.
+- [x] README con instalación, arquitectura, divulgación de IA y licencia.
 - [ ] Video de demostración de seis minutos o menos.
 - [ ] Descripción completa en Devpost y pista Impacto comunitario.
 - [ ] Todos los integrantes añadidos a la presentación.
-- [ ] Divulgación de trabajo previo, si corresponde.
+- [x] Declaración explícita de que no existía código de la aplicación antes del hackathon.
 - [ ] Casos de riesgo bajo, medio y alto.
 - [ ] Comparación de dos perfiles sobre la misma política.
-- [ ] Reflexión personal y próximos pasos.
+- [x] Reflexión personal y próximos pasos preparados.
 - [ ] Subtítulos y texto legible en el video.
 
 ## Principales riesgos de puntuación

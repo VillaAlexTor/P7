@@ -58,6 +58,36 @@ func NewOllama(baseURL, model string) *Ollama {
 func (client *Ollama) Provider() string { return "Ollama" }
 func (client *Ollama) Model() string    { return client.model }
 
+func (client *Ollama) Health(ctx context.Context) error {
+	request, err := http.NewRequestWithContext(ctx, http.MethodGet, client.baseURL+"/api/tags", nil)
+	if err != nil {
+		return fmt.Errorf("build Ollama health request: %w", err)
+	}
+	response, err := client.client.Do(request)
+	if err != nil {
+		return fmt.Errorf("reach Ollama: %w", err)
+	}
+	defer response.Body.Close()
+	if response.StatusCode < 200 || response.StatusCode >= 300 {
+		return fmt.Errorf("Ollama health returned %s", response.Status)
+	}
+	var payload struct {
+		Models []struct {
+			Name  string `json:"name"`
+			Model string `json:"model"`
+		} `json:"models"`
+	}
+	if err := json.NewDecoder(io.LimitReader(response.Body, 1<<20)).Decode(&payload); err != nil {
+		return fmt.Errorf("decode Ollama models: %w", err)
+	}
+	for _, model := range payload.Models {
+		if model.Name == client.model || model.Model == client.model {
+			return nil
+		}
+	}
+	return fmt.Errorf("configured model %q is not installed", client.model)
+}
+
 func (client *Ollama) Classify(ctx context.Context, clauses []domain.Clause, locale string) ([]analysis.SemanticCandidate, error) {
 	all := make([]analysis.SemanticCandidate, 0)
 	for _, batch := range batchClauses(clauses, maxBatchCharacters) {

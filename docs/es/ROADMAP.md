@@ -22,6 +22,7 @@
 - [x] Crear un conjunto etiquetado de 40 cláusulas sintéticas.
 - [x] Medir precisión y cobertura en el mismo conjunto, en conjuntos sintéticos reservados y en fragmentos de fuentes reales.
 - [x] Evaluar 40 fragmentos de políticas reales en inglés y español, incluidos 20 fragmentos reservados.
+- [x] Ejecutar una primera prueba a nivel de documento con cuatro páginas oficiales completas en inglés y español.
 - [x] Preparar el protocolo para cinco personas; faltan las sesiones.
 - [ ] Probar con 3–5 usuarios y documentar comentarios anónimos.
 - [ ] Preparar ejemplos de riesgo bajo, medio y alto.
@@ -29,7 +30,7 @@
 - [x] Documentar la demo local; el hosting público no figura como requisito de envío.
 - [ ] Grabar y subtitular una demo menor a seis minutos.
 - [x] Publicar el repositorio y redactar la divulgación de IA.
-- [x] Preparar borrador de reflexión personal; falta revisión del autor.
+- [x] Preparar y personalizar la reflexión de aprendizaje y la declaración de trabajo previo.
 
 ## Después del hackathon
 

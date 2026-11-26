@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #f3efe5; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #f3efe5; }
+      .clip { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+		<div id="root" data-composition-id="main" data-start="0" data-duration="228.565" data-width="1920" data-height="1080" data-fps="30">
+			<div id="hook" class="clip" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="20.275" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="cursor-zoom-follow" class="clip" data-composition-id="cursor-zoom-follow" data-composition-src="compositions/components/cursor-zoom-follow.html" data-start="20.275" data-duration="18.139" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" data-variable-values='{"image":"assets/screens/02-input-en.jpg","image_after":"assets/screens/02-analyzing-en.jpg","zoom":1.45,"click1_x":92,"click1_y":17,"click2_x":49,"click2_y":70,"click3_x":72,"click3_y":86,"accent":"#df472f"}'></div>
+			<div id="result" class="clip" data-composition-id="result" data-composition-src="compositions/result.html" data-start="38.413" data-duration="21.808" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="evidence" class="clip" data-composition-id="evidence" data-composition-src="compositions/evidence.html" data-start="60.221" data-duration="21.424" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="impact" class="clip" data-composition-id="impact" data-composition-src="compositions/impact.html" data-start="81.645" data-duration="21.979" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="personal" class="clip" data-composition-id="personal" data-composition-src="compositions/personal.html" data-start="103.624" data-duration="17.157" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="ai-design" class="clip" data-composition-id="ai-design" data-composition-src="compositions/ai-design.html" data-start="120.781" data-duration="28.949" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="pillars" class="clip" data-composition-id="pillars" data-composition-src="compositions/pillars.html" data-start="149.730" data-duration="22.960" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="learning" class="clip" data-composition-id="learning" data-composition-src="compositions/learning.html" data-start="172.690" data-duration="32.319" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<div id="end" class="clip" data-composition-id="end" data-composition-src="compositions/end.html" data-start="205.009" data-duration="23.556" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+			<audio id="narration" src="assets/voice/narration.wav" data-start="0" data-duration="228.565" data-track-index="4" data-volume="1"></audio>
+			<audio id="music-bed" src="assets/music-bed.wav" data-start="0" data-duration="228.565" data-track-index="5" data-timeline-role="music" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

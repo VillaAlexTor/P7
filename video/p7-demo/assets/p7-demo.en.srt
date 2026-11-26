@@ -1,0 +1,515 @@
+1
+00:00:00,190 --> 00:00:02,620
+We accept privacy policies all the
+
+2
+00:00:02,490 --> 00:00:04,620
+time, usually without reading them.
+
+3
+00:00:04,550 --> 00:00:05,980
+Even a summary may not tell
+
+4
+00:00:05,850 --> 00:00:07,560
+me what matters for my situation,
+
+5
+00:00:07,730 --> 00:00:09,700
+what the document leaves unclear, or
+
+6
+00:00:09,570 --> 00:00:11,040
+what I can actually do next.
+
+7
+00:00:11,570 --> 00:00:13,380
+I built P7 to turn that
+
+8
+00:00:13,250 --> 00:00:15,180
+difficult consent decision into evidence,
+
+9
+00:00:15,650 --> 00:00:17,800
+possible impact, and concrete actions in
+
+10
+00:00:17,670 --> 00:00:18,760
+Spanish and English.
+
+11
+00:00:20,250 --> 00:00:22,180
+The user pays to privacy policy.
+
+12
+00:00:22,450 --> 00:00:24,400
+P7 never needs account access or
+
+13
+00:00:24,270 --> 00:00:25,200
+browsing history.
+
+14
+00:00:25,570 --> 00:00:27,000
+I load the fictional example,
+
+15
+00:00:27,070 --> 00:00:27,860
+choose journalist,
+
+16
+00:00:27,930 --> 00:00:29,300
+and press analyze policy.
+
+17
+00:00:29,170 --> 00:00:31,300
+That profile gives more weight to
+
+18
+00:00:31,170 --> 00:00:31,760
+location,
+
+19
+00:00:31,990 --> 00:00:33,560
+contacts, and third party sharing.
+
+20
+00:00:33,830 --> 00:00:35,580
+The text is processed locally and
+
+21
+00:00:35,450 --> 00:00:37,000
+is not intentionally stored.
+
+22
+00:00:38,390 --> 00:00:40,360
+This index is not invented directly
+
+23
+00:00:40,230 --> 00:00:41,400
+by the language model.
+
+24
+00:00:41,530 --> 00:00:43,660
+The model identifies candidate practices.
+
+25
+00:00:44,070 --> 00:00:45,780
+The go -back end verifies the
+
+26
+00:00:45,650 --> 00:00:47,960
+evidence and applies transparent profile
+weights.
+
+27
+00:00:48,250 --> 00:00:51,620
+The SHA 256 value identifies the
+
+28
+00:00:51,490 --> 00:00:53,420
+exact normalized document used for this
+
+29
+00:00:53,290 --> 00:00:53,740
+report.
+
+30
+00:00:53,990 --> 00:00:55,400
+The map shows the path declared
+
+31
+00:00:55,270 --> 00:00:56,060
+in the policy.
+
+32
+00:00:55,930 --> 00:00:57,760
+It does not claim to observe
+
+33
+00:00:57,630 --> 00:00:59,180
+real network traffic.
+
+34
+00:01:00,290 --> 00:01:02,320
+Every confirmed finding returns to an
+
+35
+00:01:02,190 --> 00:01:03,040
+exact clause.
+
+36
+00:01:03,310 --> 00:01:05,480
+In this run, P7 reports location,
+
+37
+00:01:05,570 --> 00:01:06,600
+third party sharing,
+
+38
+00:01:07,130 --> 00:01:07,800
+personalized advertising,
+
+39
+00:01:07,890 --> 00:01:09,780
+and AI training, but not contacts.
+
+40
+00:01:10,150 --> 00:01:12,640
+The stricter definition requires explicit
+device
+
+41
+00:01:12,510 --> 00:01:13,600
+address book access.
+
+42
+00:01:13,810 --> 00:01:15,120
+If a quote is absent from
+
+43
+00:01:14,990 --> 00:01:16,980
+its reference clause, go rejects it.
+
+44
+00:01:17,110 --> 00:01:19,140
+Missing information is a question not
+
+45
+00:01:19,010 --> 00:01:20,100
+proof of a violation.
+
+46
+00:01:21,050 --> 00:01:23,780
+The next section translates findings into
+
+47
+00:01:23,650 --> 00:01:25,920
+possible scenarios without presenting them
+as
+
+48
+00:01:25,790 --> 00:01:26,420
+facts.
+
+49
+00:01:27,090 --> 00:01:28,520
+Location could reveal routines.
+
+50
+00:01:29,050 --> 00:01:31,000
+Shared activity may shape advertising and
+
+51
+00:01:30,870 --> 00:01:32,920
+submitted content may enter AI
+improvement.
+
+52
+00:01:33,270 --> 00:01:34,840
+The action plan makes those concerns
+
+53
+00:01:34,710 --> 00:01:35,420
+practical,
+
+54
+00:01:35,790 --> 00:01:36,720
+restrict location,
+
+55
+00:01:37,090 --> 00:01:38,780
+review partner sharing, and add controls,
+
+56
+00:01:38,950 --> 00:01:40,980
+and avoid sensitive content when AI
+
+57
+00:01:40,850 --> 00:01:42,260
+training cannot be disabled.
+
+58
+00:01:43,590 --> 00:01:45,320
+The evidence stays the same, but
+
+59
+00:01:45,190 --> 00:01:46,320
+the priority changes.
+
+60
+00:01:46,490 --> 00:01:48,380
+I select general and press analyze
+
+61
+00:01:48,250 --> 00:01:50,600
+again. The same four findings remain
+
+62
+00:01:50,470 --> 00:01:52,260
+visible while the index moves from
+
+63
+00:01:52,130 --> 00:01:54,300
+97 for journalists to 80 for
+
+64
+00:01:54,170 --> 00:01:54,760
+general.
+
+65
+00:01:55,190 --> 00:01:57,260
+Those profile weights are transparent and
+
+66
+00:01:57,130 --> 00:01:57,840
+reproducible.
+
+67
+00:01:58,050 --> 00:02:00,060
+The model cannot alter them.
+
+68
+00:02:00,750 --> 00:02:03,320
+The executable product uses QN3,
+
+69
+00:02:03,470 --> 00:02:05,580
+4 billion instruct through local alama.
+
+70
+00:02:05,910 --> 00:02:08,600
+It performs focus semantic classification
+and
+
+71
+00:02:08,470 --> 00:02:09,960
+returns structured candidates.
+
+72
+00:02:10,590 --> 00:02:13,380
+Go rejects unsupported categories or
+fabricated
+
+73
+00:02:13,250 --> 00:02:16,160
+evidence removes duplicates and calculates
+the
+
+74
+00:02:16,030 --> 00:02:19,040
+index. Chat GPT and Codex also
+
+75
+00:02:18,910 --> 00:02:20,560
+helped with research, scope,
+
+76
+00:02:21,070 --> 00:02:21,200
+architecture,
+
+77
+00:02:21,330 --> 00:02:22,280
+code, design,
+
+78
+00:02:22,590 --> 00:02:23,640
+tests, and documentation.
+
+79
+00:02:24,290 --> 00:02:25,920
+I reviewed and tested that work
+
+80
+00:02:25,790 --> 00:02:27,400
+and I disclosed both kinds of
+
+81
+00:02:27,270 --> 00:02:28,240
+AI assistance.
+
+82
+00:02:29,730 --> 00:02:31,680
+Those capabilities are the seven pillars
+
+83
+00:02:31,550 --> 00:02:32,980
+behind the name P7.
+
+84
+00:02:33,350 --> 00:02:33,900
+Data mapping,
+
+85
+00:02:34,490 --> 00:02:35,840
+personalized risk, gap detection,
+
+86
+00:02:36,070 --> 00:02:36,980
+verifiable evidence,
+
+87
+00:02:37,310 --> 00:02:37,920
+impact simulation,
+
+88
+00:02:37,990 --> 00:02:38,700
+smart consent,
+
+89
+00:02:38,750 --> 00:02:40,020
+and privacy for everyone.
+
+90
+00:02:40,510 --> 00:02:41,700
+The final pillar matters.
+
+91
+00:02:41,570 --> 00:02:44,100
+P7 works in English and Spanish,
+
+92
+00:02:44,330 --> 00:02:46,600
+using plain language explanations designed
+to
+
+93
+00:02:46,470 --> 00:02:48,460
+reach people beyond legal and technical
+
+94
+00:02:48,330 --> 00:02:49,060
+audiences,
+
+95
+00:02:49,390 --> 00:02:51,200
+including communities in Latin America.
+
+96
+00:02:52,710 --> 00:02:54,600
+My background gave me more confidence
+
+97
+00:02:54,470 --> 00:02:56,840
+in backend and cybersecurity than an
+
+98
+00:02:56,710 --> 00:02:57,820
+explainable AI.
+
+99
+00:02:58,210 --> 00:02:59,960
+Early on, the model treated 12
+
+100
+00:02:59,830 --> 00:03:01,840
+denial clauses as if those practices
+
+101
+00:03:01,710 --> 00:03:02,340
+happened.
+
+102
+00:03:02,590 --> 00:03:03,920
+The answer looked confident,
+
+103
+00:03:04,090 --> 00:03:04,940
+but it was wrong.
+
+104
+00:03:04,810 --> 00:03:07,300
+In the latest revised complete policy
+
+105
+00:03:07,170 --> 00:03:08,040
+evaluation,
+
+106
+00:03:08,290 --> 00:03:10,820
+precision reached 87 .5 % and
+
+107
+00:03:10,690 --> 00:03:12,820
+recalled 70 % yet none of
+
+108
+00:03:12,690 --> 00:03:14,540
+the four localized pages had a
+
+109
+00:03:14,410 --> 00:03:15,720
+perfect category set.
+
+110
+00:03:16,410 --> 00:03:17,760
+I learned that a polished demo
+
+111
+00:03:17,630 --> 00:03:18,700
+proves functionality,
+
+112
+00:03:18,990 --> 00:03:19,960
+not reliability,
+
+113
+00:03:20,170 --> 00:03:22,060
+and that even exact evidence still
+
+114
+00:03:21,930 --> 00:03:23,340
+needs human interpretation.
+
+115
+00:03:25,010 --> 00:03:27,240
+No application code existed before this
+
+116
+00:03:27,110 --> 00:03:27,660
+hackathon.
+
+117
+00:03:28,090 --> 00:03:29,640
+P7 was created during the event
+
+118
+00:03:29,510 --> 00:03:31,440
+using credited open source tools and
+
+119
+00:03:31,310 --> 00:03:33,640
+models. Next, I would add independent
+
+120
+00:03:33,510 --> 00:03:34,460
+label review,
+
+121
+00:03:34,570 --> 00:03:35,760
+user comprehension testing,
+
+122
+00:03:36,110 --> 00:03:37,080
+policy version comparison,
+
+123
+00:03:37,250 --> 00:03:39,200
+and verified sources for Latin America.
+
+124
+00:03:39,610 --> 00:03:41,560
+P7 does not replace legal advice.
+
+125
+00:03:41,750 --> 00:03:43,200
+It gives people a clearer first
+
+126
+00:03:43,070 --> 00:03:45,460
+reading before they accept evidence before
+
+127
+00:03:45,330 --> 00:03:45,920
+confidence.

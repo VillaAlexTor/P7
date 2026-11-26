@@ -43,7 +43,7 @@ The MVP has no account system or database. Policy text is processed in memory an
 
 ## Trust boundaries
 
-The document is untrusted data. The prompt tells the model to treat policy text as data, not instructions; prompt injection remains a model risk. Known instruction-like patterns are counted in the safety report. Request bodies are limited to 1 MiB and documents to 200,000 characters. CORS origins are configured through `P7_ALLOWED_ORIGINS`.
+The document is untrusted data. The prompt tells the model to treat policy text as data, not instructions; prompt injection remains a model risk. Known instruction-like patterns are counted in the safety report. Request bodies are limited to 1 MiB and documents to 125,000 characters. Analyses time out after five minutes. The API defaults to one concurrent analysis and six attempts per minute per client; both controls are configurable. CORS origins are configured through `P7_ALLOWED_ORIGINS`.
 
 Ollama runs `qwen3:4b-instruct` locally. The seven passes cover location, contacts, biometrics, third parties, advertising, AI training, and retention separately. Each returns candidates constrained by a category-specific JSON schema: category, clause ID, and proposed quote. Go rejects unsupported categories and quotes that do not textually match the referenced clause after whitespace normalization, deduplicates findings, applies profile weights, and calculates the final score. This does not prove a quote supports its category. Seven model calls per batch increase latency and must be measured on full policies. If Ollama is unavailable, the analysis endpoint returns a service error instead of silently replacing AI with keyword classification.
 

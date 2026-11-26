@@ -5,9 +5,9 @@ Each category represents 20% of the final score. p7 must show direct evidence fo
 | Criterion | What p7 demonstrates | Evidence in the submission | Remaining work |
 | --- | --- | --- | --- |
 | Problem and impact | People accept privacy policies without understanding data flows, risks, or missing disclosures. | A realistic synthetic policy, before-and-after comparison, and focus on students and Latin American communities. | Run 3–5 short user sessions and record anonymous feedback. |
-| Use of AI | Ollama runs `qwen3:4b-instruct` locally to classify clauses through structured output. ChatGPT and Codex also supported development. The product separates AI classification from verification and scoring. | Live model metadata in every report, disclosure in README and Devpost, exact citation gate, and no API keys. | Evaluate the classifier against a labeled clause set. |
-| Functionality | The complete flow works: input, profile, analysis, hash, map, evidence, gaps, impacts, and actions. | Record a live analysis and compare two profiles on the same policy. | Deploy a public URL and test from a clean device. |
-| Learning and growth | The project turns a broad idea into a verifiable MVP with explicit AI trust boundaries. | Explain lessons about evidence, reproducible rules, untrusted input, accessible design, and scope control. | Add a personal 100–150 word reflection. |
+| Use of AI | Ollama runs `qwen3:4b-instruct` locally to classify clauses through structured output. ChatGPT and Codex also supported development. The product separates AI classification from verification and scoring. | Live model metadata, exact citation gate, AI disclosure, 300 sourced excerpts, and a four-page complete-policy evaluation. | Present the weaker complete-policy result and the need for human review clearly in the video. |
+| Functionality | The complete flow works: input, profile, analysis, hash, map, evidence, gaps, impacts, and actions. | Automated checks, a reproducible local setup, a live analysis, and a two-profile comparison. | Record the final live flow and test it once from a clean checkout. |
+| Learning and growth | The project turns a broad idea into a verifiable MVP with explicit AI trust boundaries. | A personal reflection explains the denial-clause failure, sample variation, bilingual work, and scope decisions. | Deliver the reflection naturally instead of reading it as a list. |
 | Presentation | The story covers the problem, product, technical difference, and next steps. | A video under six minutes that shows the working product. | Record, caption, verify audio, and upload as public or unlisted. |
 
 ## Core message
@@ -18,15 +18,15 @@ p7 does not replace a lawyer or declare legal compliance. It provides an accessi
 
 ## Submission evidence checklist
 
-- [ ] Public working URL and public source repository.
-- [ ] README with setup, architecture, AI disclosure, and license.
+- [x] Public source repository. A hosted product URL is optional, not a published requirement.
+- [x] README with setup, architecture, AI disclosure, and license.
 - [ ] Demo video no longer than six minutes.
 - [ ] Complete Devpost description and Community Impact track.
 - [ ] Every team member added to the Devpost submission.
-- [ ] Clear disclosure of pre-existing work, if any.
+- [x] Clear disclosure that no application code existed before the hackathon.
 - [ ] Low-, medium-, and high-risk test cases.
 - [ ] Two-profile comparison using the same policy.
-- [ ] Personal learning reflection and next steps.
+- [x] Personal learning reflection and next steps prepared.
 - [ ] Captions and readable text in the video.
 
 ## Main scoring risks

@@ -75,3 +75,33 @@ func TestValidationAndCORS(t *testing.T) {
 		t.Fatalf("expected English validation error: %s", response.Body.String())
 	}
 }
+
+func TestAnalyzeRejectsBusyAndRateLimitedRequests(t *testing.T) {
+	gate := newRequestGate(1, 1)
+	if !gate.acquire() {
+		t.Fatal("expected to reserve the only analysis slot")
+	}
+	request := httptest.NewRequest(http.MethodPost, "/api/v1/analyze", strings.NewReader(`{"text":"`+strings.Repeat("privacy ", 12)+`","locale":"en"}`))
+	response := httptest.NewRecorder()
+	analyze(fakeClassifier{}, gate).ServeHTTP(response, request)
+	if response.Code != http.StatusTooManyRequests {
+		t.Fatalf("expected busy response, got %d", response.Code)
+	}
+	gate.release()
+
+	request = httptest.NewRequest(http.MethodPost, "/api/v1/analyze", strings.NewReader(`{"text":"`+strings.Repeat("privacy ", 12)+`","locale":"en"}`))
+	response = httptest.NewRecorder()
+	analyze(fakeClassifier{}, gate).ServeHTTP(response, request)
+	if response.Code != http.StatusTooManyRequests {
+		t.Fatalf("expected rate limit response, got %d", response.Code)
+	}
+}
+
+func TestAnalyzeRejectsTrailingJSON(t *testing.T) {
+	request := httptest.NewRequest(http.MethodPost, "/api/v1/analyze", strings.NewReader(`{"text":"`+strings.Repeat("privacy ", 12)+`","locale":"en"} {}`))
+	response := httptest.NewRecorder()
+	testHandler().ServeHTTP(response, request)
+	if response.Code != http.StatusBadRequest {
+		t.Fatalf("expected 400 for a second JSON value, got %d", response.Code)
+	}
+}

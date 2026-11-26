@@ -9,6 +9,10 @@ coverage/
 .cache/
 video/**/.venv*/
 video/**/.media/
+video/**/.hyperframes/
+video/**/.thumbnails/
+video/**/.waveform-cache/
+video/**/renders/
 
 # Environment and local state
 .env

@@ -26,6 +26,8 @@ type SemanticClassifier interface {
 	Model() string
 }
 
+const maxClauseCharacters = 6000
+
 func (value localized) text(locale string) string {
 	if locale == "en" {
 		return value.EN
@@ -148,8 +150,10 @@ func segment(text string) []domain.Clause {
 		if len([]rune(paragraph)) > 700 {
 			for _, part := range regexp.MustCompile(`(?m)(?:\.\s+|;\s+)`).Split(paragraph, -1) {
 				part = strings.TrimSpace(part)
-				if len([]rune(part)) >= 20 {
-					clauses = append(clauses, domain.Clause{ID: fmt.Sprintf("clause-%03d", len(clauses)+1), Text: part})
+				for _, piece := range splitByRuneLimit(part, maxClauseCharacters) {
+					if len([]rune(piece)) >= 20 {
+						clauses = append(clauses, domain.Clause{ID: fmt.Sprintf("clause-%03d", len(clauses)+1), Text: piece})
+					}
 				}
 			}
 		} else if len([]rune(paragraph)) >= 10 {
@@ -160,6 +164,50 @@ func segment(text string) []domain.Clause {
 		clauses = append(clauses, domain.Clause{ID: "clause-001", Text: text})
 	}
 	return clauses
+}
+
+func splitByRuneLimit(text string, limit int) []string {
+	text = strings.TrimSpace(text)
+	if text == "" || limit < 1 {
+		return nil
+	}
+	words := strings.Fields(text)
+	result := make([]string, 0, len([]rune(text))/limit+1)
+	current := make([]rune, 0, limit)
+	flush := func() {
+		if len(current) > 0 {
+			result = append(result, string(current))
+			current = current[:0]
+		}
+	}
+	for _, word := range words {
+		runes := []rune(word)
+		for len(runes) > 0 {
+			space := 0
+			if len(current) > 0 {
+				space = 1
+			}
+			available := limit - len(current) - space
+			if available <= 0 {
+				flush()
+				continue
+			}
+			if space == 1 {
+				current = append(current, ' ')
+			}
+			take := len(runes)
+			if take > available {
+				take = available
+			}
+			current = append(current, runes[:take]...)
+			runes = runes[take:]
+			if len(runes) > 0 {
+				flush()
+			}
+		}
+	}
+	flush()
+	return result
 }
 
 func findSemantic(clauses []domain.Clause, candidates []SemanticCandidate, profile, locale string) ([]domain.Finding, int) {

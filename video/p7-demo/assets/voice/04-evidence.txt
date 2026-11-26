@@ -1,0 +1,1 @@
+Every confirmed finding returns to an exact clause. In this run, p7 reports location, third-party sharing, personalized advertising, and AI training—but not contacts. The stricter definition requires explicit device address-book access. If a quote is absent from its referenced clause, Go rejects it. Missing information is a question, not proof of a violation.

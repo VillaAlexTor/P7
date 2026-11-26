@@ -1,0 +1,1 @@
+The user pastes a privacy policy; p7 never needs account access or browsing history. I load the fictional example, choose Journalist, and press Analyze policy. That profile gives more weight to location, contacts, and third-party sharing. The text is processed locally and is not intentionally stored.

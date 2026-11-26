@@ -1,0 +1,1 @@
+We accept privacy policies all the time, usually without reading them. Even a summary may not tell me what matters for my situation, what the document leaves unclear, or what I can actually do next. I built p7 to turn that difficult consent decision into evidence, possible impact, and concrete actions, in Spanish and English.
