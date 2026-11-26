@@ -40,7 +40,7 @@ Spanish and English.
 
 11
 00:00:20,250 --> 00:00:22,180
-The user pays to privacy policy.
+The user pastes a privacy policy.
 
 12
 00:00:22,450 --> 00:00:24,400
@@ -60,7 +60,7 @@ choose journalist,
 
 16
 00:00:27,930 --> 00:00:29,300
-and press analyze policy.
+and press Analyze policy.
 
 17
 00:00:29,170 --> 00:00:31,300
@@ -72,7 +72,7 @@ location,
 
 19
 00:00:31,990 --> 00:00:33,560
-contacts, and third party sharing.
+contacts, and third-party sharing.
 
 20
 00:00:33,830 --> 00:00:35,580
@@ -96,7 +96,7 @@ The model identifies candidate practices.
 
 25
 00:00:44,070 --> 00:00:45,780
-The go -back end verifies the
+The Go backend verifies the
 
 26
 00:00:45,650 --> 00:00:47,960
@@ -105,7 +105,7 @@ weights.
 
 27
 00:00:48,250 --> 00:00:51,620
-The SHA 256 value identifies the
+The SHA-256 value identifies the
 
 28
 00:00:51,490 --> 00:00:53,420
@@ -145,7 +145,7 @@ In this run, P7 reports location,
 
 37
 00:01:05,570 --> 00:01:06,600
-third party sharing,
+third-party sharing,
 
 38
 00:01:07,130 --> 00:01:07,800
@@ -162,7 +162,7 @@ device
 
 41
 00:01:12,510 --> 00:01:13,600
-address book access.
+address-book access.
 
 42
 00:01:13,810 --> 00:01:15,120
@@ -170,11 +170,11 @@ If a quote is absent from
 
 43
 00:01:14,990 --> 00:01:16,980
-its reference clause, go rejects it.
+its referenced clause, Go rejects it.
 
 44
 00:01:17,110 --> 00:01:19,140
-Missing information is a question not
+Missing information is a question, not
 
 45
 00:01:19,010 --> 00:01:20,100
@@ -220,7 +220,7 @@ restrict location,
 
 55
 00:01:37,090 --> 00:01:38,780
-review partner sharing, and add controls,
+review partner sharing and ad controls,
 
 56
 00:01:38,950 --> 00:01:40,980
@@ -240,7 +240,7 @@ the priority changes.
 
 60
 00:01:46,490 --> 00:01:48,380
-I select general and press analyze
+I select General and press Analyze
 
 61
 00:01:48,250 --> 00:01:50,600
@@ -252,7 +252,7 @@ visible while the index moves from
 
 63
 00:01:52,130 --> 00:01:54,300
-97 for journalists to 80 for
+97 for Journalist to 80 for
 
 64
 00:01:54,170 --> 00:01:54,760
@@ -272,15 +272,15 @@ The model cannot alter them.
 
 68
 00:02:00,750 --> 00:02:03,320
-The executable product uses QN3,
+The executable product uses Qwen three,
 
 69
 00:02:03,470 --> 00:02:05,580
-4 billion instruct through local alama.
+four billion instruct through local Ollama.
 
 70
 00:02:05,910 --> 00:02:08,600
-It performs focus semantic classification
+It performs focused semantic classification
 and
 
 71
@@ -294,12 +294,12 @@ fabricated
 
 73
 00:02:13,250 --> 00:02:16,160
-evidence removes duplicates and calculates
+evidence, removes duplicates, and calculates
 the
 
 74
 00:02:16,030 --> 00:02:19,040
-index. Chat GPT and Codex also
+index. ChatGPT and Codex also
 
 75
 00:02:18,910 --> 00:02:20,560
@@ -392,7 +392,7 @@ My background gave me more confidence
 
 97
 00:02:54,470 --> 00:02:56,840
-in backend and cybersecurity than an
+in backend and cybersecurity than in
 
 98
 00:02:56,710 --> 00:02:57,820
@@ -420,7 +420,7 @@ but it was wrong.
 
 104
 00:03:04,810 --> 00:03:07,300
-In the latest revised complete policy
+In the latest revised complete-policy
 
 105
 00:03:07,170 --> 00:03:08,040
@@ -428,11 +428,11 @@ evaluation,
 
 106
 00:03:08,290 --> 00:03:10,820
-precision reached 87 .5 % and
+precision reached 87.5% and
 
 107
 00:03:10,690 --> 00:03:12,820
-recalled 70 % yet none of
+recall reached 70%, yet none of
 
 108
 00:03:12,690 --> 00:03:14,540
@@ -508,7 +508,7 @@ It gives people a clearer first
 
 126
 00:03:43,070 --> 00:03:45,460
-reading before they accept evidence before
+reading before they accept. Evidence before
 
 127
 00:03:45,330 --> 00:03:45,920
