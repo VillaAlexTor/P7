@@ -110,7 +110,7 @@ The API endpoint is `POST /api/v1/analyze`. It accepts `title`, `text`, `locale`
 
 ## AI disclosure and project materials
 
-The product uses the local LLM described above. ChatGPT and Codex also assisted with research, scope, architecture, coding, design, tests, and documentation. We reviewed and tested that work. See the [submission draft](docs/en/DEVPOST.md), [Spanish submission draft](docs/es/DEVPOST.md), [bilingual documentation index](docs/README.md), and [submission audit](docs/en/SUBMISSION_AUDIT.md).
+The product uses the local LLM described above. ChatGPT and Codex also assisted with research, scope, architecture, coding, design, tests, and documentation. The demo video uses locally synthesized narration via Kokoro and was assembled with HyperFrames. We reviewed and tested that work. See the [submission draft](docs/en/DEVPOST.md), [Spanish submission draft](docs/es/DEVPOST.md), [bilingual documentation index](docs/README.md), and [submission audit](docs/en/SUBMISSION_AUDIT.md).
 
 The [presentation gallery](docs/assets/devpost-gallery/ready-1500x1000/) contains eight product images. The demo video is managed separately from the source repository.
 
