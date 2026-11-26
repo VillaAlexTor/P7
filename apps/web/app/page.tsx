@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { copy, type Locale, profiles, samples } from "@/lib/i18n";
 import type { AnalysisResponse, GapStatus, Severity } from "@/lib/types";
 
@@ -18,11 +18,6 @@ export default function Home() {
   const resultRef = useRef<HTMLElement>(null);
   const t = copy[locale];
   const profileOptions = profiles[locale];
-
-  const selectedProfile = useMemo(
-    () => profileOptions.find((item) => item.value === profile) ?? profileOptions[0],
-    [profile, profileOptions],
-  );
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -162,7 +157,7 @@ export default function Home() {
       </section>
 
       {result ? (
-        <AnalysisReport result={result} profileLabel={selectedProfile.label} checked={checked} setChecked={setChecked} reportRef={resultRef} locale={locale} />
+        <AnalysisReport result={result} profileLabel={profileOptions.find((item) => item.value === result.meta.profile)?.label ?? result.meta.profile} checked={checked} setChecked={setChecked} reportRef={resultRef} locale={locale} />
       ) : (
         <section className="emptyReport" id="resultado">
           <div>
