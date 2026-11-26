@@ -32,11 +32,11 @@ For the hackathon MVP, a user pastes policy text, selects a privacy profile, and
 - Segment the source into stable clauses and hash the complete normalized document with SHA-256.
 - Detect declared data categories, purposes, recipients, retention, user rights, security statements, and AI-training language.
 - Flag absent or ambiguous disclosures without presenting an omission as proof of illegality.
-- Attach every confirmed finding to exact source text and validate that the citation exists.
+- Attach every displayed finding to a source clause and verify a textual quote match after whitespace normalization; semantic support still requires human review.
 - Calculate risk through reproducible rules weighted by a selected privacy profile; an LLM must not directly set the final score.
 - Clearly separate confirmed evidence, interpretation, and hypothetical impact.
 - Provide a visual data-flow map and a prioritized action plan.
-- Treat document content as untrusted input and never execute instructions found inside it.
+- Treat document content as untrusted input and instruct the model not to follow instructions found inside it; prompt injection remains a model risk.
 - No legal advice claims. Results explain declared practices and informational gaps.
 
 ## Brand Commitments
@@ -50,7 +50,7 @@ For the hackathon MVP, a user pastes policy text, selects a privacy profile, and
 
 ## Evidence on Hand
 
-The source ChatGPT conversation defines the seven differentiators, proposed architecture, MVP scope, hackathon requirements, and illustrative examples. No verified customer testimonials, performance benchmarks, legal certification, trademark clearance, or production deployment claims exist; future work must not fabricate them.
+The project includes reproducible internal classifier evaluations on synthetic clauses, sourced excerpts, and nine rounds of full official privacy policies. The latest repaired pass reached 14 TP, 2 FP, and 6 FN under a disputed reference label; none of its four localized pages had an exact category set. These are engineering measurements, not an externally validated reliability benchmark. No verified customer testimonials, legal certification, trademark clearance, or production deployment claims exist; future work must not fabricate them.
 
 ## Product Principles
 
