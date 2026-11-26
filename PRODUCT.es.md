@@ -32,7 +32,7 @@ El usuario pega una política, selecciona un perfil y recibe un espacio de anál
 - Cláusulas estables y SHA-256 del documento normalizado.
 - Detección de categorías, propósitos, terceros, conservación, derechos, seguridad y entrenamiento de IA.
 - Vacíos ausentes o ambiguos sin presentarlos como prueba de ilegalidad.
-- Evidencia exacta verificada antes de mostrarse.
+- Cada hallazgo mostrado vuelve a una cláusula con coincidencia textual de la cita tras normalizar espacios; el respaldo semántico aún requiere revisión humana.
 - Índice reproducible ponderado por perfil; un LLM no fija la puntuación.
 - Separación entre evidencia, interpretación y escenario.
 - Mapa visual y plan priorizado.
@@ -50,7 +50,7 @@ El usuario pega una política, selecciona un perfil y recibe un espacio de anál
 
 ## Evidencia disponible
 
-La conversación de origen define diferenciadores, arquitectura, alcance y requisitos. No existen testimonios verificados, benchmarks, certificación jurídica, marca registrada ni despliegue de producción; no deben fabricarse.
+El proyecto incluye evaluaciones internas reproducibles con cláusulas sintéticas, fragmentos con fuentes y nueve rondas de políticas oficiales completas. La última pasada reparada obtuvo 14 VP, 2 FP y 6 FN con una etiqueta de referencia discutida; ninguna de sus cuatro páginas localizadas tuvo un conjunto exacto. Son mediciones de ingeniería, no un benchmark de fiabilidad validado externamente. No existen testimonios verificados, certificación jurídica, registro de marca ni despliegue de producción; no deben fabricarse.
 
 ## Principios
 
@@ -62,7 +62,7 @@ La conversación de origen define diferenciadores, arquitectura, alcance y requi
 
 ## Accesibilidad e inclusión
 
-La aplicación es bilingüe español/inglés, cumple fundamentos WCAG 2.2 AA, permite teclado y movimiento reducido, usa lenguaje claro y no depende solo del color.
+La aplicación es bilingüe español/inglés y se diseñó para uso con teclado, movimiento reducido, lenguaje claro e indicadores que no dependan solo del color. La conformidad WCAG 2.2 AA no ha sido auditada externamente.
 
 ## Decisiones abiertas
 
