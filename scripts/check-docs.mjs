@@ -24,7 +24,10 @@ for (const file of english) {
   if (!en.startsWith("#") || !es.startsWith("#")) throw new Error(`${file} must start with a Markdown heading.`);
 }
 
-const excluded = new Set([".git", "node_modules", ".next", "dist", "build", "coverage"]);
+// Video production and dependency caches are separate workspaces. Official
+// project Markdown is checked here; the video project can validate its own
+// production files when it is ready to submit.
+const excluded = new Set([".git", ".cache", "node_modules", ".next", "dist", "build", "coverage", "video"]);
 function collectMarkdown(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
