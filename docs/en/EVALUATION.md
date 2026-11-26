@@ -345,3 +345,23 @@ We froze the [four source hashes, seven-category labels, and eight audit questio
 | **12 · Google, WhatsApp** | **16** | **6** | **0** | **72.7%** | **100.0%** | **1/4** | **646 s** |
 
 Google EN and ES both falsely labeled account contact details as device address-book access and both labeled a public-web AI-training passage as training on private user data under our frozen interpretation. WhatsApp EN falsely inferred ad personalization from ad-related cookies and biometric identification from an age-estimation video selfie. WhatsApp ES had the exact category set. The Google AI reference is contestable: treating public personal material as user training data would raise round-twelve precision to 81.8% without changing recall. We preserve the original labels and result. The **[bilingual, question-by-question case study](ROUND12_CASE_STUDY.md)** explains all eight precommitted questions, the extra biometric error, source-line reasoning, category sensitivity, and the 274-second WhatsApp ES latency. One reviewer assigned the labels; translation pairs are correlated; this is neither independent validation nor evidence of a model improvement.
+
+## November 25: thirteenth round, optional practices and biometric distinction
+
+The [frozen manifest](../../apps/api/evaluation/real_policies_round13.json) was committed as `329672d` before inference. It records exact source hashes, seven-category labels, and eight questions for the complete official OpenAI and TikTok EEA privacy policies in English and Spanish. The same model, prompts, and pipeline analyzed each of the four pages once. The [machine report](../../apps/api/evaluation/real_policies_round13_result.json) records **23 TP, 0 FP, 1 FN**: **100% precision, 95.8% recall, 3/4 exact pages, 267 seconds**. OpenAI ES omitted explicit optional device address-book upload; the other three pages had exact category sets. All four correctly withheld a biometric identity-recognition label, but this round has no affirmative biometric reference, so its recall remains untested.
+
+The [English case study](ROUND13_CASE_STUDY.md) and [Spanish case study](../es/ROUND13_CASE_STUDY.md) answer the eight frozen questions in both languages (15/16 checks correct), explain the missed Spanish passage, and distinguish optional practices from mere possibilities. Through rounds ten to thirteen, the descriptive total is **64 TP, 13 FP, 6 FN** across 16 localized pages representing eight underlying policies: **83.1% precision and 91.4% recall**. This is sample variation, not training or established reliability. One reviewer supplied the labels, translation pairs are correlated, and the selected policies do not cover all combinations of practices.
+
+## November 25–26: rounds fourteen to eighteen
+
+Each round has a frozen source and label manifest, raw machine output, and a paired [English](ROUND14_CASE_STUDY.md) / [Spanish](../es/ROUND14_CASE_STUDY.md) case-study format. The table reports **frozen-label category counts** from the raw reports. Round seventeen and eighteen show the second pass on the **same** policies after a code or prompt repair, so they are not new holdouts. Prompts, the evidence gate, source selection, and a disputed Dropbox contact label differ across rounds; do not read the percentages as a training curve.
+
+| Round and official policies | TP | FP | FN | Precision | Recall | Exact pages | Detailed audit |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 14 · LinkedIn, Zoom | 21 | 2 | 1 | 91.3% | 95.5% | 1/4 | [Round 14](ROUND14_CASE_STUDY.md) |
+| 15 · Dropbox, GitHub | 17 | 3 | 1 | 85.0% | 94.4% | 1/4 | [Round 15](ROUND15_CASE_STUDY.md) |
+| 16 · Pinterest, Slack | 17 | 4 | 3 | 81.0% | 85.0% | 1/4 | [Round 16](ROUND16_CASE_STUDY.md) |
+| 17 · IKEA Spain, repaired pass | 7 | 1 | 1 | 87.5% | 87.5% | 1/2 | [Round 17](ROUND17_CASE_STUDY.md) |
+| 18 · Dropbox, Airbnb, repaired pass | 14 | 2 | 6 | 87.5% | 70.0% | 0/4 | [Round 18](ROUND18_CASE_STUDY.md) |
+
+Round sixteen has a **post-inference Pinterest biometric reference correction** documented separately; the frozen raw result stays unchanged. Round eighteen revisits Dropbox's same current-policy URLs from round fifteen but uses a stricter `contacts` label. That inconsistency needs a second reviewer. The PDF evidence-gate repair in round eighteen raised recall from 30% to 70% on the same four localized pages. The final one-reviewer citation audit judged **13/16 retained citations** substantively relevant; literal or whitespace-normalized verification alone does not establish semantic support. Across these selected, correlated documents, no measured result establishes general reliability or a 90% threshold.
