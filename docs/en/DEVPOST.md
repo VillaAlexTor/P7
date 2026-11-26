@@ -34,6 +34,8 @@ The web application uses Next.js, React, and TypeScript. A Go API segments polic
 
 ChatGPT and Codex supported competitor research, problem framing, scope, architecture, coding, design, tests, and documentation. This assistance is disclosed in the repository and submission.
 
+The demo video uses locally synthesized English narration via Kokoro and was assembled with HyperFrames. The voice is synthetic rather than a recording of the author's speech.
+
 The executable calls `qwen3:4b-instruct` through local Ollama and requests structured semantic-classification candidates. It remains reproducible without paid API credits or secrets. Go checks proposed quotes against their cited clauses, allowing whitespace differences from PDF extraction, rejects unknown categories, deduplicates results, and applies deterministic weights. A separate one-reviewer citation audit shows that a matching quote can still support the wrong interpretation.
 
 ## Challenges
