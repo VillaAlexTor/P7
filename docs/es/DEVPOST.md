@@ -34,6 +34,8 @@ La aplicación usa Next.js, React y TypeScript. Una API Go segmenta políticas y
 
 ChatGPT y Codex apoyaron investigación de competencia, definición del problema, alcance, arquitectura, programación, diseño, pruebas y documentación. Esta asistencia está divulgada en el repositorio y la presentación.
 
+El video usa narración inglesa sintetizada localmente mediante Kokoro y se montó con HyperFrames. La voz es sintética, no una grabación de la voz del autor.
+
 La versión ejecutable llama a `qwen3:4b-instruct` mediante Ollama local y solicita candidatos de clasificación semántica estructurados. Sigue siendo reproducible sin créditos API pagados ni secretos. Go comprueba las citas contra sus cláusulas, admite diferencias de espacios causadas por PDF, rechaza categorías desconocidas, deduplica y aplica pesos deterministas. Una auditoría separada de citas hecha por una persona muestra que una coincidencia textual aún puede sostener una interpretación errónea.
 
 ## Desafíos
